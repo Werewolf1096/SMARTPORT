@@ -323,12 +323,17 @@
   carousels.forEach((carousel) => {
     const track = carousel.querySelector(".services-track");
     const dots = Array.from(carousel.querySelectorAll(".services-dots button"));
-    if (!track || dots.length === 0) return;
+    const prevArrow = carousel.querySelector(".services-arrow--prev");
+    const nextArrow = carousel.querySelector(".services-arrow--next");
+    if (!track) return;
 
     const cards = Array.from(track.querySelectorAll(".service-card"));
     let ticking = false;
+    let isAnimating = false;
+    let animFrame = null;
 
     function setActive(index) {
+      if (dots.length === 0) return;
       dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
     }
 
@@ -350,6 +355,8 @@
     }
 
     function onScroll() {
+      if (dots.length === 0) return;
+      if (isAnimating) return;
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
@@ -358,11 +365,72 @@
       });
     }
 
+    function easeInOutSine(t) {
+      return -(Math.cos(Math.PI * t) - 1) / 2;
+    }
+
+    function animateScroll(targetLeft) {
+      const start = track.scrollLeft;
+      const delta = targetLeft - start;
+      if (Math.abs(delta) < 1) return;
+
+      if (animFrame) cancelAnimationFrame(animFrame);
+      isAnimating = true;
+
+      const duration = 800;
+      const startTime = performance.now();
+      const prevSnap = track.style.scrollSnapType;
+      const prevBehavior = track.style.scrollBehavior;
+
+      track.style.scrollSnapType = "none";
+      track.style.scrollBehavior = "auto";
+
+      function step(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        const eased = easeInOutSine(t);
+        track.scrollLeft = start + delta * eased;
+        if (t < 1) {
+          animFrame = requestAnimationFrame(step);
+          return;
+        }
+        track.style.scrollSnapType = prevSnap;
+        track.style.scrollBehavior = prevBehavior;
+        isAnimating = false;
+        animFrame = null;
+        setActive(findClosestIndex());
+      }
+
+      animFrame = requestAnimationFrame(step);
+    }
+
+    function getStepSize() {
+      const first = cards[0];
+      if (!first) return 0;
+      const styles = window.getComputedStyle(track);
+      const gapValue = parseFloat(styles.columnGap || styles.gap || "0");
+      return first.getBoundingClientRect().width + gapValue;
+    }
+
+    function scrollByStep(dir) {
+      const step = getStepSize();
+      if (!step) return;
+      animateScroll(track.scrollLeft + step * dir);
+    }
+
     dots.forEach((dot, i) => {
       dot.addEventListener("click", () => {
-        cards[i]?.scrollIntoView({ behavior: "smooth", inline: "start" });
+        const card = cards[i];
+        if (!card) return;
+        animateScroll(card.offsetLeft - track.offsetLeft);
       });
     });
+
+    if (prevArrow) {
+      prevArrow.addEventListener("click", () => scrollByStep(-1));
+    }
+    if (nextArrow) {
+      nextArrow.addEventListener("click", () => scrollByStep(1));
+    }
 
     track.addEventListener("scroll", onScroll, { passive: true });
     onScroll();

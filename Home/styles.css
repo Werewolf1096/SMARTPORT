@@ -421,6 +421,32 @@ img {
   background: rgba(15, 17, 21, 0.6);
 }
 
+.services-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.services-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #f1f1f1;
+  color: #111;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(15, 17, 21, 0.12);
+}
+
+.services-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
 .steps {
   background: #f9f9fb;
   padding: 100px 0 120px;
