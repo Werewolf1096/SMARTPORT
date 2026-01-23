@@ -992,7 +992,8 @@ img {
   .device-mock {
     width: min(515px, 100vw);
     max-height: 601px;
-    margin-left: 100px;
+    margin-left: 140px;
+    transform: translate(40px, -10px);
   }
 
   .hero-copy {
