@@ -273,6 +273,10 @@ img {
   background: var(--bg);
 }
 
+#services {
+  --service-card-size: 358px;
+}
+
 .services-head {
   display: flex;
   align-items: flex-end;
@@ -307,6 +311,12 @@ img {
   padding: 8px 4px 18px;
   scroll-snap-type: x mandatory;
   scroll-padding-left: 4px;
+}
+
+#services .services-track {
+  grid-auto-columns: minmax(var(--service-card-size), 1fr);
+  padding-right: calc(var(--service-card-size) * 0.5);
+  scroll-padding-right: calc(var(--service-card-size) * 0.5);
 }
 
 .services-track::-webkit-scrollbar {
@@ -969,6 +979,10 @@ img {
     grid-auto-columns: minmax(320px, 1fr);
   }
 
+  #services {
+    --service-card-size: 320px;
+  }
+
     .service-card {
       min-height: 480px;
       height: 480px;
@@ -1089,6 +1103,10 @@ img {
 
     .services-track {
       grid-auto-columns: minmax(308px, 1fr);
+    }
+
+    #services {
+      --service-card-size: 308px;
     }
 
       .service-card {
