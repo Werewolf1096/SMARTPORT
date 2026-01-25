@@ -1184,3 +1184,6 @@ img {
   }
 }
 
+
+body { overflow-x: hidden; }
+
