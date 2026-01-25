@@ -1176,3 +1176,11 @@ img {
     align-items: flex-start;
   }
 }
+
+@media (max-width: 900px) {
+  .step-media {
+    display: block;
+    aspect-ratio: 1 / 1;
+  }
+}
+
