@@ -5,9 +5,9 @@
   --ink: #0f1115;
   --muted: #5c6170;
   --line: rgba(15, 17, 21, 0.08);
-  --accent: #5bab28;
+  --accent: rgb(124, 193, 83);
   --accent-soft: #e6f3db;
-  --accent-green: #5bab28;
+  --accent-green: rgb(124, 193, 83);
   --hero-glow: rgba(56, 139, 253, 0.25);
   --glass: rgba(255, 255, 255, 0.72);
   --shadow: 0 28px 80px rgba(15, 17, 21, 0.14);
@@ -138,7 +138,7 @@ img {
   height: 900px;
   padding: 70px 0 80px;
   overflow: hidden;
-  background: #f5f5f7;
+  background: rgb(245, 245, 247);
 }
 
 .smart-bg.smart-bg--1 {
@@ -270,7 +270,7 @@ img {
 
 .services {
   padding: 96px 0 110px;
-  background: var(--bg);
+  background: rgb(245, 245, 247);
 }
 
 #services {
@@ -286,7 +286,7 @@ img {
 }
 
 .services-head h2 {
-  font-size: clamp(30px, 3.2vw, 40px);
+  font-size: clamp(36px, 4.2vw, 52px);
   letter-spacing: -0.02em;
 }
 
@@ -309,6 +309,7 @@ img {
   gap: 24px;
   overflow-x: auto;
   padding: 8px 4px 18px;
+  background: var(--bg);
   scroll-snap-type: x mandatory;
   scroll-padding-left: 4px;
 }
@@ -330,7 +331,7 @@ img {
     min-height: 484px;
     height: 484px;
     aspect-ratio: 3 / 4;
-    box-shadow: 0 18px 40px rgba(15, 17, 21, 0.08);
+    box-shadow: none;
     display: grid;
     grid-template-rows: auto auto auto 1fr auto;
   gap: 12px;
@@ -376,12 +377,19 @@ img {
     align-self: end;
   }
 
+#services .service-media {
+  width: 85%;
+  margin-bottom: calc((100% - 85%) / 2);
+  justify-self: center;
+  transform: translateY(10%);
+  background: transparent;
+}
+
+@media (min-width: 769px) {
   #services .service-media {
-    width: 85%;
-    margin-bottom: calc((100% - 85%) / 2);
-    justify-self: center;
-    transform: translateY(10%);
+    transform: translateY(calc(10% - 20px));
   }
+}
 
   .service-media--bag {
     background: url("chytra-zarovka-chytre-osvetleni.png") center/cover no-repeat;
