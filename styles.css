@@ -622,7 +622,7 @@ img {
 
 .steps-visual img {
   grid-area: 1 / 1;
-  width: min(420px, 100%);
+  width: min(504px, 100%);
   height: auto;
   display: block;
   opacity: 0;
