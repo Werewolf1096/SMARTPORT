@@ -677,3 +677,25 @@
     accordion.forEach((item) => setBodyHeight(item));
   });
 })();
+
+(() => {
+  const burger = document.querySelector(".burger-btn");
+  const nav = document.querySelector(".main-nav");
+  if (!burger || !nav) return;
+
+  burger.addEventListener("click", () => {
+    const isActive = burger.classList.toggle("is-active");
+    nav.classList.toggle("is-active", isActive);
+    burger.setAttribute("aria-expanded", isActive);
+    document.body.style.overflow = isActive ? "hidden" : "";
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      burger.classList.remove("is-active");
+      nav.classList.remove("is-active");
+      burger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    });
+  });
+})();
