@@ -9,18 +9,18 @@
     speed: 0.15,
     nodeRadius: 1.5,
 
-    rgb: [80, 80, 80],
-    nodeAlpha: 0.275,
-    lineAlphaMin: 0.011,
-    lineAlphaMax: 0.11,
+    rgb: [124, 193, 83],
+    nodeAlpha: 0.364,
+    lineAlphaMin: 0.0145,
+    lineAlphaMax: 0.145,
     lineWidth: 1,
 
-    badgeSlots: 4,
-    minActiveBadges: 3,
+    badgeSlots: 0,
+    minActiveBadges: 0,
     badgeOffset: 18,
 
     badgeTiming: { fadeIn: 5, hold: 4, fadeOut: 5, off: 7 },
-    badgeAlphaMax: 0.385,
+    badgeAlphaMax: 0.424,
 
     fontFamily: "Albert Sans, system-ui, -apple-system, Segoe UI, Roboto, Arial",
     fontWeight: 600,
@@ -28,14 +28,7 @@
     fontSizeMax: 30
   };
 
-  const BADGES = [
-    { type: "text", value: "LOXONE" },
-    { type: "text", value: "KNX" },
-    { type: "text", value: "Shelly" },
-    { type: "text", value: "DALI" },
-    { type: "wifi" },
-    { type: "camera" }
-  ];
+  const BADGES = [];
 
   let W = 0;
   let H = 0;
@@ -303,8 +296,7 @@
       ctx.fill();
     }
 
-    forceMinActive();
-    for (const s of slots) drawSlot(s, stepSlot(s, dt));
+    // Badges/icons disabled in hero visualization.
 
     requestAnimationFrame(frame);
   }
