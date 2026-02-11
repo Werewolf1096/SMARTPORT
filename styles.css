@@ -316,10 +316,13 @@ img {
   grid-auto-columns: minmax(358px, 1fr);
   gap: 24px;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 8px 4px 18px;
   background: var(--bg);
   scroll-snap-type: x mandatory;
   scroll-padding-left: 4px;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
 }
 
 #services .services-track {
@@ -785,6 +788,8 @@ img {
   grid-auto-columns: minmax(calc(358px * var(--solution-card-scale)), 1fr);
   padding-right: calc(358px * var(--solution-card-scale) * 0.5);
   scroll-padding-right: calc(358px * var(--solution-card-scale) * 0.5);
+  overflow-y: hidden;
+  touch-action: pan-x;
 }
 
 .solutions .service-card {
