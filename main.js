@@ -9,7 +9,7 @@
     speed: 0.15,
     nodeRadius: 1.5,
 
-    rgb: [124, 193, 83],
+    rgb: [3, 140, 115],
     nodeAlpha: 0.364,
     lineAlphaMin: 0.0145,
     lineAlphaMax: 0.145,
