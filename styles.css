@@ -321,7 +321,7 @@ img {
   background: var(--bg);
   scroll-snap-type: x mandatory;
   scroll-padding-left: 4px;
-  touch-action: pan-x;
+  touch-action: auto;
   overscroll-behavior-x: contain;
 }
 
@@ -789,7 +789,7 @@ img {
   padding-right: calc(358px * var(--solution-card-scale) * 0.5);
   scroll-padding-right: calc(358px * var(--solution-card-scale) * 0.5);
   overflow-y: hidden;
-  touch-action: pan-x;
+  touch-action: auto;
   gap: 24px;
   column-gap: 24px;
 }
