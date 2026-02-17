@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>O nás - SMARTPORT</title>
+    <meta
+      name="description"
+      content="SMARTPORT: elektroinstalace a automatizace budov. Loxone, KNX, Siemens, bezpečnost a dlouhodobě stabilní technická řešení."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.jpg" type="image/png" />
+    <style>
+      html,
+      body {
+        overflow-x: clip;
+        max-width: 100%;
+        overscroll-behavior-x: none;
+        touch-action: pan-y;
+      }
+
+      .burger-btn {
+        display: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 2000;
+        position: relative;
+        width: 44px;
+        height: 44px;
+      }
+
+      .burger-icon {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: #000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s;
+      }
+
+      .burger-icon::before,
+      .burger-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        transition: transform 0.3s, top 0.3s;
+      }
+
+      .burger-icon::before {
+        top: -8px;
+      }
+
+      .burger-icon::after {
+        top: 8px;
+      }
+
+      .burger-btn.is-active .burger-icon {
+        background-color: transparent;
+      }
+
+      .burger-btn.is-active .burger-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      .burger-btn.is-active .burger-icon::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+
+      .about-page {
+        background: var(--bg);
+        padding: 76px 0 116px;
+        overflow-x: clip;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      /* Hard-center all About page containers */
+      .about-page > .container {
+        width: min(90%, var(--content-width));
+        margin-left: auto !important;
+        margin-right: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+      }
+
+      .about-kpis,
+      .about-grid,
+      .owners {
+        min-width: 0;
+      }
+
+      .about-hero {
+        margin-bottom: 42px;
+      }
+
+      .about-eyebrow {
+        color: var(--accent-green);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .about-title {
+        font-size: clamp(40px, 6vw, 82px);
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+        max-width: 980px;
+      }
+
+      .about-lead {
+        margin-top: 18px;
+        max-width: 860px;
+        color: var(--muted);
+        font-size: clamp(19px, 2vw, 25px);
+        line-height: 1.42;
+      }
+
+      .about-kpis {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px;
+        margin: 44px 0 56px;
+      }
+
+      .about-kpi {
+        border-top: 1px solid rgba(15, 17, 21, 0.16);
+        padding-top: 18px;
+      }
+
+      .about-kpi-label {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .about-kpi-value {
+        font-size: clamp(38px, 4vw, 62px);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .about-kpi-desc {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.46;
+      }
+
+      .about-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .about-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        overflow: hidden;
+      }
+
+      .about-card-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 360px;
+      }
+
+      .about-card-split--media-left {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-card-split--media-left .about-card-media {
+        order: -1;
+      }
+
+      .about-card-copy {
+        padding: 34px;
+      }
+
+      .about-card h2 {
+        font-size: clamp(30px, 3.2vw, 46px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+      }
+
+      .about-card p {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .about-card p + p {
+        margin-top: 10px;
+      }
+
+      .about-card-media {
+        position: relative;
+        background: #dde6ed;
+      }
+
+      .about-card-media img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .about-dark {
+        background: linear-gradient(155deg, #11131a 0%, #1c1f28 100%);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: #fff;
+      }
+
+      .about-dark .about-card-copy h2 {
+        color: #fff;
+      }
+
+      .about-dark .about-card-copy p {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .about-pillars {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .pillar {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 28px 30px;
+      }
+
+      .pillar h3 {
+        font-size: clamp(24px, 2.5vw, 34px);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        margin-bottom: 10px;
+      }
+
+      .pillar p {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.58;
+      }
+
+      .pillar p + p {
+        margin-top: 10px;
+      }
+
+      .about-list {
+        margin-top: 10px;
+        list-style: none;
+      }
+
+      .about-list li {
+        position: relative;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.58;
+      }
+
+      .about-list li + li {
+        margin-top: 6px;
+      }
+
+      .about-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.68em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-green);
+      }
+
+      .owners-title {
+        margin: 44px 0 16px;
+        font-size: clamp(28px, 3vw, 42px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .owners {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .owner-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .owner-photo {
+        aspect-ratio: 16 / 10;
+        background: #dbe4eb;
+      }
+
+      .owner-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .owner-copy {
+        padding: 16px 18px 20px;
+      }
+
+      .owner-copy h4 {
+        font-size: 24px;
+        line-height: 1.14;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+      }
+
+      .owner-copy p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 900px) {
+        .header-inner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row !important;
+        }
+
+        .burger-btn {
+          display: block;
+        }
+
+        .main-nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background-color: #fff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+          z-index: 1999;
+        }
+
+        .main-nav.is-active {
+          transform: translateX(0);
+        }
+
+        .main-nav a {
+          font-size: 1.5rem;
+          color: #1d1d1f;
+          text-decoration: none;
+        }
+
+        .about-kpis {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .about-card-split {
+          grid-template-columns: 1fr;
+        }
+
+        .about-card-media {
+          min-height: 300px;
+          order: -1;
+        }
+
+        .about-pillars {
+          grid-template-columns: 1fr;
+        }
+
+        .owners {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .about-page {
+          padding: 50px 0 86px;
+        }
+
+        .about-kpis {
+          grid-template-columns: 1fr;
+          margin: 36px 0 46px;
+          gap: 18px;
+        }
+
+        .about-card-copy,
+        .pillar {
+          padding: 24px;
+        }
+
+        .about-card p,
+        .pillar p,
+        .about-list li {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-shell" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html#hero" aria-label="Smartport">
+          <img src="LOGO.gif" alt="Smartport logo" class="brand-logo" />
+        </a>
+        <button class="burger-btn" aria-controls="main-nav" aria-expanded="false" aria-label="Menu">
+          <span class="burger-icon"></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Hlavní navigace">
+          <a href="index.html#hero">Domů</a>
+          <a href="index.html#services">Služby</a>
+          <a href="index.html#solutions">Řešení</a>
+          <a href="index.html#contact">Kontakt</a>
+          <a class="is-active" href="about.html">O nás</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="about-page">
+      <section class="container about-hero">
+        <p class="about-eyebrow">O společnosti</p>
+        <h1 class="about-title">Stabilní technika pro domy i firmy</h1>
+        <p class="about-lead">
+          SMARTPORT se zaměřuje na elektroinstalace a automatizaci budov.
+          Navrhujeme řešení, která mají fungovat dlouhodobě, přehledně a bez zbytečných komplikací.
+        </p>
+        <p class="about-lead">Technologie podle nás nemá být složitá. Má být správně navržená.</p>
+      </section>
+
+      <section class="container about-kpis" aria-label="Klíčová fakta">
+        <article class="about-kpi">
+          <p class="about-kpi-label">Elektroinstalace</p>
+          <p class="about-kpi-value">15+ let</p>
+          <p class="about-kpi-desc">Praxe od rodinných domů až po komerční objekty.</p>
+        </article>
+        <article class="about-kpi">
+          <p class="about-kpi-label">Automatizace</p>
+          <p class="about-kpi-value">10+ let</p>
+          <p class="about-kpi-desc">Zkušenosti z budov i průmyslového řízení.</p>
+        </article>
+        <article class="about-kpi">
+          <p class="about-kpi-label">Standard</p>
+          <p class="about-kpi-value">Loxone + KNX</p>
+          <p class="about-kpi-desc">Technologie vybíráme podle zadání, rozsahu a rozšiřitelnosti projektu.</p>
+        </article>
+      </section>
+
+      <section class="container about-grid">
+        <article class="about-card about-card-split">
+          <div class="about-card-copy">
+            <h2>15+ let zkušeností v elektroinstalacích</h2>
+            <p>
+              Více než 15 let praxe v oblasti elektroinstalací - od rodinných domů až po komerční objekty.
+            </p>
+            <p>
+              Elektroinstalace tvoří základ každého projektu. Pokud je promyšlená od začátku, umožňuje bezproblémový provoz, snadný servis a budoucí rozšíření systému.
+            </p>
+            <p>Dbáme na:</p>
+            <ul class="about-list">
+              <li>přehlednou strukturu rozvaděčů</li>
+              <li>čisté a logické vedení kabeláže</li>
+              <li>servisní dostupnost</li>
+              <li>technickou rezervu pro další rozvoj</li>
+            </ul>
+          </div>
+          <div class="about-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80"
+              alt="Elektroinstalace a technický návrh rozvaděče"
+            />
+          </div>
+        </article>
+
+        <article class="about-card about-card-split about-card-split--media-left about-dark">
+          <div class="about-card-copy">
+            <h2>10+ let v automatizaci a průmyslovém řízení</h2>
+            <p>
+              Máme více než 10 let zkušeností v oblasti automatizace budov i průmyslových technologií.
+            </p>
+            <p>
+              Pracovali jsme se systémy KNX a řešeními na platformách Siemens v prostředí, kde je klíčová stabilita a přesnost řízení.
+            </p>
+            <p>
+              Průmyslová automatizace vyžaduje systematický přístup, jasnou strukturu a odpovědnost za každé rozhodnutí v návrhu.
+            </p>
+          </div>
+          <div class="about-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
+              alt="Automatizace budov a průmyslové řízení"
+            />
+          </div>
+        </article>
+
+        <section class="about-pillars" aria-label="Oblasti realizace">
+          <article class="pillar">
+            <h3>Tyto zkušenosti dnes využíváme při realizaci automatizace pro:</h3>
+            <ul class="about-list">
+              <li>rodinné domy</li>
+              <li>administrativní budovy</li>
+              <li>hotely</li>
+              <li>obchodní prostory</li>
+            </ul>
+            <p>
+              Pracujeme především se systémy Loxone a KNX. Volba technologie vždy vychází z konkrétního zadání projektu, rozsahu objektu a požadavků na budoucí rozšiřitelnost.
+            </p>
+          </article>
+          <article class="pillar">
+            <h3>Projekty s vysokými nároky na stabilitu</h3>
+            <p>
+              Podíleli jsme se na realizacích pro hotely a obchodní centra, kde je důraz na nepřetržitý provoz a bezpečnost.
+            </p>
+            <p>V takových projektech není prostor pro improvizaci. Technologie musí fungovat předvídatelně a dlouhodobě.</p>
+            <p>Stejný standard uplatňujeme i u menších objektů.</p>
+          </article>
+        </section>
+
+        <section class="about-pillars" aria-label="Bezpečnost a přístup">
+          <article class="pillar">
+            <h3>Bezpečnost a integrace systémů</h3>
+            <p>Navrhujeme a instalujeme:</p>
+            <ul class="about-list">
+              <li>kamerové systémy</li>
+              <li>zabezpečovací technologie</li>
+              <li>přístupové systémy</li>
+              <li>vzdálený dohled a správu</li>
+            </ul>
+            <p>
+              Bezpečnost integrujeme do celkové architektury objektu tak, aby jednotlivé části pracovaly jako jeden funkční celek.
+            </p>
+          </article>
+          <article class="pillar">
+            <h3>Přístup</h3>
+            <p>Každý projekt začíná analýzou potřeb a technických možností.</p>
+            <p>Navrhujeme řešení, která jsou:</p>
+            <ul class="about-list">
+              <li>přehledná</li>
+              <li>technicky vyvážená</li>
+              <li>stabilní</li>
+              <li>připravená na budoucí rozšíření</li>
+            </ul>
+            <p>Cílem není složitý systém. Cílem je spolehlivé prostředí.</p>
+            <p>
+              SMARTPORT<br />
+              Elektroinstalace. Automatizace Loxone, KNX a řešení Siemens. Bezpečnost.<br />
+              Technika, která funguje.
+            </p>
+          </article>
+        </section>
+      </section>
+
+      <section class="container" aria-label="Vedení společnosti">
+        <h2 class="owners-title">Vedení společnosti</h2>
+        <div class="owners">
+          <article class="owner-card">
+            <div class="owner-photo">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80"
+                alt="Vlastník společnosti SMARTPORT"
+              />
+            </div>
+            <div class="owner-copy">
+              <h4>Vlastník 1</h4>
+              <p>Strategie, technický dohled a řízení realizací.</p>
+            </div>
+          </article>
+          <article class="owner-card">
+            <div class="owner-photo">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+                alt="Spoluvlastník společnosti SMARTPORT"
+              />
+            </div>
+            <div class="owner-copy">
+              <h4>Vlastník 2</h4>
+              <p>Automatizace, integrace systémů a servisní rozvoj.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="LOGO.gif" alt="Smartport logo" />
+          </div>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-block">
+            <h4>Ozvěte se nám</h4>
+            <ul>
+              <li>+420 775 563 355</li>
+              <li>info@smartport.cz</li>
+              <li>Po-Pá 9:00-16:00</li>
+              <li>Nad Prahou 1096</li>
+            </ul>
+          </div>
+          <div class="footer-block">
+            <h4>Rychlé odkazy</h4>
+            <ul class="footer-links">
+              <li><a href="#">Ochrana osobních údajů</a></li>
+              <li><a href="#">Obchodní podmínky</a></li>
+              <li><a href="about.html">O nás</a></li>
+              <li><a href="index.html#contact">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Keep About page pinned to the left edge on browsers that preserve horizontal offset.
+      (() => {
+        const lockX = () => {
+          if (window.scrollX !== 0) {
+            window.scrollTo(0, window.scrollY);
+          }
+        };
+        window.addEventListener("pageshow", lockX);
+        window.addEventListener("load", lockX);
+        window.addEventListener("resize", lockX, { passive: true });
+      })();
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

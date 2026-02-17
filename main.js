@@ -1,69 +1,68 @@
-﻿(() => {
+(() => {
   const canvas = document.getElementById("smartCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: true });
 
   const cfg = {
     maxNodes: 140,
-    maxLinksDist: 260,
+    maxLinksDist: 200,
     speed: 0.15,
     nodeRadius: 1.5,
 
-    rgb: [3, 140, 115],
-    nodeAlpha: 0.364,
-    lineAlphaMin: 0.0145,
-    lineAlphaMax: 0.145,
+    rgb: [0, 113, 227],
+    nodeAlpha: 0.25,
+    lineAlphaMin: 0.01,
+    lineAlphaMax: 0.1,
     lineWidth: 1,
 
-    badgeSlots: 0,
-    minActiveBadges: 0,
-    badgeOffset: 18,
+    badgeSlots: 3,
+    minActiveBadges: 2,
+    badgeOffset: 14,
 
     badgeTiming: { fadeIn: 5, hold: 4, fadeOut: 5, off: 7 },
-    badgeAlphaMax: 0.424,
+    badgeAlphaMax: 0.35,
 
-    fontFamily: "Albert Sans, system-ui, -apple-system, Segoe UI, Roboto, Arial",
+    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial",
     fontWeight: 600,
-    fontSizeMin: 30,
-    fontSizeMax: 30
+    fontSizeMin: 16,
+    fontSizeMax: 26
   };
 
-  const BADGES = [];
+  const BADGES = [
+    { type: "text", value: "LOXONE" },
+    { type: "text", value: "KNX" },
+    { type: "text", value: "LogicHome" },
+    { type: "text", value: "Shelly" },
+    { type: "text", value: "DALI" },
+    { type: "wifi" }
+  ];
 
   let W = 0;
   let H = 0;
   let nodes = [];
   let slots = [];
   let last = performance.now();
-  let densityScale = 1;
 
   function rand(min, max) {
     return min + Math.random() * (max - min);
   }
+
   function pick(a) {
     return a[(Math.random() * a.length) | 0];
   }
-  function badgeKey(b) {
-    return b.type === "text" ? `text:${b.value}` : `icon:${b.type}`;
-  }
-  function pickBadge(used) {
-    const candidates = BADGES.filter((b) => !used.has(badgeKey(b)));
-    return pick(candidates.length ? candidates : BADGES);
-  }
+
   function rgba(a) {
     return `rgba(${cfg.rgb[0]},${cfg.rgb[1]},${cfg.rgb[2]},${a})`;
   }
+
   function smooth(x) {
     return x * x * (3 - 2 * x);
   }
 
   function resize() {
-    const r = canvas.parentElement.getBoundingClientRect();
+    const r = canvas.getBoundingClientRect();
     W = Math.max(1, r.width);
     H = Math.max(1, r.height);
-
-    const isPhone = W <= 768;
-    densityScale = isPhone ? 0.55 : W <= 1024 ? 0.75 : 1;
 
     const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
     canvas.width = Math.floor(W * dpr);
@@ -71,9 +70,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     nodes = [];
-    const targetNodes = Math.round(cfg.maxNodes * densityScale);
-    const maxNodes = Math.max(40, targetNodes);
-    for (let i = 0; i < maxNodes; i++) {
+    for (let i = 0; i < cfg.maxNodes; i++) {
       const a = Math.random() * Math.PI * 2;
       const v = cfg.speed * rand(0.4, 1);
       nodes.push({
@@ -86,15 +83,14 @@
 
     slots = [];
     for (let i = 0; i < cfg.badgeSlots; i++) {
-      const used = new Set(slots.map((s) => badgeKey(s.badge)));
-      slots.push(newSlot(used));
+      slots.push(newSlot());
     }
   }
 
-  function newSlot(used) {
+  function newSlot() {
     return {
       node: (Math.random() * nodes.length) | 0,
-      badge: pickBadge(used || new Set()),
+      badge: pick(BADGES),
       size: rand(cfg.fontSizeMin, cfg.fontSizeMax),
       angle: Math.random() * Math.PI * 2,
       state: "off",
@@ -104,13 +100,7 @@
 
   function rerollSlot(s) {
     s.node = (Math.random() * nodes.length) | 0;
-    const used = new Set();
-    for (const other of slots) {
-      if (other === s) continue;
-      if (other.state === "off") continue;
-      used.add(badgeKey(other.badge));
-    }
-    s.badge = pickBadge(used);
+    s.badge = pick(BADGES);
     s.size = rand(cfg.fontSizeMin, cfg.fontSizeMax);
     s.angle = Math.random() * Math.PI * 2;
   }
@@ -152,7 +142,9 @@
 
   function countActive() {
     let c = 0;
-    for (const s of slots) if (s.state !== "off") c++;
+    for (const s of slots) {
+      if (s.state !== "off") c++;
+    }
     return c;
   }
 
@@ -178,23 +170,24 @@
   }
 
   function drawWifi(x, y, size, a01) {
-    const wifiSize = size * 2;
     const a = a01 * cfg.badgeAlphaMax;
     ctx.strokeStyle = rgba(a);
     ctx.fillStyle = rgba(a);
     ctx.lineWidth = 1;
 
-    const s = wifiSize * 0.7;
+    const s = size * 0.7;
     const r1 = s * 0.35;
-    const r2 = s * 0.6;
+    const r2 = s * 0.60;
     const r3 = s * 0.85;
 
     ctx.beginPath();
     ctx.arc(x, y, r1, Math.PI * 1.15, Math.PI * 1.85);
     ctx.stroke();
+
     ctx.beginPath();
-    ctx.arc(x, y, r2, Math.PI * 1.2, Math.PI * 1.8);
+    ctx.arc(x, y, r2, Math.PI * 1.20, Math.PI * 1.80);
     ctx.stroke();
+
     ctx.beginPath();
     ctx.arc(x, y, r3, Math.PI * 1.25, Math.PI * 1.75);
     ctx.stroke();
@@ -202,36 +195,6 @@
     ctx.beginPath();
     ctx.arc(x, y, s * 0.09, 0, Math.PI * 2);
     ctx.fill();
-  }
-
-  function drawCamera(x, y, size, a01) {
-    const camSize = size * 2;
-    const a = a01 * cfg.badgeAlphaMax;
-    ctx.strokeStyle = rgba(a);
-    ctx.fillStyle = rgba(a);
-    ctx.lineWidth = 1.6;
-
-    const bodyW = camSize * 0.7;
-    const bodyH = camSize * 0.24;
-    const bodyLeft = x - bodyW / 2;
-    const bodyTop = y - bodyH / 2;
-
-    ctx.beginPath();
-    ctx.roundRect(bodyLeft, bodyTop, bodyW, bodyH, 4);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(bodyLeft + bodyW * 0.25, y, bodyH * 0.45, 0, Math.PI * 2);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(bodyLeft + bodyW * 0.6, bodyTop + bodyH);
-    ctx.lineTo(bodyLeft + bodyW * 0.9, bodyTop + bodyH + bodyH * 0.6);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.roundRect(bodyLeft + bodyW * 0.82, bodyTop + bodyH + bodyH * 0.6, bodyW * 0.16, bodyH * 0.22, 2);
-    ctx.stroke();
   }
 
   function drawSlot(s, a01) {
@@ -244,8 +207,10 @@
     const x = n.x + ox;
     const y = n.y + oy;
 
-    if (s.badge.type === "wifi") return drawWifi(x, y, s.size, a01);
-    if (s.badge.type === "camera") return drawCamera(x, y, s.size, a01);
+    if (s.badge.type === "wifi") {
+      drawWifi(x, y, s.size, a01);
+      return;
+    }
 
     ctx.font = `${cfg.fontWeight} ${Math.round(s.size)}px ${cfg.fontFamily}`;
     ctx.textAlign = "center";
@@ -266,8 +231,7 @@
       wrap(p);
     }
 
-    const linkDist = cfg.maxLinksDist * densityScale;
-    const maxD2 = linkDist * linkDist;
+    const maxD2 = cfg.maxLinksDist * cfg.maxLinksDist;
     ctx.lineWidth = cfg.lineWidth;
 
     for (let i = 0; i < nodes.length; i++) {
@@ -276,10 +240,7 @@
         const dy = nodes[i].y - nodes[j].y;
         const d2 = dx * dx + dy * dy;
         if (d2 < maxD2) {
-          const a =
-            cfg.lineAlphaMin +
-            (1 - Math.sqrt(d2) / cfg.maxLinksDist) *
-              (cfg.lineAlphaMax - cfg.lineAlphaMin);
+          const a = cfg.lineAlphaMin + (1 - Math.sqrt(d2) / cfg.maxLinksDist) * (cfg.lineAlphaMax - cfg.lineAlphaMin);
           ctx.strokeStyle = rgba(a);
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -296,7 +257,10 @@
       ctx.fill();
     }
 
-    // Badges/icons disabled in hero visualization.
+    forceMinActive();
+    for (const s of slots) {
+      drawSlot(s, stepSlot(s, dt));
+    }
 
     requestAnimationFrame(frame);
   }
