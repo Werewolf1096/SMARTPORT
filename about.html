@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.jpg" type="image/png" />
     <style>
+      .site-header {
+        position: static;
+      }
+
       html,
       body {
         overflow-x: clip;
@@ -84,7 +88,7 @@
 
       .about-page {
         background: var(--bg);
-        padding: 76px 0 116px;
+        padding: 0 0 116px;
         overflow-x: clip;
         width: 100%;
         max-width: 100vw;
@@ -107,7 +111,22 @@
       }
 
       .about-hero {
-        margin-bottom: 42px;
+        margin-bottom: 56px;
+      }
+
+      .about-intro {
+        background: #ffffff;
+        padding: 76px 0 24px;
+        margin: 0 0 24px;
+      }
+
+      .about-intro .container {
+        width: min(90%, var(--content-width));
+        margin-left: auto !important;
+        margin-right: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
       }
 
       .about-eyebrow {
@@ -120,9 +139,9 @@
       }
 
       .about-title {
-        font-size: clamp(40px, 6vw, 82px);
-        line-height: 0.98;
-        letter-spacing: -0.035em;
+        font-size: clamp(36px, 4.2vw, 52px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
         max-width: 980px;
       }
 
@@ -138,7 +157,7 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 28px;
-        margin: 44px 0 56px;
+        margin: 64px 0 84px;
       }
 
       .about-kpi {
@@ -155,11 +174,15 @@
       }
 
       .about-kpi-value {
-        font-size: clamp(38px, 4vw, 62px);
-        line-height: 1.02;
-        letter-spacing: -0.03em;
+        font-size: clamp(36px, 4.2vw, 52px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
         font-weight: 600;
         margin-bottom: 8px;
+      }
+
+      .about-kpi-value .kpi-accent {
+        color: #64e14a;
       }
 
       .about-kpi-desc {
@@ -170,7 +193,15 @@
 
       .about-grid {
         display: grid;
-        gap: 18px;
+        gap: 28px;
+      }
+
+      .about-grid > .about-pillars:first-of-type {
+        margin-top: 28px;
+      }
+
+      .about-grid > .about-pillars + .about-pillars {
+        margin-top: 12px;
       }
 
       .about-card {
@@ -184,6 +215,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         min-height: 360px;
+      }
+
+      .about-grid > .about-card.about-card-split {
+        height: 560px;
       }
 
       .about-card-split--media-left {
@@ -301,7 +336,7 @@
       }
 
       .owners-title {
-        margin: 44px 0 16px;
+        margin: 72px 0 24px;
         font-size: clamp(28px, 3vw, 42px);
         line-height: 1.08;
         letter-spacing: -0.02em;
@@ -309,8 +344,9 @@
 
       .owners {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 420px));
         gap: 18px;
+        justify-content: center;
       }
 
       .owner-card {
@@ -321,7 +357,7 @@
       }
 
       .owner-photo {
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 1 / 1;
         background: #dbe4eb;
       }
 
@@ -393,6 +429,7 @@
 
         .about-card-split {
           grid-template-columns: 1fr;
+          height: auto !important;
         }
 
         .about-card-media {
@@ -405,7 +442,8 @@
         }
 
         .owners {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 420px);
+          justify-content: center;
         }
       }
 
@@ -416,8 +454,24 @@
 
         .about-kpis {
           grid-template-columns: 1fr;
-          margin: 36px 0 46px;
+          margin: 44px 0 58px;
           gap: 18px;
+        }
+
+        .about-grid {
+          gap: 22px;
+        }
+
+        .about-grid > .about-pillars:first-of-type {
+          margin-top: 18px;
+        }
+
+        .about-grid > .about-pillars + .about-pillars {
+          margin-top: 8px;
+        }
+
+        .owners-title {
+          margin: 48px 0 16px;
         }
 
         .about-card-copy,
@@ -454,81 +508,37 @@
     </header>
 
     <main class="about-page">
-      <section class="container about-hero">
-        <p class="about-eyebrow">O společnosti</p>
-        <h1 class="about-title">Stabilní technika pro domy i firmy</h1>
-        <p class="about-lead">
-          SMARTPORT se zaměřuje na elektroinstalace a automatizaci budov.
-          Navrhujeme řešení, která mají fungovat dlouhodobě, přehledně a bez zbytečných komplikací.
-        </p>
-        <p class="about-lead">Technologie podle nás nemá být složitá. Má být správně navržená.</p>
-      </section>
+      <section class="about-intro">
+        <section class="container about-hero">
+          <p class="about-eyebrow">O společnosti</p>
+          <h1 class="about-title">Stabilní technika pro domy i firmy</h1>
+          <p class="about-lead">
+            SMARTPORT se zaměřuje na elektroinstalace a automatizaci budov.
+            Navrhujeme řešení, která mají fungovat dlouhodobě, přehledně a bez zbytečných komplikací.
+          </p>
+          <p class="about-lead">Technologie podle nás nemá být složitá. Má být správně navržená.</p>
+        </section>
 
-      <section class="container about-kpis" aria-label="Klíčová fakta">
-        <article class="about-kpi">
-          <p class="about-kpi-label">Elektroinstalace</p>
-          <p class="about-kpi-value">15+ let</p>
-          <p class="about-kpi-desc">Praxe od rodinných domů až po komerční objekty.</p>
-        </article>
-        <article class="about-kpi">
-          <p class="about-kpi-label">Automatizace</p>
-          <p class="about-kpi-value">10+ let</p>
-          <p class="about-kpi-desc">Zkušenosti z budov i průmyslového řízení.</p>
-        </article>
-        <article class="about-kpi">
-          <p class="about-kpi-label">Standard</p>
-          <p class="about-kpi-value">Loxone + KNX</p>
-          <p class="about-kpi-desc">Technologie vybíráme podle zadání, rozsahu a rozšiřitelnosti projektu.</p>
-        </article>
+        <section class="container about-kpis" aria-label="Klíčová fakta">
+          <article class="about-kpi">
+            <p class="about-kpi-label">Elektroinstalace</p>
+            <p class="about-kpi-value"><span class="kpi-accent">15+ let</span></p>
+            <p class="about-kpi-desc">Praxe od rodinných domů až po komerční objekty.</p>
+          </article>
+          <article class="about-kpi">
+            <p class="about-kpi-label">Automatizace</p>
+            <p class="about-kpi-value"><span class="kpi-accent">10+ let</span></p>
+            <p class="about-kpi-desc">Zkušenosti z budov i průmyslového řízení.</p>
+          </article>
+          <article class="about-kpi">
+            <p class="about-kpi-label">Standard</p>
+            <p class="about-kpi-value">Loxone + KNX</p>
+            <p class="about-kpi-desc">Technologie vybíráme podle zadání, rozsahu a rozšiřitelnosti projektu.</p>
+          </article>
+        </section>
       </section>
 
       <section class="container about-grid">
-        <article class="about-card about-card-split">
-          <div class="about-card-copy">
-            <h2>15+ let zkušeností v elektroinstalacích</h2>
-            <p>
-              Více než 15 let praxe v oblasti elektroinstalací - od rodinných domů až po komerční objekty.
-            </p>
-            <p>
-              Elektroinstalace tvoří základ každého projektu. Pokud je promyšlená od začátku, umožňuje bezproblémový provoz, snadný servis a budoucí rozšíření systému.
-            </p>
-            <p>Dbáme na:</p>
-            <ul class="about-list">
-              <li>přehlednou strukturu rozvaděčů</li>
-              <li>čisté a logické vedení kabeláže</li>
-              <li>servisní dostupnost</li>
-              <li>technickou rezervu pro další rozvoj</li>
-            </ul>
-          </div>
-          <div class="about-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80"
-              alt="Elektroinstalace a technický návrh rozvaděče"
-            />
-          </div>
-        </article>
-
-        <article class="about-card about-card-split about-card-split--media-left about-dark">
-          <div class="about-card-copy">
-            <h2>10+ let v automatizaci a průmyslovém řízení</h2>
-            <p>
-              Máme více než 10 let zkušeností v oblasti automatizace budov i průmyslových technologií.
-            </p>
-            <p>
-              Pracovali jsme se systémy KNX a řešeními na platformách Siemens v prostředí, kde je klíčová stabilita a přesnost řízení.
-            </p>
-            <p>
-              Průmyslová automatizace vyžaduje systematický přístup, jasnou strukturu a odpovědnost za každé rozhodnutí v návrhu.
-            </p>
-          </div>
-          <div class="about-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
-              alt="Automatizace budov a průmyslové řízení"
-            />
-          </div>
-        </article>
-
         <section class="about-pillars" aria-label="Oblasti realizace">
           <article class="pillar">
             <h3>Tyto zkušenosti dnes využíváme při realizaci automatizace pro:</h3>
@@ -649,16 +659,37 @@
     </footer>
 
     <script>
-      // Keep About page pinned to the left edge on browsers that preserve horizontal offset.
+      // Stabilize About page scroll/position on navigation and history restores.
       (() => {
-        const lockX = () => {
-          if (window.scrollX !== 0) {
-            window.scrollTo(0, window.scrollY);
-          }
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "manual";
+        }
+
+        const resetAboutScroll = () => {
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+          window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+          requestAnimationFrame(() => {
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+          });
         };
-        window.addEventListener("pageshow", lockX);
-        window.addEventListener("load", lockX);
-        window.addEventListener("resize", lockX, { passive: true });
+
+        const bindAboutLinks = () => {
+          const links = document.querySelectorAll('a[href="about.html"], a[href="./about.html"]');
+          links.forEach((link) => {
+            link.addEventListener("click", (e) => {
+              e.preventDefault();
+              history.replaceState(null, "", "about.html");
+              resetAboutScroll();
+            });
+          });
+        };
+
+        window.addEventListener("pageshow", resetAboutScroll);
+        window.addEventListener("load", resetAboutScroll);
+        bindAboutLinks();
       })();
     </script>
     <script src="main.js"></script>

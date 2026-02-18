@@ -1,4 +1,51 @@
 (() => {
+  const homeHero = document.getElementById("hero");
+  if (!homeHero) return;
+
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  const resetHomeScroll = () => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    requestAnimationFrame(() => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    setTimeout(() => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, 40);
+  };
+
+  const bindHomeLinks = () => {
+    const homeLinks = document.querySelectorAll('a[href="#hero"], a[href="index.html#hero"]');
+    homeLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        history.replaceState(null, "", location.pathname + location.search);
+        resetHomeScroll();
+      });
+    });
+  };
+
+  window.addEventListener("pageshow", resetHomeScroll);
+  window.addEventListener("load", resetHomeScroll);
+  if (location.hash === "#hero") {
+    history.replaceState(null, "", location.pathname + location.search);
+    resetHomeScroll();
+  }
+  window.addEventListener("hashchange", () => {
+    if (location.hash === "#hero") resetHomeScroll();
+  });
+  bindHomeLinks();
+})();
+
+(() => {
   const canvas = document.getElementById("smartCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: true });
@@ -10,13 +57,13 @@
     nodeRadius: 1.5,
 
     rgb: [0, 113, 227],
-    nodeAlpha: 0.25,
-    lineAlphaMin: 0.01,
-    lineAlphaMax: 0.1,
+    nodeAlpha: 0.3025,
+    lineAlphaMin: 0.0121,
+    lineAlphaMax: 0.121,
     lineWidth: 1,
 
-    badgeSlots: 3,
-    minActiveBadges: 2,
+    badgeSlots: 0,
+    minActiveBadges: 0,
     badgeOffset: 14,
 
     badgeTiming: { fadeIn: 5, hold: 4, fadeOut: 5, off: 7 },
@@ -28,14 +75,7 @@
     fontSizeMax: 26
   };
 
-  const BADGES = [
-    { type: "text", value: "LOXONE" },
-    { type: "text", value: "KNX" },
-    { type: "text", value: "LogicHome" },
-    { type: "text", value: "Shelly" },
-    { type: "text", value: "DALI" },
-    { type: "wifi" }
-  ];
+  const BADGES = [];
 
   let W = 0;
   let H = 0;
@@ -404,6 +444,41 @@
   let rect = cta.getBoundingClientRect();
   const pupils = Array.from(cta.querySelectorAll(".cta-eyes .pupil"));
   let ticking = false;
+  let idleTimer = null;
+  let blinkTimer = null;
+  let pointerInside = false;
+  const idleDelayMs = 320;
+  const blinkBaseMs = 6600;
+
+  function nextBlinkDelay() {
+    return Math.round(blinkBaseMs * (0.75 + Math.random() * 0.5));
+  }
+
+  function stopBlinking() {
+    if (blinkTimer) {
+      clearTimeout(blinkTimer);
+      blinkTimer = null;
+    }
+    cta.classList.remove("is-blinking");
+  }
+
+  function blinkOnce() {
+    cta.classList.add("is-blinking");
+    setTimeout(() => cta.classList.remove("is-blinking"), 220);
+  }
+
+  function scheduleIdleBlink() {
+    if (idleTimer) clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      if (blinkTimer) return;
+      blinkOnce();
+      const loop = () => {
+        blinkOnce();
+        blinkTimer = setTimeout(loop, nextBlinkDelay());
+      };
+      blinkTimer = setTimeout(loop, nextBlinkDelay());
+    }, idleDelayMs);
+  }
 
   function clamp(v, min, max) {
     return Math.max(min, Math.min(max, v));
@@ -414,6 +489,9 @@
   }
 
   function onMove(e) {
+    pointerInside = true;
+    stopBlinking();
+    scheduleIdleBlink();
     if (ticking) return;
     const x = e.clientX;
     const y = e.clientY;
@@ -438,6 +516,12 @@
   }
 
   function reset() {
+    pointerInside = false;
+    if (idleTimer) {
+      clearTimeout(idleTimer);
+      idleTimer = null;
+    }
+    stopBlinking();
     cta.style.setProperty("--cta-x", "0px");
     cta.style.setProperty("--cta-y", "0px");
     cta.style.setProperty("--cta-r", "0deg");
@@ -445,12 +529,18 @@
       pupil.style.setProperty("--eye-x", "0px");
       pupil.style.setProperty("--eye-y", "0px");
     });
+    scheduleIdleBlink();
   }
 
   window.addEventListener("resize", updateRect);
+  hero.addEventListener("mouseenter", () => {
+    pointerInside = true;
+    scheduleIdleBlink();
+  });
   hero.addEventListener("mousemove", onMove);
   hero.addEventListener("mouseleave", reset);
   updateRect();
+  scheduleIdleBlink();
 })();
 
 (() => {

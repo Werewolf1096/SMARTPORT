@@ -118,7 +118,7 @@ img {
   right: 0;
   bottom: -6px;
   height: 2px;
-  background: currentColor;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
@@ -247,6 +247,8 @@ img {
   box-shadow: 0 4px 10px rgba(15, 17, 21, 0.15);
   position: relative;
   overflow: hidden;
+  transform-origin: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .cta-eyes .pupil {
@@ -259,6 +261,14 @@ img {
   left: 8px;
   transform: translate(var(--eye-x, 0px), var(--eye-y, 0px));
   transition: transform 0.1s linear;
+}
+
+.hero-cta.is-blinking .cta-eyes .eye {
+  transform: scaleY(0.08);
+}
+
+.hero-cta.is-blinking .cta-eyes .pupil {
+  opacity: 0;
 }
 
 .hero-visual {
@@ -484,7 +494,7 @@ img {
   border-radius: 50%;
   border: none;
   background: #f1f1f1;
-  color: #111;
+  color: var(--accent);
   display: grid;
   place-items: center;
   cursor: pointer;
