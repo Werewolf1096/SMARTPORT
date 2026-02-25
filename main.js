@@ -786,7 +786,30 @@
     const images = dropdown.querySelectorAll(".nav-preview-image[data-preview-key]");
     if (!links.length || !images.length) return;
 
+    const imageByKey = new Map(Array.from(images).map((img) => [img.dataset.previewKey, img]));
+    const loadedKeys = new Set();
+    images.forEach((img) => {
+      const key = img.dataset.previewKey;
+      const markLoaded = () => loadedKeys.add(key);
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        img.addEventListener("load", markLoaded, { once: true });
+      }
+      const preload = new Image();
+      preload.src = img.src;
+    });
+
+    let activeKey = null;
     const setActivePreview = (key) => {
+      if (!key || key === activeKey) return;
+      const target = imageByKey.get(key);
+      if (!target) return;
+      if (!loadedKeys.has(key)) {
+        target.addEventListener("load", () => setActivePreview(key), { once: true });
+        return;
+      }
+      activeKey = key;
       images.forEach((img) => {
         img.classList.toggle("is-active", img.dataset.previewKey === key);
       });
