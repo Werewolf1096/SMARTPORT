@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="cs">
   <head>
     <meta charset="utf-8" />
@@ -531,15 +531,45 @@
         <button class="burger-btn" aria-controls="main-nav" aria-expanded="false" aria-label="Menu">
           <span class="burger-icon"></span>
         </button>
-        <nav id="main-nav" class="main-nav" aria-label="Hlavní navigace">
-          <a href="index.html#hero">Domů</a>
-          <a href="index.html#services">Služby</a>
-          <a href="index.html#solutions">Řešení</a>
+        <nav id="main-nav" class="main-nav" aria-label="Hlavni navigace">
+          <a href="index.html#hero">Domu</a>
+          <div class="nav-dropdown">
+            <a class="nav-link" href="index.html#services">Služby</a>
+            <div class="nav-dropdown-panel" aria-label="Nabídka služeb">
+              <div class="nav-dropdown-panel-inner">
+                <div class="nav-dropdown-col">
+                  <p class="nav-dropdown-col-title">Naše služby</p>
+                  <ul class="nav-dropdown-list">
+                    <li><a href="index.html#service-electro" data-preview="electro">Klasická elektroinstalace</a></li>
+                    <li><a href="index.html#service-lighting" data-preview="lighting">Chytré osvětlení</a></li>
+                    <li><a href="index.html#service-security" data-preview="security">Zabezpečení a kamerové systémy</a></li>
+                    <li><a href="index.html#service-climate" data-preview="climate">Řízení klimatu</a></li>
+                    <li><a href="index.html#service-intercom" data-preview="intercom">Interkom a přístupový systém</a></li>
+                    <li><a href="index.html#service-shading" data-preview="shading">Ovládání žaluzií a stínění</a></li>
+                    <li><a href="index.html#service-audio" data-preview="audio">Multizónový audio systém</a></li>
+                    <li><a href="index.html#service-energy" data-preview="energy">Inteligentní správa energie</a></li>
+                  </ul>
+                </div>
+                <div class="nav-dropdown-preview" aria-hidden="true">
+                  <img class="nav-preview-image is-active" data-preview-key="electro" src="klasicka-elektroinstalace.png" alt="" />
+                  <img class="nav-preview-image" data-preview-key="lighting" src="chytra-zarovka-chytre-osvetleni.png" alt="" />
+                  <img class="nav-preview-image" data-preview-key="security" src="chytry-kamerovy-system-zabezpeceni.gif" alt="" />
+                  <img class="nav-preview-image" data-preview-key="climate" src="chytry-termostat-automatizace-klimatu.png" alt="" />
+                  <img class="nav-preview-image" data-preview-key="intercom" src="interkom-a-pristupove-systemy.png" alt="" />
+                  <img class="nav-preview-image" data-preview-key="shading" src="ovladani-zaluzii-a-stineni-design.png" alt="" />
+                  <img class="nav-preview-image" data-preview-key="audio" src="multiroom-audio.png" alt="" />
+                  <img class="nav-preview-image" data-preview-key="energy" src="energeticky-management.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="index.html#solutions">Reseni</a>
           <a href="index.html#contact">Kontakt</a>
-          <a class="is-active" href="about.html">O nás</a>
+          <a class="is-active" href="about.html">O nas</a>
         </nav>
       </div>
     </header>
+    <div class="menu-backdrop" aria-hidden="true"></div>
 
     <main class="about-page">
       <section class="about-intro">
@@ -733,3 +763,5 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+

@@ -104,14 +104,16 @@ img {
   letter-spacing: 0.1em;
 }
 
-.main-nav a {
+.main-nav > a,
+.main-nav > .nav-dropdown > .nav-link {
   position: relative;
   color: #1d1d1f;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
-.main-nav a::after {
+.main-nav > a::after,
+.main-nav > .nav-dropdown > .nav-link::after {
   content: "";
   position: absolute;
   left: 0;
@@ -124,7 +126,8 @@ img {
   transition: transform 0.3s ease;
 }
 
-.main-nav a:hover {
+.main-nav > a:hover,
+.main-nav > .nav-dropdown > .nav-link:hover {
   color: #1d1d1f;
 }
 
@@ -132,9 +135,163 @@ img {
   color: #1d1d1f;
 }
 
-.main-nav a:hover::after,
-.main-nav .is-active::after {
+.main-nav > a:hover::after,
+.main-nav > .nav-dropdown > .nav-link:hover::after,
+.main-nav .is-active::after,
+.main-nav > .nav-dropdown:focus-within > .nav-link::after,
+.main-nav > .nav-dropdown.is-open > .nav-link::after {
   transform: scaleX(1);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  right: -12px;
+  top: 100%;
+  height: 22px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-link::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.7px solid currentColor;
+  border-bottom: 1.7px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  opacity: 0.65;
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 61px 0 0;
+  background: rgba(245, 245, 247, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  z-index: 8;
+}
+
+.nav-dropdown-panel {
+  position: fixed;
+  top: 61px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  transform: translateY(-14px);
+  padding: 18px 0 26px;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(15, 17, 21, 0.08);
+  box-shadow: 0 16px 34px rgba(15, 17, 21, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+  z-index: 20;
+}
+
+.nav-dropdown-panel-inner {
+  width: min(90%, var(--content-width));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1fr);
+  gap: 56px;
+}
+
+.nav-dropdown-col-title {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+  color: #6e7380;
+  margin-bottom: 8px;
+}
+
+.nav-dropdown-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.nav-dropdown-list a {
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #1d1d1f;
+  border-radius: 10px;
+  transition: color 0.18s ease, transform 0.2s ease;
+}
+
+.nav-dropdown-list a:hover {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+.nav-dropdown-preview {
+  position: relative;
+  width: min(100%, 294px);
+  aspect-ratio: 1 / 1;
+  justify-self: start;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(15, 17, 21, 0.08);
+}
+
+.nav-preview-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transform: translate(-50%, -50%) scale(1.03);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-preview-image.is-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-dropdown-panel a::after {
+  display: none;
+}
+
+.nav-dropdown.is-open .nav-dropdown-panel,
+.nav-dropdown:focus-within .nav-dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+body.menu-open .menu-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.menu-open main,
+body.menu-open .site-footer {
+  filter: blur(1.6px);
+  transition: filter 0.28s ease;
 }
 
 .hero {
@@ -1188,6 +1345,18 @@ img {
 @media (max-width: 900px) {
   .main-nav {
     display: none;
+  }
+
+  .menu-backdrop {
+    display: none !important;
+  }
+
+  .nav-link::before {
+    display: none;
+  }
+
+  .nav-dropdown-panel {
+    display: none !important;
   }
 
   .hero {

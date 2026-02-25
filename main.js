@@ -745,3 +745,96 @@
     });
   });
 })();
+
+(() => {
+  const dropdowns = document.querySelectorAll(".nav-dropdown");
+  if (!dropdowns.length) return;
+  const body = document.body;
+  let closeTimer = null;
+
+  const clearCloseTimer = () => {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+  };
+
+  const closeAllDropdowns = () => {
+    dropdowns.forEach((d) => d.classList.remove("is-open"));
+    body.classList.remove("menu-open");
+  };
+
+  const openDropdown = (dropdown) => {
+    clearCloseTimer();
+    dropdowns.forEach((d) => d.classList.toggle("is-open", d === dropdown));
+    body.classList.add("menu-open");
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimer = setTimeout(() => {
+      const hovering = document.querySelector(".nav-dropdown:hover");
+      const focused = document.querySelector(".nav-dropdown:focus-within");
+      if (!hovering && !focused) closeAllDropdowns();
+    }, 220);
+  };
+
+  dropdowns.forEach((dropdown) => {
+    const navLink = dropdown.querySelector(".nav-link");
+    const links = dropdown.querySelectorAll(".nav-dropdown-list a[data-preview]");
+    const panelLinks = dropdown.querySelectorAll(".nav-dropdown-panel a");
+    const images = dropdown.querySelectorAll(".nav-preview-image[data-preview-key]");
+    if (!links.length || !images.length) return;
+
+    const setActivePreview = (key) => {
+      images.forEach((img) => {
+        img.classList.toggle("is-active", img.dataset.previewKey === key);
+      });
+    };
+
+    const defaultKey = links[0].dataset.preview;
+    setActivePreview(defaultKey);
+
+    if (navLink) {
+      navLink.addEventListener("click", (e) => {
+        if (window.matchMedia("(min-width: 901px)").matches) {
+          e.preventDefault();
+          if (dropdown.classList.contains("is-open")) {
+            closeAllDropdowns();
+          } else {
+            openDropdown(dropdown);
+          }
+        }
+      });
+    }
+
+    dropdown.addEventListener("mouseenter", () => openDropdown(dropdown));
+    dropdown.addEventListener("mouseleave", scheduleClose);
+    dropdown.addEventListener("focusin", () => openDropdown(dropdown));
+    dropdown.addEventListener("focusout", scheduleClose);
+
+    links.forEach((link) => {
+      const key = link.dataset.preview;
+      link.addEventListener("mouseenter", () => setActivePreview(key));
+      link.addEventListener("focus", () => setActivePreview(key));
+    });
+
+    panelLinks.forEach((link) => {
+      link.addEventListener("click", () => closeAllDropdowns());
+    });
+
+    dropdown.addEventListener("mouseleave", () => setActivePreview(defaultKey));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeAllDropdowns();
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".nav-dropdown")) {
+      closeAllDropdowns();
+    }
+  });
+})();
