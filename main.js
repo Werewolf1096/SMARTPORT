@@ -783,10 +783,12 @@
     const navLink = dropdown.querySelector(".nav-link");
     const links = dropdown.querySelectorAll(".nav-dropdown-list a[data-preview]");
     const panelLinks = dropdown.querySelectorAll(".nav-dropdown-panel a");
+    const previewTrack = dropdown.querySelector(".nav-preview-track");
     const images = dropdown.querySelectorAll(".nav-preview-image[data-preview-key]");
-    if (!links.length || !images.length) return;
+    if (!links.length || !images.length || !previewTrack) return;
 
     const imageByKey = new Map(Array.from(images).map((img) => [img.dataset.previewKey, img]));
+    const indexByKey = new Map(Array.from(images).map((img, index) => [img.dataset.previewKey, index]));
     const loadedKeys = new Set();
     images.forEach((img) => {
       const key = img.dataset.previewKey;
@@ -804,12 +806,14 @@
     const setActivePreview = (key) => {
       if (!key || key === activeKey) return;
       const target = imageByKey.get(key);
+      const targetIndex = indexByKey.get(key);
       if (!target) return;
       if (!loadedKeys.has(key)) {
         target.addEventListener("load", () => setActivePreview(key), { once: true });
         return;
       }
       activeKey = key;
+      previewTrack.style.transform = `translate3d(0, ${-targetIndex * 100}%, 0)`;
       images.forEach((img) => {
         img.classList.toggle("is-active", img.dataset.previewKey === key);
       });
