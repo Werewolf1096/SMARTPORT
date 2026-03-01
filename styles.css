@@ -549,6 +549,20 @@ body.menu-open .site-footer {
   gap: 12px;
   position: relative;
   scroll-snap-align: start;
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #services .service-card:hover,
+  #services .service-card:focus-within,
+  .solutions .service-card:hover,
+  .solutions .service-card:focus-within {
+    transform: translateY(-4px) scale(1.018);
+    box-shadow: 0 20px 46px rgba(15, 17, 21, 0.12);
+  }
 }
 
 .service-eyebrow {
@@ -595,6 +609,10 @@ body.menu-open .site-footer {
   justify-self: center;
   transform: translateY(10%);
   background: transparent;
+}
+
+#services .service-card[data-href] {
+  cursor: pointer;
 }
 
 @media (min-width: 769px) {
@@ -1143,7 +1161,7 @@ body.menu-open .site-footer {
 }
 
 .contact-cta-card {
-  background: linear-gradient(180deg, #bfdeee 0%, #e6f1f4 100%);
+  background: linear-gradient(90deg, #bfdeee 0%, #e6f1f4 100%);
   border-radius: 32px;
   padding: 40px 48px;
   display: flex;
@@ -1174,6 +1192,140 @@ body.menu-open .site-footer {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.2;
+}
+
+.btn.primary.contact-cta-btn.creepy-btn {
+  background: transparent;
+}
+
+.contact-cta .creepy-btn {
+  --cb-black: #000;
+  --cb-white: #f5f5f7;
+  --cb-primary: var(--accent);
+  --cb-primary-hover: color-mix(in srgb, var(--accent) 84%, #000);
+  position: relative;
+  --cb-w: 188px;
+  --cb-h: 52px;
+  display: inline-block;
+  width: var(--cb-w);
+  height: var(--cb-h);
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  color: var(--cb-white);
+  overflow: visible;
+  outline: 0.1875em solid transparent;
+  transition: outline 0.1s linear;
+}
+
+.contact-cta .creepy-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--cb-black);
+  z-index: 0;
+}
+
+.contact-cta .creepy-btn__cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  border-radius: inherit;
+  box-shadow: none;
+  background: var(--cb-primary);
+  color: #fff;
+  transform-origin: 1.25em 50%;
+  transition:
+    background-color 0.32s ease,
+    transform 0.42s cubic-bezier(0.65, 0, 0.35, 1),
+    box-shadow 0.32s ease;
+}
+
+.contact-cta .creepy-btn:hover .creepy-btn__cover {
+  background: var(--cb-primary);
+}
+
+.contact-cta .creepy-btn:focus-visible {
+  outline-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.contact-cta .creepy-btn:focus-visible .creepy-btn__cover,
+.contact-cta .creepy-btn:hover .creepy-btn__cover {
+  transform: rotate(-12deg);
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
+}
+
+.contact-cta .creepy-btn:active .creepy-btn__cover {
+  transform: rotate(0);
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.contact-cta .creepy-btn__eyes {
+  position: absolute;
+  right: 24px;
+  bottom: 5px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 18px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.14s ease;
+}
+
+.contact-cta .creepy-btn__eye {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cb-white);
+  overflow: hidden;
+  position: relative;
+  animation: contactEyeBlink 3s infinite;
+  animation-play-state: paused;
+}
+
+.contact-cta .creepy-btn__pupil {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--cb-black);
+  transform: translate(var(--cb-eye-x, 0px), var(--cb-eye-y, 0px));
+}
+
+.contact-cta .creepy-btn:hover .creepy-btn__eyes,
+.contact-cta .creepy-btn:focus-visible .creepy-btn__eyes {
+  opacity: 1;
+}
+
+.contact-cta .creepy-btn:hover .creepy-btn__eye,
+.contact-cta .creepy-btn:focus-visible .creepy-btn__eye {
+  animation-play-state: running;
+}
+
+@keyframes contactEyeBlink {
+  0%,
+  92%,
+  100% {
+    height: 18px;
+    animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+  }
+  96% {
+    height: 0;
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
 }
 
 @media (max-width: 900px) {

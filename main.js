@@ -544,6 +544,54 @@
 })();
 
 (() => {
+  const creepyBtn = document.querySelector(".contact-cta .creepy-btn");
+  if (!creepyBtn) return;
+
+  const eyes = creepyBtn.querySelector(".creepy-btn__eyes");
+  const pupils = Array.from(creepyBtn.querySelectorAll(".creepy-btn__pupil"));
+  if (!eyes || pupils.length === 0) return;
+
+  const updateEyes = (clientX, clientY) => {
+    const eyesRect = eyes.getBoundingClientRect();
+    const eyesCenter = {
+      x: eyesRect.left + eyesRect.width / 2,
+      y: eyesRect.top + eyesRect.height / 2
+    };
+
+    const dx = clientX - eyesCenter.x;
+    const dy = clientY - eyesCenter.y;
+    const angle = Math.atan2(-dy, dx) + Math.PI / 2;
+    const distance = Math.hypot(dx, dy);
+    const visionRangeX = 180;
+    const visionRangeY = 75;
+
+    const x = (Math.sin(angle) * distance) / visionRangeX;
+    const y = (Math.cos(angle) * distance) / visionRangeY;
+    const tx = Math.max(-3, Math.min(3, x * 3));
+    const ty = Math.max(-3, Math.min(3, y * 3));
+
+    pupils.forEach((pupil) => {
+      pupil.style.setProperty("--cb-eye-x", `${tx}px`);
+      pupil.style.setProperty("--cb-eye-y", `${ty}px`);
+    });
+  };
+
+  creepyBtn.addEventListener("mousemove", (e) => {
+    updateEyes(e.clientX, e.clientY);
+  });
+
+  creepyBtn.addEventListener(
+    "touchmove",
+    (e) => {
+      const touch = e.touches && e.touches[0];
+      if (!touch) return;
+      updateEyes(touch.clientX, touch.clientY);
+    },
+    { passive: true }
+  );
+})();
+
+(() => {
   const accordion = Array.from(document.querySelectorAll(".step-item"));
   if (accordion.length === 0) return;
 
@@ -742,6 +790,35 @@
       nav.classList.remove("is-active");
       burger.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
+    });
+  });
+})();
+
+(() => {
+  const cards = Array.from(document.querySelectorAll('#services .service-card[data-href]'));
+  if (cards.length === 0) return;
+
+  cards.forEach((card) => {
+    const href = card.getAttribute("data-href");
+    if (!href) return;
+
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "link");
+    card.setAttribute("aria-label", `Otevřít službu: ${card.querySelector("h3")?.textContent?.trim() || ""}`);
+
+    card.addEventListener("click", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLElement && target.closest(".service-action")) {
+        event.preventDefault();
+      }
+      window.location.href = href;
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        window.location.href = href;
+      }
     });
   });
 })();

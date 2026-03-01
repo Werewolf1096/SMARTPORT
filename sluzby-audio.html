@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SMARTPORT - služba Multizónový audio systém. Návrh, realizace a dlouhodobě stabilní provoz." />
+    <title>Multizónový audio systém | SMARTPORT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="service-pages.css" />
+    <link rel="icon" href="favicon.jpg" type="image/png" />
+    <style>
+      .burger-btn { display:none; background:transparent; border:none; cursor:pointer; padding:10px; z-index:2000; position:relative; width:44px; height:44px; }
+      .burger-icon { display:block; width:24px; height:2px; background-color:#000; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:background-color .3s; }
+      .burger-icon::before, .burger-icon::after { content:''; position:absolute; left:0; width:100%; height:100%; background-color:#000; transition:transform .3s, top .3s; }
+      .burger-icon::before { top:-8px; }
+      .burger-icon::after { top:8px; }
+      .burger-btn.is-active .burger-icon { background-color:transparent; }
+      .burger-btn.is-active .burger-icon::before { transform:rotate(45deg); top:0; }
+      .burger-btn.is-active .burger-icon::after { transform:rotate(-45deg); top:0; }
+      @media (max-width:900px) {
+        .header-inner { display:flex; justify-content:space-between; align-items:center; flex-direction:row !important; }
+        .burger-btn { display:block; }
+        .main-nav { position:fixed; top:0; left:0; width:100%; height:100vh; background-color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; transform:translateX(100%); transition:transform .3s ease; z-index:1999; }
+        .main-nav.is-active { transform:translateX(0); }
+        .main-nav a { font-size:1.5rem; color:#000; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body class="service-page">
+    <div class="bg-shell" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html#hero" aria-label="Smartport">
+          <img src="LOGO.gif" alt="Smartport logo" class="brand-logo" />
+        </a>
+        <button class="burger-btn" aria-controls="main-nav" aria-expanded="false" aria-label="Menu"><span class="burger-icon"></span></button>
+        <nav id="main-nav" class="main-nav" aria-label="Hlavní navigace">
+          <a href="index.html#hero">Domů</a>
+          <div class="nav-dropdown">
+            <a class="nav-link is-active" href="index.html#services">Služby</a>
+            <div class="nav-dropdown-panel" aria-label="Nabídka služeb">
+              <div class="nav-dropdown-panel-inner">
+                <div class="nav-dropdown-col">
+                  <p class="nav-dropdown-col-title">Naše služby</p>
+                  <ul class="nav-dropdown-list">
+                    <li><a href="sluzby-elektroinstalace.html" data-preview="electro">Klasická elektroinstalace</a></li>
+                    <li><a href="sluzby-osvetleni.html" data-preview="lighting">Chytré osvětlení</a></li>
+                    <li><a href="sluzby-zabezpeceni.html" data-preview="security">Zabezpečení a kamerové systémy</a></li>
+                    <li><a href="sluzby-klima.html" data-preview="climate">Řízení klimatu</a></li>
+                    <li><a href="sluzby-interkom.html" data-preview="intercom">Interkom a přístupový systém</a></li>
+                    <li><a href="sluzby-stineni.html" data-preview="shading">Ovládání žaluzií a stínění</a></li>
+                    <li><a href="sluzby-audio.html" data-preview="audio">Multizónový audio systém</a></li>
+                    <li><a href="sluzby-energie.html" data-preview="energy">Inteligentní správa energie</a></li>
+                  </ul>
+                </div>
+                <div class="nav-dropdown-preview" aria-hidden="true">
+                  <div class="nav-preview-track">
+                    <img class="nav-preview-image is-active" data-preview-key="electro" src="klasicka-elektroinstalace.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="lighting" src="chytra-zarovka-chytre-osvetleni.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="security" src="chytry-kamerovy-system-zabezpeceni.gif" alt="" />
+                    <img class="nav-preview-image" data-preview-key="climate" src="chytry-termostat-automatizace-klimatu.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="intercom" src="interkom-a-pristupove-systemy.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="shading" src="ovladani-zaluzii-a-stineni-design.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="audio" src="multiroom-audio.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="energy" src="energeticky-management.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="index.html#solutions">Řešení</a>
+          <a href="index.html#contact">Kontakt</a>
+          <a href="about.html">O nás</a>
+        </nav>
+      </div>
+    </header>
+    <div class="menu-backdrop" aria-hidden="true"></div>
+    <main class="service-main">
+      <section class="service-hero reveal">
+        <div class="service-hero-copy">
+          <p class="service-eyebrow">Naše služby</p>
+          <h1>Hudba v celém domě, bez kompromisů</h1>
+          <p>Služba Multizónový audio systém je navržena tak, aby byla přehledná, technicky stabilní a dlouhodobě udržitelná.</p>
+          <a class="btn primary" href="index.html#contact">Nezávazná konzultace</a>
+        </div>
+        <div class="service-hero-media"><img src="multiroom-audio.png" alt="Multizónový audio systém pro celý objekt" /></div>
+      </section>
+      <section class="service-metrics reveal" aria-label="Klíčové metriky služby">
+        <article class="metric-card"><p class="metric-label">Výsledek</p><p class="metric-value">12+</p><p class="metric-sub">Měřitelný přínos služby</p></article>
+        <article class="metric-card"><p class="metric-label">Životnost</p><p class="metric-value">1 klik</p><p class="metric-sub">Stabilita navrženého řešení</p></article>
+        <article class="metric-card"><p class="metric-label">Reakce</p><p class="metric-value">Min</p><p class="metric-sub">Rychlá odezva systému</p></article>
+        <article class="metric-card"><p class="metric-label">Rozvoj</p><p class="metric-value">Modulární</p><p class="metric-sub">Připraveno na budoucí rozšíření</p></article>
+      </section>
+      <section class="service-story">
+        <article class="story-row reveal">
+          <div class="story-text">
+            <h2>Jak službu Multizónový audio systém realizujeme</h2>
+            <p>Začínáme analýzou potřeb, pokračujeme technickým návrhem a následně realizací včetně testování. Vždy držíme důraz na čisté provedení, dokumentaci a dlouhodobý servis.</p>
+            <ul>
+              <li>Jasná struktura a technický návrh</li>
+              <li>Koordinace všech profesí</li>
+              <li>Předání s ověřenou funkčností</li>
+            </ul>
+          </div>
+          <div class="story-media"><img src="multiroom-audio.png" alt="Multizónový audio systém pro celý objekt" /></div>
+        </article>
+        <article class="story-row reverse reveal">
+          <div class="story-text">
+            <h2>Provoz, servis a další rozvoj</h2>
+            <p>Systém nastavujeme tak, aby fungoval přirozeně i po letech provozu. Uživatel má jednoduché ovládání, technik jasný servisní přístup a projekt prostor pro další etapy.</p>
+            <ul>
+              <li>Stabilní lokální provoz</li>
+              <li>Průběžná optimalizace</li>
+              <li>Rozšiřitelnost bez zásadních zásahů</li>
+            </ul>
+          </div>
+          <div class="story-media"><img src="Interface LOXONE Iphone.png" alt="Rozhraní aplikace pro správu služby" /></div>
+        </article>
+      </section>
+      <section class="service-cta reveal">
+        <div>
+          <h3>Chcete řešení přesně pro váš projekt?</h3>
+          <p>Připravíme návrh včetně technického konceptu, rozpočtu a harmonogramu.</p>
+        </div>
+        <a class="btn primary" href="mailto:info@smartport.cz">Kontaktujte nás</a>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top"><div class="footer-brand"><img src="LOGO.gif" alt="Smartport logo" /></div></div>
+        <div class="footer-grid">
+          <div class="footer-block"><h4>Ozvěte se nám</h4><ul><li>+420 775 563 355</li><li>info@smartport.cz</li><li>Po-Pá 9:00-16:00</li><li>Nad Prahou 1096</li></ul></div>
+          <div class="footer-block"><h4>Rychlé odkazy</h4><ul class="footer-links"><li><a href="#">Ochrana osobních údajů</a></li><li><a href="#">Obchodní podmínky</a></li><li><a href="about.html">O nás</a></li><li><a href="index.html#contact">Kontakt</a></li></ul></div>
+        </div>
+        <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+      (() => {
+        const items = document.querySelectorAll('.reveal');
+        if (!items.length) return;
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+        items.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
