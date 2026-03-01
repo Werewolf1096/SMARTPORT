@@ -34,6 +34,32 @@
   line-height: 1.03;
   letter-spacing: -0.03em;
 }
+.service-hero h1.hero-gradient-title {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.02em;
+  max-width: 100%;
+}
+.service-hero h1.hero-gradient-title .hero-gradient-line {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    #bd60d9 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.service-hero h1.hero-gradient-title.hero-gradient-title--electro .hero-gradient-line {
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: #1d1d1f;
+}
+.service-hero h1.hero-gradient-title.hero-gradient-title--electro .hero-gradient-line.hero-gradient-line--accent {
+  color: #3a7d89;
+}
 .service-hero p {
   margin-top: 18px;
   color: var(--muted);
@@ -73,7 +99,7 @@
 }
 .service-metrics {
   width: min(92%, var(--content-width));
-  margin: 44px auto 0;
+  margin: 88px auto 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
@@ -104,6 +130,250 @@
   color: var(--muted);
   font-size: 15px;
 }
+
+/* Elektro metrics in the same visual rhythm as About page KPIs */
+.service-metrics--aboutstyle {
+  gap: 18px;
+}
+.service-metrics--aboutstyle .metric-card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(15, 17, 21, 0.16);
+  border-radius: 0;
+  padding: 18px 0 0;
+}
+.service-metrics--aboutstyle .metric-value {
+  font-size: clamp(36px, 4.2vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+.service-metrics--aboutstyle .metric-sub {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.46;
+}
+
+/* Dark rounded metrics section for Elektroinstalace */
+.service-metrics--dark {
+  margin-top: 88px;
+  padding: clamp(56px, 6vw, 84px);
+  border-radius: 30px;
+  background: #000;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(30px, 3.6vw, 52px);
+  min-height: clamp(520px, 50vw, 700px);
+  align-items: center;
+}
+.service-metrics--dark .metric-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  min-height: 190px;
+}
+.service-metrics--dark .metric-card::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.24);
+}
+.service-metrics--dark .metric-label {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 600;
+}
+.service-metrics--dark .metric-value {
+  color: #ff7a00;
+  font-size: clamp(30px, 3.2vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 640;
+}
+.service-metrics--dark .metric-sub {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 520;
+  max-width: 32ch;
+}
+
+/* Apple-like mosaic metrics for Elektroinstalace */
+.service-metrics--mosaic {
+  margin-top: 88px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  grid-template-rows: minmax(190px, auto) minmax(250px, auto);
+  gap: clamp(16px, 1.8vw, 24px);
+}
+.service-metrics--mosaic .metric-tile {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  padding: clamp(24px, 2.4vw, 34px);
+  background: #f7f8fb;
+  border: 1px solid rgba(15, 17, 21, 0.08);
+}
+.service-metrics--mosaic .metric-label {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(29, 29, 31, 0.55);
+}
+.service-metrics--mosaic .metric-value {
+  margin: 0;
+  color: #1d1d1f;
+  font-size: clamp(34px, 3.8vw, 54px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+}
+.service-metrics--mosaic .metric-sub {
+  margin: 10px 0 0;
+  color: #5f6575;
+  font-size: clamp(17px, 1.2vw, 19px);
+  line-height: 1.4;
+  max-width: 30ch;
+}
+.service-metrics--mosaic .metric-tile--years {
+  grid-column: 1;
+  grid-row: 1;
+  background: linear-gradient(160deg, #f8fafe 0%, #eef3ff 100%);
+}
+.service-metrics--mosaic .metric-tile--csn {
+  grid-column: 2;
+  grid-row: 1;
+  background: linear-gradient(155deg, #edf2ff 0%, #e6edfd 100%);
+}
+.service-metrics--mosaic .metric-tile--types {
+  grid-column: 1;
+  grid-row: 2;
+  background: #f4f6fb;
+}
+.service-metrics--mosaic .metric-tile--types .metric-value {
+  font-size: clamp(30px, 3vw, 44px);
+}
+.service-metrics--mosaic .metric-tile--verified {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 0;
+  border: 0;
+  background: #0f1422;
+}
+.service-metrics--mosaic .metric-tile--verified img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-metrics--mosaic .metric-tile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(22px, 2vw, 28px);
+  background: linear-gradient(180deg, rgba(7, 10, 16, 0.1) 25%, rgba(7, 10, 16, 0.72) 100%);
+}
+.service-metrics--mosaic .metric-tile--verified .metric-label {
+  color: rgba(255, 255, 255, 0.72);
+}
+.service-metrics--mosaic .metric-tile--verified .metric-value {
+  color: #fff;
+  font-size: clamp(30px, 2.8vw, 42px);
+}
+.service-metrics--mosaic .metric-tile--verified .metric-sub {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(16px, 1.1vw, 18px);
+}
+
+/* Large image panel with right-centered text column (Electro) */
+.service-electro-panel {
+  position: relative;
+  width: min(92%, var(--content-width));
+  margin: 88px auto 0;
+  min-height: clamp(520px, 52vw, 740px);
+  border-radius: 32px;
+  overflow: hidden;
+  background-color: #111111;
+  background-image: url("elektroinstalace.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 100%;
+}
+.service-electro-panel-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.service-electro-panel::after {
+  content: none;
+}
+.service-electro-panel-copy {
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  width: min(44%, 560px);
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: clamp(32px, 3.4vw, 48px);
+  backdrop-filter: none;
+  background: transparent;
+}
+.service-electro-panel-copy .electro-point {
+  padding: 16px 0;
+  border-top: 1px solid rgba(29, 29, 31, 0.16);
+}
+.service-electro-panel-copy .electro-point:first-child {
+  padding-top: 0;
+}
+.service-electro-panel-copy .electro-point-label {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 700;
+}
+.service-electro-panel-copy .electro-point h3 {
+  margin: 0;
+  color: var(--accent);
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+}
+.service-electro-panel-copy .electro-point h3 .electro-point-accent {
+  color: var(--accent);
+}
+.service-electro-panel-copy .electro-point p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.45;
+  max-width: 28ch;
+}
 .service-story {
   width: min(92%, var(--content-width));
   margin: 52px auto 0;
@@ -113,7 +383,11 @@
 
 .service-why-head {
   width: min(92%, var(--content-width));
-  margin: 52px auto 0;
+  margin: 104px auto 0;
+}
+.service-why-head .service-eyebrow {
+  color: var(--ink);
+  font-size: 15px;
 }
 .service-why-head h2 {
   margin-top: 12px;
@@ -301,6 +575,65 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 36px;
   }
+  .service-metrics--aboutstyle .metric-value {
+    font-size: clamp(34px, 6vw, 44px);
+  }
+  .service-metrics--dark {
+    margin-top: 64px;
+    padding: 36px 32px;
+    gap: 24px;
+    min-height: 480px;
+  }
+  .service-metrics--dark .metric-card {
+    min-height: 165px;
+  }
+  .service-metrics--dark .metric-card::before {
+    margin-bottom: 14px;
+  }
+  .service-metrics--dark .metric-value {
+    font-size: clamp(28px, 5.2vw, 38px);
+  }
+  .service-metrics--dark .metric-sub {
+    font-size: clamp(14px, 2.2vw, 18px);
+  }
+  .service-metrics--mosaic {
+    margin-top: 64px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+  .service-metrics--mosaic .metric-tile {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    padding: 22px;
+    border-radius: 24px;
+  }
+  .service-metrics--mosaic .metric-value {
+    font-size: clamp(28px, 5.2vw, 40px);
+  }
+  .service-metrics--mosaic .metric-sub {
+    font-size: clamp(15px, 2.1vw, 18px);
+  }
+  .service-metrics--mosaic .metric-tile--verified {
+    min-height: 300px;
+  }
+  .service-metrics--mosaic .metric-tile--verified .metric-value {
+    font-size: clamp(28px, 4.2vw, 36px);
+  }
+  .service-electro-panel {
+    margin-top: 64px;
+    min-height: 560px;
+  }
+  .service-electro-panel-copy {
+    width: min(48%, 500px);
+    padding: 28px;
+  }
+  .service-electro-panel-copy .electro-point h3 {
+    font-size: clamp(22px, 3vw, 30px);
+  }
+  .service-electro-panel-copy .electro-point p {
+    font-size: clamp(14px, 1.8vw, 17px);
+  }
   .service-story {
     margin-top: 40px;
   }
@@ -342,6 +675,86 @@
   .service-metrics {
     grid-template-columns: 1fr;
     margin-top: 28px;
+  }
+  .service-metrics--aboutstyle {
+    gap: 16px;
+  }
+  .service-metrics--aboutstyle .metric-card {
+    padding-top: 14px;
+  }
+  .service-metrics--aboutstyle .metric-value {
+    font-size: clamp(32px, 9vw, 40px);
+  }
+  .service-metrics--dark {
+    margin-top: 42px;
+    border-radius: 24px;
+    padding: 28px 22px;
+    gap: 18px;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .service-metrics--dark .metric-card {
+    min-height: 0;
+  }
+  .service-metrics--dark .metric-card::before {
+    margin-bottom: 12px;
+  }
+  .service-metrics--dark .metric-label {
+    font-size: 13px;
+  }
+  .service-metrics--dark .metric-value {
+    font-size: clamp(26px, 7.8vw, 34px);
+  }
+  .service-metrics--dark .metric-sub {
+    font-size: clamp(14px, 4.8vw, 18px);
+  }
+  .service-metrics--mosaic {
+    margin-top: 42px;
+    gap: 14px;
+  }
+  .service-metrics--mosaic .metric-tile {
+    padding: 20px;
+    border-radius: 22px;
+  }
+  .service-metrics--mosaic .metric-label {
+    font-size: 12px;
+  }
+  .service-metrics--mosaic .metric-value {
+    font-size: clamp(24px, 8vw, 32px);
+  }
+  .service-metrics--mosaic .metric-sub {
+    font-size: clamp(14px, 4.4vw, 17px);
+  }
+  .service-metrics--mosaic .metric-tile--verified {
+    min-height: 240px;
+  }
+  .service-metrics--mosaic .metric-tile-overlay {
+    padding: 18px;
+  }
+  .service-electro-panel {
+    margin-top: 42px;
+    min-height: auto;
+    border-radius: 24px;
+  }
+  .service-electro-panel::after {
+    background: linear-gradient(180deg, rgba(7, 10, 16, 0.16) 0%, rgba(7, 10, 16, 0.32) 100%);
+  }
+  .service-electro-panel-copy {
+    width: 100%;
+    min-height: auto;
+    margin-left: 0;
+    padding: 20px;
+    backdrop-filter: none;
+    background: transparent;
+  }
+  .service-electro-panel-copy .electro-point {
+    padding: 14px 0;
+  }
+  .service-electro-panel-copy .electro-point h3 {
+    font-size: clamp(18px, 5.4vw, 24px);
+  }
+  .service-electro-panel-copy .electro-point p {
+    font-size: clamp(14px, 4.3vw, 16px);
   }
   .service-story {
     margin-top: 30px;
