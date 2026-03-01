@@ -942,3 +942,53 @@
     }
   });
 })();
+
+(() => {
+  const creepyBtns = Array.from(document.querySelectorAll(".service-hero-copy .creepy-btn"));
+  if (creepyBtns.length === 0) return;
+
+  creepyBtns.forEach((creepyBtn) => {
+    const eyes = creepyBtn.querySelector(".creepy-btn__eyes");
+    const pupils = Array.from(creepyBtn.querySelectorAll(".creepy-btn__pupil"));
+    if (!eyes || pupils.length === 0) return;
+
+    const updateEyes = (clientX, clientY) => {
+      const eyesRect = eyes.getBoundingClientRect();
+      const eyesCenter = {
+        x: eyesRect.left + eyesRect.width / 2,
+        y: eyesRect.top + eyesRect.height / 2
+      };
+
+      const dx = clientX - eyesCenter.x;
+      const dy = clientY - eyesCenter.y;
+      const angle = Math.atan2(-dy, dx) + Math.PI / 2;
+      const distance = Math.hypot(dx, dy);
+      const visionRangeX = 180;
+      const visionRangeY = 75;
+
+      const x = (Math.sin(angle) * distance) / visionRangeX;
+      const y = (Math.cos(angle) * distance) / visionRangeY;
+      const tx = Math.max(-3, Math.min(3, x * 3));
+      const ty = Math.max(-3, Math.min(3, y * 3));
+
+      pupils.forEach((pupil) => {
+        pupil.style.setProperty("--cb-eye-x", `${tx}px`);
+        pupil.style.setProperty("--cb-eye-y", `${ty}px`);
+      });
+    };
+
+    creepyBtn.addEventListener("mousemove", (e) => {
+      updateEyes(e.clientX, e.clientY);
+    });
+
+    creepyBtn.addEventListener(
+      "touchmove",
+      (e) => {
+        const touch = e.touches && e.touches[0];
+        if (!touch) return;
+        updateEyes(touch.clientX, touch.clientY);
+      },
+      { passive: true }
+    );
+  });
+})();
