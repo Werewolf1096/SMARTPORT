@@ -18,7 +18,7 @@
 .service-hero-copy {
   position: relative;
   z-index: 2;
-  padding: 56px 52px;
+  padding: 56px 52px 56px calc((100vw - min(90%, var(--content-width))) / 2);
   max-width: 52%;
 }
 .service-eyebrow {
@@ -58,7 +58,7 @@
   color: #1d1d1f;
 }
 .service-hero h1.hero-gradient-title.hero-gradient-title--electro .hero-gradient-line.hero-gradient-line--accent {
-  color: #3a7d89;
+  color: var(--accent);
 }
 .service-hero p {
   margin-top: 18px;
