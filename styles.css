@@ -482,28 +482,57 @@ body.menu-open .site-footer {
 
 @media (min-width: 1800px) {
   .hero {
-    height: clamp(940px, 54vw, 1080px);
+    height: clamp(976px, 56vw, 1116px);
   }
 
   .hero-grid.container {
-    width: min(92vw, 1680px);
+    width: min(90%, var(--content-width));
   }
 
   .hero-grid {
-    grid-template-columns: minmax(340px, 0.95fr) minmax(700px, 1.15fr);
-    gap: 48px;
+    grid-template-columns: minmax(460px, 520px) minmax(0, 1fr);
+    gap: clamp(72px, 6vw, 120px);
+  }
+
+  .hero-copy {
+    max-width: 520px;
+    margin-left: 0;
+  }
+
+  .hero-visual {
+    align-items: flex-start;
   }
 
   .device-mock {
-    width: clamp(820px, 44vw, 1000px);
-    max-width: none;
-    transform: translate(-14px, 24%) scale(1.08);
+    width: clamp(700px, 38vw, 820px);
+    transform: translate(0, 16%) scale(1.04);
   }
 }
 
 .services {
   padding: 96px 0 110px;
   background: rgb(245, 245, 247);
+}
+
+@media (min-width: 1025px) {
+  .services {
+    margin-top: -139px;
+    padding-top: 77px;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 1800px) {
+  .services {
+    margin-top: -212px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1799px) {
+  .hero {
+    height: 980px;
+  }
 }
 
 #services {
