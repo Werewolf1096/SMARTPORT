@@ -119,7 +119,34 @@
               </div>
             </div>
           </div>
-          <a href="#solutions">Řešení</a>
+          <div class="nav-dropdown nav-dropdown--solutions">
+            <a class="nav-link" href="#solutions">Řešení</a>
+            <div class="nav-dropdown-panel" aria-label="Nabídka řešení">
+              <div class="nav-dropdown-panel-inner">
+                <div class="nav-dropdown-col">
+                  <p class="nav-dropdown-col-title">Řešení podle prostoru</p>
+                  <ul class="nav-dropdown-list">
+                    <li><a href="#solutions" data-preview="home">Rodinný dům</a></li>
+                    <li><a href="#solutions" data-preview="restaurant">Restaurace</a></li>
+                    <li><a href="#solutions" data-preview="fitness">Fitness</a></li>
+                    <li><a href="#solutions" data-preview="office">Kanceláře</a></li>
+                    <li><a href="#solutions" data-preview="hospital">Nemocnice</a></li>
+                    <li><a href="#solutions" data-preview="hotel">Hotely</a></li>
+                  </ul>
+                </div>
+                <div class="nav-dropdown-preview" aria-hidden="true">
+                  <div class="nav-preview-track">
+                    <img class="nav-preview-image is-active" data-preview-key="home" src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80" alt="" />
+                    <img class="nav-preview-image" data-preview-key="restaurant" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="" />
+                    <img class="nav-preview-image" data-preview-key="fitness" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80" alt="" />
+                    <img class="nav-preview-image" data-preview-key="office" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="" />
+                    <img class="nav-preview-image" data-preview-key="hospital" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="" />
+                    <img class="nav-preview-image" data-preview-key="hotel" src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?auto=format&fit=crop&w=1200&q=80" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <a href="#contact">Kontakt</a>
           <a href="about.html">O nás</a>
         </nav>
@@ -448,19 +475,23 @@
         </div>
       </section>
       <section id="contact" class="contact-cta">
-        <div class="container">
+        <h2 class="contact-cta-title container">Chcete probrat váš chytrý dům?</h2>
+        <div class="container contact-cta-wrap">
           <div class="contact-cta-card">
             <div class="contact-cta-copy">
-              <h2>Chcete probrat váš chytrý dům?</h2>
               <p>Zanechte kontakt - připravíme koncepci a plán realizace.</p>
+              <p class="contact-cta-note">Odpovíme vám do 24 hodin.</p>
+              <a class="btn primary contact-cta-btn creepy-btn" href="mailto:info@smartport.cz" aria-label="Kontaktujte nás">
+                <span class="creepy-btn__eyes" aria-hidden="true">
+                  <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+                  <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+                </span>
+                <span class="creepy-btn__cover">Kontaktujte nás</span>
+              </a>
             </div>
-            <a class="btn primary contact-cta-btn creepy-btn" href="mailto:info@smartport.cz" aria-label="Kontaktujte nás">
-              <span class="creepy-btn__eyes" aria-hidden="true">
-                <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
-                <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
-              </span>
-              <span class="creepy-btn__cover">Kontaktujte nás</span>
-            </a>
+            <div class="contact-cta-media" aria-hidden="true">
+              <img src="loxone-chytry-dum-ovladani-automatizace-smartport-cz.png" alt="Loxone chytrý dům – ovládání a automatizace domácnosti od SMARTPORT" />
+            </div>
           </div>
         </div>
       </section>
