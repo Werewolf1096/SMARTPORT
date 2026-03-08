@@ -56,7 +56,7 @@
   color: var(--title-xl-color);
 }
 .service-hero h1.hero-gradient-title.hero-gradient-title--electro .hero-gradient-line.hero-gradient-line--accent {
-  color: var(--title-xl-color);
+  color: var(--accent);
 }
 .service-hero p {
   margin-top: 18px;
@@ -825,8 +825,8 @@
   --cb-primary: var(--accent);
   --cb-primary-hover: color-mix(in srgb, var(--accent) 84%, #000);
   position: relative;
-  --cb-w: 188px;
-  --cb-h: 52px;
+  --cb-w: 169px;
+  --cb-h: 47px;
   display: inline-block;
   width: var(--cb-w);
   height: var(--cb-h);
@@ -857,7 +857,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 0 20px;
+  padding: 0;
   border-radius: inherit;
   box-shadow: none;
   background: var(--cb-primary);
@@ -934,5 +934,154 @@
 .service-hero-copy .creepy-btn:hover .creepy-btn__eye,
 .service-hero-copy .creepy-btn:focus-visible .creepy-btn__eye {
   animation-play-state: running;
+}
+
+
+.service-hero--electro {
+  --electro-panel-bg: #f3f4f6;
+  --electro-text-width: clamp(280px, 31vw, 340px);
+}
+.service-hero--electro .service-hero-copy {
+  padding-top: 141px;
+}
+.service-hero--electro .service-hero-copy p {
+  max-width: min(100%, var(--electro-text-width));
+}
+.service-hero--electro .service-hero-media img {
+  object-position: 58% center;
+}
+.service-hero--electro > .contact-cta-btn.creepy-btn {
+  width: 169px;
+  height: 47px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  margin: 18px 0 0 calc((100vw - min(90%, var(--content-width))) / 2);
+}
+.service-hero--electro > .contact-cta-btn .creepy-btn__eyes {
+  display: none;
+}
+.service-hero--electro > .contact-cta-btn .creepy-btn__cover {
+  position: static;
+  background: transparent;
+  padding: 0;
+}
+
+@media (max-width: 1100px) {
+  .service-hero--electro .service-hero-copy {
+    padding-top: 68px;
+  }
+  .service-hero--electro .service-hero-media img {
+    object-position: 56% center;
+  }
+}
+
+@media (max-width: 900px) {
+  .service-hero--electro {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0 20px;
+  }
+  .service-hero--electro .service-hero-copy {
+    max-width: 100%;
+    margin: 0 20px;
+    padding: 18px 18px 14px;
+    background: var(--electro-panel-bg);
+    border-radius: 18px 18px 0 0;
+  }
+  .service-hero--electro .service-hero-copy h1 {
+    margin-top: 0;
+  }
+  .service-hero--electro .service-hero-copy p {
+    margin-top: 12px;
+    max-width: min(100%, var(--electro-text-width));
+  }
+  .service-hero--electro .service-hero-media {
+    position: relative;
+    inset: auto;
+    min-height: 0;
+    height: 242px;
+    margin: 0 20px;
+    border-radius: 0 0 18px 18px;
+    overflow: hidden;
+    background: var(--electro-panel-bg);
+  }
+  .service-hero--electro .service-hero-media img {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.42);
+    object-position: 58% 70%;
+  }
+  .service-hero--electro > .contact-cta-btn.creepy-btn {
+    margin: 12px 28px 0;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  .service-hero--electro .service-hero-media {
+    height: 296px;
+  }
+  .service-hero--electro .service-hero-media img {
+    transform: scale(1.2);
+    object-position: 56% 74%;
+  }
+}
+
+@media (min-width: 901px) {
+  .service-hero--electro {
+    display: grid;
+    grid-template-columns:
+      calc((100vw - min(90%, var(--content-width))) / 2)
+      minmax(420px, calc(min(90%, var(--content-width)) * 0.333))
+      minmax(0, 1fr);
+    grid-template-areas:
+      ". copy media"
+      ". cta media";
+    min-height: 728px;
+    background: var(--electro-panel-bg);
+  }
+  .service-hero--electro .service-hero-copy {
+    grid-area: copy;
+    max-width: none;
+    padding: 72px clamp(22px, 2.2vw, 34px) 0 0;
+    background: var(--electro-panel-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .service-hero--electro .hero-gradient-line.hero-gradient-line--accent {
+    white-space: nowrap;
+  }
+  .service-hero--electro .service-hero-media {
+    grid-area: media;
+    position: relative;
+    inset: auto;
+    min-height: 100%;
+    margin: 0;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--electro-panel-bg);
+  }
+  .service-hero--electro .service-hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.15);
+    object-fit: cover;
+    object-position: 28% 60%;
+  }
+  .service-hero--electro > .contact-cta-btn.creepy-btn {
+    grid-area: cta;
+    align-self: start;
+    justify-self: start;
+    margin: 18px 0 56px 0;
+  }
 }
 
