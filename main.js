@@ -944,7 +944,7 @@
 })();
 
 (() => {
-  const creepyBtns = Array.from(document.querySelectorAll(".service-hero-copy .creepy-btn"));
+  const creepyBtns = Array.from(document.querySelectorAll(".service-hero .creepy-btn"));
   if (creepyBtns.length === 0) return;
 
   creepyBtns.forEach((creepyBtn) => {

@@ -800,7 +800,7 @@
 }
 
 /* Hero CTA: same visual style as contact block button + better spacing from text */
-.service-hero-copy .btn.primary.contact-cta-btn {
+.service-hero .btn.primary.contact-cta-btn {
   margin-top: 28px;
   display: inline-flex;
   align-items: center;
@@ -808,7 +808,7 @@
 }
 
 /* HERO services button: exact clone of contact CTA button */
-.service-hero-copy .btn.primary.contact-cta-btn.creepy-btn {
+.service-hero .btn.primary.contact-cta-btn.creepy-btn {
   white-space: nowrap;
   background: transparent;
   color: #fff;
@@ -819,7 +819,7 @@
   line-height: 1.2;
 }
 
-.service-hero-copy .creepy-btn {
+.service-hero .creepy-btn {
   --cb-black: #000;
   --cb-white: #f5f5f7;
   --cb-primary: var(--accent);
@@ -839,7 +839,7 @@
   transition: outline 0.1s linear;
 }
 
-.service-hero-copy .creepy-btn::before {
+.service-hero .creepy-btn::before {
   content: "";
   position: absolute;
   inset: 1px;
@@ -848,7 +848,7 @@
   z-index: 0;
 }
 
-.service-hero-copy .creepy-btn__cover {
+.service-hero .creepy-btn__cover {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -869,26 +869,26 @@
     box-shadow 0.32s ease;
 }
 
-.service-hero-copy .creepy-btn:hover .creepy-btn__cover {
+.service-hero .creepy-btn:hover .creepy-btn__cover {
   background: var(--cb-primary);
 }
 
-.service-hero-copy .creepy-btn:focus-visible {
+.service-hero .creepy-btn:focus-visible {
   outline-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
-.service-hero-copy .creepy-btn:focus-visible .creepy-btn__cover,
-.service-hero-copy .creepy-btn:hover .creepy-btn__cover {
+.service-hero .creepy-btn:focus-visible .creepy-btn__cover,
+.service-hero .creepy-btn:hover .creepy-btn__cover {
   transform: rotate(-12deg);
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
 }
 
-.service-hero-copy .creepy-btn:active .creepy-btn__cover {
+.service-hero .creepy-btn:active .creepy-btn__cover {
   transform: rotate(0);
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.service-hero-copy .creepy-btn__eyes {
+.service-hero .creepy-btn__eyes {
   position: absolute;
   right: 24px;
   bottom: 5px;
@@ -902,7 +902,7 @@
   transition: opacity 0.14s ease;
 }
 
-.service-hero-copy .creepy-btn__eye {
+.service-hero .creepy-btn__eye {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -913,7 +913,7 @@
   animation-play-state: paused;
 }
 
-.service-hero-copy .creepy-btn__pupil {
+.service-hero .creepy-btn__pupil {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -926,13 +926,13 @@
   transform: translate(var(--cb-eye-x, 0px), var(--cb-eye-y, 0px));
 }
 
-.service-hero-copy .creepy-btn:hover .creepy-btn__eyes,
-.service-hero-copy .creepy-btn:focus-visible .creepy-btn__eyes {
+.service-hero .creepy-btn:hover .creepy-btn__eyes,
+.service-hero .creepy-btn:focus-visible .creepy-btn__eyes {
   opacity: 1;
 }
 
-.service-hero-copy .creepy-btn:hover .creepy-btn__eye,
-.service-hero-copy .creepy-btn:focus-visible .creepy-btn__eye {
+.service-hero .creepy-btn:hover .creepy-btn__eye,
+.service-hero .creepy-btn:focus-visible .creepy-btn__eye {
   animation-play-state: running;
 }
 
@@ -950,10 +950,12 @@
 .service-hero--electro .service-hero-media img {
   object-position: 58% center;
 }
-.service-hero--electro > .contact-cta-btn.creepy-btn {
+.service-hero--electro > .btn.primary.contact-cta-btn.creepy-btn {
   width: 169px;
   height: 47px;
   border-radius: 999px;
+  position: relative;
+  z-index: 30;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -961,15 +963,9 @@
   color: #fff;
   margin: 18px 0 0 calc((100vw - min(90%, var(--content-width))) / 2);
 }
-.service-hero--electro > .contact-cta-btn .creepy-btn__eyes {
-  display: none;
+.service-hero--electro > .btn.primary.contact-cta-btn.creepy-btn .creepy-btn__cover {
+  z-index: 40;
 }
-.service-hero--electro > .contact-cta-btn .creepy-btn__cover {
-  position: static;
-  background: transparent;
-  padding: 0;
-}
-
 @media (max-width: 1100px) {
   .service-hero--electro .service-hero-copy {
     padding-top: 68px;
@@ -1018,7 +1014,7 @@
     transform: scale(1.42);
     object-position: 58% 70%;
   }
-  .service-hero--electro > .contact-cta-btn.creepy-btn {
+  .service-hero--electro > .btn.primary.contact-cta-btn.creepy-btn {
     margin: 12px 28px 0;
   }
 }
@@ -1077,7 +1073,7 @@
     object-fit: cover;
     object-position: 28% 60%;
   }
-  .service-hero--electro > .contact-cta-btn.creepy-btn {
+  .service-hero--electro > .btn.primary.contact-cta-btn.creepy-btn {
     grid-area: cta;
     align-self: start;
     justify-self: start;
@@ -1106,7 +1102,7 @@
   margin-top: 34px;
   padding: clamp(22px, 2.6vw, 34px);
   border-radius: 28px;
-  background: #06070a;
+  background: #000000;
   color: #f6f7fb;
   display: grid;
   grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.35fr);
@@ -1195,7 +1191,7 @@
   border: 1px solid transparent;
   border-radius: 20px;
   padding: 14px 23px;
-  background: #1a1c24;
+  background: #1e1e20;
   color: rgba(239, 242, 251, 0.92);
   font-size: clamp(18px, 1.3vw, 24px);
   font-weight: 500;
@@ -1221,7 +1217,7 @@
   gap: 0;
   padding: 23px 26px;
   max-height: calc(56px + var(--detail-height));
-  background: linear-gradient(145deg, #171923 0%, #121319 100%);
+  background: #1e1e20;
   border-color: rgba(255, 255, 255, 0.08);
   color: #fff;
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
@@ -1290,7 +1286,7 @@
   min-height: clamp(360px, 42vw, 620px);
   border-radius: 22px;
   overflow: hidden;
-  background: #0f1016;
+  background: #000000;
 }
 .electro-showcase-media img {
   width: 100%;
