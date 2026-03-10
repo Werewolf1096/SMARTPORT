@@ -215,10 +215,23 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
 
         const applyDetailMetrics = () => {
           items.forEach((item) => {
+            const pill = item.querySelector('.electro-pill');
+            const title = item.querySelector('.electro-pill-title');
+            const icon = item.querySelector('.electro-pill-icon');
             const detail = item.querySelector('.electro-pill-detail');
-            if (!detail) return;
-            const h = detail.scrollHeight;
-            item.style.setProperty('--detail-height', `${h}px`);
+            if (!pill || !title || !icon) return;
+
+            const style = getComputedStyle(pill);
+            const padLeft = parseFloat(style.paddingLeft) || 0;
+            const padRight = parseFloat(style.paddingRight) || 0;
+            const gap = parseFloat(style.columnGap) || 0;
+            const closedWidth = Math.ceil(icon.getBoundingClientRect().width + gap + title.scrollWidth + padLeft + padRight);
+            item.style.setProperty('--pill-closed-width', `${closedWidth}px`);
+
+            if (detail) {
+              const h = detail.scrollHeight;
+              item.style.setProperty('--detail-height', `${h}px`);
+            }
           });
         };
 
