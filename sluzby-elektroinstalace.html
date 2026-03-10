@@ -110,21 +110,21 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
                 </button>
               </div>
               <div class="electro-showcase-list" aria-label="Detaily elektroinstalace">
-                <div class="electro-item">
+                <div class="electro-item" data-media-src="smartport-rozvadec-a-jisteni-klasicka-elektroinstalace.webp" data-media-alt="Rozvaděč a jištění v rámci klasické elektroinstalace od SMARTPORT">
                   <button class="electro-pill" type="button" aria-expanded="false">
                     <span class="electro-pill-icon" aria-hidden="true">+</span>
-                    <span class="electro-pill-title">Osvětlení</span>
+                    <span class="electro-pill-title">Rozvaděč a jištění</span>
                     <span class="electro-pill-detail" role="region">
-                      Světelné okruhy navrhujeme tak, aby dávaly smysl v každodenním provozu. Důležité je nejen umístění světel, ale i logika jejich ovládání v jednotlivých místnostech.
+                      Rozvaděč navrhujeme přehledně, s jasnou logikou jednotlivých okruhů a důrazem na bezpečnost i budoucí servis. Správně řešené jištění je základ spolehlivého provozu celé instalace.
                     </span>
                   </button>
                 </div>
                 <div class="electro-item">
                   <button class="electro-pill" type="button" aria-expanded="false">
                     <span class="electro-pill-icon" aria-hidden="true">+</span>
-                    <span class="electro-pill-title">Zásuvkové okruhy</span>
+                    <span class="electro-pill-title">Osvětlení</span>
                     <span class="electro-pill-detail" role="region">
-                      Rozmístění zásuvek řešíme podle dispozice, vybavení interiéru a reálného používání prostoru. Výsledkem je praktičtější provoz bez zbytečných prodlužovaček a improvizace.
+                      Světelné okruhy navrhujeme tak, aby dávaly smysl v každodenním provozu. Důležité je nejen umístění světel, ale i logika jejich ovládání v jednotlivých místnostech.
                     </span>
                   </button>
                 </div>
@@ -140,9 +140,9 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
                 <div class="electro-item">
                   <button class="electro-pill" type="button" aria-expanded="false">
                     <span class="electro-pill-icon" aria-hidden="true">+</span>
-                    <span class="electro-pill-title">Rozvaděč a jištění</span>
+                    <span class="electro-pill-title">Zásuvkové okruhy</span>
                     <span class="electro-pill-detail" role="region">
-                      Rozvaděč navrhujeme přehledně, s jasnou logikou jednotlivých okruhů a důrazem na bezpečnost i budoucí servis. Správně řešené jištění je základ spolehlivého provozu celé instalace.
+                      Rozmístění zásuvek řešíme podle dispozice, vybavení interiéru a reálného používání prostoru. Výsledkem je praktičtější provoz bez zbytečných prodlužovaček a improvizace.
                     </span>
                   </button>
                 </div>
@@ -167,8 +167,8 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
               </div>
             </div>
           </aside>
-          <div class="electro-showcase-media" aria-hidden="true">
-            <img src="klasicka-elektroinstalace-priprava-pro-smart-home.webp" alt="" />
+          <div class="electro-showcase-media">
+            <img src="smartport-rozvadec-a-jisteni-klasicka-elektroinstalace.webp" alt="Rozvaděč a jištění v rámci klasické elektroinstalace od SMARTPORT" />
           </div>
         </div>
       </section>
@@ -224,6 +224,9 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
         if (!items.length) return;
         const prevBtn = document.querySelector('.electro-nav-btn-up');
         const nextBtn = document.querySelector('.electro-nav-btn-down');
+        const mediaImage = document.querySelector('.electro-showcase-media img');
+        const defaultMediaSrc = 'klasicka-elektroinstalace-priprava-pro-smart-home.webp';
+        const defaultMediaAlt = 'Klasická elektroinstalace jako funkční základ pro osvětlení, zásuvky a další technologie.';
 
         const applyDetailMetrics = () => {
           items.forEach((item) => {
@@ -247,6 +250,14 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
           });
         };
 
+        const updateMedia = (item) => {
+          if (!mediaImage) return;
+          const src = item?.dataset.mediaSrc || defaultMediaSrc;
+          const alt = item?.dataset.mediaAlt || defaultMediaAlt;
+          if (mediaImage.getAttribute('src') !== src) mediaImage.setAttribute('src', src);
+          if (mediaImage.getAttribute('alt') !== alt) mediaImage.setAttribute('alt', alt);
+        };
+
         const openItem = (target) => {
           items.forEach((item) => {
             const btn = item.querySelector('.electro-pill');
@@ -254,6 +265,7 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
             item.classList.toggle('is-active', isTarget);
             if (btn) btn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
           });
+          updateMedia(target);
         };
 
         const getActiveIndex = () => items.findIndex((item) => item.classList.contains('is-active'));
