@@ -1132,10 +1132,6 @@
   margin-bottom: 0;
   transition: none;
 }
-.electro-item.is-active {
-  margin-top: calc(var(--detail-height) * -0.5);
-  margin-bottom: calc(var(--detail-height) * 0.5);
-}
 .electro-pill {
   width: max-content;
   max-width: min(100%, 520px);
@@ -1154,7 +1150,12 @@
   letter-spacing: -0.01em;
   text-align: left;
   cursor: pointer;
-  transition: none;
+  transition:
+    background-color 0.55s ease,
+    color 0.55s ease,
+    box-shadow 0.55s ease,
+    border-color 0.55s ease,
+    padding 0.55s ease;
 }
 .electro-item.is-active .electro-pill {
   align-items: start;
@@ -1188,7 +1189,7 @@
 .electro-item.is-active .electro-pill-icon {
   opacity: 0;
   visibility: hidden;
-  transition: none;
+  transition: opacity 0.2s ease;
 }
 .electro-pill-detail {
   grid-column: 1 / -1;
@@ -1197,7 +1198,10 @@
   opacity: 0;
   overflow: hidden;
   clip-path: inset(50% 100% 50% 0 round 16px);
-  transition: none;
+  transition:
+    max-height 0.65s ease,
+    clip-path 0.65s ease,
+    opacity 0.22s linear 0s;
   color: rgba(237, 240, 250, 0.88);
   font-size: clamp(16px, 1.1vw, 19px);
   line-height: 1.5;
@@ -1206,7 +1210,10 @@
   max-height: var(--detail-height);
   opacity: 1;
   clip-path: inset(0 0 0 0 round 16px);
-  transition: none;
+  transition:
+    max-height 0.65s ease,
+    clip-path 0.65s ease,
+    opacity 0.24s ease 0.3s;
 }
 
 .electro-showcase-media {
