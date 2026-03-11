@@ -247,7 +247,12 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
         const defaultMediaSrc = 'klasicka-elektroinstalace-priprava-pro-smart-home.webp';
         const defaultMediaAlt = 'Klasická elektroinstalace jako funkční základ pro osvětlení, zásuvky a další technologie.';
         let mediaSlideToken = 0;
-        const mediaSlideDurationMs = 700;
+        const mediaSlideDurationMs = (() => {
+          if (!mediaWrap) return 1800;
+          const raw = getComputedStyle(mediaWrap).getPropertyValue('--electro-pill-motion-ms').trim();
+          const parsed = Number.parseInt(raw, 10);
+          return Number.isFinite(parsed) && parsed > 0 ? parsed : 1800;
+        })();
         const openDelayMs = 90;
         let openDelayTimer = null;
         const preloadedMedia = new Set();
