@@ -1240,9 +1240,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1;
+  position: relative;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+.electro-pill-icon::before,
+.electro-pill-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 1.6px;
+  background: #3d4f6a;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+.electro-pill-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 .electro-pill-title {
   grid-column: 2;
@@ -1278,12 +1294,22 @@
 }
 .electro-item:not(.is-active) .electro-pill-detail {
   position: absolute;
-  inline-size: 0;
-  block-size: 0;
+  left: 0;
+  top: 0;
+  inline-size: var(--pill-open-width);
+  block-size: auto;
+  opacity: 0;
+  visibility: hidden;
   overflow: hidden;
   pointer-events: none;
 }
 .electro-item.is-active .electro-pill-detail {
+  position: relative;
+  left: auto;
+  top: auto;
+  inline-size: 100%;
+  opacity: 1;
+  visibility: visible;
   max-height: none;
   padding: 0 2px;
 }
@@ -1368,7 +1394,11 @@
   .electro-pill-icon {
     width: 22px;
     height: 22px;
-    font-size: 16px;
+  }
+  .electro-pill-icon::before,
+  .electro-pill-icon::after {
+    width: 9px;
+    height: 1.5px;
   }
   .electro-showcase-media {
     display: none;
