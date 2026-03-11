@@ -1204,6 +1204,10 @@
   letter-spacing: -0.01em;
   text-align: left;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   height: 56px;
   overflow: hidden;
   clip-path: inset(0 0 0 0 round 20px);
@@ -1216,6 +1220,13 @@
   will-change: height;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+.electro-pill:active,
+.electro-pill:focus,
+.electro-pill:focus-visible {
+  background: #f3f4f6;
+  color: #1f2430;
+  outline: none;
 }
 .electro-item.is-active .electro-pill {
   width: var(--pill-open-width);
