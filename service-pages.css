@@ -1187,8 +1187,8 @@
   transition: none;
 }
 .electro-pill {
-  width: fit-content;
-  max-width: min(100%, 520px);
+  width: var(--pill-closed-width);
+  max-width: 100%;
   display: inline-grid;
   grid-template-columns: 24px auto;
   grid-template-rows: auto auto;
@@ -1216,8 +1216,9 @@
     color 0.66s ease,
     box-shadow 0.66s ease,
     border-color 0.66s ease,
+    width 1.8s cubic-bezier(0.23, 1, 0.32, 1),
     height 1.8s cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: height;
+  will-change: width, height;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
