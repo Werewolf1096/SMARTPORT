@@ -110,12 +110,12 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
                 </button>
               </div>
               <div class="electro-showcase-list" aria-label="Detaily elektroinstalace">
-                <div class="electro-item" data-media-src="smartport-rozvadec-a-jisteni-klasicka-elektroinstalace.webp" data-media-alt="Rozvaděč a jištění v rámci klasické elektroinstalace od SMARTPORT">
+                <div class="electro-item" data-media-src="smartport-silnoproude-vyvody-klasicka-elektroinstalace.webp" data-media-alt="Silnoproudé vývody pro varnou desku v rámci klasické elektroinstalace od SMARTPORT">
                   <button class="electro-pill" type="button" aria-expanded="false">
                     <span class="electro-pill-icon" aria-hidden="true">+</span>
-                    <span class="electro-pill-title">Rozvaděč a jištění</span>
+                    <span class="electro-pill-title">Silnoproudé vývody</span>
                     <span class="electro-pill-detail" role="region">
-                      Rozvaděč navrhujeme přehledně, s jasnou logikou jednotlivých okruhů a důrazem na bezpečnost i budoucí servis. Správně řešené jištění je základ spolehlivého provozu celé instalace.
+                      Samostatné okruhy připravujeme pro zařízení s vyšším příkonem, jako je varná deska, trouba, klimatizace, tepelné čerpadlo nebo garážová vrata. Díky tomu je instalace bezpečnější, přehlednější a připravená na reálný provoz domácnosti.
                     </span>
                   </button>
                 </div>
@@ -146,6 +146,24 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
                     </span>
                   </button>
                 </div>
+                <div class="electro-item" data-media-src="smartport-rozvadec-a-jisteni-klasicka-elektroinstalace.webp" data-media-alt="Rozvaděč a jištění v rámci klasické elektroinstalace od SMARTPORT">
+                  <button class="electro-pill" type="button" aria-expanded="false">
+                    <span class="electro-pill-icon" aria-hidden="true">+</span>
+                    <span class="electro-pill-title">Rozvaděč a jištění</span>
+                    <span class="electro-pill-detail" role="region">
+                      Rozvaděč navrhujeme přehledně, s jasnou logikou jednotlivých okruhů a důrazem na bezpečnost i budoucí servis. Správně řešené jištění je základ spolehlivého provozu celé instalace.
+                    </span>
+                  </button>
+                </div>
+                <div class="electro-item" data-media-src="smartport-ochrany-a-bezpecnost-klasicka-elektroinstalace.webp" data-media-alt="Ochrany a bezpečnost v rámci klasické elektroinstalace od SMARTPORT">
+                  <button class="electro-pill" type="button" aria-expanded="false">
+                    <span class="electro-pill-icon" aria-hidden="true">+</span>
+                    <span class="electro-pill-title">Ochrany a bezpečnost</span>
+                    <span class="electro-pill-detail" role="region">
+                      Součástí elektroinstalace je správně navržené jištění, proudové chrániče a ochrana jednotlivých okruhů. Důraz klademe na bezpečný provoz, přehlednost rozvaděče a spolehlivé fungování celé instalace.
+                    </span>
+                  </button>
+                </div>
                 <div class="electro-item" data-media-src="smartport-priprava-pro-technologie-klasicka-elektroinstalace.webp" data-media-alt="Elektroinstalace s přípravou pro budoucí technologie a chytré prvky od SMARTPORT">
                   <button class="electro-pill" type="button" aria-expanded="false">
                     <span class="electro-pill-icon" aria-hidden="true">+</span>
@@ -168,7 +186,7 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
             </div>
           </aside>
           <div class="electro-showcase-media">
-            <img src="smartport-rozvadec-a-jisteni-klasicka-elektroinstalace.webp" alt="Rozvaděč a jištění v rámci klasické elektroinstalace od SMARTPORT" />
+            <img class="electro-media-frame is-current" src="smartport-rozvadec-a-jisteni-klasicka-elektroinstalace.webp" alt="Rozvaděč a jištění v rámci klasické elektroinstalace od SMARTPORT" />
           </div>
         </div>
       </section>
@@ -224,11 +242,39 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
         if (!items.length) return;
         const prevBtn = document.querySelector('.electro-nav-btn-up');
         const nextBtn = document.querySelector('.electro-nav-btn-down');
-        const mediaImage = document.querySelector('.electro-showcase-media img');
+        const mediaWrap = document.querySelector('.electro-showcase-media');
+        const mediaImage = document.querySelector('.electro-showcase-media .electro-media-frame');
         const defaultMediaSrc = 'klasicka-elektroinstalace-priprava-pro-smart-home.webp';
         const defaultMediaAlt = 'Klasická elektroinstalace jako funkční základ pro osvětlení, zásuvky a další technologie.';
+        let mediaSlideToken = 0;
+        const mediaSlideDurationMs = 700;
+        const openDelayMs = 90;
+        let openDelayTimer = null;
+        const preloadedMedia = new Set();
+
+        const preloadMedia = () => {
+          const srcs = new Set([defaultMediaSrc]);
+          items.forEach((item) => {
+            if (item.dataset.mediaSrc) srcs.add(item.dataset.mediaSrc);
+          });
+          srcs.forEach((src) => {
+            if (!src || preloadedMedia.has(src)) return;
+            preloadedMedia.add(src);
+            const img = new Image();
+            img.decoding = 'async';
+            img.loading = 'eager';
+            img.src = src;
+            if (typeof img.decode === 'function') {
+              img.decode().catch(() => {});
+            }
+          });
+        };
 
         const applyDetailMetrics = () => {
+          const list = document.querySelector('.electro-showcase-list');
+          const listWidth = list ? Math.floor(list.getBoundingClientRect().width) : 520;
+          const openWidth = Math.min(520, Math.max(260, listWidth));
+
           items.forEach((item) => {
             const pill = item.querySelector('.electro-pill');
             const title = item.querySelector('.electro-pill-title');
@@ -242,11 +288,40 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
             const gap = parseFloat(style.columnGap) || 0;
             const closedWidth = Math.ceil(icon.getBoundingClientRect().width + gap + title.scrollWidth + padLeft + padRight);
             item.style.setProperty('--pill-closed-width', `${closedWidth}px`);
+            item.style.setProperty('--pill-open-width', `${openWidth}px`);
 
             if (detail) {
-              const h = detail.scrollHeight;
+              const measure = detail.cloneNode(true);
+              measure.style.position = 'absolute';
+              measure.style.visibility = 'hidden';
+              measure.style.pointerEvents = 'none';
+              measure.style.inlineSize = 'auto';
+              measure.style.blockSize = 'auto';
+              measure.style.maxHeight = 'none';
+              measure.style.overflow = 'visible';
+              measure.style.clipPath = 'none';
+              measure.style.padding = '0 2px';
+              measure.style.whiteSpace = 'normal';
+              const maxMeasureWidth = Math.min(openWidth, openWidth - 24);
+              measure.style.width = `${Math.max(260, maxMeasureWidth)}px`;
+              item.appendChild(measure);
+              const h = Math.ceil(measure.getBoundingClientRect().height);
+              measure.remove();
+
               item.style.setProperty('--detail-height', `${h}px`);
+              const itemStyle = getComputedStyle(item);
+              const openPaddingY = parseFloat(itemStyle.getPropertyValue('--pill-open-padding-y')) || 46;
+              const openHeight = Math.min(460, Math.max(120, Math.ceil(h + openPaddingY)));
+              item.style.setProperty('--pill-open-height', `${openHeight}px`);
             }
+          });
+        };
+
+        const applyExpandDirections = () => {
+          const splitIndex = Math.floor((items.length - 1) / 2);
+          items.forEach((item, index) => {
+            const expandUp = index > splitIndex;
+            item.classList.toggle('expand-up', expandUp);
           });
         };
 
@@ -254,18 +329,69 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
           if (!mediaImage) return;
           const src = item?.dataset.mediaSrc || defaultMediaSrc;
           const alt = item?.dataset.mediaAlt || defaultMediaAlt;
-          if (mediaImage.getAttribute('src') !== src) mediaImage.setAttribute('src', src);
-          if (mediaImage.getAttribute('alt') !== alt) mediaImage.setAttribute('alt', alt);
+          const currentFrame = mediaWrap?.querySelector('.electro-media-frame.is-current') || mediaImage;
+          const currentSrc = currentFrame.getAttribute('src');
+          const currentAlt = currentFrame.getAttribute('alt');
+          if (currentSrc === src && currentAlt === alt) return;
+
+          if (!mediaWrap) {
+            if (currentSrc !== src) currentFrame.setAttribute('src', src);
+            if (currentAlt !== alt) currentFrame.setAttribute('alt', alt);
+            return;
+          }
+
+          if (currentSrc === src) {
+            currentFrame.setAttribute('alt', alt);
+            return;
+          }
+
+          const token = ++mediaSlideToken;
+          mediaWrap.querySelectorAll('.electro-media-frame:not(.is-current)').forEach((frame) => frame.remove());
+          const active = mediaWrap.querySelector('.electro-media-frame.is-current') || currentFrame;
+          if (!active) return;
+
+          const next = document.createElement('img');
+          next.className = 'electro-media-frame is-next';
+          next.src = src;
+          next.alt = alt;
+          mediaWrap.appendChild(next);
+
+          void next.offsetHeight;
+
+          requestAnimationFrame(() => {
+            if (token !== mediaSlideToken) return;
+            active.classList.remove('is-current');
+            active.classList.add('is-exiting-up');
+            next.classList.add('is-current');
+            next.classList.remove('is-next');
+          });
+
+          window.setTimeout(() => {
+            if (token !== mediaSlideToken) return;
+            const staleFrames = mediaWrap.querySelectorAll('.electro-media-frame.is-exiting-up');
+            staleFrames.forEach((frame) => frame.remove());
+          }, mediaSlideDurationMs + 80);
         };
 
         const openItem = (target) => {
+          if (openDelayTimer) {
+            clearTimeout(openDelayTimer);
+            openDelayTimer = null;
+          }
+
           items.forEach((item) => {
             const btn = item.querySelector('.electro-pill');
-            const isTarget = item === target;
-            item.classList.toggle('is-active', isTarget);
-            if (btn) btn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+            item.classList.remove('is-active');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
           });
-          updateMedia(target);
+
+          openDelayTimer = window.setTimeout(() => {
+            const btn = target.querySelector('.electro-pill');
+            target.classList.add('is-active');
+            if (btn) btn.setAttribute('aria-expanded', 'true');
+            updateMedia(target);
+            openDelayTimer = null;
+          }, openDelayMs);
         };
 
         const getActiveIndex = () => items.findIndex((item) => item.classList.contains('is-active'));
@@ -293,6 +419,8 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
         if (nextBtn) nextBtn.addEventListener('click', () => shiftItem(1));
 
         applyDetailMetrics();
+        applyExpandDirections();
+        preloadMedia();
         window.addEventListener('resize', applyDetailMetrics, { passive: true });
       })();
     </script>
