@@ -289,6 +289,10 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
             const closedWidth = Math.ceil(icon.getBoundingClientRect().width + gap + title.scrollWidth + padLeft + padRight);
             item.style.setProperty('--pill-closed-width', `${closedWidth}px`);
             item.style.setProperty('--pill-open-width', `${openWidth}px`);
+            const itemStyle = getComputedStyle(item);
+            const openPaddingX = parseFloat(itemStyle.getPropertyValue('--pill-open-padding-x')) || 46;
+            const openInnerWidth = Math.max(220, Math.floor(openWidth - openPaddingX));
+            item.style.setProperty('--pill-open-inner-width', `${openInnerWidth}px`);
 
             if (detail) {
               const measure = detail.cloneNode(true);
@@ -302,14 +306,12 @@ Od technického projektu až po čisté a přehledné předání bez improvizace
               measure.style.clipPath = 'none';
               measure.style.padding = '0 2px';
               measure.style.whiteSpace = 'normal';
-              const maxMeasureWidth = Math.min(openWidth, openWidth - 24);
-              measure.style.width = `${Math.max(260, maxMeasureWidth)}px`;
+              measure.style.width = `${openInnerWidth}px`;
               item.appendChild(measure);
               const h = Math.ceil(measure.getBoundingClientRect().height);
               measure.remove();
 
               item.style.setProperty('--detail-height', `${h}px`);
-              const itemStyle = getComputedStyle(item);
               const openPaddingY = parseFloat(itemStyle.getPropertyValue('--pill-open-padding-y')) || 46;
               const openHeight = Math.min(460, Math.max(120, Math.ceil(h + openPaddingY)));
               item.style.setProperty('--pill-open-height', `${openHeight}px`);

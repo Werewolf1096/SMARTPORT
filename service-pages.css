@@ -1179,8 +1179,10 @@
   max-width: min(100%, 520px);
   --detail-height: 260px;
   --pill-open-padding-y: 46px;
+  --pill-open-padding-x: 46px;
   --pill-open-height: 320px;
   --pill-open-width: 520px;
+  --pill-open-inner-width: 474px;
   --pill-closed-width: auto;
   margin-top: 0;
   margin-bottom: 0;
@@ -1210,15 +1212,16 @@
   touch-action: manipulation;
   height: 56px;
   overflow: hidden;
-  clip-path: inset(0 0 0 0 round 20px);
+  clip-path: inset(0 calc(100% - var(--pill-closed-width)) 0 0 round 20px);
   transition:
     background-color 0.66s ease,
     color 0.66s ease,
     box-shadow 0.66s ease,
     border-color 0.66s ease,
-    width 1.8s cubic-bezier(0.23, 1, 0.32, 1),
-    height 1.8s cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: width, height;
+    padding 1.8s cubic-bezier(0.23, 1, 0.32, 1),
+    height 1.8s cubic-bezier(0.23, 1, 0.32, 1),
+    clip-path 1.8s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: height, clip-path;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -1290,7 +1293,9 @@
 .electro-pill-detail {
   grid-column: 1 / -1;
   grid-row: 2;
-  width: 100%;
+  width: var(--pill-open-inner-width);
+  min-width: var(--pill-open-inner-width);
+  max-width: none;
   max-height: none;
   opacity: 1;
   margin: 0;
@@ -1308,7 +1313,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  inline-size: var(--pill-open-width);
+  inline-size: var(--pill-open-inner-width);
   block-size: auto;
   opacity: 0;
   visibility: hidden;
@@ -1419,6 +1424,7 @@
     width: var(--pill-open-width);
     max-width: 100%;
     --pill-open-padding-y: 36px;
+    --pill-open-padding-x: 40px;
     border-radius: 16px;
     padding: 18px 20px;
   }
