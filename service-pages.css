@@ -981,10 +981,7 @@
   position: relative;
   min-height: 0;
   padding: 18px 0 44px;
-  background:
-    radial-gradient(circle at 78% 42%, rgba(0, 113, 227, 0.06), transparent 28%),
-    radial-gradient(circle at 88% 26%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 24%),
-    linear-gradient(180deg, #f7f8fb 0%, #f3f4f6 100%);
+  background: #f3f4f6;
   overflow: hidden;
 }
 .service-hero--electro .service-hero-shell {
@@ -1017,8 +1014,8 @@
   top: 12%;
   width: 52%;
   height: 66%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.16) 46%, transparent 74%);
-  filter: blur(18px);
+  background: none;
+  filter: none;
 }
 .service-hero--electro .service-hero-copy {
   position: relative;
@@ -1091,20 +1088,20 @@
   background: transparent;
 }
 .service-hero--electro .service-hero-media::before {
-  content: "";
+  content: none;
   position: absolute;
   inset: 12% -2% 8% 4%;
   border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.96) 0%, rgba(245, 246, 249, 0.34) 50%, transparent 76%);
-  filter: blur(16px);
+  background: none;
+  filter: none;
   z-index: 0;
 }
 .service-hero--electro .service-hero-media::after {
-  content: "";
+  content: none;
   position: absolute;
   inset: 20% 4% 0 18%;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.04) 42%, transparent 72%);
-  filter: blur(22px);
+  background: none;
+  filter: none;
   z-index: 0;
 }
 .service-hero--electro .service-hero-media img {

@@ -27,9 +27,1502 @@
         .main-nav.is-active { transform:translateX(0); }
         .main-nav a { font-size:1.5rem; color:#000; text-decoration:none; }
       }
+
+      .service-page--lighting {
+        background: #000000;
+        color: #f5f5f7;
+      }
+      .service-page--lighting .site-header {
+        background: #000;
+      }
+      .service-page--lighting .header-inner a {
+        color: #f5f5f7;
+      }
+      .service-page--lighting .main-nav > a,
+      .service-page--lighting .main-nav > .nav-dropdown > .nav-link {
+        color: #f5f5f7;
+      }
+      .service-page--lighting .main-nav > a::after,
+      .service-page--lighting .main-nav > .nav-dropdown > .nav-link::after {
+        background: #4f8cff;
+      }
+      .service-page--lighting .main-nav > a.is-active,
+      .service-page--lighting .main-nav > a[aria-current="page"],
+      .service-page--lighting .main-nav > .nav-dropdown > .nav-link.is-active {
+        color: #f5f5f7;
+      }
+      .service-page--lighting .main-nav > a.is-active::after,
+      .service-page--lighting .main-nav > a[aria-current="page"]::after,
+      .service-page--lighting .main-nav > .nav-dropdown > .nav-link.is-active::after,
+      .service-page--lighting .main-nav > a:hover::after,
+      .service-page--lighting .main-nav > .nav-dropdown > .nav-link:hover::after,
+      .service-page--lighting .main-nav > .nav-dropdown:focus-within > .nav-link::after,
+      .service-page--lighting .main-nav > .nav-dropdown.is-open > .nav-link::after {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      .service-page--lighting .burger-icon,
+      .service-page--lighting .burger-icon::before,
+      .service-page--lighting .burger-icon::after {
+        background-color: #f5f5f7;
+      }
+      .service-page--lighting .service-main {
+        background: #000000;
+      }
+      .service-page--lighting .service-hero--electro {
+        position: relative;
+        background: #000000;
+        min-height: 76.5vh;
+        padding: 0;
+        overflow: hidden;
+      }
+      .service-page--lighting .service-hero--electro::before {
+        content: none;
+      }
+      .service-page--lighting .service-hero--electro::after {
+        content: none;
+      }
+      .service-page--lighting .service-hero--electro .service-hero-shell {
+        grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+        min-height: 76.5vh;
+        height: 76.5vh;
+        border-radius: 0;
+        background-color: #000000;
+        overflow: hidden;
+        align-items: center;
+        gap: clamp(48px, 6vw, 108px);
+        padding: clamp(40px, 4.8vw, 80px) 0;
+      }
+      .service-page--lighting .service-hero--electro .service-hero-shell::before {
+        content: none;
+      }
+      .service-page--lighting .service-hero--electro .service-hero-shell::after {
+        content: none;
+      }
+      .service-page--lighting .service-hero-media {
+        display: block;
+        position: relative;
+        inset: auto;
+        z-index: 1;
+        pointer-events: none;
+        overflow: visible;
+        min-height: 0;
+        height: 100%;
+        align-self: center;
+        justify-self: end;
+        width: min(100%, 820px);
+      }
+      .service-page--lighting .service-hero-media::before {
+        content: none;
+      }
+      .service-page--lighting .service-hero-media::after {
+        content: none;
+      }
+      .service-page--lighting .service-hero-media img {
+        display: block;
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        width: min(100%, 760px);
+        height: auto;
+        max-width: none;
+        max-height: min(72vh, 760px);
+        min-width: 0;
+        min-height: 0;
+        margin-left: auto;
+        margin-right: 0;
+        object-fit: contain;
+        object-position: center;
+        transform: none;
+        transform-origin: center;
+        filter: none;
+        -webkit-mask-image: none;
+        mask-image: none;
+        z-index: 0;
+      }
+      .service-page--lighting .service-hero--electro .service-hero-copy {
+        position: relative;
+        z-index: 2;
+        align-self: center;
+        max-width: 440px;
+        padding: 0 0 0 22px;
+        margin-top: 0;
+        overflow: visible;
+      }
+      .service-page--lighting .service-hero--electro .hero__title {
+        margin: 0 0 24px;
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+        font-weight: 600;
+        font-size: clamp(56px, 6.4vw, 92px);
+        position: relative;
+        isolation: isolate;
+        overflow: visible;
+        padding: 14px 18px 18px 0;
+        margin-left: 0;
+      }
+      .service-page--lighting .service-hero--electro .hero__title-muted {
+        display: block;
+        color: #8f9096;
+      }
+      .service-page--lighting .service-hero--electro .hero__title-warm {
+        position: relative;
+        display: inline-block;
+        color: #fff4d8;
+        background: linear-gradient(
+          180deg,
+          #fffdf8 0%,
+          #fff7e8 14%,
+          #ffeecb 30%,
+          #ffd97b 52%,
+          #fff0cb 74%,
+          #fffdf8 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: brightness(1.06) saturate(1.04);
+        text-shadow:
+          0 0 0.5px rgba(255, 250, 241, 1),
+          0 0 1px rgba(255, 242, 208, 0.98),
+          0 0 2px rgba(255, 229, 171, 0.9),
+          0 0 5px rgba(255, 205, 118, 0.34),
+          0 0 13px rgba(255, 196, 102, 0.14);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow: visible;
+        padding: 10px 18px 14px 0;
+        margin: -10px -18px -14px 0;
+      }
+      .service-page--lighting .service-hero--electro .hero__title-warm::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: -10px;
+        transform: translateY(-50%);
+        z-index: -1;
+        color: rgba(255, 212, 126, 0.92);
+        -webkit-text-fill-color: currentColor;
+        filter: blur(8px);
+        opacity: 0.62;
+        line-height: inherit;
+        text-shadow:
+          0 0 8px rgba(255, 204, 114, 0.38),
+          0 0 18px rgba(255, 196, 102, 0.26),
+          0 0 34px rgba(255, 188, 92, 0.12);
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .service-page--lighting .service-hero--electro .hero__title-warm::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -2%;
+        right: -2%;
+        height: 74%;
+        transform: translateY(-50%);
+        z-index: -1;
+        border-radius: 999px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 226, 152, 0.26) 0%,
+          rgba(255, 214, 126, 0.14) 38%,
+          rgba(255, 202, 108, 0.06) 62%,
+          rgba(255, 202, 108, 0) 100%
+        );
+        filter: blur(15px);
+        pointer-events: none;
+        opacity: 0.72;
+      }
+      .service-page--lighting .service-hero-lead {
+        color: rgba(245, 245, 247, 0.74);
+        max-width: 31ch;
+        font-size: clamp(18px, 1.45vw, 21px);
+        line-height: 1.56;
+        font-weight: 400;
+        margin: 20px 0 0;
+      }
+      .service-page--lighting .service-hero-actions {
+        display: flex;
+        margin-top: 32px;
+      }
+      .service-page--lighting .service-hero .btn.primary.contact-cta-btn.creepy-btn,
+      .service-page--lighting .electro-final-cta .btn.primary.contact-cta-btn.creepy-btn {
+        color: #050505;
+      }
+      .service-page--lighting .service-hero .creepy-btn,
+      .service-page--lighting .electro-final-cta .creepy-btn {
+        --cb-primary: #4f8cff;
+        --cb-primary-hover: #3f7df0;
+      }
+      .service-page--lighting .electro-scope,
+      .service-page--lighting .electro-process,
+      .service-page--lighting .electro-standard,
+      .service-page--lighting .electro-benefits,
+      .service-page--lighting .electro-final-cta {
+        background: transparent;
+      }
+      .service-page--lighting .electro-scope-intro,
+      .service-page--lighting .electro-process__intro,
+      .service-page--lighting .electro-standard__intro,
+      .service-page--lighting .electro-benefits__intro,
+      .service-page--lighting .electro-final-cta__inner {
+        color: #f5f5f7;
+      }
+      .service-page--lighting .electro-scope-intro h2,
+      .service-page--lighting .electro-process__intro h2,
+      .service-page--lighting .electro-standard__intro h2,
+      .service-page--lighting .electro-benefits__intro h2,
+      .service-page--lighting .electro-benefits__content h3,
+      .service-page--lighting .electro-standard__card h3,
+      .service-page--lighting .electro-final-cta__text {
+        color: #f5f5f7;
+      }
+      .service-page--lighting .electro-scope-intro p,
+      .service-page--lighting .electro-process__intro p,
+      .service-page--lighting .electro-standard__intro p,
+      .service-page--lighting .electro-benefits__intro p,
+      .service-page--lighting .electro-benefits__content p,
+      .service-page--lighting .electro-standard__card p {
+        color: rgba(245, 245, 247, 0.72);
+      }
+      .service-page--lighting .electro-showcase,
+      .service-page--lighting .electro-process__shell,
+      .service-page--lighting .electro-standard__card,
+      .service-page--lighting .electro-benefits__row,
+      .service-page--lighting .electro-final-cta__inner {
+        background: linear-gradient(180deg, rgba(25, 25, 25, 0.92), rgba(17, 17, 17, 0.96));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 18px 40px rgba(0, 0, 0, 0.32),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      }
+      .service-page--lighting .electro-process__shell,
+      .service-page--lighting .electro-final-cta__inner {
+        border-radius: 36px;
+        padding: clamp(28px, 4vw, 42px);
+      }
+      .service-page--lighting .electro-showcase {
+        border-radius: 36px;
+      }
+      .service-page--lighting .electro-showcase-media,
+      .service-page--lighting .electro-standard__card,
+      .service-page--lighting .electro-process__card {
+        background: #111111;
+      }
+      .service-page--lighting .electro-showcase-media {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .service-page--lighting .electro-pill,
+      .service-page--lighting .electro-item.is-active .electro-pill {
+        background: #171717;
+        color: #f5f5f7;
+        box-shadow: none;
+      }
+      .service-page--lighting .electro-pill-detail {
+        color: rgba(245, 245, 247, 0.74);
+      }
+      .service-page--lighting .electro-nav-btn {
+        background: #1a1a1a;
+        border-color: rgba(255, 255, 255, 0.08);
+        color: #4f8cff;
+      }
+      .service-page--lighting .electro-process__line {
+        background: linear-gradient(180deg, rgba(79, 140, 255, 0.45), rgba(255, 255, 255, 0.08));
+      }
+      .service-page--lighting .electro-process__node {
+        background: #4f8cff;
+        box-shadow: 0 0 0 8px rgba(79, 140, 255, 0.12);
+      }
+      .service-page--lighting .electro-process__card,
+      .service-page--lighting .electro-standard__card {
+        border-color: rgba(255, 255, 255, 0.07);
+      }
+      .service-page--lighting .electro-process__number,
+      .service-page--lighting .electro-standard__accent,
+      .service-page--lighting .electro-standard__icon,
+      .service-page--lighting .electro-benefits__number {
+        color: #4f8cff;
+      }
+      .service-page--lighting .electro-benefits__list {
+        border-top-color: rgba(255, 255, 255, 0.08);
+      }
+      .service-page--lighting .electro-benefits__row {
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+        padding-left: 28px;
+        padding-right: 28px;
+        border-radius: 28px;
+        margin-bottom: 14px;
+      }
+      .service-page--lighting .electro-benefits__row:hover,
+      .service-page--lighting .electro-standard__card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(79, 140, 255, 0.24);
+        background: linear-gradient(180deg, rgba(27, 27, 27, 0.98), rgba(17, 17, 17, 1));
+      }
+      .service-page--lighting .electro-standard::before,
+      .service-page--lighting .electro-benefits::before,
+      .service-page--lighting .electro-final-cta::before {
+        display: none;
+      }
+      .service-page--lighting .electro-final-cta__inner {
+        max-width: 1120px;
+      }
+      .service-page--lighting .electro-final-cta__eyebrow,
+      .service-page--lighting .electro-standard__eyebrow,
+      .service-page--lighting .electro-benefits__eyebrow,
+      .service-page--lighting .electro-process__eyebrow {
+        color: rgba(245, 245, 247, 0.5);
+      }
+      .lighting-page {
+        --lighting-bg: #000000;
+        --lighting-bg-alt: #111111;
+        --lighting-panel: #0d0d0d;
+        --lighting-line: rgba(255, 255, 255, 0.08);
+        --lighting-line-strong: rgba(255, 255, 255, 0.14);
+        --lighting-text: #f5f5f7;
+        --lighting-muted: #a1a1aa;
+        --lighting-muted-2: #7d7d86;
+        --lighting-blue: #2f6df6;
+        --lighting-blue-hover: #4b82ff;
+        --lighting-warm: rgba(255, 230, 170, 0.12);
+        --lighting-radius-xl: 34px;
+        --lighting-radius-lg: 24px;
+        --lighting-radius-md: 18px;
+        --lighting-shadow: none;
+        --lighting-eyebrow-size-desktop: 13px;
+        --lighting-eyebrow-size-tablet: 12px;
+        --lighting-eyebrow-size-mobile: 11px;
+        --lighting-display-size-desktop: clamp(56px, 6vw, 84px);
+        --lighting-display-size-tablet: clamp(42px, 5vw, 64px);
+        --lighting-display-size-mobile: clamp(32px, 9vw, 44px);
+        --lighting-lead-size-desktop: clamp(22px, 1.8vw, 28px);
+        --lighting-lead-size-tablet: 20px;
+        --lighting-lead-size-mobile: 18px;
+        --lighting-body-size-desktop: 17px;
+        --lighting-body-size-tablet: 16px;
+        --lighting-body-size-mobile: 15px;
+        --lighting-card-title-size-desktop: 28px;
+        --lighting-card-title-size-tablet: 24px;
+        --lighting-card-title-size-mobile: 21px;
+        --lighting-card-body-size-desktop: 15px;
+        --lighting-card-body-size-tablet: 15px;
+        --lighting-card-body-size-mobile: 14px;
+        --lighting-meta-size-desktop: 12px;
+        --lighting-meta-size-tablet: 12px;
+        --lighting-meta-size-mobile: 11px;
+        --lighting-display-weight: 700;
+        --lighting-title-weight: 600;
+        --lighting-body-weight: 400;
+        --lighting-display-tracking: -0.055em;
+        --lighting-title-tracking: -0.035em;
+        --lighting-body-tracking: -0.01em;
+        --lighting-eyebrow-tracking: 0.12em;
+        --lighting-meta-tracking: 0.08em;
+        --lighting-display-line-desktop: 0.96;
+        --lighting-display-line-tablet: 0.98;
+        --lighting-display-line-mobile: 1.02;
+        --lighting-lead-line-desktop: 1.5;
+        --lighting-lead-line-tablet: 1.55;
+        --lighting-lead-line-mobile: 1.6;
+        --lighting-body-line: 1.65;
+        --lighting-card-title-line-desktop: 1.08;
+        --lighting-card-title-line-tablet: 1.1;
+        --lighting-card-title-line-mobile: 1.12;
+        color: var(--lighting-text);
+        background: transparent;
+      }
+      .lighting-container {
+        width: min(1320px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+      .lighting-section {
+        position: relative;
+        padding: 110px 0;
+      }
+      .lighting-section:nth-child(odd) {
+        background: var(--lighting-bg);
+      }
+      .lighting-section:nth-child(even) {
+        background: var(--lighting-bg-alt);
+      }
+      .lighting-page .lighting-eyebrow {
+        display: inline-block;
+        margin: 0 0 16px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: var(--lighting-eyebrow-size-desktop);
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: var(--lighting-eyebrow-tracking);
+        text-transform: uppercase;
+      }
+      .lighting-page .lighting-title,
+      .lighting-page .lighting-display {
+        margin: 0 0 18px;
+        max-width: 14ch;
+        font-size: var(--lighting-display-size-desktop);
+        line-height: var(--lighting-display-line-desktop);
+        letter-spacing: var(--lighting-display-tracking);
+        font-weight: var(--lighting-display-weight);
+        color: #f5f5f7;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .lighting-page .lighting-text,
+      .lighting-page .lighting-lead {
+        max-width: 900px;
+        margin: 20px auto 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: var(--lighting-lead-size-desktop);
+        font-weight: 400;
+        line-height: var(--lighting-lead-line-desktop);
+        letter-spacing: var(--lighting-body-tracking);
+        text-align: center;
+      }
+      .lighting-page .lighting-body {
+        font-size: var(--lighting-body-size-desktop);
+        font-weight: var(--lighting-body-weight);
+        line-height: var(--lighting-body-line);
+        letter-spacing: var(--lighting-body-tracking);
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .lighting-page .lighting-card-title {
+        margin: 0 0 12px;
+        font-size: var(--lighting-card-title-size-desktop);
+        font-weight: var(--lighting-title-weight);
+        line-height: var(--lighting-card-title-line-desktop);
+        letter-spacing: var(--lighting-title-tracking);
+        color: #f5f5f7;
+      }
+      .lighting-page .lighting-card-body {
+        margin: 0;
+        font-size: var(--lighting-card-body-size-desktop);
+        font-weight: 400;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .lighting-page .lighting-meta {
+        font-size: var(--lighting-meta-size-desktop);
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: var(--lighting-meta-tracking);
+        color: rgba(255, 255, 255, 0.56);
+        text-transform: uppercase;
+      }
+      .lighting-page .lighting-eyebrow {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 16px;
+        text-align: center;
+      }
+      .lighting-page .lighting-layers .lighting-display,
+      .lighting-page .lighting-metrics .lighting-display,
+      .lighting-page .lighting-process .lighting-display,
+      .lighting-page .lighting-scenes .lighting-display,
+      .lighting-page .lighting-controls .lighting-display,
+      .lighting-page .lighting-zones .lighting-display,
+      .lighting-page .lighting-cta .lighting-display {
+        max-width: 12ch;
+      }
+      .lighting-page .lighting-intro .lighting-display {
+        max-width: 11ch;
+      }
+      .lighting-page .lighting-process .lighting-lead,
+      .lighting-page .lighting-intro .lighting-lead,
+      .lighting-page .lighting-cta .lighting-lead {
+        max-width: 900px;
+      }
+      .lighting-panel,
+      .lighting-card,
+      .lighting-metric,
+      .lighting-step,
+      .lighting-zone,
+      .lighting-scene-preview,
+      .lighting-process-visual {
+        border: 1px solid var(--lighting-line);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+        box-shadow: var(--lighting-shadow);
+      }
+      .lighting-panel {
+        border-radius: var(--lighting-radius-xl);
+        padding: clamp(28px, 4vw, 52px);
+      }
+      .lighting-intro-shell {
+        display: grid;
+        gap: 30px;
+      }
+      .lighting-intro-copy {
+        max-width: 920px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .lighting-intro-carousel.services-carousel {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .lighting-intro-carousel .services-track {
+        grid-auto-columns: minmax(100%, 1fr);
+        gap: 24px;
+        padding: 8px 0 18px;
+        background: transparent;
+        scroll-padding-left: 0;
+        scroll-padding-right: 0;
+      }
+      .lighting-intro-carousel .service-card.lighting-intro-slide {
+        position: relative;
+        min-height: 770px;
+        height: 770px;
+        padding: 0;
+        aspect-ratio: auto;
+        border-radius: 32px;
+        overflow: hidden;
+        background: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+        display: block;
+      }
+      .lighting-intro-slide img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .lighting-intro-slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 32%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.64) 100%);
+      }
+      .lighting-intro-slide-copy {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 34px 34px 30px;
+      }
+      .lighting-intro-slide-copy .lighting-card-title {
+        max-width: 15ch;
+        text-align: left;
+      }
+      .lighting-intro-slide-copy .lighting-card-body {
+        max-width: 30ch;
+        text-align: left;
+      }
+      .lighting-intro-slide-meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(10px);
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1;
+      }
+      .lighting-intro-slide-meta::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 231, 184, 0.92);
+        box-shadow: 0 0 14px rgba(255, 224, 158, 0.24);
+      }
+      .lighting-intro-carousel .services-dots button {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .lighting-intro-carousel .services-dots .is-active {
+        background: rgba(255, 255, 255, 0.72);
+      }
+      .lighting-intro-carousel .services-arrow {
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+        box-shadow: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .lighting-intro-carousel .services-arrow:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .lighting-intro-gallery {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .lighting-image-card,
+      .lighting-card-media,
+      .lighting-zone-media,
+      .lighting-step-media {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        border: 1px solid var(--lighting-line);
+        background: #111111;
+      }
+      .lighting-image-card img,
+      .lighting-card-media img,
+      .lighting-zone-media img,
+      .lighting-step-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .lighting-image-card {
+        aspect-ratio: 4 / 3;
+      }
+      .lighting-intro .lighting-panel {
+        text-align: center;
+      }
+      .lighting-intro-stats {
+        margin-top: 36px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .lighting-stat {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: 178px;
+        padding: 24px;
+        border-radius: 22px;
+        border: 1px solid var(--lighting-line);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .lighting-stat-visual,
+      .lighting-card-visual,
+      .lighting-metric-visual,
+      .lighting-control-visual,
+      .lighting-zone-visual {
+        position: relative;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+      }
+      .lighting-stat-visual {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 18px;
+        border-radius: 20px;
+      }
+      .lighting-stat-visual::after,
+      .lighting-card-visual::after,
+      .lighting-metric-visual::after,
+      .lighting-control-visual::after,
+      .lighting-zone-visual::after {
+        content: "";
+        position: absolute;
+        inset: auto;
+        width: 58%;
+        height: 58%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 229, 170, 0.12), rgba(255, 229, 170, 0));
+        pointer-events: none;
+      }
+      .lighting-stat svg,
+      .lighting-card svg,
+      .lighting-metric svg,
+      .lighting-control-visual svg,
+      .lighting-zone-visual svg {
+        width: 28px;
+        height: 28px;
+        stroke: rgba(255, 245, 230, 0.88);
+        stroke-width: 1.7;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .lighting-stat strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1;
+        letter-spacing: -0.05em;
+        text-align: left;
+      }
+      .lighting-stat span {
+        text-align: left;
+        max-width: 22ch;
+      }
+      .lighting-cards {
+        margin-top: 42px;
+        display: grid;
+        gap: 24px;
+      }
+      .lighting-cards-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .lighting-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 290px;
+        padding: 28px;
+        border-radius: var(--lighting-radius-lg);
+      }
+      .lighting-card-media {
+        height: 150px;
+        margin-bottom: 18px;
+      }
+      .lighting-card-visual {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 20px;
+        border-radius: 18px;
+      }
+      .lighting-card::before,
+      .lighting-zone::before,
+      .lighting-cta-panel::before {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        right: -40px;
+        bottom: -40px;
+        border-radius: 50%;
+        background: radial-gradient(circle, var(--lighting-warm), transparent 70%);
+        pointer-events: none;
+      }
+      .lighting-card-index {
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        border-radius: 999px;
+        border: 1px solid var(--lighting-line-strong);
+        color: var(--lighting-muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .lighting-card ul {
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+      .lighting-card li {
+        position: relative;
+        padding-left: 18px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: var(--lighting-card-body-size-desktop);
+        line-height: 1.6;
+        letter-spacing: var(--lighting-body-tracking);
+      }
+      .lighting-card li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 234, 190, 0.9);
+        box-shadow: 0 0 10px rgba(255, 228, 170, 0.18);
+      }
+      .lighting-room-demo {
+        position: relative;
+        margin-top: 46px;
+        height: 420px;
+        overflow: hidden;
+        border-radius: var(--lighting-radius-xl);
+        border: 1px solid var(--lighting-line);
+        background: linear-gradient(180deg, #12131a 0%, #0b0c10 100%);
+      }
+      .lighting-room-wall {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%);
+      }
+      .lighting-room-spots {
+        position: absolute;
+        top: 56px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 74%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .lighting-room-spots span,
+      .lighting-ceiling-spot,
+      .lighting-scene-downlight {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #dfdfe4;
+        box-shadow:
+          0 0 0 8px rgba(255, 255, 255, 0.03),
+          0 0 40px rgba(255, 235, 195, 0.14);
+      }
+      .lighting-room-spots span {
+        position: relative;
+      }
+      .lighting-room-strip,
+      .lighting-scene-strip {
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        bottom: 122px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255, 240, 205, 0.08), rgba(255, 247, 235, 0.45), rgba(255, 240, 205, 0.08));
+        box-shadow: 0 0 40px rgba(255, 227, 170, 0.14);
+      }
+      .lighting-room-pendant,
+      .lighting-scene-pendant {
+        position: absolute;
+        left: 50%;
+        top: 86px;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 118px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+      }
+      .lighting-room-pendant::after,
+      .lighting-scene-pendant::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -24px;
+        transform: translateX(-50%);
+        width: 94px;
+        height: 54px;
+        border-radius: 54px 54px 40px 40px;
+        background: linear-gradient(180deg, #30333b 0%, #191b20 100%);
+        box-shadow: 0 0 80px rgba(255, 228, 170, 0.12);
+      }
+      .lighting-room-table,
+      .lighting-scene-table {
+        position: absolute;
+        left: 50%;
+        bottom: 84px;
+        transform: translateX(-50%);
+        width: 240px;
+        height: 12px;
+        border-radius: 999px;
+        background: #2c2f36;
+      }
+      .lighting-room-labels {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .lighting-room-labels div,
+      .lighting-scene-meta div,
+      .lighting-ceiling-note {
+        border-radius: 18px;
+        border: 1px solid var(--lighting-line);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+      }
+      .lighting-room-labels div {
+        padding: 14px 16px;
+      }
+      .lighting-metrics-grid {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 18px;
+      }
+      .lighting-metric {
+        position: relative;
+        border-radius: 22px;
+        padding: 22px 18px;
+      }
+      .lighting-metric-visual {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 16px;
+        border-radius: 16px;
+      }
+      .lighting-process-grid {
+        margin-top: 46px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+      }
+      .lighting-process-visual {
+        position: relative;
+        min-height: 430px;
+        overflow: hidden;
+        border-radius: var(--lighting-radius-xl);
+        background: linear-gradient(180deg, #12141b 0%, #0b0c10 100%);
+      }
+      .lighting-ceiling-grid {
+        position: absolute;
+        inset: 18px;
+        border-radius: 18px;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      .lighting-ceiling-room {
+        position: absolute;
+        inset: 52px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .lighting-ceiling-spot {
+        margin-left: -8px;
+        margin-top: -8px;
+      }
+      .lighting-ceiling-sensor {
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        margin-left: -17px;
+        margin-top: -17px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03));
+        box-shadow: 0 0 24px rgba(255, 255, 255, 0.05);
+      }
+      .lighting-ceiling-sensor::after {
+        content: "PIR";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: var(--lighting-muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .lighting-ceiling-note {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        max-width: 220px;
+        padding: 16px;
+      }
+      .lighting-steps {
+        display: grid;
+        gap: 16px;
+      }
+      .lighting-step {
+        border-radius: 20px;
+        padding: 20px;
+      }
+      .lighting-step-media {
+        height: 132px;
+        margin-bottom: 16px;
+      }
+      .lighting-scenes-grid {
+        margin-top: 44px;
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 28px;
+      }
+      .lighting-scene-tabs {
+        display: grid;
+        gap: 12px;
+      }
+      .lighting-scene-tab {
+        width: 100%;
+        text-align: left;
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid var(--lighting-line);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--lighting-text);
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+      .lighting-scene-tab:hover,
+      .lighting-scene-tab.is-active {
+        border-color: rgba(255, 235, 190, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .lighting-scene-tab strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+      .lighting-scene-preview {
+        border-radius: var(--lighting-radius-xl);
+        padding: 24px;
+        overflow: hidden;
+      }
+      .lighting-scene-room {
+        position: relative;
+        height: 360px;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: linear-gradient(180deg, #1a1f2a 0%, #0d1015 100%);
+        transition: 0.35s ease;
+      }
+      .lighting-scene-base {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 34%);
+      }
+      .lighting-scene-window {
+        position: absolute;
+        right: 44px;
+        top: 42px;
+        width: 180px;
+        height: 120px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(120, 140, 170, 0.18), rgba(20, 22, 28, 0.1));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .lighting-scene-sofa {
+        position: absolute;
+        left: 54px;
+        bottom: 44px;
+        width: 260px;
+        height: 110px;
+        border-radius: 28px 28px 18px 18px;
+        background: linear-gradient(180deg, #2a2d36 0%, #1a1c22 100%);
+      }
+      .lighting-scene-ceiling {
+        position: absolute;
+        inset: 28px 54px auto 54px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .lighting-scene-downlight {
+        position: relative;
+      }
+      .lighting-scene-meta {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .lighting-scene-meta div {
+        padding: 16px;
+      }
+      .lighting-scene-meta span {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .lighting-scene-meta strong {
+        color: #fff;
+      }
+      .lighting-zones-grid {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+      }
+      .lighting-zone {
+        position: relative;
+        overflow: hidden;
+        min-height: 220px;
+        border-radius: 22px;
+        padding: 20px;
+      }
+      .lighting-zone-media {
+        height: 140px;
+        margin: -20px -20px 18px;
+        border-radius: 22px 22px 0 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+      }
+      .lighting-zone-visual {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 18px;
+        border-radius: 18px;
+      }
+      .lighting-control-card {
+        min-height: 260px;
+      }
+      .lighting-control-visual {
+        width: 66px;
+        height: 66px;
+        margin-bottom: 18px;
+        border-radius: 18px;
+      }
+      .lighting-cta-panel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 36px;
+        padding: clamp(32px, 5vw, 64px);
+        text-align: center;
+        border: 1px solid var(--lighting-line);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+        box-shadow: var(--lighting-shadow);
+      }
+      .lighting-cta-panel .lighting-text {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .lighting-cta-actions {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .lighting-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 190px;
+        height: 54px;
+        padding: 0 26px;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 600;
+        transition: 0.25s ease;
+      }
+      .lighting-btn-primary {
+        background: var(--lighting-blue);
+        color: #fff;
+      }
+      .lighting-btn-primary:hover {
+        background: var(--lighting-blue-hover);
+        transform: translateY(-1px);
+      }
+      .lighting-btn-secondary {
+        border: 1px solid var(--lighting-line-strong);
+        color: #fff;
+        background: transparent;
+      }
+      .lighting-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .lighting-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .lighting-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .service-page--lighting .lighting-panel,
+      .service-page--lighting .lighting-card,
+      .service-page--lighting .lighting-metric,
+      .service-page--lighting .lighting-step,
+      .service-page--lighting .lighting-zone,
+      .service-page--lighting .lighting-scene-preview,
+      .service-page--lighting .lighting-process-visual,
+      .service-page--lighting .lighting-image-card,
+      .service-page--lighting .lighting-card-media,
+      .service-page--lighting .lighting-zone-media,
+      .service-page--lighting .lighting-step-media,
+      .service-page--lighting .lighting-intro-carousel .service-card.lighting-intro-slide,
+      .service-page--lighting .lighting-intro-slide-meta,
+      .service-page--lighting .lighting-stat,
+      .service-page--lighting .lighting-stat-visual,
+      .service-page--lighting .lighting-card-visual,
+      .service-page--lighting .lighting-metric-visual,
+      .service-page--lighting .lighting-control-visual,
+      .service-page--lighting .lighting-zone-visual,
+      .service-page--lighting .lighting-card-index,
+      .service-page--lighting .lighting-room-demo,
+      .service-page--lighting .lighting-room-labels div,
+      .service-page--lighting .lighting-scene-meta div,
+      .service-page--lighting .lighting-ceiling-note,
+      .service-page--lighting .lighting-ceiling-room,
+      .service-page--lighting .lighting-ceiling-sensor,
+      .service-page--lighting .lighting-scene-tab,
+      .service-page--lighting .lighting-scene-room,
+      .service-page--lighting .lighting-scene-window,
+      .service-page--lighting .lighting-cta-panel,
+      .service-page--lighting .lighting-btn-secondary,
+      .service-page--lighting .lighting-intro-carousel .services-arrow {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .service-page--lighting .lighting-panel,
+      .service-page--lighting .lighting-card,
+      .service-page--lighting .lighting-metric,
+      .service-page--lighting .lighting-step,
+      .service-page--lighting .lighting-zone,
+      .service-page--lighting .lighting-scene-preview,
+      .service-page--lighting .lighting-process-visual,
+      .service-page--lighting .lighting-image-card,
+      .service-page--lighting .lighting-card-media,
+      .service-page--lighting .lighting-zone-media,
+      .service-page--lighting .lighting-step-media,
+      .service-page--lighting .lighting-intro-carousel .service-card.lighting-intro-slide,
+      .service-page--lighting .lighting-intro-slide-meta,
+      .service-page--lighting .lighting-stat,
+      .service-page--lighting .lighting-stat-visual,
+      .service-page--lighting .lighting-card-visual,
+      .service-page--lighting .lighting-metric-visual,
+      .service-page--lighting .lighting-control-visual,
+      .service-page--lighting .lighting-zone-visual,
+      .service-page--lighting .lighting-card-index,
+      .service-page--lighting .lighting-room-demo,
+      .service-page--lighting .lighting-room-labels div,
+      .service-page--lighting .lighting-scene-meta div,
+      .service-page--lighting .lighting-ceiling-note,
+      .service-page--lighting .lighting-ceiling-room,
+      .service-page--lighting .lighting-ceiling-sensor,
+      .service-page--lighting .lighting-scene-tab,
+      .service-page--lighting .lighting-scene-room,
+      .service-page--lighting .lighting-scene-window,
+      .service-page--lighting .lighting-cta-panel,
+      .service-page--lighting .lighting-btn-secondary,
+      .service-page--lighting .lighting-intro-carousel .services-arrow {
+        box-shadow: none !important;
+      }
+      @media (max-width: 1024px) {
+        .lighting-page .lighting-eyebrow {
+          font-size: var(--lighting-eyebrow-size-tablet);
+        }
+        .lighting-page .lighting-title,
+        .lighting-page .lighting-display {
+          font-size: var(--lighting-display-size-tablet);
+          line-height: var(--lighting-display-line-tablet);
+        }
+        .lighting-page .lighting-text,
+        .lighting-page .lighting-lead {
+          font-size: var(--lighting-lead-size-tablet);
+          line-height: var(--lighting-lead-line-tablet);
+        }
+        .lighting-page .lighting-body {
+          font-size: var(--lighting-body-size-tablet);
+        }
+        .lighting-page .lighting-card-title {
+          font-size: var(--lighting-card-title-size-tablet);
+          line-height: var(--lighting-card-title-line-tablet);
+        }
+        .lighting-page .lighting-card-body {
+          font-size: var(--lighting-card-body-size-tablet);
+        }
+        .lighting-page .lighting-meta {
+          font-size: var(--lighting-meta-size-tablet);
+        }
+      }
+      @media (max-width: 767px) {
+        .lighting-page .lighting-eyebrow {
+          font-size: var(--lighting-eyebrow-size-mobile);
+        }
+        .lighting-page .lighting-title,
+        .lighting-page .lighting-display {
+          font-size: var(--lighting-display-size-mobile);
+          line-height: var(--lighting-display-line-mobile);
+        }
+        .lighting-page .lighting-text,
+        .lighting-page .lighting-lead {
+          font-size: var(--lighting-lead-size-mobile);
+          line-height: var(--lighting-lead-line-mobile);
+        }
+        .lighting-page .lighting-body {
+          font-size: var(--lighting-body-size-mobile);
+        }
+        .lighting-page .lighting-card-title {
+          font-size: var(--lighting-card-title-size-mobile);
+          line-height: var(--lighting-card-title-line-mobile);
+        }
+        .lighting-page .lighting-card-body {
+          font-size: var(--lighting-card-body-size-mobile);
+        }
+        .lighting-page .lighting-meta {
+          font-size: var(--lighting-meta-size-mobile);
+        }
+      }
+      @media (max-width: 1100px) {
+        .service-page--lighting .service-hero--electro .service-hero-shell {
+          grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+          min-height: 68.5vh;
+          height: 68.5vh;
+          border-radius: 0;
+          align-items: center;
+          gap: 32px;
+          padding: 36px 0;
+        }
+        .service-page--lighting .service-hero-media img {
+          top: auto;
+          bottom: auto;
+          right: auto;
+          left: auto;
+          width: min(100%, 620px);
+          height: auto;
+          min-width: 0;
+          min-height: 0;
+          max-height: min(60vh, 620px);
+          object-position: center;
+          transform: none;
+        }
+        .service-page--lighting .service-hero--electro .hero__title {
+          font-size: clamp(50px, 5.8vw, 80px);
+        }
+        .service-page--lighting .service-hero-lead {
+          max-width: 26ch;
+        }
+        .service-page--lighting .electro-benefits__row {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .lighting-metrics-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .lighting-zones-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .service-page--lighting .service-hero--electro {
+          min-height: 64.8vh;
+        }
+        .service-page--lighting .service-hero--electro .service-hero-shell {
+          grid-template-columns: 1fr;
+          min-height: 64.8vh;
+          height: auto;
+          gap: 18px;
+          padding: 24px 0 20px;
+        }
+        .service-page--lighting .service-hero--electro .service-hero-copy {
+          align-self: start;
+          padding: 0;
+          margin-top: 0;
+          max-width: 100%;
+        }
+        .service-page--lighting .service-hero-media {
+          height: auto;
+          overflow: visible;
+          width: 100%;
+          justify-self: center;
+        }
+        .service-page--lighting .service-hero-media img {
+          top: auto;
+          bottom: auto;
+          right: auto;
+          left: auto;
+          width: min(100%, 360px);
+          height: clamp(220px, 34vh, 340px);
+          min-width: 0;
+          min-height: 0;
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          object-position: center;
+          transform: none;
+          -webkit-mask-image: none;
+          mask-image: none;
+        }
+        .service-page--lighting .service-hero--electro .hero__title {
+          font-size: clamp(38px, 10.4vw, 52px);
+          line-height: 0.94;
+          padding: 10px 12px 14px 0;
+          margin-left: 0;
+        }
+        .service-page--lighting .service-hero-lead {
+          font-size: 17px;
+          max-width: 26ch;
+        }
+        .service-page--lighting .service-hero-actions {
+          margin-top: 24px;
+        }
+        .service-page--lighting .electro-showcase,
+        .service-page--lighting .electro-process__shell,
+        .service-page--lighting .electro-final-cta__inner {
+          border-radius: 24px;
+        }
+        .service-page--lighting .electro-benefits__row {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      @media (max-width: 980px) {
+        .lighting-container {
+          width: calc(100% - 32px);
+        }
+        .lighting-intro-carousel .services-track {
+          grid-auto-columns: minmax(100%, 1fr);
+        }
+        .lighting-intro-carousel .service-card.lighting-intro-slide {
+          min-height: 680px;
+          height: 680px;
+        }
+        .lighting-intro-stats,
+        .lighting-cards-3,
+        .lighting-process-grid,
+        .lighting-scenes-grid,
+        .lighting-scene-meta {
+          grid-template-columns: 1fr;
+        }
+        .lighting-intro-gallery {
+          grid-template-columns: 1fr;
+        }
+        .lighting-stat {
+          min-height: 0;
+        }
+        .lighting-metrics-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .lighting-zones-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .lighting-room-labels {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .lighting-section {
+          padding: 76px 0;
+        }
+        .lighting-container {
+          width: calc(100% - 24px);
+        }
+        .lighting-intro-carousel .services-track {
+          grid-auto-columns: 100%;
+          gap: 16px;
+        }
+        .lighting-intro-carousel .service-card.lighting-intro-slide {
+          min-height: 570px;
+          height: 570px;
+          border-radius: 24px;
+        }
+        .lighting-intro-slide-copy {
+          padding: 24px 22px 22px;
+        }
+        .lighting-intro-slide-copy .lighting-card-title {
+          font-size: clamp(24px, 7vw, 34px);
+        }
+        .lighting-metrics-grid,
+        .lighting-zones-grid,
+        .lighting-intro-stats {
+          grid-template-columns: 1fr;
+        }
+        .lighting-room-demo,
+        .lighting-scene-room,
+        .lighting-process-visual {
+          height: 320px;
+          min-height: 320px;
+        }
+        .lighting-cta-actions {
+          flex-direction: column;
+        }
+        .lighting-btn {
+          width: 100%;
+        }
+      }
     </style>
   </head>
-  <body class="service-page">
+  <body class="service-page service-page--lighting">
     <div class="bg-shell" aria-hidden="true"></div>
     <header class="site-header">
       <div class="container header-inner">
@@ -79,103 +1572,471 @@
     </header>
     <div class="menu-backdrop" aria-hidden="true"></div>
     <main class="service-main">
-      <section class="service-hero reveal">
-        <div class="service-hero-copy">
-          <p class="service-eyebrow">Naše služby</p>
-          <h1>Světelné scény, které pracují za vás</h1>
-          <p>Služba Chytré osvětlení je navržena tak, aby byla přehledná, technicky stabilní a dlouhodobě udržitelná.</p>
-          <a class="btn primary contact-cta-btn creepy-btn" href="index.html#contact" aria-label="Začněme"><span class="creepy-btn__eyes" aria-hidden="true"><span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span><span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span></span><span class="creepy-btn__cover">Začněme</span></a>
-        </div>
-        <div class="service-hero-media"><img src="chytra-zarovka-chytre-osvetleni.png" alt="Chytré osvětlení v moderním domě" /></div>
-      </section>
-      <section class="service-metrics reveal" aria-label="Klíčové metriky služby">
-        <article class="metric-card"><p class="metric-label">Výsledek</p><p class="metric-value">12+</p><p class="metric-sub">Měřitelný přínos služby</p></article>
-        <article class="metric-card"><p class="metric-label">Životnost</p><p class="metric-value">až 35 %</p><p class="metric-sub">Stabilita navrženého řešení</p></article>
-        <article class="metric-card"><p class="metric-label">Reakce</p><p class="metric-value">< 0,3 s</p><p class="metric-sub">Rychlá odezva systému</p></article>
-        <article class="metric-card"><p class="metric-label">Rozvoj</p><p class="metric-value">100 %</p><p class="metric-sub">Připraveno na budoucí rozšíření</p></article>
-      </section>
-      <section class="service-story">
-        <article class="story-row reveal">
-          <div class="story-text">
-            <h2>Jak službu Chytré osvětlení realizujeme</h2>
-            <p>Začínáme analýzou potřeb, pokračujeme technickým návrhem a následně realizací včetně testování. Vždy držíme důraz na čisté provedení, dokumentaci a dlouhodobý servis.</p>
-            <ul>
-              <li>Jasná struktura a technický návrh</li>
-              <li>Koordinace všech profesí</li>
-              <li>Předání s ověřenou funkčností</li>
-            </ul>
+      <section class="service-hero service-hero--electro reveal" aria-labelledby="service-hero-lighting-title">
+        <div class="container service-hero-shell">
+          <div class="service-hero-copy">
+            <h1 id="service-hero-lighting-title" class="hero__title">
+              <span class="hero__title-muted">Chytré</span>
+              <span class="hero__title-warm" data-text="osvětlení">osvětlení</span>
+            </h1>
+            <p class="service-hero-lead">Temná, přesná a klidná světelná architektura. Navrhujeme scény, automatiky a ovládání tak, aby světlo působilo přirozeně a dům reagoval bez zbytečného hluku v rozhraní i v provozu.</p>
+            <div class="service-hero-actions">
+              <a class="btn primary contact-cta-btn creepy-btn" href="index.html#contact" aria-label="Poptat realizaci"><span class="creepy-btn__eyes" aria-hidden="true"><span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span><span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span></span><span class="creepy-btn__cover">Poptat realizaci</span></a>
+            </div>
           </div>
-          <div class="story-media"><img src="chytra-zarovka-chytre-osvetleni.png" alt="Chytré osvětlení v moderním domě" /></div>
-        </article>
-        <article class="story-row reverse reveal">
-          <div class="story-text">
-            <h2>Provoz, servis a další rozvoj</h2>
-            <p>Systém nastavujeme tak, aby fungoval přirozeně i po letech provozu. Uživatel má jednoduché ovládání, technik jasný servisní přístup a projekt prostor pro další etapy.</p>
-            <ul>
-              <li>Stabilní lokální provoz</li>
-              <li>Průběžná optimalizace</li>
-              <li>Rozšiřitelnost bez zásadních zásahů</li>
-            </ul>
-          </div>
-          <div class="story-media"><img src="Interface LOXONE Iphone.png" alt="Rozhraní aplikace pro správu služby" /></div>
-        </article>
-      </section>
-      <section class="service-cta reveal">
-        <div>
-          <h3>Chcete řešení přesně pro váš projekt?</h3>
-          <p>Připravíme návrh včetně technického konceptu, rozpočtu a harmonogramu.</p>
+          <div class="service-hero-media"><img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Stropní bodová světla na liště v moderním interiéru – chytré osvětlení SMARTPORT" /></div>
         </div>
-        <a class="btn primary" href="mailto:info@smartport.cz">Kontaktujte nás</a>
+      </section>
+      <section class="lighting-page">
+        <section class="lighting-section lighting-intro">
+          <div class="lighting-container">
+            <div class="lighting-intro-shell">
+              <div class="lighting-intro-copy lighting-reveal">
+                <span class="lighting-eyebrow">Jak o tom přemýšlíme</span>
+                <h2 class="lighting-title lighting-display">Jak světlo mění prostor</h2>
+                <p class="lighting-text lighting-lead">
+                  Dobře navržené osvětlení není o počtu svítidel. Je o vrstvení světla,
+                  správné intenzitě, teplotě barev a scénách, které odpovídají tomu, co právě doma děláte.
+                </p>
+              </div>
+              <div class="services-carousel lighting-intro-carousel lighting-reveal">
+                <div class="services-track" role="list">
+                  <article class="service-card lighting-intro-slide" role="listitem">
+                    <img src="smartport-osvetleni-klasicka-elektroinstalace.webp" alt="Vrstevnaté světlo v obytném prostoru" />
+                    <div class="lighting-intro-slide-copy">
+                      <div class="lighting-intro-slide-meta lighting-meta">3 vrstvy světla</div>
+                      <div>
+                        <h3 class="lighting-card-title">Funkční základ, klidná atmosféra a akcent v jedné kompozici.</h3>
+                        <p class="lighting-card-body">Správně vrstvené světlo mění prostor bez vizuálního chaosu a bez nutnosti přemýšlet nad každým okruhem zvlášť.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="service-card lighting-intro-slide" role="listitem">
+                    <img src="Interface LOXONE Iphone.png" alt="Jednotná logika ovládání světelných scén" />
+                    <div class="lighting-intro-slide-copy">
+                      <div class="lighting-intro-slide-meta lighting-meta">1 logika ovládání</div>
+                      <div>
+                        <h3 class="lighting-card-title">Místo deseti rozhodnutí jeden srozumitelný výsledek.</h3>
+                        <p class="lighting-card-body">Scény, tlačítka i aplikace musí vést ke stejnému chování prostoru. Právě v tom vzniká skutečný komfort.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="service-card lighting-intro-slide" role="listitem">
+                    <img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Atmosféra a funkce chytrého osvětlení" />
+                    <div class="lighting-intro-slide-copy">
+                      <div class="lighting-intro-slide-meta lighting-meta">Atmosféra + funkce</div>
+                      <div>
+                        <h3 class="lighting-card-title">Světlo, které funguje technicky přesně a zároveň působí klidně.</h3>
+                        <p class="lighting-card-body">Dobré osvětlení je patrné na první pohled, ale neruší. Dům působí přirozeněji, čistěji a jistěji v každé situaci.</p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="services-arrows" aria-label="Listování bloky">
+                  <button class="services-arrow services-arrow--prev" type="button" aria-label="Předchozí blok">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19.5L8.5 12l7-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button class="services-arrow services-arrow--next" type="button" aria-label="Další blok">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4.5L15.5 12l-7 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+                <div class="services-dots" aria-label="Indikace bloků">
+                  <button class="is-active" type="button" aria-label="Blok 1"></button>
+                  <button type="button" aria-label="Blok 2"></button>
+                  <button type="button" aria-label="Blok 3"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-layers">
+          <div class="lighting-container">
+            <span class="lighting-eyebrow lighting-reveal">Tři vrstvy světla</span>
+            <h2 class="lighting-title lighting-display lighting-reveal">Tři vrstvy, jeden celek</h2>
+            <p class="lighting-text lighting-lead lighting-reveal">
+              Vyvážený interiér nevzniká jedním typem světla. Potřebuje funkční základ, klidnou ambientní vrstvu a akcent, který vede pozornost.
+            </p>
+            <div class="lighting-cards lighting-cards-3">
+              <article class="lighting-card lighting-reveal">
+                <div class="lighting-card-media">
+                  <img src="smartport-osvetleni-klasicka-elektroinstalace.webp" alt="Dočasný vizuál základního osvětlení" />
+                </div>
+                <div class="lighting-card-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M7 8h10"></path><path d="M9 16h6"></path></svg>
+                </div>
+                <span class="lighting-card-index">01</span>
+                <h3 class="lighting-card-title">Pracovní a základní osvětlení</h3>
+                <p class="lighting-card-body">Základ pro jistotu, přehlednost a každodenní používání prostoru.</p>
+                <ul>
+                  <li>rovnoměrné světlo bez tmavých míst</li>
+                  <li>vhodné pro kuchyň, koupelnu i komunikace</li>
+                  <li>stmívání podle denní doby</li>
+                </ul>
+              </article>
+              <article class="lighting-card lighting-reveal">
+                <div class="lighting-card-media">
+                  <img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Dočasný vizuál nepřímého osvětlení" />
+                </div>
+                <div class="lighting-card-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 12c2.5-3.2 5.2-4.8 8-4.8s5.5 1.6 8 4.8"></path><path d="M6 15c2.1-1.8 4.1-2.7 6-2.7s3.9.9 6 2.7"></path></svg>
+                </div>
+                <span class="lighting-card-index">02</span>
+                <h3 class="lighting-card-title">Nepřímé osvětlení</h3>
+                <p class="lighting-card-body">Měkčí vrstva pro klid, hloubku a večerní atmosféru bez oslnění.</p>
+                <ul>
+                  <li>LED pásky v nikách a podhledech</li>
+                  <li>větší hloubka prostoru</li>
+                  <li>luxusnější a klidnější výraz interiéru</li>
+                </ul>
+              </article>
+              <article class="lighting-card lighting-reveal">
+                <div class="lighting-card-media">
+                  <img src="chytra-zarovka-chytre-osvetleni.png" alt="Dočasný vizuál akcentního osvětlení" />
+                </div>
+                <div class="lighting-card-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 4v4"></path><path d="M6 18l4-6"></path><path d="M18 18l-4-6"></path><circle cx="12" cy="12" r="2.5"></circle></svg>
+                </div>
+                <span class="lighting-card-index">03</span>
+                <h3 class="lighting-card-title">Akcentní osvětlení</h3>
+                <p class="lighting-card-body">Vrstva, která vede pozornost a zvýrazní důležitá místa v prostoru.</p>
+                <ul>
+                  <li>závěsná svítidla a světelné ostrovy</li>
+                  <li>důraz na stůl, stěnu nebo detail</li>
+                  <li>silnější charakter prostoru</li>
+                </ul>
+              </article>
+            </div>
+            <div class="lighting-room-demo lighting-reveal">
+              <div class="lighting-room-wall"></div>
+              <div class="lighting-room-spots">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="lighting-room-pendant"></div>
+              <div class="lighting-room-table"></div>
+              <div class="lighting-room-strip"></div>
+              <div class="lighting-room-labels">
+                  <div class="lighting-meta">Pracovní světlo</div>
+                  <div class="lighting-meta">Nepřímé světlo</div>
+                  <div class="lighting-meta">Akcentní světlo</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-metrics">
+          <div class="lighting-container">
+            <span class="lighting-eyebrow lighting-reveal">Co rozhoduje o výsledku</span>
+            <h2 class="lighting-title lighting-display lighting-reveal">Pět parametrů, které dělají rozdíl</h2>
+            <div class="lighting-metrics-grid">
+              <article class="lighting-metric lighting-reveal">
+                <div class="lighting-metric-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6 18V9"></path><path d="M10 18V6"></path><path d="M14 18V11"></path><path d="M18 18V8"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Lux</h3>
+                <p class="lighting-card-body">Určuje, kolik světla skutečně dopadá do konkrétního místa a jak pohodlně se v prostoru funguje.</p>
+              </article>
+              <article class="lighting-metric lighting-reveal">
+                <div class="lighting-metric-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 4v16"></path><path d="M7 9h10"></path><path d="M5 14h14"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Lumen</h3>
+                <p class="lighting-card-body">Pomáhá pochopit celkový světelný výkon zdroje a správně zvolit sílu svítidla.</p>
+              </article>
+              <article class="lighting-metric lighting-reveal">
+                <div class="lighting-metric-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6 18h12"></path><path d="M8 14c1.3-2.7 3-4 4-4s2.7 1.3 4 4"></path><path d="M9 9h6"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Kelvin</h3>
+                <p class="lighting-card-body">Teplota barev mění náladu prostoru. Jinou tonalitu potřebuje ráno kuchyň, jinou večerní obývák.</p>
+              </article>
+              <article class="lighting-metric lighting-reveal">
+                <div class="lighting-metric-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">CRI / Ra</h3>
+                <p class="lighting-card-body">Říká, jak přirozeně budou vypadat materiály, barvy, jídlo i pleť při umělém osvětlení.</p>
+              </article>
+              <article class="lighting-metric lighting-reveal">
+                <div class="lighting-metric-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 18l8-10 8 10"></path><path d="M12 8v10"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Úhel kuželu</h3>
+                <p class="lighting-card-body">Ovlivňuje charakter nasvícení, rytmus stropu i to, jak přesně nebo měkce světlo působí.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-process">
+          <div class="lighting-container">
+            <span class="lighting-eyebrow lighting-reveal">Jak navrhujeme</span>
+            <h2 class="lighting-title lighting-display lighting-reveal">Nejen svítidla. Celou logiku prostoru.</h2>
+            <p class="lighting-text lighting-lead lighting-reveal">
+              Rozmístění spotů, výška stropu, zóny, senzory přítomnosti, návaznost na scény i běžný provoz domu. Návrh musí fungovat jako celek.
+            </p>
+            <div class="lighting-process-grid">
+              <div class="lighting-process-visual lighting-reveal">
+                <div class="lighting-ceiling-grid"></div>
+                <div class="lighting-ceiling-room"></div>
+                <span class="lighting-ceiling-spot" style="left:22%;top:28%;"></span>
+                <span class="lighting-ceiling-spot" style="left:42%;top:28%;"></span>
+                <span class="lighting-ceiling-spot" style="left:58%;top:28%;"></span>
+                <span class="lighting-ceiling-spot" style="left:78%;top:28%;"></span>
+                <span class="lighting-ceiling-spot" style="left:22%;top:74%;"></span>
+                <span class="lighting-ceiling-spot" style="left:42%;top:74%;"></span>
+                <span class="lighting-ceiling-spot" style="left:58%;top:74%;"></span>
+                <span class="lighting-ceiling-spot" style="left:78%;top:74%;"></span>
+                <span class="lighting-ceiling-sensor" style="left:50%;top:51%;"></span>
+                <div class="lighting-ceiling-note lighting-body">
+                  Senzor přítomnosti musí fungovat technicky správně a zároveň nenarušit čistotu kompozice stropu.
+                </div>
+              </div>
+              <div class="lighting-steps">
+                <article class="lighting-step lighting-reveal">
+                  <div class="lighting-step-media">
+                    <img src="technicky-projekt-smartport.gif" alt="Dočasný vizuál dispozice a výšky stropu" />
+                  </div>
+                  <h3 class="lighting-card-title">Dispozice a výška stropu</h3>
+                  <p class="lighting-card-body">Každý prostor má jiné proporce, proto řešíme rozteče, intenzitu i rytmus stropu individuálně.</p>
+                </article>
+                <article class="lighting-step lighting-reveal">
+                  <div class="lighting-step-media">
+                    <img src="instalace-a-integrace-smartport.png" alt="Dočasný vizuál role jednotlivých svítidel" />
+                  </div>
+                  <h3 class="lighting-card-title">Role jednotlivých svítidel</h3>
+                  <p class="lighting-card-body">Jiná svítidla dávají smysl nad pracovní plochou, jiná v podhledu a jiná nad jídelním stolem.</p>
+                </article>
+                <article class="lighting-step lighting-reveal">
+                  <div class="lighting-step-media">
+                    <img src="loxone-chytry-dum-ovladani-automatizace-smartport-cz.gif" alt="Dočasný vizuál senzorů a automatiky" />
+                  </div>
+                  <h3 class="lighting-card-title">Senzory a automatika</h3>
+                  <p class="lighting-card-body">Osvětlení se má chovat přirozeně. Bez zpoždění, bez chaosu a bez otravných reakcí.</p>
+                </article>
+                <article class="lighting-step lighting-reveal">
+                  <div class="lighting-step-media">
+                    <img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál světelných scén" />
+                  </div>
+                  <h3 class="lighting-card-title">Scény a provoz domu</h3>
+                  <p class="lighting-card-body">Návrh musí fungovat ráno, večer, v noci i při návštěvě. Ne jen v technickém výkresu.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-scenes">
+          <div class="lighting-container">
+            <span class="lighting-eyebrow lighting-reveal">Světelné scény</span>
+            <h2 class="lighting-title lighting-display lighting-reveal">Místo složitého ovládání jeden jasný výsledek</h2>
+            <div class="lighting-scenes-grid">
+              <div class="lighting-scene-tabs lighting-reveal">
+                <button class="lighting-scene-tab is-active" type="button" data-scene="rano">
+                  <strong class="lighting-card-title">Ráno</strong>
+                  <span class="lighting-card-body">Čistý a klidný start dne</span>
+                </button>
+                <button class="lighting-scene-tab" type="button" data-scene="vecer">
+                  <strong class="lighting-card-title">Večer</strong>
+                  <span class="lighting-card-body">Měkčí světlo a větší role ambientní vrstvy</span>
+                </button>
+                <button class="lighting-scene-tab" type="button" data-scene="navsteva">
+                  <strong class="lighting-card-title">Návštěva</strong>
+                  <span class="lighting-card-body">Vyvážená kombinace všech vrstev</span>
+                </button>
+                <button class="lighting-scene-tab" type="button" data-scene="noc">
+                  <strong class="lighting-card-title">Noc</strong>
+                  <span class="lighting-card-body">Minimum světla pro bezpečný pohyb</span>
+                </button>
+              </div>
+              <div class="lighting-scene-preview lighting-reveal">
+                <div class="lighting-scene-room" id="lighting-scene-room" data-active-scene="rano">
+                  <div class="lighting-scene-base"></div>
+                  <div class="lighting-scene-window"></div>
+                  <div class="lighting-scene-ceiling">
+                    <span class="lighting-scene-downlight"></span>
+                    <span class="lighting-scene-downlight"></span>
+                    <span class="lighting-scene-downlight"></span>
+                    <span class="lighting-scene-downlight"></span>
+                  </div>
+                  <div class="lighting-scene-pendant"></div>
+                  <div class="lighting-scene-strip"></div>
+                  <div class="lighting-scene-sofa"></div>
+                  <div class="lighting-scene-table"></div>
+                </div>
+                <div class="lighting-scene-meta">
+                  <div><span class="lighting-meta">Intenzita</span><strong class="lighting-card-body" id="lighting-scene-intensity">65 %</strong></div>
+                  <div><span class="lighting-meta">Teplota</span><strong class="lighting-card-body" id="lighting-scene-temp">3000 K</strong></div>
+                  <div><span class="lighting-meta">Aktivní vrstvy</span><strong class="lighting-card-body" id="lighting-scene-layers">základní + nepřímé</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-controls">
+          <div class="lighting-container">
+            <span class="lighting-eyebrow lighting-reveal">Jak se ovládá</span>
+            <h2 class="lighting-title lighting-display lighting-reveal">Automaticky, tlačítkem nebo v aplikaci</h2>
+            <div class="lighting-cards lighting-cards-3">
+              <article class="lighting-card lighting-control-card lighting-reveal">
+                <div class="lighting-card-media">
+                  <img src="loxone-chytry-dum-ovladani-automatizace-smartport-cz.gif" alt="Dočasný vizuál přítomnostního ovládání" />
+                </div>
+                <div class="lighting-control-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 6a5 5 0 0 1 5 5"></path><path d="M7 11a5 5 0 0 1 5-5"></path><path d="M6 18c1.5-2 3.5-3 6-3s4.5 1 6 3"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Přítomnost</h3>
+                <p class="lighting-card-body">Osvětlení se aktivuje tam, kde dává smysl, a reaguje podle režimu domu i denní doby.</p>
+              </article>
+              <article class="lighting-card lighting-control-card lighting-reveal">
+                <div class="lighting-card-media">
+                  <img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál tlačítkového ovládání" />
+                </div>
+                <div class="lighting-control-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="8" y="4" width="8" height="16" rx="3"></rect><path d="M10.5 9h3"></path><path d="M10.5 14h3"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Tlačítko</h3>
+                <p class="lighting-card-body">Jedním bodem lze přepínat připravené scény bez přemýšlení nad jednotlivými okruhy.</p>
+              </article>
+              <article class="lighting-card lighting-control-card lighting-reveal">
+                <div class="lighting-card-media">
+                  <img src="Interface LOXONE Iphone.png" alt="Dočasný vizuál aplikace pro ovládání světel" />
+                </div>
+                <div class="lighting-control-visual" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2.5"></rect><path d="M10 7.5h4"></path><path d="M12 16.5h.01"></path></svg>
+                </div>
+                <h3 class="lighting-card-title">Aplikace</h3>
+                <p class="lighting-card-body">Ruční změna scén, intenzity nebo chování prostoru je dostupná i vzdáleně.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-zones">
+          <div class="lighting-container">
+            <span class="lighting-eyebrow lighting-reveal">Kde je rozdíl opravdu vidět</span>
+            <h2 class="lighting-title lighting-display lighting-reveal">V každé zóně jinak. Ale vždy smysluplně.</h2>
+            <div class="lighting-zones-grid">
+              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="smartport-osvetleni-klasicka-elektroinstalace.webp" alt="Dočasný vizuál kuchyně" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18h14"></path><path d="M7 14h10"></path><path d="M9 10h6"></path></svg></div><h3 class="lighting-card-title">Kuchyně</h3><p class="lighting-card-body">Jistota na pracovní ploše a klidnější vrstvy pro večer.</p></article>
+              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Dočasný vizuál jídelny" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v10"></path><path d="M7 18h10"></path><path d="M9 15h6"></path></svg></div><h3 class="lighting-card-title">Jídelna</h3><p class="lighting-card-body">Důraz na stůl, správná atmosféra a příjemná teplota světla.</p></article>
+              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál obývacího pokoje" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16h12"></path><path d="M8 12h8"></path><path d="M10 8h4"></path></svg></div><h3 class="lighting-card-title">Obývací pokoj</h3><p class="lighting-card-body">Kombinace scén pro odpočinek, návštěvu i běžný provoz.</p></article>
+              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="Interface LOXONE Iphone.png" alt="Dočasný vizuál ložnice" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18v-6"></path><path d="M17 18v-6"></path><path d="M7 12h10"></path><path d="M9 9h6"></path></svg></div><h3 class="lighting-card-title">Ložnice</h3><p class="lighting-card-body">Jemnější vrstvy a minimální rušení při nočním pohybu.</p></article>
+              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="chytra-zarovka-chytre-osvetleni.png" alt="Dočasný vizuál koupelny" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 17h12"></path><path d="M8 12h8"></path><path d="M10 7h4"></path><path d="M12 4v3"></path></svg></div><h3 class="lighting-card-title">Koupelna</h3><p class="lighting-card-body">Přesné světlo tam, kde je potřeba, a měkčí režimy pro ráno i večer.</p></article>
+            </div>
+          </div>
+        </section>
+        <section class="lighting-section lighting-cta">
+          <div class="lighting-container">
+            <div class="lighting-cta-panel lighting-reveal">
+              <span class="lighting-eyebrow">SMARTPORT</span>
+              <h2 class="lighting-title lighting-display">Navrhneme osvětlení, které funguje technicky i atmosférou.</h2>
+              <p class="lighting-text lighting-lead">
+                Od dispozice a výběru svítidel přes logiku scén až po automatiku, senzory a finální doladění.
+              </p>
+              <div class="lighting-cta-actions">
+                <a href="index.html#contact" class="lighting-btn lighting-btn-primary">Nezávazně poptat řešení</a>
+                <a href="index.html#contact" class="lighting-btn lighting-btn-secondary">Konzultace projektu</a>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <img src="LOGO_footer.gif" alt="Smartport logo" />
-          </div>
-</div>
+        <div class="footer-top"><div class="footer-brand"><img src="LOGO_footer.gif" alt="Smartport logo" /></div></div>
         <div class="footer-grid">
-          <div class="footer-block">
-            <h4>Ozvěte se nám</h4>
-            <ul>
-              <li>+420 775 563 355</li>
-              <li>info@smartport.cz</li>
-              <li>Po-Pá 9:00-16:00</li>
-              <li>Nad Prahou 1096</li>
-            </ul>
-          </div>
-          <div class="footer-block">
-            <h4>Rychlé odkazy</h4>
-            <ul class="footer-links">
-              <li><a href="#">Ochrana osobních údajů</a></li>
-              <li><a href="#">Obchodní podmínky</a></li>
-              <li><a href="about.html">O nás</a></li>
-              <li><a href="#contact">Kontakt</a></li>
-            </ul>
-          </div>
+          <div class="footer-block"><h4>Ozvěte se nám</h4><ul><li>+420 775 563 355</li><li>info@smartport.cz</li><li>Po-Pá 9:00-16:00</li><li>Nad Prahou 1096</li></ul></div>
+          <div class="footer-block"><h4>Rychlé odkazy</h4><ul class="footer-links"><li><a href="#">Ochrana osobních údajů</a></li><li><a href="#">Obchodní podmínky</a></li><li><a href="about.html">O nás</a></li><li><a href="#contact">Kontakt</a></li></ul></div>
         </div>
         <p class="footer-note">Smartport 2025. Design by Smartport.</p>
       </div>
     </footer>
     <script src="main.js"></script>
+    <script src="service-detail.js"></script>
     <script>
-      (() => {
-        const items = document.querySelectorAll('.reveal');
-        if (!items.length) return;
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              io.unobserve(entry.target);
-            }
+      document.addEventListener("DOMContentLoaded", () => {
+        const revealItems = document.querySelectorAll(".lighting-reveal");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "0px 0px -8% 0px",
+          }
+        );
+        revealItems.forEach((item) => revealObserver.observe(item));
+
+        const sceneTabs = document.querySelectorAll(".lighting-scene-tab");
+        const sceneRoom = document.getElementById("lighting-scene-room");
+        const sceneIntensity = document.getElementById("lighting-scene-intensity");
+        const sceneTemp = document.getElementById("lighting-scene-temp");
+        const sceneLayers = document.getElementById("lighting-scene-layers");
+        const strip = sceneRoom?.querySelector(".lighting-scene-strip");
+        const downlights = sceneRoom?.querySelectorAll(".lighting-scene-downlight");
+
+        const scenes = {
+          rano: {
+            intensity: "65 %",
+            temp: "3000 K",
+            layers: "základní + nepřímé",
+            background: "linear-gradient(180deg, #1a1f2a 0%, #0d1015 100%)",
+            stripOpacity: "0.55",
+            downlightOpacity: "0.78",
+          },
+          vecer: {
+            intensity: "38 %",
+            temp: "2700 K",
+            layers: "nepřímé + akcentní",
+            background: "linear-gradient(180deg, #17141b 0%, #09090c 100%)",
+            stripOpacity: "0.92",
+            downlightOpacity: "0.28",
+          },
+          navsteva: {
+            intensity: "72 %",
+            temp: "2850 K",
+            layers: "základní + nepřímé + akcentní",
+            background: "linear-gradient(180deg, #1c1d24 0%, #0b0c10 100%)",
+            stripOpacity: "0.75",
+            downlightOpacity: "0.88",
+          },
+          noc: {
+            intensity: "12 %",
+            temp: "2400 K",
+            layers: "orientační nepřímé",
+            background: "linear-gradient(180deg, #0e1015 0%, #060709 100%)",
+            stripOpacity: "0.25",
+            downlightOpacity: "0.08",
+          },
+        };
+
+        function applyScene(sceneKey) {
+          const scene = scenes[sceneKey];
+          if (!scene || !sceneRoom) return;
+
+          sceneTabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.scene === sceneKey);
           });
-        }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
-        items.forEach((el) => io.observe(el));
-      })();
+
+          sceneRoom.style.background = scene.background;
+          sceneRoom.dataset.activeScene = sceneKey;
+          if (strip) strip.style.opacity = scene.stripOpacity;
+          downlights?.forEach((light) => {
+            light.style.opacity = scene.downlightOpacity;
+          });
+
+          if (sceneIntensity) sceneIntensity.textContent = scene.intensity;
+          if (sceneTemp) sceneTemp.textContent = scene.temp;
+          if (sceneLayers) sceneLayers.textContent = scene.layers;
+        }
+
+        sceneTabs.forEach((tab) => {
+          tab.addEventListener("click", () => applyScene(tab.dataset.scene));
+        });
+
+        applyScene("rano");
+      });
     </script>
   </body>
 </html>
-
-
-
