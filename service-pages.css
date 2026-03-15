@@ -2,7 +2,7 @@
   background: var(--bg);
 }
 .service-main {
-  padding-bottom: 72px;
+  padding-bottom: 0;
 }
 .service-hero {
   position: relative;
@@ -800,7 +800,8 @@
 }
 
 /* Hero CTA: same visual style as contact block button + better spacing from text */
-.service-hero .btn.primary.contact-cta-btn {
+.service-hero .btn.primary.contact-cta-btn,
+.electro-final-cta .btn.primary.contact-cta-btn {
   margin-top: 28px;
   display: inline-flex;
   align-items: center;
@@ -808,7 +809,8 @@
 }
 
 /* HERO services button: exact clone of contact CTA button */
-.service-hero .btn.primary.contact-cta-btn.creepy-btn {
+.service-hero .btn.primary.contact-cta-btn.creepy-btn,
+.electro-final-cta .btn.primary.contact-cta-btn.creepy-btn {
   white-space: nowrap;
   background: transparent;
   color: #fff;
@@ -819,7 +821,8 @@
   line-height: 1.2;
 }
 
-.service-hero .creepy-btn {
+.service-hero .creepy-btn,
+.electro-final-cta .creepy-btn {
   --cb-black: #000;
   --cb-white: #f5f5f7;
   --cb-primary: var(--accent);
@@ -839,7 +842,8 @@
   transition: outline 0.1s linear;
 }
 
-.service-hero .creepy-btn::before {
+.service-hero .creepy-btn::before,
+.electro-final-cta .creepy-btn::before {
   content: "";
   position: absolute;
   inset: 1px;
@@ -848,7 +852,8 @@
   z-index: 0;
 }
 
-.service-hero .creepy-btn__cover {
+.service-hero .creepy-btn__cover,
+.electro-final-cta .creepy-btn__cover {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -869,26 +874,34 @@
     box-shadow 0.32s ease;
 }
 
-.service-hero .creepy-btn:hover .creepy-btn__cover {
+.service-hero .creepy-btn:hover .creepy-btn__cover,
+.electro-final-cta .creepy-btn:hover .creepy-btn__cover {
   background: var(--cb-primary);
 }
 
-.service-hero .creepy-btn:focus-visible {
+.service-hero .creepy-btn:focus-visible,
+.electro-final-cta .creepy-btn:focus-visible {
   outline-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .service-hero .creepy-btn:focus-visible .creepy-btn__cover,
-.service-hero .creepy-btn:hover .creepy-btn__cover {
+.service-hero .creepy-btn:hover .creepy-btn__cover,
+.service-hero .creepy-btn.is-peeking .creepy-btn__cover,
+.electro-final-cta .creepy-btn:focus-visible .creepy-btn__cover,
+.electro-final-cta .creepy-btn:hover .creepy-btn__cover,
+.electro-final-cta .creepy-btn.is-peeking .creepy-btn__cover {
   transform: rotate(-12deg);
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
 }
 
-.service-hero .creepy-btn:active .creepy-btn__cover {
+.service-hero .creepy-btn:active .creepy-btn__cover,
+.electro-final-cta .creepy-btn:active .creepy-btn__cover {
   transform: rotate(0);
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.service-hero .creepy-btn__eyes {
+.service-hero .creepy-btn__eyes,
+.electro-final-cta .creepy-btn__eyes {
   position: absolute;
   right: 24px;
   bottom: 5px;
@@ -902,7 +915,8 @@
   transition: opacity 0.14s ease;
 }
 
-.service-hero .creepy-btn__eye {
+.service-hero .creepy-btn__eye,
+.electro-final-cta .creepy-btn__eye {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -913,7 +927,8 @@
   animation-play-state: paused;
 }
 
-.service-hero .creepy-btn__pupil {
+.service-hero .creepy-btn__pupil,
+.electro-final-cta .creepy-btn__pupil {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -927,13 +942,38 @@
 }
 
 .service-hero .creepy-btn:hover .creepy-btn__eyes,
-.service-hero .creepy-btn:focus-visible .creepy-btn__eyes {
+.service-hero .creepy-btn:focus-visible .creepy-btn__eyes,
+.service-hero .creepy-btn.is-peeking .creepy-btn__eyes,
+.electro-final-cta .creepy-btn:hover .creepy-btn__eyes,
+.electro-final-cta .creepy-btn:focus-visible .creepy-btn__eyes,
+.electro-final-cta .creepy-btn.is-peeking .creepy-btn__eyes {
   opacity: 1;
 }
 
 .service-hero .creepy-btn:hover .creepy-btn__eye,
-.service-hero .creepy-btn:focus-visible .creepy-btn__eye {
+.service-hero .creepy-btn:focus-visible .creepy-btn__eye,
+.service-hero .creepy-btn.is-peeking .creepy-btn__eye,
+.electro-final-cta .creepy-btn:hover .creepy-btn__eye,
+.electro-final-cta .creepy-btn:focus-visible .creepy-btn__eye,
+.electro-final-cta .creepy-btn.is-peeking .creepy-btn__eye {
   animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-hero .creepy-btn.is-peeking .creepy-btn__cover,
+  .electro-final-cta .creepy-btn.is-peeking .creepy-btn__cover {
+    transform: none;
+  }
+
+  .service-hero .creepy-btn.is-peeking .creepy-btn__eyes,
+  .electro-final-cta .creepy-btn.is-peeking .creepy-btn__eyes {
+    opacity: 0;
+  }
+
+  .service-hero .creepy-btn.is-peeking .creepy-btn__eye,
+  .electro-final-cta .creepy-btn.is-peeking .creepy-btn__eye {
+    animation-play-state: paused;
+  }
 }
 
 
@@ -942,7 +982,6 @@
   min-height: 0;
   padding: 18px 0 44px;
   background:
-    radial-gradient(circle at 16% 34%, rgba(0, 113, 227, 0.07), transparent 24%),
     radial-gradient(circle at 78% 42%, rgba(0, 113, 227, 0.06), transparent 28%),
     radial-gradient(circle at 88% 26%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 24%),
     linear-gradient(180deg, #f7f8fb 0%, #f3f4f6 100%);
@@ -970,7 +1009,7 @@
   top: 8%;
   width: 46%;
   height: 70%;
-  background: radial-gradient(circle, rgba(0, 113, 227, 0.085) 0%, rgba(0, 113, 227, 0.018) 44%, transparent 72%);
+  background: none;
   filter: blur(28px);
 }
 .service-hero--electro .service-hero-shell::after {
@@ -1161,6 +1200,9 @@
   }
   .service-hero--electro .service-hero-media img {
     max-height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(0);
   }
 }
 
@@ -1208,7 +1250,7 @@
   line-height: 1;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: rgba(29, 29, 31, 0.64);
 }
 .electro-process__intro h2 {
   position: relative;
@@ -1366,7 +1408,7 @@
   line-height: 1;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: rgba(29, 29, 31, 0.64);
 }
 .electro-standard__intro h2 {
   position: relative;
@@ -1423,7 +1465,7 @@
   height: 44px;
   margin-bottom: 16px;
   border-radius: 14px;
-  background: rgba(0, 113, 227, 0.06);
+  background: transparent;
   color: var(--accent);
 }
 .electro-standard__icon svg {
@@ -1489,7 +1531,7 @@
   line-height: 1;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: rgba(29, 29, 31, 0.64);
 }
 .electro-benefits__intro h2 {
   position: relative;
@@ -1549,12 +1591,64 @@
   letter-spacing: -0.03em;
   color: var(--ink);
 }
+.electro-benefits__content-title {
+  margin: 0;
+  font-size: clamp(27px, 2.35vw, 38px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
 .electro-benefits__content p {
   margin: 12px 0 0;
   max-width: 920px;
   font-size: clamp(16px, 1.2vw, 18px);
   line-height: 1.7;
   color: var(--muted);
+}
+.electro-final-cta {
+  position: relative;
+  padding: clamp(120px, 12vw, 160px) 0;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f7f9fc 60%,
+    #eef2f7 100%
+  );
+  overflow: hidden;
+}
+.electro-final-cta::before {
+  content: "";
+  position: absolute;
+  right: -8%;
+  top: 50%;
+  width: min(540px, 44vw);
+  height: min(540px, 44vw);
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(0, 113, 227, 0.075) 0%, rgba(0, 113, 227, 0.024) 42%, transparent 72%);
+  filter: blur(34px);
+  pointer-events: none;
+}
+.electro-final-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  text-align: center;
+}
+.electro-final-cta__eyebrow {
+  margin: 20px auto 0;
+  font-size: clamp(18px, 1.7vw, 22px);
+  font-weight: 600;
+  line-height: 1.58;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(29, 29, 31, 0.64);
+}
+.electro-final-cta__text {
+  margin: 20px auto 0;
+  max-width: 700px;
+}
+.electro-final-cta .creepy-btn {
+  margin-top: 32px;
 }
 .reveal-benefit {
   opacity: 0;
@@ -1564,6 +1658,17 @@
     transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal-benefit.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-pill {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.72s ease,
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-pill.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1640,7 +1745,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 14px;
 }
 .electro-item {
   display: block;
@@ -1719,30 +1824,16 @@
   grid-row: 1;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  border: 1px solid #9aa5b5;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   color: transparent;
   font-size: 0;
   line-height: 0;
-}
-.electro-pill-icon::before,
-.electro-pill-icon::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 10px;
-  height: 1.6px;
-  background: #3d4f6a;
-  border-radius: 999px;
-  transform: translate(-50%, -50%);
-}
-.electro-pill-icon::after {
-  transform: translate(-50%, -50%) rotate(90deg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%239aa5b5'/%3E%3Cpath d='M12 7.5v9M7.5 12h9' stroke='%233d4f6a' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 .electro-pill-title {
   grid-column: 2;
@@ -1859,6 +1950,12 @@
   .electro-benefits__number {
     font-size: 54px;
   }
+  .electro-final-cta {
+    padding: 96px 0;
+  }
+  .electro-final-cta__text {
+    font-size: clamp(26px, 5.4vw, 36px);
+  }
   .electro-standard__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
@@ -1879,6 +1976,7 @@
   .electro-process__step--left .electro-process__node,
   .electro-process__step--right .electro-process__node {
     grid-column: 1;
+    grid-row: 1;
     justify-self: center;
     align-self: start;
     margin-top: 30px;
@@ -1886,6 +1984,7 @@
   .electro-process__step--left .electro-process__card,
   .electro-process__step--right .electro-process__card {
     grid-column: 2;
+    grid-row: 1;
     margin: 0;
     text-align: left;
   }
@@ -1919,6 +2018,20 @@
   .electro-benefits {
     padding-top: 56px;
     padding-bottom: 84px;
+  }
+  .electro-final-cta {
+    padding: 72px 0 84px;
+  }
+  .electro-final-cta__inner {
+    text-align: center;
+  }
+  .electro-final-cta__text {
+    margin-top: 18px;
+    font-size: clamp(24px, 7.4vw, 32px);
+    line-height: 1.22;
+  }
+  .electro-final-cta .creepy-btn {
+    margin-top: 28px;
   }
   .electro-benefits::before {
     background-size: auto, 40px 40px, 40px 40px;
@@ -2046,10 +2159,8 @@
     width: 22px;
     height: 22px;
   }
-  .electro-pill-icon::before,
-  .electro-pill-icon::after {
-    width: 9px;
-    height: 1.5px;
+  .electro-pill-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22' fill='none'%3E%3Ccircle cx='11' cy='11' r='10' stroke='%239aa5b5'/%3E%3Cpath d='M11 7v8M7 11h8' stroke='%233d4f6a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
   }
   .electro-showcase-media {
     display: none;
