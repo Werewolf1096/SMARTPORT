@@ -885,30 +885,143 @@
         background: rgba(255, 234, 190, 0.9);
         box-shadow: 0 0 10px rgba(255, 228, 170, 0.18);
       }
-      .lighting-room-demo {
-        position: relative;
-        margin-top: 46px;
-        height: 420px;
-        overflow: hidden;
-        border-radius: var(--lighting-radius-xl);
-        border: 1px solid var(--lighting-line);
-        background: linear-gradient(180deg, #12131a 0%, #0b0c10 100%);
+      .lighting-modes-shell {
+        margin-top: 42px;
       }
-      .lighting-room-wall {
+      .lighting-modes-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+      .lighting-modes-card {
+        position: relative;
+        padding: 24px 24px 22px;
+        border-radius: 26px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+        transition: opacity 0.45s ease, transform 0.45s ease, background 0.45s ease;
+        opacity: 0.58;
+      }
+      .lighting-modes-card.is-active {
+        opacity: 1;
+        transform: translateY(-2px);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.024));
+      }
+      .lighting-modes-card-number {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .lighting-modes-card-title {
+        margin: 0 0 12px;
+      }
+      .lighting-modes-card-text {
+        margin: 0;
+      }
+      .lighting-modes-ui {
+        position: relative;
+        padding: 18px;
+        border-radius: 34px;
+        background: linear-gradient(180deg, rgba(17, 17, 17, 0.88), rgba(9, 9, 9, 0.96));
+        overflow: hidden;
+      }
+      .lighting-modes-switcher {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .lighting-modes-pill {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        min-width: 220px;
+        padding: 18px 26px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+        color: rgba(255, 255, 255, 0.78);
+        font: inherit;
+        font-size: clamp(18px, 1.6vw, 28px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        cursor: pointer;
+        transition: color 0.4s ease, background 0.4s ease, transform 0.35s ease;
+      }
+      .lighting-modes-pill:hover {
+        transform: translateY(-1px);
+        color: rgba(255, 255, 255, 0.94);
+      }
+      .lighting-modes-pill.is-active {
+        color: #fff5df;
+        background: linear-gradient(180deg, rgba(255, 215, 140, 0.1), rgba(255, 255, 255, 0.03));
+      }
+      .lighting-modes-pill-icon {
+        font-size: 0.9em;
+        opacity: 0.92;
+      }
+      .lighting-modes-scene {
+        position: relative;
+        border-radius: 28px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(160, 125, 45, 0.12), transparent 28%),
+          linear-gradient(180deg, #0b0d12 0%, #0a0b0d 100%);
+        min-height: 720px;
+      }
+      .lighting-modes-room {
+        position: relative;
+        min-height: 610px;
+        transition: filter 0.8s ease, transform 0.8s ease;
+      }
+      .lighting-modes-photo {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%);
+        background:
+          linear-gradient(180deg, rgba(6, 8, 12, 0.22), rgba(6, 8, 12, 0.38)),
+          linear-gradient(90deg, rgba(5, 7, 10, 0.28), rgba(5, 7, 10, 0.1) 45%, rgba(5, 7, 10, 0.22)),
+          url("smartport-inteligentni-osvetleni-obyvaci-pokoj-neprime-stropni-svetlo.webp") center 58% / cover no-repeat;
+        filter: brightness(0.72) saturate(0.92);
+        transform: scale(1.02);
+        z-index: 1;
       }
-      .lighting-room-spots {
+      .lighting-modes-photo::after {
+        content: "";
         position: absolute;
-        top: 56px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 74%;
-        display: flex;
-        justify-content: space-between;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(255, 214, 140, 0.1), transparent 26%),
+          linear-gradient(180deg, rgba(3, 4, 6, 0.08), rgba(3, 4, 6, 0.42));
       }
-      .lighting-room-spots span,
+      .lighting-modes-vignette,
+      .lighting-modes-soft-glow {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .lighting-modes-vignette {
+        background:
+          radial-gradient(circle at 50% 30%, transparent 38%, rgba(0, 0, 0, 0.22) 100%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.18));
+        z-index: 8;
+      }
+      .lighting-modes-soft-glow {
+        background:
+          radial-gradient(circle at 50% 14%, rgba(255, 210, 130, 0.08), transparent 20%),
+          radial-gradient(circle at 50% 100%, rgba(54, 83, 170, 0.08), transparent 28%);
+        z-index: 3;
+      }
+      .lighting-modes-spots {
+        position: absolute;
+        top: 68px;
+        left: 92px;
+        display: flex;
+        gap: 84px;
+        z-index: 5;
+      }
+      .lighting-modes-spot,
       .lighting-ceiling-spot,
       .lighting-scene-downlight {
         position: absolute;
@@ -920,10 +1033,24 @@
           0 0 0 8px rgba(255, 255, 255, 0.03),
           0 0 40px rgba(255, 235, 195, 0.14);
       }
-      .lighting-room-spots span {
+      .lighting-modes-spot {
         position: relative;
       }
-      .lighting-room-strip,
+      .lighting-modes-spot::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        width: 130px;
+        height: 200px;
+        transform: translateX(-50%);
+        background: radial-gradient(ellipse at top, rgba(255, 210, 130, 0.34), rgba(255, 210, 130, 0.1) 45%, transparent 72%);
+        filter: blur(5px);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .lighting-modes-led-strip,
       .lighting-scene-strip {
         position: absolute;
         left: 8%;
@@ -934,17 +1061,60 @@
         background: linear-gradient(90deg, rgba(255, 240, 205, 0.08), rgba(255, 247, 235, 0.45), rgba(255, 240, 205, 0.08));
         box-shadow: 0 0 40px rgba(255, 227, 170, 0.14);
       }
-      .lighting-room-pendant,
+      .lighting-modes-led-strip {
+        top: 146px;
+        left: 70px;
+        right: 96px;
+        bottom: auto;
+      }
+      .lighting-modes-led-strip::after,
+      .lighting-scene-strip::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateY(8px);
+        height: 140px;
+        background: linear-gradient(180deg, rgba(255, 218, 155, 0.18), transparent 78%);
+        filter: blur(16px);
+        opacity: 0.85;
+      }
+      .lighting-modes-pendant,
       .lighting-scene-pendant {
         position: absolute;
-        left: 50%;
-        top: 86px;
+        left: 52%;
+        top: 78px;
         transform: translateX(-50%);
         width: 4px;
         height: 118px;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
       }
-      .lighting-room-pendant::after,
+      .lighting-modes-pendant-cable {
+        display: block;
+        width: 2px;
+        height: 138px;
+        margin: 0 auto;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06));
+      }
+      .lighting-modes-pendant-lamp {
+        display: block;
+        width: 86px;
+        height: 26px;
+        border-radius: 999px 999px 16px 16px;
+        margin: 0 auto;
+        background: linear-gradient(180deg, #2e3138 0%, #17191d 100%);
+      }
+      .lighting-modes-pendant-glow {
+        position: absolute;
+        left: 50%;
+        top: 148px;
+        transform: translateX(-50%);
+        width: 240px;
+        height: 210px;
+        background: radial-gradient(ellipse at top, rgba(255, 214, 140, 0.42), rgba(255, 214, 140, 0.12) 44%, transparent 75%);
+        filter: blur(8px);
+        transition: opacity 0.85s ease, transform 0.85s ease;
+        opacity: 0.58;
+      }
       .lighting-scene-pendant::after {
         content: "";
         position: absolute;
@@ -957,7 +1127,357 @@
         background: linear-gradient(180deg, #30333b 0%, #191b20 100%);
         box-shadow: 0 0 80px rgba(255, 228, 170, 0.12);
       }
-      .lighting-room-table,
+      .lighting-modes-accent-niche {
+        position: absolute;
+        right: 140px;
+        top: 198px;
+        width: 120px;
+        height: 188px;
+        border-radius: 40px;
+        background: transparent;
+        z-index: 5;
+        overflow: visible;
+      }
+      .lighting-modes-niche-inner {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(circle at 50% 28%, rgba(255, 213, 138, 0.56), rgba(255, 187, 88, 0.16) 42%, rgba(0, 0, 0, 0) 74%);
+        filter: blur(10px);
+        opacity: 0.24;
+        transition: opacity 0.85s ease, transform 0.85s ease, filter 0.85s ease;
+      }
+      .lighting-modes-niche-object {
+        position: absolute;
+        left: 50%;
+        bottom: 22px;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 72px;
+        border-radius: 999px;
+        background: rgba(13, 15, 18, 0.82);
+        opacity: 0.16;
+      }
+      .lighting-modes-kitchen {
+        display: none;
+      }
+      .lighting-modes-kitchen-backline {
+        position: absolute;
+        left: 60px;
+        right: 180px;
+        bottom: 62px;
+        height: 28px;
+        border-radius: 2px;
+        background: linear-gradient(180deg, rgba(26, 29, 36, 0.92), rgba(17, 18, 20, 1));
+      }
+      .lighting-modes-kitchen-island {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: min(390px, 48vw);
+        height: 150px;
+        border-radius: 2px;
+        background: linear-gradient(180deg, rgba(28, 31, 38, 0.96), rgba(16, 18, 22, 1));
+      }
+      .lighting-modes-kitchen-island::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 24%,
+            rgba(255, 255, 255, 0.05) 24.5%,
+            rgba(255, 255, 255, 0.05) 25%,
+            transparent 25.5%,
+            transparent 49%,
+            rgba(255, 255, 255, 0.05) 49.5%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 50.5%,
+            transparent 74%,
+            rgba(255, 255, 255, 0.05) 74.5%,
+            rgba(255, 255, 255, 0.05) 75%,
+            transparent 75.5%,
+            transparent 100%
+          );
+        opacity: 0.5;
+      }
+      .lighting-modes-timeline {
+        position: relative;
+        padding: 34px 48px 42px;
+        z-index: 12;
+      }
+      .lighting-modes-track {
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.1));
+      }
+      .lighting-modes-track-progress {
+        position: absolute;
+        left: 48px;
+        top: 34px;
+        width: calc(50% - 48px);
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255, 210, 120, 0.32), rgba(255, 218, 145, 0.95));
+        transition: width 0.7s cubic-bezier(.22, .61, .36, 1);
+      }
+      .lighting-modes-track-point {
+        position: absolute;
+        top: 27px;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 50%, #fff4d8 0%, #ffd788 45%, #f0b23f 100%);
+        transition: left 0.7s cubic-bezier(.22, .61, .36, 1), transform 0.7s cubic-bezier(.22, .61, .36, 1);
+      }
+      .lighting-modes-track-labels {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .lighting-modes-track-labels span {
+        display: block;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.62);
+        transition: color 0.45s ease;
+      }
+      .lighting-modes-track-labels span.is-active {
+        color: #ffe6b2;
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-spot {
+        opacity: 1;
+        box-shadow:
+          0 0 14px rgba(255, 224, 160, 0.34),
+          0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-spot::after {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-led-strip {
+        opacity: 0.38;
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-pendant-glow {
+        opacity: 0.84;
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-niche-inner {
+        opacity: 0.3;
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-spot {
+        opacity: 0.18;
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-spot::after {
+        opacity: 0.12;
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-led-strip {
+        opacity: 1;
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-pendant-glow {
+        opacity: 0.58;
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-niche-inner {
+        opacity: 0.78;
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-spot {
+        opacity: 0.12;
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-spot::after {
+        opacity: 0;
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-led-strip {
+        opacity: 0.22;
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-pendant-glow {
+        opacity: 0.18;
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-niche-inner {
+        opacity: 1;
+        filter: blur(14px);
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-track-progress {
+        width: 0;
+      }
+      .lighting-modes-ui[data-mode="task"] .lighting-modes-track-point {
+        left: 48px;
+        transform: translateX(-50%);
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-track-progress {
+        width: calc(50% - 48px);
+      }
+      .lighting-modes-ui[data-mode="ambient"] .lighting-modes-track-point {
+        left: 50%;
+        transform: translateX(0);
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-track-progress {
+        width: calc(100% - 96px);
+      }
+      .lighting-modes-ui[data-mode="accent"] .lighting-modes-track-point {
+        left: calc(100% - 48px);
+        transform: translateX(-50%);
+      }
+      @media (max-width: 1024px) {
+        .lighting-modes-cards {
+          grid-template-columns: 1fr;
+        }
+        .lighting-modes-scene {
+          min-height: 620px;
+        }
+        .lighting-modes-room {
+          min-height: 520px;
+        }
+        .lighting-modes-spots {
+          left: 58px;
+          gap: 52px;
+        }
+        .lighting-modes-led-strip {
+          right: 70px;
+          left: 48px;
+        }
+        .lighting-modes-accent-niche {
+          right: 72px;
+          width: 108px;
+          height: 176px;
+        }
+        .lighting-modes-track-labels span {
+          font-size: 18px;
+        }
+      }
+      @media (max-width: 767px) {
+        .lighting-modes-ui {
+          padding: 14px;
+          border-radius: 24px;
+        }
+        .lighting-modes-switcher {
+          gap: 10px;
+        }
+        .lighting-modes-pill {
+          min-width: 100%;
+          padding: 16px 18px;
+          font-size: 18px;
+        }
+        .lighting-modes-scene {
+          min-height: 520px;
+          border-radius: 22px;
+        }
+        .lighting-modes-room {
+          min-height: 410px;
+        }
+        .lighting-modes-spots {
+          top: 44px;
+          left: 30px;
+          gap: 28px;
+        }
+        .lighting-modes-spot {
+          width: 14px;
+          height: 14px;
+        }
+        .lighting-modes-spot::after {
+          width: 84px;
+          height: 130px;
+        }
+        .lighting-modes-led-strip {
+          top: 104px;
+          left: 20px;
+          right: 32px;
+          height: 4px;
+        }
+        .lighting-modes-pendant-cable {
+          height: 96px;
+        }
+        .lighting-modes-pendant-lamp {
+          width: 64px;
+          height: 20px;
+        }
+        .lighting-modes-pendant-glow {
+          top: 114px;
+          width: 170px;
+          height: 150px;
+        }
+        .lighting-modes-accent-niche {
+          right: 28px;
+          top: 150px;
+          width: 76px;
+          height: 118px;
+        }
+        .lighting-modes-niche-object {
+          width: 12px;
+          height: 46px;
+          bottom: 18px;
+        }
+        .lighting-modes-timeline {
+          padding: 26px 20px 30px;
+        }
+        .lighting-modes-track-progress {
+          left: 20px;
+          top: 26px;
+        }
+        .lighting-modes-ui[data-mode="task"] .lighting-modes-track-point {
+          left: 20px;
+        }
+        .lighting-modes-ui[data-mode="accent"] .lighting-modes-track-point {
+          left: calc(100% - 20px);
+        }
+        .lighting-modes-ui[data-mode="ambient"] .lighting-modes-track-progress {
+          width: calc(50% - 20px);
+        }
+        .lighting-modes-ui[data-mode="accent"] .lighting-modes-track-progress {
+          width: calc(100% - 40px);
+        }
+        .lighting-modes-track-labels {
+          margin-top: 20px;
+          gap: 10px;
+        }
+        .lighting-modes-track-labels span {
+          font-size: 15px;
+        }
+      }
+      .lighting-scene-strip {
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        bottom: 122px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255, 240, 205, 0.08), rgba(255, 247, 235, 0.45), rgba(255, 240, 205, 0.08));
+        box-shadow: 0 0 40px rgba(255, 227, 170, 0.14);
+      }
+      .lighting-scene-strip::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateY(8px);
+        height: 140px;
+        background: linear-gradient(180deg, rgba(255, 218, 155, 0.18), transparent 78%);
+        filter: blur(16px);
+        opacity: 0.85;
+      }
+      .lighting-scene-pendant {
+        position: absolute;
+        left: 50%;
+        top: 86px;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 118px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+      }
+      .lighting-scene-pendant::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -24px;
+        transform: translateX(-50%);
+        width: 94px;
+        height: 54px;
+        border-radius: 54px 54px 40px 40px;
+        background: linear-gradient(180deg, #30333b 0%, #191b20 100%);
+        box-shadow: 0 0 80px rgba(255, 228, 170, 0.12);
+      }
       .lighting-scene-table {
         position: absolute;
         left: 50%;
@@ -968,25 +1488,12 @@
         border-radius: 999px;
         background: #2c2f36;
       }
-      .lighting-room-labels {
-        position: absolute;
-        left: 24px;
-        right: 24px;
-        bottom: 20px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-      .lighting-room-labels div,
       .lighting-scene-meta div,
       .lighting-ceiling-note {
         border-radius: 18px;
         border: 1px solid var(--lighting-line);
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(12px);
-      }
-      .lighting-room-labels div {
-        padding: 14px 16px;
       }
       .lighting-metrics-grid {
         margin-top: 42px;
@@ -1768,68 +2275,76 @@
             <p class="lighting-text lighting-lead lighting-reveal">
               Vyvážený interiér nevzniká jedním typem světla. Potřebuje funkční základ, klidnou ambientní vrstvu a akcent, který vede pozornost.
             </p>
-            <div class="lighting-cards lighting-cards-3">
-              <article class="lighting-card lighting-reveal">
-                <div class="lighting-card-media">
-                  <img src="smartport-osvetleni-klasicka-elektroinstalace.webp" alt="Dočasný vizuál základního osvětlení" />
-                </div>
-                <div class="lighting-card-visual" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M7 8h10"></path><path d="M9 16h6"></path></svg>
-                </div>
-                <span class="lighting-card-index">01</span>
-                <h3 class="lighting-card-title">Pracovní a základní osvětlení</h3>
-                <p class="lighting-card-body">Základ pro jistotu, přehlednost a každodenní používání prostoru.</p>
-                <ul>
-                  <li>rovnoměrné světlo bez tmavých míst</li>
-                  <li>vhodné pro kuchyň, koupelnu i komunikace</li>
-                  <li>stmívání podle denní doby</li>
-                </ul>
-              </article>
-              <article class="lighting-card lighting-reveal">
-                <div class="lighting-card-media">
-                  <img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Dočasný vizuál nepřímého osvětlení" />
-                </div>
-                <div class="lighting-card-visual" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M4 12c2.5-3.2 5.2-4.8 8-4.8s5.5 1.6 8 4.8"></path><path d="M6 15c2.1-1.8 4.1-2.7 6-2.7s3.9.9 6 2.7"></path></svg>
-                </div>
-                <span class="lighting-card-index">02</span>
-                <h3 class="lighting-card-title">Nepřímé osvětlení</h3>
-                <p class="lighting-card-body">Měkčí vrstva pro klid, hloubku a večerní atmosféru bez oslnění.</p>
-                <ul>
-                  <li>LED pásky v nikách a podhledech</li>
-                  <li>větší hloubka prostoru</li>
-                  <li>luxusnější a klidnější výraz interiéru</li>
-                </ul>
-              </article>
-              <article class="lighting-card lighting-reveal">
-                <div class="lighting-card-media">
-                  <img src="chytra-zarovka-chytre-osvetleni.png" alt="Dočasný vizuál akcentního osvětlení" />
-                </div>
-                <div class="lighting-card-visual" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 4v4"></path><path d="M6 18l4-6"></path><path d="M18 18l-4-6"></path><circle cx="12" cy="12" r="2.5"></circle></svg>
-                </div>
-                <span class="lighting-card-index">03</span>
-                <h3 class="lighting-card-title">Akcentní osvětlení</h3>
-                <p class="lighting-card-body">Vrstva, která vede pozornost a zvýrazní důležitá místa v prostoru.</p>
-                <ul>
-                  <li>závěsná svítidla a světelné ostrovy</li>
-                  <li>důraz na stůl, stěnu nebo detail</li>
-                  <li>silnější charakter prostoru</li>
-                </ul>
-              </article>
-            </div>
-            <div class="lighting-room-demo lighting-reveal">
-              <div class="lighting-room-wall"></div>
-              <div class="lighting-room-spots">
-                <span></span><span></span><span></span><span></span>
+            <div class="lighting-modes-shell lighting-reveal">
+              <div class="lighting-modes-cards" aria-hidden="true">
+                <article class="lighting-modes-card" data-mode-card="task">
+                  <span class="lighting-modes-card-number lighting-meta">01</span>
+                  <h3 class="lighting-modes-card-title lighting-card-title">Pracovní a základní osvětlení</h3>
+                  <p class="lighting-modes-card-text lighting-card-body">Základ pro jistotu, přehlednost a každodenní používání prostoru.</p>
+                </article>
+                <article class="lighting-modes-card is-active" data-mode-card="ambient">
+                  <span class="lighting-modes-card-number lighting-meta">02</span>
+                  <h3 class="lighting-modes-card-title lighting-card-title">Nepřímé osvětlení</h3>
+                  <p class="lighting-modes-card-text lighting-card-body">Měkčí vrstva pro klid, hloubku a večerní atmosféru bez oslnění.</p>
+                </article>
+                <article class="lighting-modes-card" data-mode-card="accent">
+                  <span class="lighting-modes-card-number lighting-meta">03</span>
+                  <h3 class="lighting-modes-card-title lighting-card-title">Akcentní osvětlení</h3>
+                  <p class="lighting-modes-card-text lighting-card-body">Vrstva, která vede pozornost a zvýrazní důležitá místa v prostoru.</p>
+                </article>
               </div>
-              <div class="lighting-room-pendant"></div>
-              <div class="lighting-room-table"></div>
-              <div class="lighting-room-strip"></div>
-              <div class="lighting-room-labels">
-                  <div class="lighting-meta">Pracovní světlo</div>
-                  <div class="lighting-meta">Nepřímé světlo</div>
-                  <div class="lighting-meta">Akcentní světlo</div>
+              <div class="lighting-modes-ui" data-lighting-ui data-mode="ambient">
+                <div class="lighting-modes-switcher" role="tablist" aria-label="Režimy osvětlení">
+                  <button class="lighting-modes-pill" type="button" role="tab" aria-selected="false" tabindex="-1" data-mode="task">
+                    <span class="lighting-modes-pill-icon">✺</span>
+                    <span>Pracovní světlo</span>
+                  </button>
+                  <button class="lighting-modes-pill is-active" type="button" role="tab" aria-selected="true" tabindex="0" data-mode="ambient">
+                    <span class="lighting-modes-pill-icon">●</span>
+                    <span>Nepřímé světlo</span>
+                  </button>
+                  <button class="lighting-modes-pill" type="button" role="tab" aria-selected="false" tabindex="-1" data-mode="accent">
+                    <span class="lighting-modes-pill-icon">▲</span>
+                    <span>Akcentní světlo</span>
+                  </button>
+                </div>
+                <div class="lighting-modes-scene" aria-live="polite">
+                  <div class="lighting-modes-room">
+                    <div class="lighting-modes-photo" aria-hidden="true"></div>
+                    <div class="lighting-modes-vignette"></div>
+                    <div class="lighting-modes-soft-glow"></div>
+                    <div class="lighting-modes-spots">
+                      <span class="lighting-modes-spot"></span>
+                      <span class="lighting-modes-spot"></span>
+                      <span class="lighting-modes-spot"></span>
+                      <span class="lighting-modes-spot"></span>
+                    </div>
+                    <div class="lighting-modes-led-strip"></div>
+                    <div class="lighting-modes-pendant">
+                      <span class="lighting-modes-pendant-cable"></span>
+                      <span class="lighting-modes-pendant-lamp"></span>
+                      <span class="lighting-modes-pendant-glow"></span>
+                    </div>
+                    <div class="lighting-modes-accent-niche">
+                      <span class="lighting-modes-niche-inner"></span>
+                      <span class="lighting-modes-niche-object"></span>
+                    </div>
+                    <div class="lighting-modes-kitchen">
+                      <div class="lighting-modes-kitchen-backline"></div>
+                      <div class="lighting-modes-kitchen-island"></div>
+                    </div>
+                  </div>
+                  <div class="lighting-modes-timeline" aria-hidden="true">
+                    <div class="lighting-modes-track"></div>
+                    <div class="lighting-modes-track-progress"></div>
+                    <div class="lighting-modes-track-point"></div>
+                    <div class="lighting-modes-track-labels">
+                      <span data-label="task" class="lighting-meta">Pracovní</span>
+                      <span data-label="ambient" class="lighting-meta is-active">Nepřímé</span>
+                      <span data-label="accent" class="lighting-meta">Akcentní</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2079,6 +2594,66 @@
           }
         );
         revealItems.forEach((item) => revealObserver.observe(item));
+
+        const lightingModesUI = document.querySelector("[data-lighting-ui]");
+        if (lightingModesUI) {
+          const modeButtons = lightingModesUI.querySelectorAll(".lighting-modes-pill");
+          const modeCards = document.querySelectorAll("[data-mode-card]");
+          const modeLabels = lightingModesUI.querySelectorAll(".lighting-modes-track-labels span");
+          const modes = ["task", "ambient", "accent"];
+
+          function setLightingMode(mode) {
+            if (!modes.includes(mode)) return;
+
+            lightingModesUI.setAttribute("data-mode", mode);
+
+            modeButtons.forEach((button) => {
+              const active = button.dataset.mode === mode;
+              button.classList.toggle("is-active", active);
+              button.setAttribute("aria-selected", active ? "true" : "false");
+              button.setAttribute("tabindex", active ? "0" : "-1");
+            });
+
+            modeCards.forEach((card) => {
+              card.classList.toggle("is-active", card.dataset.modeCard === mode);
+            });
+
+            modeLabels.forEach((label) => {
+              label.classList.toggle("is-active", label.dataset.label === mode);
+            });
+          }
+
+          modeButtons.forEach((button) => {
+            button.addEventListener("click", () => setLightingMode(button.dataset.mode));
+
+            button.addEventListener("keydown", (event) => {
+              const currentIndex = modes.indexOf(button.dataset.mode);
+              if (currentIndex === -1) return;
+
+              let nextIndex = null;
+
+              if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+                nextIndex = (currentIndex + 1) % modes.length;
+              }
+
+              if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+                nextIndex = (currentIndex - 1 + modes.length) % modes.length;
+              }
+
+              if (event.key === "Home") nextIndex = 0;
+              if (event.key === "End") nextIndex = modes.length - 1;
+
+              if (nextIndex !== null) {
+                event.preventDefault();
+                const nextMode = modes[nextIndex];
+                setLightingMode(nextMode);
+                lightingModesUI.querySelector(`.lighting-modes-pill[data-mode="${nextMode}"]`)?.focus();
+              }
+            });
+          });
+
+          setLightingMode(lightingModesUI.getAttribute("data-mode") || "ambient");
+        }
 
         const sceneTabs = document.querySelectorAll(".lighting-scene-tab");
         const sceneRoom = document.getElementById("lighting-scene-room");
