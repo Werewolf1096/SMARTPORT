@@ -66,6 +66,22 @@
       .service-page--lighting .burger-icon::after {
         background-color: #f5f5f7;
       }
+      .service-page--lighting .nav-dropdown-panel {
+        background: #000000;
+      }
+      .service-page--lighting .nav-dropdown-panel-inner {
+        background: #000000;
+      }
+      .service-page--lighting .nav-dropdown-list a {
+        color: #f5f5f7;
+      }
+      .service-page--lighting .nav-dropdown-list a:hover,
+      .service-page--lighting .nav-dropdown-list a:focus-visible {
+        color: #4f8cff;
+      }
+      .service-page--lighting .nav-dropdown-col-title {
+        color: rgba(255, 255, 255, 0.52);
+      }
       .service-page--lighting .service-main {
         background: #000000;
       }
@@ -561,25 +577,32 @@
         text-align: center;
       }
       .lighting-intro-carousel.services-carousel {
-        width: 100%;
+        width: calc(100% + (50vw - 50%));
         margin-left: 0;
+        margin-right: calc(50% - 50vw);
         padding-left: 0;
         padding-right: 0;
       }
       .lighting-intro-carousel .services-track {
-        grid-auto-columns: minmax(100%, 1fr);
-        gap: 24px;
-        padding: 8px 0 18px;
+        grid-auto-columns: calc((100% - (50vw - 50%)) * 0.72);
+        gap: 29px;
+        padding: 8px 0 18px 0;
         background: transparent;
         scroll-padding-left: 0;
-        scroll-padding-right: 0;
+        scroll-padding-right: calc((50vw - 50%) + ((100% - (50vw - 50%)) * 0.28));
+      }
+      .lighting-intro-carousel .services-track::after {
+        content: "";
+        display: block;
+        width: calc((50vw - 50%) + ((100% - (50vw - 50%)) * 0.28));
+        height: 1px;
       }
       .lighting-intro-carousel .service-card.lighting-intro-slide {
         position: relative;
-        min-height: 770px;
-        height: 770px;
+        min-height: 0;
+        height: auto;
         padding: 0;
-        aspect-ratio: auto;
+        aspect-ratio: 1.5 / 1;
         border-radius: 32px;
         overflow: hidden;
         background: #111111;
@@ -593,15 +616,14 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: 62% 50%;
       }
       .lighting-intro-slide::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: 1;
-        background:
-          linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 32%),
-          linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.64) 100%);
+        background: transparent;
       }
       .lighting-intro-slide-copy {
         position: absolute;
@@ -615,41 +637,65 @@
       .lighting-intro-slide-copy .lighting-card-title {
         max-width: 15ch;
         text-align: left;
+        margin-bottom: 18px;
       }
       .lighting-intro-slide-copy .lighting-card-body {
         max-width: 30ch;
         text-align: left;
       }
-      .lighting-intro-slide-meta {
+      .lighting-page .lighting-intro-slide-meta,
+      .lighting-page .lighting-intro-slide-meta.lighting-meta {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         width: fit-content;
-        padding: 10px 14px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(0, 0, 0, 0.22);
-        backdrop-filter: blur(10px);
-        color: rgba(255, 255, 255, 0.88);
+        padding: 0;
+        border-radius: 0;
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
+        color: #ffffff;
         line-height: 1;
+        font-size: clamp(21px, 1.45vw, 24px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
       }
       .lighting-intro-slide-meta::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(255, 231, 184, 0.92);
-        box-shadow: 0 0 14px rgba(255, 224, 158, 0.24);
+        content: none;
+      }
+      .lighting-intro-slide-meta-number {
+        display: inline-block;
+        font-size: clamp(44px, 4.9vw, 74px);
+        line-height: 0.82;
+        font-weight: 700;
+        letter-spacing: -0.07em;
+        color: #2f6df6;
+        transform: translateY(2px);
+      }
+      .lighting-intro-slide-meta-label {
+        display: inline-block;
+        line-height: 1.02;
+      }
+      .lighting-intro-slide:nth-child(2) .lighting-intro-slide-meta,
+      .lighting-intro-slide:nth-child(2) .lighting-intro-slide-meta.lighting-meta {
+        color: #ffffff;
+      }
+      .lighting-intro-slide:nth-child(2) .lighting-intro-slide-meta-number {
+        color: #2f6df6;
+      }
+      .lighting-intro-slide:nth-child(2) .lighting-card-body {
+        color: #ffffff;
+        text-shadow: none;
       }
       .lighting-intro-carousel .services-dots button {
         background: rgba(255, 255, 255, 0.18);
       }
       .lighting-intro-carousel .services-dots .is-active {
-        background: rgba(255, 255, 255, 0.72);
+        background: #2f6df6;
       }
       .lighting-intro-carousel .services-arrow {
         background: rgba(255, 255, 255, 0.06);
-        color: #ffffff;
+        color: #2f6df6;
         box-shadow: none;
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
@@ -1218,6 +1264,62 @@
         opacity: 1;
         transform: translateY(0);
       }
+      @media (min-width: 981px) {
+        .lighting-intro-slide-copy > div:last-child,
+        .lighting-page .lighting-intro-slide-meta,
+        .lighting-page .lighting-intro-slide-meta.lighting-meta {
+          align-self: center;
+        }
+        .lighting-intro-slide-copy > div:last-child {
+          width: min(72%, 860px);
+          max-width: none;
+        }
+        .lighting-intro-slide-copy .lighting-card-title,
+        .lighting-intro-slide-copy .lighting-card-body {
+          text-align: center;
+        }
+        .lighting-intro-slide-copy .lighting-card-title {
+          max-width: 20ch;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .lighting-intro-slide-copy .lighting-card-body {
+          color: #ffffff;
+          text-shadow: none;
+          font-size: calc(var(--lighting-card-body-size-desktop) + 2px);
+          max-width: 58ch;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      @media (min-width: 641px) and (max-width: 980px) {
+        .lighting-intro-slide-copy > div:last-child,
+        .lighting-page .lighting-intro-slide-meta,
+        .lighting-page .lighting-intro-slide-meta.lighting-meta {
+          align-self: center;
+        }
+        .lighting-intro-slide-copy > div:last-child {
+          width: min(80%, 760px);
+          max-width: none;
+        }
+        .lighting-intro-slide-copy .lighting-card-title,
+        .lighting-intro-slide-copy .lighting-card-body {
+          text-align: center;
+        }
+        .lighting-intro-slide-copy .lighting-card-title {
+          max-width: 18ch;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .lighting-intro-slide-copy .lighting-card-body {
+          color: #ffffff;
+          text-shadow: none;
+          font-size: calc(var(--lighting-card-body-size-tablet) + 2px);
+          max-width: 50ch;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
       .service-page--lighting .lighting-panel,
       .service-page--lighting .lighting-card,
       .service-page--lighting .lighting-metric,
@@ -1388,36 +1490,48 @@
           min-height: 64.8vh;
         }
         .service-page--lighting .service-hero--electro .service-hero-shell {
+          display: grid;
           grid-template-columns: 1fr;
           min-height: 64.8vh;
           height: auto;
-          gap: 18px;
+          gap: 0;
           padding: 24px 0 20px;
         }
         .service-page--lighting .service-hero--electro .service-hero-copy {
-          align-self: start;
-          padding: 0;
-          margin-top: 0;
-          max-width: 100%;
+          display: contents;
+        }
+        .service-page--lighting .service-hero--electro .hero__title {
+          order: 1;
         }
         .service-page--lighting .service-hero-media {
+          order: 2;
           height: auto;
           overflow: visible;
           width: 100%;
           justify-self: center;
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+          margin-bottom: 18px;
+        }
+        .service-page--lighting .service-hero-lead {
+          order: 3;
+        }
+        .service-page--lighting .service-hero-actions {
+          order: 4;
         }
         .service-page--lighting .service-hero-media img {
           top: auto;
           bottom: auto;
           right: auto;
           left: auto;
-          width: min(100%, 360px);
-          height: clamp(220px, 34vh, 340px);
+          width: min(130%, 468px);
+          height: clamp(286px, 42vh, 382px);
           min-width: 0;
           min-height: 0;
-          max-width: 100%;
-          margin-left: auto;
-          margin-right: auto;
+          max-width: none;
+          margin-left: 0;
+          margin-right: 0;
           object-position: center;
           transform: none;
           -webkit-mask-image: none;
@@ -1428,10 +1542,12 @@
           line-height: 0.94;
           padding: 10px 12px 14px 0;
           margin-left: 0;
+          margin-bottom: 0;
         }
         .service-page--lighting .service-hero-lead {
           font-size: 17px;
           max-width: 26ch;
+          margin-top: 0;
         }
         .service-page--lighting .service-hero-actions {
           margin-top: 24px;
@@ -1450,12 +1566,18 @@
         .lighting-container {
           width: calc(100% - 32px);
         }
+        .lighting-intro-carousel.services-carousel {
+          width: calc(100% + (50vw - 50%));
+          margin-right: calc(50% - 50vw);
+        }
         .lighting-intro-carousel .services-track {
-          grid-auto-columns: minmax(100%, 1fr);
+          grid-auto-columns: calc((100% - (50vw - 50%)) * 0.72);
+          padding-right: 0;
+          scroll-padding-right: calc((50vw - 50%) + ((100% - (50vw - 50%)) * 0.28));
         }
         .lighting-intro-carousel .service-card.lighting-intro-slide {
-          min-height: 680px;
-          height: 680px;
+          min-height: 0;
+          height: auto;
         }
         .lighting-intro-stats,
         .lighting-cards-3,
@@ -1487,13 +1609,26 @@
         .lighting-container {
           width: calc(100% - 24px);
         }
+        .lighting-intro-carousel.services-carousel {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+          padding-left: 0;
+          padding-right: 0;
+        }
         .lighting-intro-carousel .services-track {
           grid-auto-columns: 100%;
           gap: 16px;
+          padding-right: 0;
+          scroll-padding-right: 0;
+        }
+        .lighting-intro-carousel .services-track::after {
+          content: none;
         }
         .lighting-intro-carousel .service-card.lighting-intro-slide {
-          min-height: 570px;
-          height: 570px;
+          min-height: 0;
+          height: auto;
+          aspect-ratio: 4 / 5;
           border-radius: 24px;
         }
         .lighting-intro-slide-copy {
@@ -1501,6 +1636,19 @@
         }
         .lighting-intro-slide-copy .lighting-card-title {
           font-size: clamp(24px, 7vw, 34px);
+        }
+        .lighting-page .lighting-intro-slide-meta,
+        .lighting-page .lighting-intro-slide-meta.lighting-meta {
+          font-size: clamp(18px, 4vw, 22px);
+        }
+        .lighting-intro-slide-meta-number {
+          font-size: clamp(36px, 12vw, 54px);
+        }
+        .lighting-intro-slide:nth-child(2) .lighting-intro-slide-copy {
+          padding: 28px 24px 24px;
+        }
+        .lighting-intro-slide:nth-child(2) .lighting-intro-slide-copy > div:last-child {
+          max-width: min(52%, 260px);
         }
         .lighting-metrics-grid,
         .lighting-zones-grid,
@@ -1524,53 +1672,8 @@
   </head>
   <body class="service-page service-page--lighting">
     <div class="bg-shell" aria-hidden="true"></div>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="index.html#hero" aria-label="Smartport">
-          <img src="LOGO.gif" alt="Smartport logo" class="brand-logo" />
-        </a>
-        <button class="burger-btn" aria-controls="main-nav" aria-expanded="false" aria-label="Menu"><span class="burger-icon"></span></button>
-        <nav id="main-nav" class="main-nav" aria-label="Hlavní navigace">
-          <a href="index.html#hero">Domů</a>
-          <div class="nav-dropdown">
-            <a class="nav-link is-active" href="index.html#services">Služby</a>
-            <div class="nav-dropdown-panel" aria-label="Nabídka služeb">
-              <div class="nav-dropdown-panel-inner">
-                <div class="nav-dropdown-col">
-                  <p class="nav-dropdown-col-title">Naše služby</p>
-                  <ul class="nav-dropdown-list">
-                    <li><a href="sluzby-elektroinstalace.html" data-preview="electro">Klasická elektroinstalace</a></li>
-                    <li><a href="sluzby-osvetleni.html" data-preview="lighting">Chytré osvětlení</a></li>
-                    <li><a href="sluzby-zabezpeceni.html" data-preview="security">Zabezpečení a kamerové systémy</a></li>
-                    <li><a href="sluzby-klima.html" data-preview="climate">Řízení klimatu</a></li>
-                    <li><a href="sluzby-interkom.html" data-preview="intercom">Interkom a přístupový systém</a></li>
-                    <li><a href="sluzby-stineni.html" data-preview="shading">Ovládání žaluzií a stínění</a></li>
-                    <li><a href="sluzby-audio.html" data-preview="audio">Multizónový audio systém</a></li>
-                    <li><a href="sluzby-energie.html" data-preview="energy">Inteligentní správa energie</a></li>
-                  </ul>
-                </div>
-                <div class="nav-dropdown-preview" aria-hidden="true">
-                  <div class="nav-preview-track">
-                    <img class="nav-preview-image is-active" data-preview-key="electro" src="klasicka-elektroinstalace.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="lighting" src="chytra-zarovka-chytre-osvetleni.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="security" src="chytry-kamerovy-system-zabezpeceni.gif" alt="" />
-                    <img class="nav-preview-image" data-preview-key="climate" src="chytry-termostat-automatizace-klimatu.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="intercom" src="interkom-a-pristupove-systemy.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="shading" src="ovladani-zaluzii-a-stineni-design.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="audio" src="multiroom-audio.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="energy" src="energeticky-management.png" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="index.html#solutions">Řešení</a>
-          <a href="index.html#contact">Kontakt</a>
-          <a href="about.html">O nás</a>
-        </nav>
-      </div>
-    </header>
-    <div class="menu-backdrop" aria-hidden="true"></div>
+    <div data-shared-header></div>
+    <script src="shared-header.js"></script>
     <main class="service-main">
       <section class="service-hero service-hero--electro reveal" aria-labelledby="service-hero-lighting-title">
         <div class="container service-hero-shell">
@@ -1602,9 +1705,12 @@
               <div class="services-carousel lighting-intro-carousel lighting-reveal">
                 <div class="services-track" role="list">
                   <article class="service-card lighting-intro-slide" role="listitem">
-                    <img src="smartport-osvetleni-klasicka-elektroinstalace.webp" alt="Vrstevnaté světlo v obytném prostoru" />
+                    <picture>
+                      <source media="(max-width: 700px)" srcset="smartport-vrstveni-svetla-kolejnicove-reflektory-interier-mobile.webp" />
+                      <img src="smartport-osvetleni-vrstveni-svetla-kolejnicove-reflektory.webp" alt="Vrstvení světla v interiéru pomocí kolejnicových reflektorů – funkční, atmosférické a akcentní osvětlení v jedné kompozici" />
+                    </picture>
                     <div class="lighting-intro-slide-copy">
-                      <div class="lighting-intro-slide-meta lighting-meta">3 vrstvy světla</div>
+                      <div class="lighting-intro-slide-meta lighting-meta"><span class="lighting-intro-slide-meta-number">3</span><span class="lighting-intro-slide-meta-label">vrstvy světla</span></div>
                       <div>
                         <h3 class="lighting-card-title">Funkční základ, klidná atmosféra a akcent v jedné kompozici.</h3>
                         <p class="lighting-card-body">Správně vrstvené světlo mění prostor bez vizuálního chaosu a bez nutnosti přemýšlet nad každým okruhem zvlášť.</p>
@@ -1612,9 +1718,12 @@
                     </div>
                   </article>
                   <article class="service-card lighting-intro-slide" role="listitem">
-                    <img src="Interface LOXONE Iphone.png" alt="Jednotná logika ovládání světelných scén" />
+                    <picture>
+                      <source media="(max-width: 700px)" srcset="smartport-loxone-aplikace-ovladani-chytre-domacnosti-mobile.webp" />
+                      <img src="smartport-loxone-aplikace-ovladani-chytreho-domu-mobil-tablet-hodinky.webp" alt="Aplikace Loxone pro ovládání chytré domácnosti na mobilu, tabletu a chytrých hodinkách" />
+                    </picture>
                     <div class="lighting-intro-slide-copy">
-                      <div class="lighting-intro-slide-meta lighting-meta">1 logika ovládání</div>
+                      <div class="lighting-intro-slide-meta lighting-meta"><span class="lighting-intro-slide-meta-number">1</span><span class="lighting-intro-slide-meta-label">logika ovládání</span></div>
                       <div>
                         <h3 class="lighting-card-title">Místo deseti rozhodnutí jeden srozumitelný výsledek.</h3>
                         <p class="lighting-card-body">Scény, tlačítka i aplikace musí vést ke stejnému chování prostoru. Právě v tom vzniká skutečný komfort.</p>
@@ -1622,7 +1731,10 @@
                     </div>
                   </article>
                   <article class="service-card lighting-intro-slide" role="listitem">
-                    <img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Atmosféra a funkce chytrého osvětlení" />
+                    <picture>
+                      <source media="(max-width: 700px)" srcset="smartport-inteligentni-osvetleni-obyvaci-pokoj-neprime-svetlo-mobile.webp" />
+                      <img src="smartport-inteligentni-osvetleni-obyvaci-pokoj-neprime-stropni-svetlo.webp" alt="Inteligentní osvětlení obývacího pokoje s nepřímým stropním světlem, teplou atmosférou a designovými světelnými scénami" />
+                    </picture>
                     <div class="lighting-intro-slide-copy">
                       <div class="lighting-intro-slide-meta lighting-meta">Atmosféra + funkce</div>
                       <div>
@@ -2040,3 +2152,5 @@
     </script>
   </body>
 </html>
+
+
