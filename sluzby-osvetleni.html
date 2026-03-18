@@ -1221,11 +1221,13 @@
           font-size: 18px;
         }
         .lighting-modes-scene {
-          min-height: 520px;
+          aspect-ratio: 1 / 1;
+          min-height: 0;
           border-radius: 22px;
         }
         .lighting-modes-room {
-          min-height: 410px;
+          min-height: 0;
+          height: calc(100% - 94px);
         }
         .lighting-modes-timeline {
           padding: 26px 20px 30px;
@@ -1244,6 +1246,15 @@
           max-width: none;
           min-height: 44px;
           font-size: 15px;
+        }
+        .lighting-modes-card,
+        .lighting-modes-card.is-active,
+        .lighting-modes-card .lighting-card-title,
+        .lighting-modes-card.is-active .lighting-card-title,
+        .lighting-modes-card .lighting-card-body,
+        .lighting-modes-card.is-active .lighting-card-body {
+          color: #f5f5f7;
+          opacity: 1;
         }
       }
       .lighting-scene-strip {
