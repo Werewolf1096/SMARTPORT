@@ -1510,7 +1510,7 @@
       }
       .lighting-scene-room {
         position: relative;
-        height: 360px;
+        height: 440px;
         border-radius: 22px;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.05);
@@ -1566,32 +1566,76 @@
       .lighting-scene-meta strong {
         color: #fff;
       }
-      .lighting-zones-grid {
-        margin-top: 42px;
+      .lighting-value-shell {
+        margin-top: 48px;
+      }
+      .lighting-value-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 16px;
+        gap: 92px;
       }
-      .lighting-zone {
+      .lighting-value-copy {
+        max-width: 28ch;
+      }
+      .lighting-value-item {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.9fr);
+        align-items: center;
+        justify-content: center;
+        gap: 56px;
+      }
+      .lighting-value-item:nth-child(odd) .lighting-value-copy {
+        justify-self: end;
+        text-align: right;
+      }
+      .lighting-value-item:nth-child(even) {
+        grid-template-columns: minmax(320px, 0.9fr) minmax(0, 0.82fr);
+      }
+      .lighting-value-item:nth-child(even) .lighting-value-copy {
+        order: 2;
+        justify-self: start;
+        text-align: left;
+      }
+      .lighting-value-item:nth-child(even) .lighting-value-visual {
+        order: 1;
+        justify-self: end;
+      }
+      .lighting-value-item h3 {
+        display: block;
+        margin: 0 0 16px;
+        color: #fff;
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+      }
+      .lighting-value-copy p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .lighting-value-visual {
+        margin: 0;
+        width: min(100%, 460px);
+        justify-self: start;
+      }
+      .lighting-value-media {
         position: relative;
+        aspect-ratio: 1 / 1;
+        min-height: 0;
+        display: grid;
+        place-items: center;
         overflow: hidden;
-        min-height: 220px;
-        border-radius: 22px;
-        padding: 20px;
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.03);
       }
-      .lighting-zone-media {
-        height: 140px;
-        margin: -20px -20px 18px;
-        border-radius: 22px 22px 0 0;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
-      }
-      .lighting-zone-visual {
-        width: 72px;
-        height: 72px;
-        margin-bottom: 18px;
-        border-radius: 18px;
+      .lighting-value-media img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: none;
+        object-fit: contain;
       }
       .lighting-control-card {
         min-height: 260px;
@@ -1643,6 +1687,12 @@
         background: var(--lighting-blue-hover);
         transform: translateY(-1px);
       }
+      .lighting-zones .lighting-intro-slide-copy .lighting-card-title {
+        color: var(--lighting-blue);
+      }
+      .lighting-zones .lighting-intro-slide-copy .lighting-card-body {
+        font-size: calc(var(--lighting-card-body-size-desktop) + 4px);
+      }
       .lighting-btn-secondary {
         border: 1px solid var(--lighting-line-strong);
         color: #fff;
@@ -1687,6 +1737,9 @@
           margin-left: auto;
           margin-right: auto;
         }
+        .lighting-zones .lighting-intro-slide-copy .lighting-card-body {
+          font-size: calc(var(--lighting-card-body-size-desktop) + 4px);
+        }
       }
       @media (min-width: 641px) and (max-width: 980px) {
         .lighting-intro-slide-copy > div:last-child,
@@ -1715,12 +1768,14 @@
           margin-left: auto;
           margin-right: auto;
         }
+        .lighting-zones .lighting-intro-slide-copy .lighting-card-body {
+          font-size: calc(var(--lighting-card-body-size-tablet) + 4px);
+        }
       }
       .service-page--lighting .lighting-panel,
       .service-page--lighting .lighting-card,
       .service-page--lighting .lighting-metric,
       .service-page--lighting .lighting-step,
-      .service-page--lighting .lighting-zone,
       .service-page--lighting .lighting-scene-preview,
       .service-page--lighting .lighting-process-visual,
       .service-page--lighting .lighting-image-card,
@@ -1758,7 +1813,6 @@
       .service-page--lighting .lighting-card,
       .service-page--lighting .lighting-metric,
       .service-page--lighting .lighting-step,
-      .service-page--lighting .lighting-zone,
       .service-page--lighting .lighting-scene-preview,
       .service-page--lighting .lighting-process-visual,
       .service-page--lighting .lighting-image-card,
@@ -1843,6 +1897,9 @@
         .lighting-page .lighting-meta {
           font-size: var(--lighting-meta-size-mobile);
         }
+        .lighting-zones .lighting-intro-slide-copy .lighting-card-body {
+          font-size: calc(var(--lighting-card-body-size-mobile) + 2px);
+        }
       }
       @media (max-width: 1100px) {
         .service-page--lighting .service-hero--electro .service-hero-shell {
@@ -1888,6 +1945,9 @@
         }
         .lighting-zones-grid {
           grid-template-columns: repeat(3, 1fr);
+        }
+        .lighting-scene-room {
+          height: 400px;
         }
       }
       @media (max-width: 700px) {
@@ -1991,7 +2051,8 @@
         .lighting-cards-3,
         .lighting-process-grid,
         .lighting-scenes-grid,
-        .lighting-scene-meta {
+        .lighting-scene-meta,
+        .lighting-value-shell {
           grid-template-columns: 1fr;
         }
         .lighting-intro-gallery {
@@ -1999,6 +2060,28 @@
         }
         .lighting-stat {
           min-height: 0;
+        }
+        .lighting-value-list {
+          gap: 64px;
+        }
+        .lighting-value-item,
+        .lighting-value-item:nth-child(even) {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .lighting-value-item:nth-child(odd) .lighting-value-copy,
+        .lighting-value-item:nth-child(even) .lighting-value-copy {
+          order: 1;
+          justify-self: center;
+          text-align: center;
+        }
+        .lighting-value-item:nth-child(odd) .lighting-value-visual,
+        .lighting-value-item:nth-child(even) .lighting-value-visual {
+          order: 2;
+          justify-self: center;
+        }
+        .lighting-value-copy {
+          max-width: 34ch;
         }
         .lighting-metrics-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -2041,6 +2124,15 @@
         }
         .lighting-intro-carousel .services-track::after {
           content: none;
+        }
+        .lighting-value-media {
+          border-radius: 24px;
+        }
+        .lighting-scene-preview {
+          padding: 18px;
+        }
+        .lighting-scene-room {
+          height: 360px;
         }
         .lighting-intro-carousel .service-card.lighting-intro-slide {
           min-height: 0;
@@ -2282,63 +2374,6 @@
             </div>
           </div>
         </section>
-        <section class="lighting-section lighting-process">
-          <div class="lighting-container">
-            <span class="lighting-eyebrow lighting-reveal">Jak navrhujeme</span>
-            <h2 class="lighting-title lighting-display lighting-reveal">Nejen svítidla. Celou logiku prostoru.</h2>
-            <p class="lighting-text lighting-lead lighting-reveal">
-              Rozmístění spotů, výška stropu, zóny, senzory přítomnosti, návaznost na scény i běžný provoz domu. Návrh musí fungovat jako celek.
-            </p>
-            <div class="lighting-process-grid">
-              <div class="lighting-process-visual lighting-reveal">
-                <div class="lighting-ceiling-grid"></div>
-                <div class="lighting-ceiling-room"></div>
-                <span class="lighting-ceiling-spot" style="left:22%;top:28%;"></span>
-                <span class="lighting-ceiling-spot" style="left:42%;top:28%;"></span>
-                <span class="lighting-ceiling-spot" style="left:58%;top:28%;"></span>
-                <span class="lighting-ceiling-spot" style="left:78%;top:28%;"></span>
-                <span class="lighting-ceiling-spot" style="left:22%;top:74%;"></span>
-                <span class="lighting-ceiling-spot" style="left:42%;top:74%;"></span>
-                <span class="lighting-ceiling-spot" style="left:58%;top:74%;"></span>
-                <span class="lighting-ceiling-spot" style="left:78%;top:74%;"></span>
-                <span class="lighting-ceiling-sensor" style="left:50%;top:51%;"></span>
-                <div class="lighting-ceiling-note lighting-body">
-                  Senzor přítomnosti musí fungovat technicky správně a zároveň nenarušit čistotu kompozice stropu.
-                </div>
-              </div>
-              <div class="lighting-steps">
-                <article class="lighting-step lighting-reveal">
-                  <div class="lighting-step-media">
-                    <img src="technicky-projekt-smartport.gif" alt="Dočasný vizuál dispozice a výšky stropu" />
-                  </div>
-                  <h3 class="lighting-card-title">Dispozice a výška stropu</h3>
-                  <p class="lighting-card-body">Každý prostor má jiné proporce, proto řešíme rozteče, intenzitu i rytmus stropu individuálně.</p>
-                </article>
-                <article class="lighting-step lighting-reveal">
-                  <div class="lighting-step-media">
-                    <img src="instalace-a-integrace-smartport.png" alt="Dočasný vizuál role jednotlivých svítidel" />
-                  </div>
-                  <h3 class="lighting-card-title">Role jednotlivých svítidel</h3>
-                  <p class="lighting-card-body">Jiná svítidla dávají smysl nad pracovní plochou, jiná v podhledu a jiná nad jídelním stolem.</p>
-                </article>
-                <article class="lighting-step lighting-reveal">
-                  <div class="lighting-step-media">
-                    <img src="loxone-chytry-dum-ovladani-automatizace-smartport-cz.gif" alt="Dočasný vizuál senzorů a automatiky" />
-                  </div>
-                  <h3 class="lighting-card-title">Senzory a automatika</h3>
-                  <p class="lighting-card-body">Osvětlení se má chovat přirozeně. Bez zpoždění, bez chaosu a bez otravných reakcí.</p>
-                </article>
-                <article class="lighting-step lighting-reveal">
-                  <div class="lighting-step-media">
-                    <img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál světelných scén" />
-                  </div>
-                  <h3 class="lighting-card-title">Scény a provoz domu</h3>
-                  <p class="lighting-card-body">Návrh musí fungovat ráno, večer, v noci i při návštěvě. Ne jen v technickém výkresu.</p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
         <section class="lighting-section lighting-scenes">
           <div class="lighting-container">
             <span class="lighting-eyebrow lighting-reveal">Světelné scény</span>
@@ -2389,38 +2424,43 @@
         <section class="lighting-section lighting-controls">
           <div class="lighting-container">
             <span class="lighting-eyebrow lighting-reveal">Jak se ovládá</span>
-            <h2 class="lighting-title lighting-display lighting-reveal">Automaticky, tlačítkem nebo v aplikaci</h2>
-            <div class="lighting-cards lighting-cards-3">
-              <article class="lighting-card lighting-control-card lighting-reveal">
-                <div class="lighting-card-media">
-                  <img src="loxone-chytry-dum-ovladani-automatizace-smartport-cz.gif" alt="Dočasný vizuál přítomnostního ovládání" />
-                </div>
-                <div class="lighting-control-visual" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 6a5 5 0 0 1 5 5"></path><path d="M7 11a5 5 0 0 1 5-5"></path><path d="M6 18c1.5-2 3.5-3 6-3s4.5 1 6 3"></path></svg>
-                </div>
-                <h3 class="lighting-card-title">Přítomnost</h3>
-                <p class="lighting-card-body">Osvětlení se aktivuje tam, kde dává smysl, a reaguje podle režimu domu i denní doby.</p>
-              </article>
-              <article class="lighting-card lighting-control-card lighting-reveal">
-                <div class="lighting-card-media">
-                  <img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál tlačítkového ovládání" />
-                </div>
-                <div class="lighting-control-visual" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><rect x="8" y="4" width="8" height="16" rx="3"></rect><path d="M10.5 9h3"></path><path d="M10.5 14h3"></path></svg>
-                </div>
-                <h3 class="lighting-card-title">Tlačítko</h3>
-                <p class="lighting-card-body">Jedním bodem lze přepínat připravené scény bez přemýšlení nad jednotlivými okruhy.</p>
-              </article>
-              <article class="lighting-card lighting-control-card lighting-reveal">
-                <div class="lighting-card-media">
-                  <img src="Interface LOXONE Iphone.png" alt="Dočasný vizuál aplikace pro ovládání světel" />
-                </div>
-                <div class="lighting-control-visual" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2.5"></rect><path d="M10 7.5h4"></path><path d="M12 16.5h.01"></path></svg>
-                </div>
-                <h3 class="lighting-card-title">Aplikace</h3>
-                <p class="lighting-card-body">Ruční změna scén, intenzity nebo chování prostoru je dostupná i vzdáleně.</p>
-              </article>
+            <h2 class="lighting-title lighting-display lighting-reveal">Bezkontaktní a intuitivní ovládání</h2>
+            <div class="lighting-value-shell">
+              <div class="lighting-value-list">
+                <article class="lighting-value-item lighting-reveal">
+                  <div class="lighting-value-copy">
+                    <h3 class="lighting-card-title">Jedno tlačítko místo mnoha</h3>
+                    <p class="lighting-card-body">Jedním tlačítkem lze vyvolat připravené světelné scény bez přemýšlení nad jednotlivými okruhy. Ovládání je rychlé, srozumitelné a přirozené pro běžný provoz domu.</p>
+                  </div>
+                  <figure class="lighting-value-visual">
+                    <div class="lighting-value-media">
+                      <img src="chytre-ovladani-scen-osvetlen.webp" alt="Chytré tlačítko pro ovládání světelných scén a hudby v inteligentní domácnosti" />
+                    </div>
+                  </figure>
+                </article>
+                <article class="lighting-value-item lighting-reveal">
+                  <div class="lighting-value-copy">
+                    <h3 class="lighting-card-title">Automatické osvětlení</h3>
+                    <p class="lighting-card-body">Světlo se spouští a mění podle pohybu, přítomnosti, času i logiky domu. Radarový senzor pomáhá rozpoznat, jestli je prostor skutečně obsazený, takže automatika působí chytře a přirozeně.</p>
+                  </div>
+                  <figure class="lighting-value-visual">
+                    <div class="lighting-value-media">
+                      <img src="automaticke-osvetleni-dle-pohybu-a-pritomnost.webp" alt="Senzor pohybu a přítomnosti pro automatické osvětlení v chytré domácnosti" />
+                    </div>
+                  </figure>
+                </article>
+                <article class="lighting-value-item lighting-reveal">
+                  <div class="lighting-value-copy">
+                    <h3 class="lighting-card-title">Aplikace pro pokročilé možnosti</h3>
+                    <p class="lighting-card-body">Aplikace slouží pro detailní nastavení, vzdálený přístup a změnu scén, intenzity nebo chování prostoru. Když chcete zasáhnout ručně, všechno je k dispozici na jednom místě.</p>
+                  </div>
+                  <figure class="lighting-value-visual">
+                    <div class="lighting-value-media">
+                      <img src="aplikace-pro-rucni-ovladani-osvetleni-a-scen.webp" alt="Mobilní aplikace pro ruční ovládání osvětlení, scén a pokročilého nastavení chytré domácnosti" />
+                    </div>
+                  </figure>
+                </article>
+              </div>
             </div>
           </div>
         </section>
@@ -2428,12 +2468,74 @@
           <div class="lighting-container">
             <span class="lighting-eyebrow lighting-reveal">Kde je rozdíl opravdu vidět</span>
             <h2 class="lighting-title lighting-display lighting-reveal">V každé zóně jinak. Ale vždy smysluplně.</h2>
-            <div class="lighting-zones-grid">
-              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="smartport-osvetleni-klasicka-elektroinstalace.webp" alt="Dočasný vizuál kuchyně" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18h14"></path><path d="M7 14h10"></path><path d="M9 10h6"></path></svg></div><h3 class="lighting-card-title">Kuchyně</h3><p class="lighting-card-body">Jistota na pracovní ploše a klidnější vrstvy pro večer.</p></article>
-              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Dočasný vizuál jídelny" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v10"></path><path d="M7 18h10"></path><path d="M9 15h6"></path></svg></div><h3 class="lighting-card-title">Jídelna</h3><p class="lighting-card-body">Důraz na stůl, správná atmosféra a příjemná teplota světla.</p></article>
-              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál obývacího pokoje" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16h12"></path><path d="M8 12h8"></path><path d="M10 8h4"></path></svg></div><h3 class="lighting-card-title">Obývací pokoj</h3><p class="lighting-card-body">Kombinace scén pro odpočinek, návštěvu i běžný provoz.</p></article>
-              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="Interface LOXONE Iphone.png" alt="Dočasný vizuál ložnice" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18v-6"></path><path d="M17 18v-6"></path><path d="M7 12h10"></path><path d="M9 9h6"></path></svg></div><h3 class="lighting-card-title">Ložnice</h3><p class="lighting-card-body">Jemnější vrstvy a minimální rušení při nočním pohybu.</p></article>
-              <article class="lighting-zone lighting-reveal"><div class="lighting-zone-media"><img src="chytra-zarovka-chytre-osvetleni.png" alt="Dočasný vizuál koupelny" /></div><div class="lighting-zone-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 17h12"></path><path d="M8 12h8"></path><path d="M10 7h4"></path><path d="M12 4v3"></path></svg></div><h3 class="lighting-card-title">Koupelna</h3><p class="lighting-card-body">Přesné světlo tam, kde je potřeba, a měkčí režimy pro ráno i večer.</p></article>
+            <div class="services-carousel lighting-intro-carousel lighting-reveal">
+              <div class="services-track" role="list">
+                <article class="service-card lighting-intro-slide" role="listitem">
+                  <img src="kuchyne-pracovni-osvetleni-kuchynske-linky.webp" alt="Pracovní osvětlení kuchyňské linky pro jistotu na pracovní ploše a pohodlné vaření" />
+                  <div class="lighting-intro-slide-copy">
+                    <div class="lighting-intro-slide-meta lighting-meta">Pracovní jistota</div>
+                    <div>
+                      <h3 class="lighting-card-title">Kuchyně</h3>
+                      <p class="lighting-card-body">Jistota na pracovní ploše a klidnější vrstvy pro večer.</p>
+                    </div>
+                  </div>
+                </article>
+                <article class="service-card lighting-intro-slide" role="listitem">
+                  <img src="hero-smart-lighting-track-spots-dark-interior-smartport.webp" alt="Dočasný vizuál jídelny" />
+                  <div class="lighting-intro-slide-copy">
+                    <div class="lighting-intro-slide-meta lighting-meta">Atmosféra stolu</div>
+                    <div>
+                      <h3 class="lighting-card-title">Jídelna</h3>
+                      <p class="lighting-card-body">Důraz na stůl, správná atmosféra a příjemná teplota světla.</p>
+                    </div>
+                  </div>
+                </article>
+                <article class="service-card lighting-intro-slide" role="listitem">
+                  <img src="koncepce-a-scenare-smartport.png" alt="Dočasný vizuál obývacího pokoje" />
+                  <div class="lighting-intro-slide-copy">
+                    <div class="lighting-intro-slide-meta lighting-meta">Scény pro život</div>
+                    <div>
+                      <h3 class="lighting-card-title">Obývací pokoj</h3>
+                      <p class="lighting-card-body">Kombinace scén pro odpočinek, návštěvu i běžný provoz.</p>
+                    </div>
+                  </div>
+                </article>
+                <article class="service-card lighting-intro-slide" role="listitem">
+                  <img src="Interface LOXONE Iphone.png" alt="Dočasný vizuál ložnice" />
+                  <div class="lighting-intro-slide-copy">
+                    <div class="lighting-intro-slide-meta lighting-meta">Klid v noci</div>
+                    <div>
+                      <h3 class="lighting-card-title">Ložnice</h3>
+                      <p class="lighting-card-body">Jemnější vrstvy a minimální rušení při nočním pohybu.</p>
+                    </div>
+                  </div>
+                </article>
+                <article class="service-card lighting-intro-slide" role="listitem">
+                  <img src="chytra-zarovka-chytre-osvetleni.png" alt="Dočasný vizuál koupelny" />
+                  <div class="lighting-intro-slide-copy">
+                    <div class="lighting-intro-slide-meta lighting-meta">Přesnost a komfort</div>
+                    <div>
+                      <h3 class="lighting-card-title">Koupelna</h3>
+                      <p class="lighting-card-body">Přesné světlo tam, kde je potřeba, a měkčí režimy pro ráno i večer.</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="services-arrows" aria-label="Listování bloky">
+                <button class="services-arrow services-arrow--prev" type="button" aria-label="Předchozí blok">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19.5L8.5 12l7-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="services-arrow services-arrow--next" type="button" aria-label="Další blok">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4.5L15.5 12l-7 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <div class="services-dots" aria-label="Indikace bloků">
+                <button class="is-active" type="button" aria-label="Blok 1"></button>
+                <button type="button" aria-label="Blok 2"></button>
+                <button type="button" aria-label="Blok 3"></button>
+                <button type="button" aria-label="Blok 4"></button>
+                <button type="button" aria-label="Blok 5"></button>
+              </div>
             </div>
           </div>
         </section>
