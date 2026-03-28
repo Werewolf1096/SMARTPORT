@@ -1691,8 +1691,8 @@
   padding: clamp(22px, 2.6vw, 34px);
   border-radius: 28px;
   background: #ffffff;
-  --electro-pill-motion: 1.8s;
-  --electro-pill-motion-ms: 1800;
+  --electro-pill-motion: 1.53s;
+  --electro-pill-motion-ms: 1530;
   color: var(--ink);
   display: grid;
   grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.35fr);
@@ -1784,7 +1784,7 @@
   align-items: center;
   gap: 0 11px;
   border: none;
-  border-radius: 20px;
+  border-radius: 999px;
   padding: 14px 23px;
   background: #f3f4f6;
   color: #1f2430;
@@ -1799,7 +1799,7 @@
   touch-action: manipulation;
   height: 56px;
   overflow: hidden;
-  clip-path: inset(0 calc(100% - var(--pill-closed-width)) 0 0 round 20px);
+  clip-path: inset(0 calc(100% - var(--pill-closed-width)) 0 0 round 999px);
   transition:
     background-color 0.66s ease,
     color 0.66s ease,
@@ -1828,6 +1828,7 @@
   height: var(--pill-open-height);
   background: #f3f4f6;
   border: none;
+  border-radius: 20px;
   color: #1f2430;
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
   clip-path: inset(0 0 0 0 round 20px);
