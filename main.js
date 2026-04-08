@@ -46,273 +46,6 @@
 })();
 
 (() => {
-  const canvas = document.getElementById("smartCanvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d", { alpha: true });
-
-  const cfg = {
-    maxNodes: 140,
-    maxLinksDist: 200,
-    speed: 0.15,
-    nodeRadius: 1.5,
-
-    rgb: [0, 113, 227],
-    nodeAlpha: 0.3025,
-    lineAlphaMin: 0.0121,
-    lineAlphaMax: 0.121,
-    lineWidth: 1,
-
-    badgeSlots: 0,
-    minActiveBadges: 0,
-    badgeOffset: 14,
-
-    badgeTiming: { fadeIn: 5, hold: 4, fadeOut: 5, off: 7 },
-    badgeAlphaMax: 0.35,
-
-    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial",
-    fontWeight: 600,
-    fontSizeMin: 16,
-    fontSizeMax: 26
-  };
-
-  const BADGES = [];
-
-  let W = 0;
-  let H = 0;
-  let nodes = [];
-  let slots = [];
-  let last = performance.now();
-
-  function rand(min, max) {
-    return min + Math.random() * (max - min);
-  }
-
-  function pick(a) {
-    return a[(Math.random() * a.length) | 0];
-  }
-
-  function rgba(a) {
-    return `rgba(${cfg.rgb[0]},${cfg.rgb[1]},${cfg.rgb[2]},${a})`;
-  }
-
-  function smooth(x) {
-    return x * x * (3 - 2 * x);
-  }
-
-  function resize() {
-    const r = canvas.getBoundingClientRect();
-    W = Math.max(1, r.width);
-    H = Math.max(1, r.height);
-
-    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-    canvas.width = Math.floor(W * dpr);
-    canvas.height = Math.floor(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    nodes = [];
-    for (let i = 0; i < cfg.maxNodes; i++) {
-      const a = Math.random() * Math.PI * 2;
-      const v = cfg.speed * rand(0.4, 1);
-      nodes.push({
-        x: rand(0, W),
-        y: rand(0, H),
-        vx: Math.cos(a) * v,
-        vy: Math.sin(a) * v
-      });
-    }
-
-    slots = [];
-    for (let i = 0; i < cfg.badgeSlots; i++) {
-      slots.push(newSlot());
-    }
-  }
-
-  function newSlot() {
-    return {
-      node: (Math.random() * nodes.length) | 0,
-      badge: pick(BADGES),
-      size: rand(cfg.fontSizeMin, cfg.fontSizeMax),
-      angle: Math.random() * Math.PI * 2,
-      state: "off",
-      t: Math.random() * cfg.badgeTiming.off
-    };
-  }
-
-  function rerollSlot(s) {
-    s.node = (Math.random() * nodes.length) | 0;
-    s.badge = pick(BADGES);
-    s.size = rand(cfg.fontSizeMin, cfg.fontSizeMax);
-    s.angle = Math.random() * Math.PI * 2;
-  }
-
-  function stepSlot(s, dt) {
-    const T = cfg.badgeTiming;
-    s.t += dt;
-
-    if (s.state === "off") {
-      if (s.t > T.off) {
-        s.state = "fadeIn";
-        s.t = 0;
-        rerollSlot(s);
-      }
-      return 0;
-    }
-    if (s.state === "fadeIn") {
-      if (s.t > T.fadeIn) {
-        s.state = "hold";
-        s.t = 0;
-        return 1;
-      }
-      return smooth(s.t / T.fadeIn);
-    }
-    if (s.state === "hold") {
-      if (s.t > T.hold) {
-        s.state = "fadeOut";
-        s.t = 0;
-      }
-      return 1;
-    }
-    if (s.t > T.fadeOut) {
-      s.state = "off";
-      s.t = 0;
-      return 0;
-    }
-    return smooth(1 - s.t / T.fadeOut);
-  }
-
-  function countActive() {
-    let c = 0;
-    for (const s of slots) {
-      if (s.state !== "off") c++;
-    }
-    return c;
-  }
-
-  function forceMinActive() {
-    let active = countActive();
-    if (active >= cfg.minActiveBadges) return;
-    for (const s of slots) {
-      if (active >= cfg.minActiveBadges) break;
-      if (s.state === "off") {
-        s.state = "fadeIn";
-        s.t = 0;
-        rerollSlot(s);
-        active++;
-      }
-    }
-  }
-
-  function wrap(p) {
-    if (p.x < 0) p.x += W;
-    else if (p.x >= W) p.x -= W;
-    if (p.y < 0) p.y += H;
-    else if (p.y >= H) p.y -= H;
-  }
-
-  function drawWifi(x, y, size, a01) {
-    const a = a01 * cfg.badgeAlphaMax;
-    ctx.strokeStyle = rgba(a);
-    ctx.fillStyle = rgba(a);
-    ctx.lineWidth = 1;
-
-    const s = size * 0.7;
-    const r1 = s * 0.35;
-    const r2 = s * 0.60;
-    const r3 = s * 0.85;
-
-    ctx.beginPath();
-    ctx.arc(x, y, r1, Math.PI * 1.15, Math.PI * 1.85);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(x, y, r2, Math.PI * 1.20, Math.PI * 1.80);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(x, y, r3, Math.PI * 1.25, Math.PI * 1.75);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(x, y, s * 0.09, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  function drawSlot(s, a01) {
-    if (a01 <= 0.0001) return;
-    const n = nodes[s.node];
-    if (!n) return;
-
-    const ox = Math.cos(s.angle) * cfg.badgeOffset;
-    const oy = Math.sin(s.angle) * cfg.badgeOffset;
-    const x = n.x + ox;
-    const y = n.y + oy;
-
-    if (s.badge.type === "wifi") {
-      drawWifi(x, y, s.size, a01);
-      return;
-    }
-
-    ctx.font = `${cfg.fontWeight} ${Math.round(s.size)}px ${cfg.fontFamily}`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = rgba(a01 * cfg.badgeAlphaMax);
-    ctx.fillText(s.badge.value, x, y);
-  }
-
-  function frame(t) {
-    const dt = Math.min(0.05, (t - last) / 1000);
-    last = t;
-
-    ctx.clearRect(0, 0, W, H);
-
-    for (const p of nodes) {
-      p.x += p.vx;
-      p.y += p.vy;
-      wrap(p);
-    }
-
-    const maxD2 = cfg.maxLinksDist * cfg.maxLinksDist;
-    ctx.lineWidth = cfg.lineWidth;
-
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < maxD2) {
-          const a = cfg.lineAlphaMin + (1 - Math.sqrt(d2) / cfg.maxLinksDist) * (cfg.lineAlphaMax - cfg.lineAlphaMin);
-          ctx.strokeStyle = rgba(a);
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    ctx.fillStyle = rgba(cfg.nodeAlpha);
-    for (const p of nodes) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, cfg.nodeRadius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    forceMinActive();
-    for (const s of slots) {
-      drawSlot(s, stepSlot(s, dt));
-    }
-
-    requestAnimationFrame(frame);
-  }
-
-  const ro = new ResizeObserver(() => resize());
-  ro.observe(canvas.parentElement);
-
-  resize();
-  requestAnimationFrame(frame);
-})();
-
-(() => {
   const carousels = Array.from(document.querySelectorAll(".services-carousel"));
   if (carousels.length === 0) return;
 
@@ -446,7 +179,6 @@
   let ticking = false;
   let idleTimer = null;
   let blinkTimer = null;
-  let pointerInside = false;
   const idleDelayMs = 320;
   const blinkBaseMs = 6600;
 
@@ -489,7 +221,6 @@
   }
 
   function onMove(e) {
-    pointerInside = true;
     stopBlinking();
     scheduleIdleBlink();
     if (ticking) return;
@@ -516,7 +247,6 @@
   }
 
   function reset() {
-    pointerInside = false;
     if (idleTimer) {
       clearTimeout(idleTimer);
       idleTimer = null;
@@ -533,10 +263,7 @@
   }
 
   window.addEventListener("resize", updateRect);
-  hero.addEventListener("mouseenter", () => {
-    pointerInside = true;
-    scheduleIdleBlink();
-  });
+  hero.addEventListener("mouseenter", scheduleIdleBlink);
   hero.addEventListener("mousemove", onMove);
   hero.addEventListener("mouseleave", reset);
   updateRect();
