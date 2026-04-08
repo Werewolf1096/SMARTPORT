@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Zásady ochrany osobních údajů SMARTPORT. Informace o zpracování osobních údajů, cookies a právech subjektů údajů."
+  />
+  <title>Ochrana osobních údajů | SMARTPORT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.jpg" type="image/png" />
+  <style>
+    .burger-btn { display:none; background:transparent; border:none; cursor:pointer; padding:10px; z-index:2000; position:relative; width:44px; height:44px; }
+    .burger-icon { display:block; width:24px; height:2px; background-color:#000; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:background-color .3s; }
+    .burger-icon::before, .burger-icon::after { content:''; position:absolute; left:0; width:100%; height:100%; background-color:#000; transition:transform .3s, top .3s; }
+    .burger-icon::before { top:-8px; }
+    .burger-icon::after { top:8px; }
+    .burger-btn.is-active .burger-icon { background-color:transparent; }
+    .burger-btn.is-active .burger-icon::before { transform:rotate(45deg); top:0; }
+    .burger-btn.is-active .burger-icon::after { transform:rotate(-45deg); top:0; }
+
+    .privacy-page-main { padding-top:118px; padding-bottom:96px; }
+    .privacy-page-hero { padding:56px 0 28px; }
+    .privacy-page-hero__inner { max-width:860px; margin:0 auto; text-align:center; }
+    .privacy-page-eyebrow { margin:0 0 16px; font-size:12px; font-weight:600; line-height:1; letter-spacing:.14em; text-transform:uppercase; color:rgba(29,29,31,.58); }
+    .privacy-page-hero h1 { margin:0; font-size:clamp(40px,5vw,64px); line-height:1.02; letter-spacing:-.042em; font-weight:600; color:var(--ink); }
+    .privacy-page-lead { margin:18px auto 0; max-width:38ch; font-size:clamp(18px,1.7vw,22px); line-height:1.55; letter-spacing:-.014em; color:var(--muted); }
+    .privacy-page-content { padding:24px 0 0; }
+    .privacy-card { width:min(100%,920px); margin:0 auto; padding:clamp(28px,4vw,44px); border-radius:32px; background:rgba(255,255,255,.88); backdrop-filter:blur(14px); }
+    .privacy-section + .privacy-section { margin-top:34px; padding-top:34px; border-top:1px solid rgba(15,17,21,.08); }
+    .privacy-section h2 { margin:0 0 14px; font-size:clamp(24px,2.2vw,30px); line-height:1.14; letter-spacing:-.028em; font-weight:600; color:var(--ink); }
+    .privacy-section p { margin:0; font-size:16px; line-height:1.65; color:var(--muted); }
+    .privacy-section p + p, .privacy-section ul + p, .privacy-section p + ul { margin-top:12px; }
+    .privacy-section ul { margin:0; padding-left:18px; color:var(--muted); }
+    .privacy-section li { font-size:16px; line-height:1.65; }
+    .privacy-section li + li { margin-top:6px; }
+
+    @media (max-width:900px){
+      .header-inner { display:flex; justify-content:space-between; align-items:center; flex-direction:row !important; }
+      .burger-btn { display:block; }
+      .main-nav { position:fixed; top:0; left:0; width:100%; height:100vh; background-color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; transform:translateX(100%); transition:transform .3s ease; z-index:1999; }
+      .main-nav.is-active { transform:translateX(0); }
+      .main-nav a { font-size:1.5rem; color:#000; text-decoration:none; }
+    }
+
+    @media (max-width:768px) {
+      .privacy-page-main { padding-top:102px; padding-bottom:76px; }
+      .privacy-page-hero { padding:40px 0 18px; }
+      .privacy-page-hero h1 { font-size:clamp(30px,8.4vw,40px); line-height:1.06; }
+      .privacy-page-lead { font-size:17px; line-height:1.58; }
+      .privacy-card { padding:24px 22px; border-radius:24px; }
+      .privacy-section + .privacy-section { margin-top:28px; padding-top:28px; }
+      .privacy-section h2 { font-size:22px; }
+      .privacy-section p, .privacy-section li { font-size:15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shell" aria-hidden="true"></div>
+  <div data-shared-header></div>
+  <script src="shared-header.js"></script>
+
+  <main class="privacy-page-main">
+    <section class="privacy-page-hero" aria-labelledby="privacy-page-title">
+      <div class="container privacy-page-hero__inner">
+        <p class="privacy-page-eyebrow">Právní informace</p>
+        <h1 id="privacy-page-title">Ochrana osobních údajů</h1>
+        <p class="privacy-page-lead">Přehledně a srozumitelně uvádíme, jaké údaje zpracováváme, za jakým účelem a jaká máte práva.</p>
+      </div>
+    </section>
+
+    <section class="privacy-page-content" aria-labelledby="privacy-content-title">
+      <div class="container">
+        <div class="privacy-card">
+          <div class="privacy-section">
+            <h2 id="privacy-content-title">1. Správce osobních údajů</h2>
+            <p>Správcem osobních údajů je:</p>
+            <p>Volkov Sergei<br />IČO: 19330201<br />Sídlo / místo podnikání: Trnová 88, 252 10 Trnová<br />E-mail: info@smartport.cz<br />Telefon: +420 775 563 355</p>
+          </div>
+          <div class="privacy-section">
+            <h2>2. Jaké osobní údaje zpracováváme</h2>
+            <p>Zpracováváme osobní údaje, které nám sami poskytnete prostřednictvím kontaktního formuláře nebo při následné komunikaci.</p>
+            <p>Může se jednat zejména o:</p>
+            <ul>
+              <li>jméno a příjmení,</li>
+              <li>telefonní číslo,</li>
+              <li>e-mailovou adresu,</li>
+              <li>obsah zprávy nebo poptávky,</li>
+              <li>případně další údaje, které nám sami uvedete v rámci komunikace.</li>
+            </ul>
+            <p>Při návštěvě webových stránek mohou být dále zpracovávány technické údaje, zejména informace o zařízení, prohlížeči, IP adrese, chování na webu a soubory cookies.</p>
+          </div>
+          <div class="privacy-section">
+            <h2>3. Za jakým účelem osobní údaje zpracováváme</h2>
+            <p>Osobní údaje zpracováváme zejména za účelem:</p>
+            <ul>
+              <li>vyřízení vaší poptávky,</li>
+              <li>komunikace se zájemcem o služby,</li>
+              <li>přípravy cenové nabídky nebo návrhu řešení,</li>
+              <li>případného uzavření a plnění smlouvy,</li>
+              <li>plnění právních povinností,</li>
+              <li>měření návštěvnosti webu a vyhodnocování marketingových aktivit.</li>
+            </ul>
+          </div>
+          <div class="privacy-section">
+            <h2>4. Právní základ zpracování</h2>
+            <p>Právním základem zpracování je zejména:</p>
+            <ul>
+              <li>jednání o uzavření smlouvy a plnění smlouvy,</li>
+              <li>plnění právní povinnosti,</li>
+              <li>oprávněný zájem správce,</li>
+              <li>souhlas subjektu údajů, pokud je vyžadován, zejména v souvislosti s používáním analytických a marketingových cookies.</li>
+            </ul>
+          </div>
+          <div class="privacy-section">
+            <h2>5. Komu mohou být údaje zpřístupněny</h2>
+            <p>Osobní údaje mohou být zpřístupněny pouze v nezbytném rozsahu těmto příjemcům:</p>
+            <ul>
+              <li>poskytovateli webhostingu a technické správy webu,</li>
+              <li>poskytovatelům analytických a marketingových nástrojů,</li>
+              <li>poskytovatelům e-mailových služeb,</li>
+              <li>orgánům veřejné moci, pokud to vyžaduje právní předpis.</li>
+            </ul>
+            <p>Správce nepředává osobní údaje dalším třetím stranám za účelem samostatného obchodního využití.</p>
+          </div>
+          <div class="privacy-section">
+            <h2>6. Jak dlouho údaje uchováváme</h2>
+            <p>Osobní údaje uchováváme pouze po dobu nezbytně nutnou pro splnění výše uvedených účelů.</p>
+            <p>Údaje z kontaktního formuláře a navazující komunikace uchováváme po dobu potřebnou k vyřízení poptávky a případné další spolupráci.</p>
+            <p>Údaje zpracovávané na základě právní povinnosti uchováváme po dobu stanovenou právními předpisy.</p>
+            <p>Údaje zpracovávané na základě souhlasu uchováváme do odvolání souhlasu, nejdéle však po dobu odpovídající účelu jejich zpracování.</p>
+          </div>
+          <div class="privacy-section">
+            <h2>7. Cookies a analytické nástroje</h2>
+            <p>Na webových stránkách mohou být používány cookies a podobné technologie.</p>
+            <p>Web využívá zejména tyto nástroje:</p>
+            <ul>
+              <li>Google Analytics,</li>
+              <li>Google Tag Manager,</li>
+              <li>Meta Pixel,</li>
+              <li>vložený obsah sociálních sítí Facebook a Instagram.</li>
+            </ul>
+            <p>Tyto nástroje mohou sloužit k měření návštěvnosti, vyhodnocování výkonu webu, marketingu a zobrazování obsahu třetích stran.</p>
+            <p>V případě, že to vyžadují právní předpisy, jsou analytické a marketingové cookies aktivovány až na základě vašeho souhlasu uděleného prostřednictvím cookie lišty.</p>
+          </div>
+          <div class="privacy-section">
+            <h2>8. Jak jsou údaje zabezpečeny</h2>
+            <p>Přijali jsme přiměřená technická a organizační opatření k zabezpečení osobních údajů proti neoprávněnému přístupu, ztrátě, zneužití nebo neoprávněnému zveřejnění.</p>
+          </div>
+          <div class="privacy-section">
+            <h2>9. Vaše práva</h2>
+            <p>Máte právo:</p>
+            <ul>
+              <li>požadovat přístup ke svým osobním údajům,</li>
+              <li>požadovat opravu nepřesných nebo neaktuálních údajů,</li>
+              <li>požadovat výmaz osobních údajů, pokud pro jejich zpracování již není důvod,</li>
+              <li>požadovat omezení zpracování,</li>
+              <li>vznést námitku proti zpracování,</li>
+              <li>odvolat souhlas se zpracováním, pokud je zpracování založeno na souhlasu,</li>
+              <li>podat stížnost u dozorového úřadu.</li>
+            </ul>
+            <p>Dozorovým úřadem je Úřad pro ochranu osobních údajů.</p>
+          </div>
+          <div class="privacy-section">
+            <h2>10. Kontakt</h2>
+            <p>V případě dotazů ohledně zpracování osobních údajů nás můžete kontaktovat na e-mailu:</p>
+            <p>info@smartport.cz</p>
+          </div>
+          <div class="privacy-section">
+            <h2>11. Závěrečná ustanovení</h2>
+            <p>Tyto zásady ochrany osobních údajů mohou být průběžně aktualizovány.</p>
+            <p>Aktuální verze je vždy zveřejněna na těchto webových stránkách.</p>
+            <p>Datum poslední aktualizace: [doplnit]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="LOGO_footer.gif" alt="Smartport logo" />
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-block">
+          <h4>Ozvěte se nám</h4>
+          <ul>
+            <li>+420 775 563 355</li>
+            <li>info@smartport.cz</li>
+            <li>Po-Pá 9:00-16:00</li>
+            <li>Trnová 88, 252 10 Trnová</li>
+          </ul>
+        </div>
+        <div class="footer-block">
+          <h4>Rychlé odkazy</h4>
+          <ul class="footer-links">
+            <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
+            <li><a href="zasady-pouzivani-souboru-cookies.html">Zásady používání souborů cookies</a></li>
+            <li><a href="about.html">O nás</a></li>
+            <li><a href="contacts.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

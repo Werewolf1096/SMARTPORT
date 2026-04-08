@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Zásady používání souborů cookies SMARTPORT. Informace o typech cookies, právních základech a správě souhlasů."
+  />
+  <title>Zásady používání souborů cookies | SMARTPORT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.jpg" type="image/png" />
+  <style>
+    .burger-btn { display:none; background:transparent; border:none; cursor:pointer; padding:10px; z-index:2000; position:relative; width:44px; height:44px; }
+    .burger-icon { display:block; width:24px; height:2px; background-color:#000; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:background-color .3s; }
+    .burger-icon::before, .burger-icon::after { content:''; position:absolute; left:0; width:100%; height:100%; background-color:#000; transition:transform .3s, top .3s; }
+    .burger-icon::before { top:-8px; }
+    .burger-icon::after { top:8px; }
+    .burger-btn.is-active .burger-icon { background-color:transparent; }
+    .burger-btn.is-active .burger-icon::before { transform:rotate(45deg); top:0; }
+    .burger-btn.is-active .burger-icon::after { transform:rotate(-45deg); top:0; }
+
+    .privacy-page-main { padding-top:118px; padding-bottom:96px; }
+    .privacy-page-hero { padding:56px 0 28px; }
+    .privacy-page-hero__inner { max-width:860px; margin:0 auto; text-align:center; }
+    .privacy-page-eyebrow { margin:0 0 16px; font-size:12px; font-weight:600; line-height:1; letter-spacing:.14em; text-transform:uppercase; color:rgba(29,29,31,.58); }
+    .privacy-page-hero h1 { margin:0; font-size:clamp(40px,5vw,64px); line-height:1.02; letter-spacing:-.042em; font-weight:600; color:var(--ink); }
+    .privacy-page-lead { margin:18px auto 0; max-width:42ch; font-size:clamp(18px,1.7vw,22px); line-height:1.55; letter-spacing:-.014em; color:var(--muted); }
+    .privacy-page-content { padding:24px 0 0; }
+    .privacy-card { width:min(100%,920px); margin:0 auto; padding:clamp(28px,4vw,44px); border-radius:32px; background:rgba(255,255,255,.88); backdrop-filter:blur(14px); }
+    .privacy-section + .privacy-section { margin-top:34px; padding-top:34px; border-top:1px solid rgba(15,17,21,.08); }
+    .privacy-section h2 { margin:0 0 14px; font-size:clamp(24px,2.2vw,30px); line-height:1.14; letter-spacing:-.028em; font-weight:600; color:var(--ink); }
+    .privacy-section p { margin:0; font-size:16px; line-height:1.65; color:var(--muted); }
+    .privacy-section p + p, .privacy-section ul + p, .privacy-section p + ul { margin-top:12px; }
+    .privacy-section ul { margin:0; padding-left:18px; color:var(--muted); }
+    .privacy-section li { font-size:16px; line-height:1.65; }
+    .privacy-section li + li { margin-top:6px; }
+
+    @media (max-width:900px){
+      .header-inner { display:flex; justify-content:space-between; align-items:center; flex-direction:row !important; }
+      .burger-btn { display:block; }
+      .main-nav { position:fixed; top:0; left:0; width:100%; height:100vh; background-color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; transform:translateX(100%); transition:transform .3s ease; z-index:1999; }
+      .main-nav.is-active { transform:translateX(0); }
+      .main-nav a { font-size:1.5rem; color:#000; text-decoration:none; }
+    }
+
+    @media (max-width:768px) {
+      .privacy-page-main { padding-top:102px; padding-bottom:76px; }
+      .privacy-page-hero { padding:40px 0 18px; }
+      .privacy-page-hero h1 { font-size:clamp(30px,8.4vw,40px); line-height:1.06; }
+      .privacy-page-lead { font-size:17px; line-height:1.58; }
+      .privacy-card { padding:24px 22px; border-radius:24px; }
+      .privacy-section + .privacy-section { margin-top:28px; padding-top:28px; }
+      .privacy-section h2 { font-size:22px; }
+      .privacy-section p, .privacy-section li { font-size:15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shell" aria-hidden="true"></div>
+  <div data-shared-header></div>
+  <script src="shared-header.js"></script>
+
+  <main class="privacy-page-main">
+    <section class="privacy-page-hero" aria-labelledby="cookies-page-title">
+      <div class="container privacy-page-hero__inner">
+        <p class="privacy-page-eyebrow">Právní informace</p>
+        <h1 id="cookies-page-title">Zásady používání souborů cookies</h1>
+        <p class="privacy-page-lead">Na této stránce uvádíme, jaké typy cookies mohou být na webu používány, k jakým účelům slouží a jak můžete jejich nastavení ovlivnit.</p>
+      </div>
+    </section>
+
+    <section class="privacy-page-content" aria-labelledby="cookies-content-title">
+      <div class="container">
+        <div class="privacy-card">
+          <div class="privacy-section">
+            <h2 id="cookies-content-title">1. Co jsou soubory cookies</h2>
+            <p>Tyto webové stránky používají soubory cookies a podobné technologie, které pomáhají zajistit správné fungování webu, analyzovat návštěvnost a vyhodnocovat účinnost marketingových aktivit.</p>
+            <p>Soubory cookies jsou malé textové soubory, které se ukládají do vašeho zařízení nebo umožňují přístup k informacím uloženým ve vašem zařízení při návštěvě webových stránek.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>2. Kdo je správcem</h2>
+            <p>Správcem osobních údajů souvisejících s používáním těchto webových stránek je:</p>
+            <p>Volkov Sergei<br />IČO: 19330201<br />Sídlo / místo podnikání: Trnová 88, 252 10 Trnová<br />E-mail: info@smartport.cz<br />Telefon: +420 775 563 355</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>3. Jaké typy cookies používáme</h2>
+            <p>Na našem webu můžeme používat tyto kategorie cookies:</p>
+            <p>a) Nezbytné cookies</p>
+            <p>Tyto cookies jsou nutné pro základní fungování webových stránek a jejich bezpečný provoz. Bez těchto cookies by web nemusel fungovat správně. K jejich použití není zpravidla vyžadován váš souhlas.</p>
+            <p>b) Analytické cookies</p>
+            <p>Tyto cookies nám pomáhají porozumět tomu, jak návštěvníci používají webové stránky, které stránky jsou navštěvovány nejčastěji, odkud návštěvníci přicházejí a jak web zlepšovat. Tyto cookies používáme pouze na základě vašeho souhlasu.</p>
+            <p>c) Marketingové cookies</p>
+            <p>Tyto cookies mohou být používány pro vyhodnocení marketingových kampaní, měření jejich účinnosti a pro zobrazování relevantnějších sdělení nebo obsahu. Tyto cookies používáme pouze na základě vašeho souhlasu.</p>
+            <p>d) Cookies třetích stran</p>
+            <p>Na webu může být vložen obsah nebo nástroje třetích stran, které mohou ukládat vlastní cookies nebo získávat přístup k informacím ve vašem zařízení, pokud s tím souhlasíte.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>4. Jaké nástroje používáme</h2>
+            <p>Na našem webu můžeme používat zejména tyto nástroje:</p>
+            <ul>
+              <li>Google Analytics</li>
+              <li>Google Tag Manager</li>
+              <li>Meta Pixel</li>
+              <li>vložený obsah sociálních sítí Facebook a Instagram</li>
+            </ul>
+            <p>Google Analytics slouží k měření návštěvnosti a analýze chování návštěvníků na webu.</p>
+            <p>Google Tag Manager slouží ke správě měřicích a marketingových tagů na webu.</p>
+            <p>Meta Pixel slouží k vyhodnocování marketingových kampaní a měření interakcí návštěvníků s webem.</p>
+            <p>Vložený obsah Facebook a Instagram může při načtení stránky zprostředkovat komunikaci se službami třetích stran.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>5. Na jakém základě cookies používáme</h2>
+            <p>Nezbytné cookies používáme na základě našeho oprávněného zájmu na řádném a bezpečném fungování webových stránek.</p>
+            <p>Analytické, marketingové a obdobné netechnické cookies používáme pouze na základě vašeho souhlasu uděleného prostřednictvím cookie lišty. Souhlas můžete kdykoli změnit nebo odvolat.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>6. Jak můžete nastavení cookies ovlivnit</h2>
+            <p>Při první návštěvě webu se vám zobrazí cookie lišta, prostřednictvím které můžete vyjádřit svůj souhlas s používáním jednotlivých kategorií cookies, případně je odmítnout.</p>
+            <p>Své nastavení můžete kdykoli změnit prostřednictvím odkazu pro správu cookies, pokud je na webu k dispozici, nebo nastavením svého internetového prohlížeče.</p>
+            <p>Většina internetových prohlížečů umožňuje ukládání cookies blokovat, omezit nebo již uložené cookies smazat. Upozorňujeme však, že v takovém případě nemusí některé části webu fungovat správně.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>7. Jak dlouho mohou být cookies uloženy</h2>
+            <p>Doba uložení jednotlivých cookies se může lišit podle jejich typu a konkrétního poskytovatele.</p>
+            <p>Některé cookies jsou ukládány pouze po dobu návštěvy webu, jiné mohou zůstat uloženy po delší dobu, dokud nevyprší jejich platnost nebo dokud je nesmažete ve svém prohlížeči.</p>
+            <p>Aktuální přehled používaných cookies, jejich poskytovatelů, účelů a dob uložení je dostupný v cookie liště nebo v nástroji pro správu souhlasů, pokud je na webu nasazen.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>8. Předávání údajů třetím stranám</h2>
+            <p>V souvislosti s používáním analytických a marketingových nástrojů mohou být některé údaje zpřístupněny poskytovatelům těchto služeb. V některých případech může docházet také k předávání údajů mimo Evropskou unii, zejména pokud to vyplývá z technického řešení konkrétní služby.</p>
+            <p>V takových případech postupujeme v souladu s platnými právními předpisy a dbáme na to, aby byla zajištěna odpovídající úroveň ochrany osobních údajů.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>9. Vaše práva</h2>
+            <p>Pokud při používání cookies dochází ke zpracování osobních údajů, máte právo:</p>
+            <ul>
+              <li>požadovat přístup ke svým osobním údajům,</li>
+              <li>požadovat opravu nepřesných údajů,</li>
+              <li>požadovat výmaz osobních údajů,</li>
+              <li>požadovat omezení zpracování,</li>
+              <li>vznést námitku proti zpracování,</li>
+              <li>odvolat udělený souhlas,</li>
+              <li>podat stížnost u dozorového úřadu.</li>
+            </ul>
+            <p>Dozorovým úřadem je Úřad pro ochranu osobních údajů.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>10. Kontakt</h2>
+            <p>V případě dotazů ohledně používání souborů cookies nás můžete kontaktovat:</p>
+            <p>E-mail: info@smartport.cz<br />Telefon: +420 775 563 355</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>11. Závěrečná ustanovení</h2>
+            <p>Tyto zásady používání souborů cookies mohou být průběžně aktualizovány, zejména pokud dojde ke změně používaných technologií, služeb třetích stran nebo právních požadavků.</p>
+            <p>Aktuální verze je vždy zveřejněna na těchto webových stránkách.</p>
+            <p>Datum poslední aktualizace: [doplnit]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="LOGO_footer.gif" alt="Smartport logo" />
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-block">
+          <h4>Ozvěte se nám</h4>
+          <ul>
+            <li>+420 775 563 355</li>
+            <li>info@smartport.cz</li>
+            <li>Po-Pá 9:00-16:00</li>
+            <li>Trnová 88, 252 10 Trnová</li>
+          </ul>
+        </div>
+        <div class="footer-block">
+          <h4>Rychlé odkazy</h4>
+          <ul class="footer-links">
+            <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
+            <li><a href="zasady-pouzivani-souboru-cookies.html">Zásady používání souborů cookies</a></li>
+            <li><a href="about.html">O nás</a></li>
+            <li><a href="contacts.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
