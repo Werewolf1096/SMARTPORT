@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="SMARTPORT kontakty. Telefon, e-mail a právní adresa společnosti včetně živé mapy."
+  />
+  <title>Kontakty | SMARTPORT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.jpg" type="image/png" />
+  <style>
+    .burger-btn { display:none; background:transparent; border:none; cursor:pointer; padding:10px; z-index:2000; position:relative; width:44px; height:44px; }
+    .burger-icon { display:block; width:24px; height:2px; background-color:#000; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:background-color .3s; }
+    .burger-icon::before, .burger-icon::after { content:''; position:absolute; left:0; width:100%; height:100%; background-color:#000; transition:transform .3s, top .3s; }
+    .burger-icon::before { top:-8px; }
+    .burger-icon::after { top:8px; }
+    .burger-btn.is-active .burger-icon { background-color:transparent; }
+    .burger-btn.is-active .burger-icon::before { transform:rotate(45deg); top:0; }
+    .burger-btn.is-active .burger-icon::after { transform:rotate(-45deg); top:0; }
+
+    @media (max-width:900px){
+      .header-inner { display:flex; justify-content:space-between; align-items:center; flex-direction:row !important; }
+      .burger-btn { display:block; }
+      .main-nav {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        background-color:#fff;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:2rem;
+        transform:translateX(100%);
+        transition:transform .3s ease;
+        z-index:1999;
+      }
+      .main-nav.is-active { transform:translateX(0); }
+      .main-nav a { font-size:1.5rem; color:#000; text-decoration:none; }
+    }
+  </style>
+</head>
+<body class="contact-page">
+  <div class="bg-shell" aria-hidden="true"></div>
+  <div data-shared-header></div>
+
+  <script src="shared-header.js"></script>
+
+  <main class="contact-page-main">
+    <section class="contact-page-hero" aria-labelledby="contact-page-title">
+      <div class="container contact-page-hero__inner">
+        <p class="contact-page-hero__eyebrow">Kontakty</p>
+        <h1 id="contact-page-title">Spojte se s námi napřímo.</h1>
+        <p class="contact-page-hero__lead">
+          Pokud řešíte chytrý dům, technické zadání nebo konkrétní realizaci, ozvěte se. Rádi
+          navážeme rozhovor jasně, věcně a bez zbytečné složitosti.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-page-details" aria-labelledby="contact-details-title">
+      <div class="container">
+        <div class="contact-page-details__intro">
+          <p class="contact-page-section-label">Kontaktujte SMARTPORT</p>
+          <h2 id="contact-details-title">Základní kontaktní údaje</h2>
+        </div>
+
+        <div class="contact-page-details__grid">
+          <article class="contact-page-detail">
+            <p class="contact-page-detail__label">Telefon</p>
+            <a href="tel:+420775563355">+420 775 563 355</a>
+          </article>
+
+          <article class="contact-page-detail">
+            <p class="contact-page-detail__label">E-mail</p>
+            <a href="mailto:info@smartport.cz">info@smartport.cz</a>
+          </article>
+
+          <article class="contact-page-detail">
+            <p class="contact-page-detail__label">Dostupnost</p>
+            <p>Po-Pá 9:00-16:00</p>
+          </article>
+
+          <article class="contact-page-detail">
+            <p class="contact-page-detail__label">Právní adresa</p>
+            <p>Trnová 88, 252 10 Trnová</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-page-map" aria-labelledby="contact-map-title">
+      <div class="container">
+        <div class="contact-page-map__frame">
+          <div class="contact-page-map__copy">
+            <p class="contact-page-section-label">Adresa společnosti</p>
+            <h2 id="contact-map-title">Kde nás najdete</h2>
+            <p>
+              Právní adresa společnosti je <strong>Trnová 88, 252 10 Trnová</strong>. Níže je živá
+              mapa pro rychlou orientaci i plánování trasy.
+            </p>
+            <div class="contact-page-map__actions">
+              <a class="btn primary" href="https://www.google.com/maps?q=Trnov%C3%A1+88,+252+10+Trnov%C3%A1" target="_blank" rel="noreferrer">
+                Otevřít v mapách
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-page-map__embed">
+            <iframe
+              title="Mapa adresy SMARTPORT, Trnová 88, 252 10 Trnová"
+              src="https://www.google.com/maps?q=Trnov%C3%A1+88,+252+10+Trnov%C3%A1&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="LOGO_footer.gif" alt="Smartport logo" />
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-block">
+          <h4>Ozvěte se nám</h4>
+          <ul>
+            <li>+420 775 563 355</li>
+            <li>info@smartport.cz</li>
+            <li>Po-Pá 9:00-16:00</li>
+            <li>Trnová 88, 252 10 Trnová</li>
+          </ul>
+        </div>
+        <div class="footer-block">
+          <h4>Rychlé odkazy</h4>
+          <ul class="footer-links">
+            <li><a href="#">Ochrana osobních údajů</a></li>
+            <li><a href="#">Obchodní podmínky</a></li>
+            <li><a href="about.html">O nás</a></li>
+            <li><a href="contacts.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -5,15 +5,17 @@
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
   const isHome = currentPath === "index.html" || currentPath === "";
   const isAbout = currentPath === "about.html";
+  const isContact = currentPath === "contacts.html";
   const isServicePage = /^sluzby-/.test(currentPath);
 
   const homeHref = isHome ? "#hero" : "index.html#hero";
   const servicesHref = isHome ? "#services" : "index.html#services";
-  const contactHref = isHome ? "#contact" : "index.html#contact";
+  const contactHref = "contacts.html";
 
   const isCurrentService = (fileName) => (currentPath === fileName ? ' aria-current="page"' : "");
   const homeState = isHome ? ' class="is-active" aria-current="page"' : "";
   const aboutState = isAbout ? ' class="is-active" aria-current="page"' : "";
+  const contactState = isContact ? ' class="is-active" aria-current="page"' : "";
   const servicesState = isServicePage ? " is-active" : "";
   const isLightingPage = currentPath === "sluzby-osvetleni.html";
   const brandLogoSrc = isLightingPage ? "LOGO-Black.gif" : "LOGO.gif";
@@ -61,7 +63,7 @@
               </div>
             </div>
           </div>
-          <a href="${contactHref}">Kontakt</a>
+          <a${contactState} href="${contactHref}">Kontakt</a>
           <a${aboutState} href="about.html">O n\u00e1s</a>
         </nav>
       </div>
