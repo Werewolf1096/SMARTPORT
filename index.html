@@ -90,7 +90,7 @@
               Osvětlení, vytápění, stínění, zabezpečení i energie – vše propojené v jednom systému, který pracuje za vás.
             </p>
             <span class="hero-divider" aria-hidden="true"></span>
-            <a class="hero-cta" href="#services">
+            <a class="hero-cta" href="poptavka.html">
               <span class="cta-eyes" aria-hidden="true">
                 <span class="eye"><span class="pupil"></span></span>
                 <span class="eye"><span class="pupil"></span></span>
@@ -261,77 +261,196 @@
       </section>
       
       <section id="solutions" class="services solutions">
+        <style>
+          .solutions-carousel.services-carousel {
+            width: calc(100% + (50vw - 50%));
+            margin-left: 0;
+            margin-right: calc(50% - 50vw);
+            padding-left: 0;
+            padding-right: 0;
+          }
+          .solutions-carousel .services-track {
+            grid-auto-columns: calc((100% - (50vw - 50%)) * 0.72) !important;
+            gap: 29px !important;
+            padding-bottom: 24px;
+            scroll-padding-right: calc((50vw - 50%) + ((100% - (50vw - 50%)) * 0.28)) !important;
+          }
+          @media (max-width: 1100px) {
+            .solutions-carousel .services-track {
+              grid-auto-columns: calc((100% - (50vw - 50%)) * 0.72) !important;
+            }
+          }
+          @media (max-width: 980px) {
+            .solutions-carousel .services-track {
+              grid-auto-columns: 100% !important;
+              scroll-padding-right: 0 !important;
+            }
+          }
+          
+          .solutions-carousel .solution-card {
+            background-image: none !important;
+            background: transparent !important;
+            min-height: 0 !important;
+            height: auto !important;
+            padding: 0 !important;
+            aspect-ratio: 1.5 / 1;
+            border-radius: 32px;
+            box-shadow: none !important;
+            border: none !important;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            display: block;
+          }
+          @media (max-width: 600px) {
+            .solutions-carousel .solution-card {
+              aspect-ratio: 4/5;
+            }
+          }
+          .wide-solution-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            pointer-events: none;
+          }
+          .wide-solution-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.85) 100%);
+            pointer-events: none;
+          }
+          .wide-solution-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            padding: 32px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+          }
+          @media (max-width: 980px) {
+            .wide-solution-content { padding: 28px 32px; }
+          }
+          .wide-solution-badge {
+            align-self: center;
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            color: #ffffff;
+            font-size: clamp(21px, 1.45vw, 24px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            padding: 0;
+            backdrop-filter: none;
+            margin-bottom: auto;
+          }
+          .solution-card .wide-solution-title {
+            font-size: clamp(24px, 2.8vw, 36px);
+            font-weight: 600;
+            line-height: 1.1;
+            color: #ffffff !important;
+            margin: 0 0 12px 0;
+            text-align: center;
+            min-height: unset;
+          }
+          .wide-solution-text {
+            font-size: calc(16px + 2px);
+            line-height: 1.5;
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+            max-width: 36ch;
+            text-align: center;
+          }
+          .solutions-carousel .services-dots button {
+            transition: background 0.3s, transform 0.3s;
+          }
+          .solutions-carousel .services-dots button.is-active {
+            background: var(--accent) !important;
+            transform: scale(1.2);
+          }
+        </style>
         <div class="container">
           <div class="services-head">
             <h2>Řešení pro každý typ prostoru.</h2>
           </div>
           <div class="services-carousel solutions-carousel">
             <div class="services-track" role="list">
-              <article
-                class="service-card solution-card"
-                style="--bg-image: url('https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80')"
-                role="listitem"
-              >
-                <p class="service-eyebrow">Rodinný dům</p>
-                <h3>Komfortní domov bez kompromisů.</h3>
-                <p>Osvětlení, klima a zabezpečení řídíte z jedné aplikace.</p>
-                <div class="service-media solution-media" aria-hidden="true"></div>
-                <button class="service-action" type="button" aria-label="Detail"></button>
+              <article class="service-card solution-card" role="listitem">
+                <img class="wide-solution-img" src="smart-home-loxone-rodinny-dum-interier-vecer.webp" alt="Moderní rodinný dům s inteligentním řízením Loxone, večerní atmosféra, automatické osvětlení a žaluzie v otevřeném obývacím prostoru" />
+                <div class="wide-solution-overlay"></div>
+                <div class="wide-solution-content">
+                  <div class="wide-solution-badge">Rodinný dům</div>
+                  <div>
+                    <h3 class="wide-solution-title">Komfortní domov bez kompromisů.</h3>
+                    <p class="wide-solution-text">Osvětlení, klima a zabezpečení řídíte z jedné aplikace.</p>
+                  </div>
+                </div>
               </article>
-              <article
-                class="service-card solution-card"
-                style="--bg-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80')"
-                role="listitem"
-              >
-                <p class="service-eyebrow">Restaurace</p>
-                <h3>Atmosféra, která dělá rozdíl.</h3>
-                <p>Scény světel a hudby pro různé denní doby.</p>
-                <div class="service-media solution-media" aria-hidden="true"></div>
-                <button class="service-action" type="button" aria-label="Detail"></button>
+              <article class="service-card solution-card" role="listitem">
+                <img class="wide-solution-img" src="smart-restaurant-loxone-osvetleni-automatizace.webp" alt="Moderní restaurace s inteligentním řízením osvětlení Loxone, vyvážené světelné scény a příjemná večerní atmosféra v interiéru" />
+                <div class="wide-solution-overlay"></div>
+                <div class="wide-solution-content">
+                  <div class="wide-solution-badge">Restaurace</div>
+                  <div>
+                    <h3 class="wide-solution-title">Atmosféra, která dělá rozdíl.</h3>
+                    <p class="wide-solution-text">Scény světel a hudby pro různé denní doby.</p>
+                  </div>
+                </div>
               </article>
-              <article
-                class="service-card solution-card"
-                style="--bg-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80')"
-                role="listitem"
-              >
-                <p class="service-eyebrow">Fitness</p>
-                <h3>Energeticky šetrné prostředí.</h3>
-                <p>Automatizace zón, větrání a optimální teplota.</p>
-                <div class="service-media solution-media" aria-hidden="true"></div>
-                <button class="service-action" type="button" aria-label="Detail"></button>
+              <article class="service-card solution-card" role="listitem">
+                <img class="wide-solution-img" src="smart-fitness-loxone-osvetleni-gym.webp" alt="Moderní fitness centrum s inteligentním řízením osvětlení Loxone, dynamické světelné scény v zóně volných vah a tréninku" />
+                <div class="wide-solution-overlay"></div>
+                <div class="wide-solution-content">
+                  <div class="wide-solution-badge">Fitness</div>
+                  <div>
+                    <h3 class="wide-solution-title">Energeticky šetrné prostředí.</h3>
+                    <p class="wide-solution-text">Automatizace zón, větrání a optimální teplota.</p>
+                  </div>
+                </div>
               </article>
-              <article
-                class="service-card solution-card"
-                style="--bg-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80')"
-                role="listitem"
-              >
-                <p class="service-eyebrow">Kanceláře</p>
-                <h3>Produktivita bez rušení.</h3>
-                <p>Inteligentní světelné scény a chytré zóny.</p>
-                <div class="service-media solution-media" aria-hidden="true"></div>
-                <button class="service-action" type="button" aria-label="Detail"></button>
+              <article class="service-card solution-card" role="listitem">
+                <img class="wide-solution-img" src="smart-office-loxone-konferencni-mistnost.webp" alt="Moderní kancelářská zasedací místnost s inteligentním řízením osvětlení Loxone, vyvážené světlo a automatizované pracovní prostředí" />
+                <div class="wide-solution-overlay"></div>
+                <div class="wide-solution-content">
+                  <div class="wide-solution-badge">Kanceláře</div>
+                  <div>
+                    <h3 class="wide-solution-title">Produktivita bez rušení.</h3>
+                    <p class="wide-solution-text">Inteligentní světelné scény a chytré zóny.</p>
+                  </div>
+                </div>
               </article>
-              <article
-                class="service-card solution-card"
-                style="--bg-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80')"
-                role="listitem"
-              >
-                <p class="service-eyebrow">Nemocnice</p>
-                <h3>Bezpečí a kontrola provozu.</h3>
-                <p>Monitoring, řízení přístupu a tiché chodby.</p>
-                <div class="service-media solution-media" aria-hidden="true"></div>
-                <button class="service-action" type="button" aria-label="Detail"></button>
+              <article class="service-card solution-card" role="listitem">
+                <img class="wide-solution-img" src="smart-clinic-reception-loxone.webp" alt="Moderní recepce polikliniky s inteligentním řízením osvětlení Loxone, čistý a přehledný prostor pro pacienty" />
+                <div class="wide-solution-overlay"></div>
+                <div class="wide-solution-content">
+                  <div class="wide-solution-badge">Nemocnice</div>
+                  <div>
+                    <h3 class="wide-solution-title">Bezpečí a kontrola provozu.</h3>
+                    <p class="wide-solution-text">Monitoring, řízení přístupu a tiché chodby.</p>
+                  </div>
+                </div>
               </article>
-              <article
-                class="service-card solution-card"
-                style="--bg-image: url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?auto=format&fit=crop&w=1200&q=80')"
-                role="listitem"
-              >
-                <p class="service-eyebrow">Hotely</p>
-                <h3>Hosté se cítí jako doma.</h3>
-                <p>Personalizované scény a intuitivní ovládání.</p>
-                <div class="service-media solution-media" aria-hidden="true"></div>
-                <button class="service-action" type="button" aria-label="Detail"></button>
+              <article class="service-card solution-card" role="listitem">
+                <img class="wide-solution-img" src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?auto=format&fit=crop&w=1200&q=80" alt="Hotely" />
+                <div class="wide-solution-overlay"></div>
+                <div class="wide-solution-content">
+                  <div class="wide-solution-badge">Hotely</div>
+                  <div>
+                    <h3 class="wide-solution-title">Hosté se cítí jako doma.</h3>
+                    <p class="wide-solution-text">Personalizované scény a intuitivní ovládání.</p>
+                  </div>
+                </div>
               </article>
             </div>
             <div class="services-arrows" aria-label="Listování služeb">
@@ -345,6 +464,14 @@
                   <path d="M8.5 4.5L15.5 12l-7 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
+            </div>
+            <div class="services-dots" aria-label="Indikace bloku">
+              <button class="is-active" type="button" aria-label="Blok 1"></button>
+              <button type="button" aria-label="Blok 2"></button>
+              <button type="button" aria-label="Blok 3"></button>
+              <button type="button" aria-label="Blok 4"></button>
+              <button type="button" aria-label="Blok 5"></button>
+              <button type="button" aria-label="Blok 6"></button>
             </div>
           </div>
         </div>
@@ -401,7 +528,7 @@
             <div class="contact-cta-copy">
               <p>Zanechte kontakt - připravíme koncepci a plán realizace.</p>
               <p class="contact-cta-note">Odpovíme vám do 24 hodin.</p>
-              <a class="btn primary contact-cta-btn creepy-btn" href="mailto:info@smartport.cz" aria-label="Kontaktujte nás">
+              <a class="btn primary contact-cta-btn creepy-btn" href="poptavka.html" aria-label="Přejít na poptávkový formulář">
                 <span class="creepy-btn__eyes" aria-hidden="true">
                   <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
                   <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
@@ -451,6 +578,8 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+
 
 
 

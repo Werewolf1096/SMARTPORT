@@ -5,12 +5,12 @@
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
   const isHome = currentPath === "index.html" || currentPath === "";
   const isAbout = currentPath === "about.html";
-  const isContact = currentPath === "contacts.html";
+  const isContact = currentPath === "contacts.html" || currentPath === "poptavka.html";
   const isServicePage = /^sluzby-/.test(currentPath);
 
   const homeHref = isHome ? "#hero" : "index.html#hero";
   const servicesHref = isHome ? "#services" : "index.html#services";
-  const contactHref = "contacts.html";
+  const contactHref = "poptavka.html";
 
   const isCurrentService = (fileName) => (currentPath === fileName ? ' aria-current="page"' : "");
   const homeState = isHome ? ' class="is-active" aria-current="page"' : "";

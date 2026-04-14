@@ -1,0 +1,205 @@
+﻿<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="SMARTPORT poptávka realizace chytrého domu. Zanechte kontakt a základní zadání projektu."
+  />
+  <title>Poptávka realizace | SMARTPORT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.jpg" type="image/png" />
+  <style>
+    .burger-btn { display:none; background:transparent; border:none; cursor:pointer; padding:10px; z-index:2000; position:relative; width:44px; height:44px; }
+    .burger-icon { display:block; width:24px; height:2px; background-color:#000; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:background-color .3s; }
+    .burger-icon::before, .burger-icon::after { content:''; position:absolute; left:0; width:100%; height:100%; background-color:#000; transition:transform .3s, top .3s; }
+    .burger-icon::before { top:-8px; }
+    .burger-icon::after { top:8px; }
+    .burger-btn.is-active .burger-icon { background-color:transparent; }
+    .burger-btn.is-active .burger-icon::before { transform:rotate(45deg); top:0; }
+    .burger-btn.is-active .burger-icon::after { transform:rotate(-45deg); top:0; }
+
+    @media (max-width:900px){
+      .header-inner { display:flex; justify-content:space-between; align-items:center; flex-direction:row !important; }
+      .burger-btn { display:block; }
+      .main-nav {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        background-color:#fff;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:2rem;
+        transform:translateX(100%);
+        transition:transform .3s ease;
+        z-index:1999;
+      }
+      .main-nav.is-active { transform:translateX(0); }
+      .main-nav a { font-size:1.5rem; color:#000; text-decoration:none; }
+    }
+  </style>
+</head>
+<body class="lead-page">
+  <div class="bg-shell" aria-hidden="true"></div>
+  <div data-shared-header></div>
+
+  <script src="shared-header.js"></script>
+
+  <main class="lead-page-main">
+    <section class="lead-page-hero" aria-labelledby="lead-page-title">
+      <div class="container lead-page-hero__inner">
+        <h1 id="lead-page-title">Poptávka chytrého domu bez zbytečných kroků.</h1>
+        <p class="lead-page-hero__lead">
+          Pošlete nám základní zadání, kontakt a krátký popis projektu. Připravíme další postup,
+          navážeme na vaše priority a ozveme se co nejdříve.
+        </p>
+      </div>
+    </section>
+
+    <section class="lead-page-shell" aria-labelledby="lead-form-title">
+      <div class="container lead-page-grid">
+        <div class="lead-page-intro">
+          <p class="lead-page-intro__eyebrow">Jak s námi začít</p>
+          <h2>Stručné zadání stačí. Důležitá je jasnost, ne délka.</h2>
+          <p class="lead-page-intro__lead">
+            Napište nám, co řešíte, v jaké jste fázi a jaký výsledek očekáváte. Navážeme dalším
+            krokem podle reálného rozsahu projektu.
+          </p>
+          <ul class="lead-page-intro__list" aria-label="Doporučené body poptávky">
+            <li>Typ objektu nebo projektu, například rodinný dům, rekonstrukce nebo novostavba.</li>
+            <li>Oblasti řešení, například osvětlení, stínění, klima, zabezpečení nebo energie.</li>
+            <li>Fáze projektu, termín a vše, co je důležité pro další technický návrh.</li>
+          </ul>
+        </div>
+
+        <div class="lead-page-form-wrap">
+          <form class="lead-page-form" id="lead-form">
+            <div class="lead-page-form__header">
+              <p class="lead-page-form__eyebrow">Formulář</p>
+              <h2 id="lead-form-title">Pošlete poptávku</h2>
+              <p>Vyplňte kontakt a stručně popište, co chcete řešit.</p>
+            </div>
+
+            <div class="lead-page-form__field">
+              <label for="lead-name">Jméno a příjmení</label>
+              <input id="lead-name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="lead-page-form__field">
+              <label for="lead-phone">Kontaktní telefon</label>
+              <input id="lead-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+
+            <div class="lead-page-form__field">
+              <label for="lead-email">Kontaktní e-mail</label>
+              <input id="lead-email" name="email" type="email" autocomplete="email" required />
+            </div>
+
+            <div class="lead-page-form__field">
+              <label for="lead-message">Zpráva a zadání projektu</label>
+              <textarea id="lead-message" name="message" required></textarea>
+            </div>
+
+            <button class="lead-page-form__submit" type="submit">Odeslat poptávku</button>
+            <p class="lead-page-form__status" id="lead-form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="lead-page-contact-section" aria-labelledby="lead-contact-title">
+      <div class="container">
+        <div class="lead-page-contact">
+          <p class="lead-page-contact__text" id="lead-contact-title">
+            S námi se můžete spojit i napřímo na
+            <a href="tel:+420775563355">+420 775 563 355</a>
+            nebo
+            <a href="mailto:info@smartport.cz">info@smartport.cz</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="LOGO_footer.gif" alt="Smartport logo" />
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-block">
+          <h4>Ozvěte se nám</h4>
+          <ul>
+            <li>+420 775 563 355</li>
+            <li>info@smartport.cz</li>
+            <li>Po-Pá 9:00-16:00</li>
+            <li>Nad Prahou 1096</li>
+          </ul>
+        </div>
+        <div class="footer-block">
+          <h4>Rychlé odkazy</h4>
+          <ul class="footer-links">
+            <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
+            <li><a href="zasady-pouzivani-souboru-cookies.html">Zásady používání souborů cookies</a></li>
+            <li><a href="vseobecne-obchodni-podminky.html">Všeobecné obchodní podmínky</a></li>
+            <li><a href="about.html">O nás</a></li>
+            <li><a href="contacts.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    (() => {
+      const form = document.getElementById("lead-form");
+      const status = document.getElementById("lead-form-status");
+      if (!form || !status) return;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = form.elements.namedItem("name").value.trim();
+        const phone = form.elements.namedItem("phone").value.trim();
+        const email = form.elements.namedItem("email").value.trim();
+        const message = form.elements.namedItem("message").value.trim();
+
+        if (!name || !phone || !email || !message) {
+          status.textContent = "Doplňte prosím všechna povinná pole.";
+          return;
+        }
+
+        const mailSubject = "SMARTPORT poptávka realizace";
+        const mailBody = [
+          "Jméno a příjmení: " + name,
+          "Telefon: " + phone,
+          "E-mail: " + email,
+          "",
+          "Zpráva a zadání projektu:",
+          message
+        ].join("\n");
+
+        const mailtoUrl = "mailto:info@smartport.cz?subject=" + encodeURIComponent(mailSubject) + "&body=" + encodeURIComponent(mailBody);
+        window.location.href = mailtoUrl;
+        status.textContent = "Předvyplněný e-mail je připraven k odeslání.";
+      });
+    })();
+  </script>
+</body>
+</html>
+
