@@ -886,9 +886,11 @@
 
 .service-hero .creepy-btn:focus-visible .creepy-btn__cover,
 .service-hero .creepy-btn:hover .creepy-btn__cover,
+.service-hero .creepy-btn.is-engaged .creepy-btn__cover,
 .service-hero .creepy-btn.is-peeking .creepy-btn__cover,
 .electro-final-cta .creepy-btn:focus-visible .creepy-btn__cover,
 .electro-final-cta .creepy-btn:hover .creepy-btn__cover,
+.electro-final-cta .creepy-btn.is-engaged .creepy-btn__cover,
 .electro-final-cta .creepy-btn.is-peeking .creepy-btn__cover {
   transform: rotate(-12deg);
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
@@ -943,18 +945,22 @@
 
 .service-hero .creepy-btn:hover .creepy-btn__eyes,
 .service-hero .creepy-btn:focus-visible .creepy-btn__eyes,
+.service-hero .creepy-btn.is-engaged .creepy-btn__eyes,
 .service-hero .creepy-btn.is-peeking .creepy-btn__eyes,
 .electro-final-cta .creepy-btn:hover .creepy-btn__eyes,
 .electro-final-cta .creepy-btn:focus-visible .creepy-btn__eyes,
+.electro-final-cta .creepy-btn.is-engaged .creepy-btn__eyes,
 .electro-final-cta .creepy-btn.is-peeking .creepy-btn__eyes {
   opacity: 1;
 }
 
 .service-hero .creepy-btn:hover .creepy-btn__eye,
 .service-hero .creepy-btn:focus-visible .creepy-btn__eye,
+.service-hero .creepy-btn.is-engaged .creepy-btn__eye,
 .service-hero .creepy-btn.is-peeking .creepy-btn__eye,
 .electro-final-cta .creepy-btn:hover .creepy-btn__eye,
 .electro-final-cta .creepy-btn:focus-visible .creepy-btn__eye,
+.electro-final-cta .creepy-btn.is-engaged .creepy-btn__eye,
 .electro-final-cta .creepy-btn.is-peeking .creepy-btn__eye {
   animation-play-state: running;
 }
@@ -1150,12 +1156,21 @@
   .service-hero--electro .service-hero-copy {
     max-width: 100%;
     padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .service-hero--electro h1.hero-gradient-title {
+    align-items: center;
   }
   .service-hero--electro .service-hero-lead {
     max-width: 100%;
     margin-top: 16px;
   }
   .service-hero--electro .service-hero-actions {
+    width: 100%;
+    justify-content: center;
     margin-top: 24px;
   }
   .service-hero--electro .service-hero-media {
@@ -1188,7 +1203,7 @@
     max-width: none;
   }
   .service-hero--electro .service-hero-lead {
-    max-width: 100%;
+    max-width: 30ch;
     font-size: 17px;
     line-height: 1.52;
   }
@@ -1351,6 +1366,11 @@
   display: block;
   object-fit: cover;
   object-position: center;
+}
+
+.service-page--energy .service-overview-media {
+  background: transparent;
+  box-shadow: none;
 }
 
 .climate-scenarios {

@@ -1,15 +1,28 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="cs">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>O nás - SMARTPORT</title>
-    <meta name="description" content="SMARTPORT se zaměřuje na elektroinstalace, automatizaci budov a integraci technologií do přehledných a stabilních řešení pro domy i firmy po celé České republice." />
+    <meta name="description" content="Poznejte SMARTPORT: tým pro elektroinstalace, automatizaci budov a integraci technologií do přehledných a stabilních řešení pro domy i firmy po celé ČR." />
+    <link rel="canonical" href="https://smartport.cz/about.html" />
+    <meta property="og:title" content="O nás | SMARTPORT" />
+    <meta property="og:description" content="Poznejte SMARTPORT: tým pro elektroinstalace, automatizaci budov a integraci technologií do přehledných a stabilních řešení pro domy i firmy po celé ČR." />
+    <meta property="og:image" content="https://smartport.cz/smart-home-loxone-rodinny-dum-interier-vecer.webp" />
+    <meta property="og:url" content="https://smartport.cz/about.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="SMARTPORT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="O nás | SMARTPORT" />
+    <meta name="twitter:description" content="Poznejte SMARTPORT: tým pro elektroinstalace, automatizaci budov a integraci technologií do přehledných a stabilních řešení pro domy i firmy po celé ČR." />
+    <meta name="twitter:image" content="https://smartport.cz/smart-home-loxone-rodinny-dum-interier-vecer.webp" />
+    <meta name="theme-color" content="#f3f6fb" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="favicon.jpg" type="image/png" />
+    <link rel="icon" href="favicon.jpg" type="image/jpeg" />
     <style>
       .site-header { position: static; }
       html, body { overflow-x: clip; max-width: 100%; overscroll-behavior-x: none; touch-action: pan-y; }
@@ -465,6 +478,7 @@
 
       .about-final-cta .creepy-btn:focus-visible .creepy-btn__cover,
       .about-final-cta .creepy-btn:hover .creepy-btn__cover,
+      .about-final-cta .creepy-btn.is-engaged .creepy-btn__cover,
       .about-final-cta .creepy-btn.is-peeking .creepy-btn__cover {
         transform: rotate(-12deg);
         transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
@@ -515,12 +529,14 @@
 
       .about-final-cta .creepy-btn:hover .creepy-btn__eyes,
       .about-final-cta .creepy-btn:focus-visible .creepy-btn__eyes,
+      .about-final-cta .creepy-btn.is-engaged .creepy-btn__eyes,
       .about-final-cta .creepy-btn.is-peeking .creepy-btn__eyes {
         opacity: 1;
       }
 
       .about-final-cta .creepy-btn:hover .creepy-btn__eye,
       .about-final-cta .creepy-btn:focus-visible .creepy-btn__eye,
+      .about-final-cta .creepy-btn.is-engaged .creepy-btn__eye,
       .about-final-cta .creepy-btn.is-peeking .creepy-btn__eye {
         animation-play-state: running;
       }
@@ -687,30 +703,16 @@
         <div class="bento-head apple-animate">
           <h2>Co děláme</h2>
         </div>
-        <div class="detail-columns apple-animate delay-1">
-          <div class="detail-column">
-            <h3>Elektroinstalace</h3>
-            <p>Realizujeme novГ© elektroinstalace i technickГ© Гєpravy pЕ™i rekonstrukcГ­ch. DЕЇraz klademe na ДЌistГ© provedenГ­, logickou strukturu a pЕ™ipravenost na dalЕЎГ­ rozvoj.</p>
-          </div>
-          <div class="detail-column">
-            <h3>Automatizace budov</h3>
-            <p>Navrhujeme systГ©my pro Е™Г­zenГ­ osvД›tlenГ­, stГ­nД›nГ­, vytГЎpД›nГ­, chlazenГ­, pЕ™Г­stupЕЇ a dalЕЎГ­ch technologiГ­ v rodinnГЅch domech i komerДЌnГ­ch objektech na platformД› LOXONE.</p>
-          </div>
-          <div class="detail-column">
-            <h3>Integrace technologiГ­</h3>
-            <p>Propojujeme jednotlivГ© systГ©my do jednoho funkДЌnГ­ho celku. CГ­lem nenГ­ technika pro efekt, ale Е™eЕЎenГ­, kterГ© funguje spolehlivД› v kaЕѕdodennГ­m provozu bez potЕ™eby neustГЎлГЅch zГЎсahЕЇ.</p>
-          </div>
-        </div>
         <div class="bento-grid">
           <div class="bento-card bento-span-3 apple-animate delay-1">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
               <div>
                 <h3 style="font-size: 20px; font-weight: 600; color: #1d1d1f; margin-bottom: 12px;">Elektroinstalace</h3>
-                <p style="font-size: 15px; color: #5c6170; line-height: 1.6;">Realizujeme nové elektroinstalace i technické úpravy při rekonstrukcích. Důraz klademe na čisté provedení, logickou strukturu a připravenost na další rozvoj.</p>
+                <p style="font-size: 15px; color: #5c6170; line-height: 1.6;">Navrhujeme a realizujeme elektroinstalace jako pevný technický základ domu nebo firmy. Důraz klademe na přehledné rozvody, servisovatelnost a rezervu pro budoucí rozšíření.</p>
               </div>
               <div>
                 <h3 style="font-size: 20px; font-weight: 600; color: #1d1d1f; margin-bottom: 12px;">Automatizace budov</h3>
-                <p style="font-size: 15px; color: #5c6170; line-height: 1.6;">Navrhujeme systémy pro řízení osvětlení, stínění, vytápění, chlazení, přístupů a dalších technologií v rodinných domech i komerčních objektech na platformě LOXONE.</p>
+                <p style="font-size: 15px; color: #5c6170; line-height: 1.6;">Řešíme logiku světel, stínění, klimatu, zabezpečení i energie tak, aby systém reagoval přirozeně na běžný provoz objektu a zůstával srozumitelný při každodenním používání.</p>
               </div>
               <div>
                 <h3 style="font-size: 20px; font-weight: 600; color: #1d1d1f; margin-bottom: 12px;">Integrace technologií</h3>
@@ -810,7 +812,7 @@
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="LOGO_footer.gif" alt="Smartport logo" />
+            <img loading="lazy" src="LOGO_footer.gif" alt="Smartport logo" />
           </div>
         </div>
         <div class="footer-grid">
@@ -820,7 +822,7 @@
               <li>+420 775 563 355</li>
               <li>info@smartport.cz</li>
               <li>Po-Pá 9:00-16:00</li>
-              <li>Nad Prahou 1096</li>
+              <li>Trnová 88, 252 10 Trnová</li>
             </ul>
           </div>
           <div class="footer-block">
@@ -834,7 +836,7 @@
             </ul>
           </div>
         </div>
-        <p class="footer-note">Smartport 2025. Design by Smartport.</p>
+        <p class="footer-note">Smartport 2026. Design by Smartport.</p>
       </div>
     </footer>
 
@@ -886,3 +888,7 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+
+
+

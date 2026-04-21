@@ -471,6 +471,12 @@ body.menu-open .site-footer {
   border-color: #0d0d0d;
 }
 
+.hero-cta.is-engaged {
+  box-shadow: 0 12px 30px rgba(15, 17, 21, 0.12);
+  background: #0d0d0d;
+  border-color: #0d0d0d;
+}
+
 .cta-eyes {
   position: absolute;
   top: -30px;
@@ -510,6 +516,10 @@ body.menu-open .site-footer {
 
 .hero-cta.is-blinking .cta-eyes .pupil {
   opacity: 0;
+}
+
+.hero-cta.is-engaged .cta-eyes {
+  opacity: 1;
 }
 
 .hero-visual {
@@ -1485,7 +1495,8 @@ body.menu-open .site-footer {
 }
 
 .contact-cta .creepy-btn:focus-visible .creepy-btn__cover,
-.contact-cta .creepy-btn:hover .creepy-btn__cover {
+.contact-cta .creepy-btn:hover .creepy-btn__cover,
+.contact-cta .creepy-btn.is-engaged .creepy-btn__cover {
   transform: rotate(-12deg);
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
 }
@@ -1534,12 +1545,14 @@ body.menu-open .site-footer {
 }
 
 .contact-cta .creepy-btn:hover .creepy-btn__eyes,
-.contact-cta .creepy-btn:focus-visible .creepy-btn__eyes {
+.contact-cta .creepy-btn:focus-visible .creepy-btn__eyes,
+.contact-cta .creepy-btn.is-engaged .creepy-btn__eyes {
   opacity: 1;
 }
 
 .contact-cta .creepy-btn:hover .creepy-btn__eye,
-.contact-cta .creepy-btn:focus-visible .creepy-btn__eye {
+.contact-cta .creepy-btn:focus-visible .creepy-btn__eye,
+.contact-cta .creepy-btn.is-engaged .creepy-btn__eye {
   animation-play-state: running;
 }
 
@@ -1784,6 +1797,21 @@ body.menu-open .site-footer {
     display: none;
   }
 
+  .nav-dropdown {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .main-nav > .nav-dropdown > .nav-link {
+    display: inline-flex;
+    justify-content: center;
+    width: auto;
+    font-size: 1.5rem;
+    color: #000;
+    text-decoration: none;
+  }
+
   .menu-backdrop {
     display: none !important;
   }
@@ -1839,18 +1867,22 @@ body.menu-open .site-footer {
 
   .hero {
     height: auto;
-    min-height: 700px;
+    min-height: 0;
+    padding: 36px 0 28px;
     overflow: visible;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 0;
+    justify-items: center;
   }
 
   .hero-visual {
+    order: 3;
     justify-self: center;
     min-height: auto;
+    margin-top: 18px;
   }
 
   .device-mock {
@@ -1862,24 +1894,32 @@ body.menu-open .site-footer {
   }
 
   .hero-copy {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 348px;
+    display: contents;
   }
 
   .hero-title {
+    order: 1;
     font-size: var(--title-xl-size);
     letter-spacing: var(--title-xl-tracking);
     font-weight: var(--title-xl-weight);
     color: var(--title-xl-color);
     line-height: 1.06;
+    max-width: 8ch;
+    text-align: center;
+    margin: 0 auto 14px;
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: balance;
   }
 
   .hero-sub {
+    order: 2;
     font-size: 17px;
     line-height: 1.58;
-    margin: 0 auto 20px;
-    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 18.5em;
+    text-wrap: pretty;
   }
 
   .hero-divider {
@@ -1892,11 +1932,12 @@ body.menu-open .site-footer {
 }
 
   .hero-cta {
+  order: 4;
   --cta-x: 0px;
   --cta-y: 0px;
   --cta-r: 0deg;
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 10px 26px;
@@ -1905,15 +1946,28 @@ body.menu-open .site-footer {
   color: #fff;
   font-weight: 600;
   background: var(--accent-green);
-  margin: 0 auto;
+  margin: 36px auto 0;
   vertical-align: middle;
   box-shadow: 0 18px 36px rgba(15, 17, 21, 0.2);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   transform: translate(var(--cta-x), var(--cta-y)) rotate(var(--cta-r));
+  width: fit-content;
 }
 
   .cta-eyes {
-    display: none;
+    display: flex;
+    top: -24px;
+    gap: 6px;
+  }
+
+  .cta-eyes .eye {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cta-eyes .pupil {
+    top: 5px;
+    left: 5px;
   }
 
   .hero-cta,
@@ -2031,8 +2085,8 @@ body.menu-open .site-footer {
   }
 
   .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
   }
 
   .cta {

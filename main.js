@@ -172,7 +172,6 @@
   const hero = cta.closest(".hero");
   if (!hero) return;
   const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  if (!supportsHover) return;
 
   let rect = cta.getBoundingClientRect();
   const pupils = Array.from(cta.querySelectorAll(".cta-eyes .pupil"));
@@ -262,61 +261,49 @@
     scheduleIdleBlink();
   }
 
+  function engage() {
+    cta.classList.add("is-engaged");
+  }
+
+  function disengage() {
+    cta.classList.remove("is-engaged");
+    reset();
+  }
+
   window.addEventListener("resize", updateRect);
   hero.addEventListener("mouseenter", scheduleIdleBlink);
-  hero.addEventListener("mousemove", onMove);
-  hero.addEventListener("mouseleave", reset);
+  if (supportsHover) {
+    hero.addEventListener("mousemove", onMove);
+    hero.addEventListener("mouseleave", reset);
+    cta.addEventListener("mouseenter", engage);
+    cta.addEventListener("mouseleave", () => {
+      cta.classList.remove("is-engaged");
+    });
+  }
+  cta.addEventListener("focusin", engage);
+  cta.addEventListener("focusout", disengage);
+  cta.addEventListener("touchstart", engage, { passive: true });
+  cta.addEventListener("touchmove", (e) => {
+    const touch = e.touches && e.touches[0];
+    if (!touch) return;
+    updateRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = clamp((touch.clientX - cx) / 120, -1, 1);
+    const dy = clamp((touch.clientY - cy) / 120, -1, 1);
+    const eyeX = dx * 6;
+    const eyeY = dy * 4;
+    pupils.forEach((pupil) => {
+      pupil.style.setProperty("--eye-x", `${eyeX}px`);
+      pupil.style.setProperty("--eye-y", `${eyeY}px`);
+    });
+  }, { passive: true });
+  cta.addEventListener("touchend", disengage, { passive: true });
+  cta.addEventListener("touchcancel", disengage, { passive: true });
   updateRect();
   scheduleIdleBlink();
 })();
 
-(() => {
-  const creepyBtn = document.querySelector(".contact-cta .creepy-btn");
-  if (!creepyBtn) return;
-
-  const eyes = creepyBtn.querySelector(".creepy-btn__eyes");
-  const pupils = Array.from(creepyBtn.querySelectorAll(".creepy-btn__pupil"));
-  if (!eyes || pupils.length === 0) return;
-
-  const updateEyes = (clientX, clientY) => {
-    const eyesRect = eyes.getBoundingClientRect();
-    const eyesCenter = {
-      x: eyesRect.left + eyesRect.width / 2,
-      y: eyesRect.top + eyesRect.height / 2
-    };
-
-    const dx = clientX - eyesCenter.x;
-    const dy = clientY - eyesCenter.y;
-    const angle = Math.atan2(-dy, dx) + Math.PI / 2;
-    const distance = Math.hypot(dx, dy);
-    const visionRangeX = 180;
-    const visionRangeY = 75;
-
-    const x = (Math.sin(angle) * distance) / visionRangeX;
-    const y = (Math.cos(angle) * distance) / visionRangeY;
-    const tx = Math.max(-3, Math.min(3, x * 3));
-    const ty = Math.max(-3, Math.min(3, y * 3));
-
-    pupils.forEach((pupil) => {
-      pupil.style.setProperty("--cb-eye-x", `${tx}px`);
-      pupil.style.setProperty("--cb-eye-y", `${ty}px`);
-    });
-  };
-
-  creepyBtn.addEventListener("mousemove", (e) => {
-    updateEyes(e.clientX, e.clientY);
-  });
-
-  creepyBtn.addEventListener(
-    "touchmove",
-    (e) => {
-      const touch = e.touches && e.touches[0];
-      if (!touch) return;
-      updateEyes(touch.clientX, touch.clientY);
-    },
-    { passive: true }
-  );
-})();
 
 (() => {
   const accordion = Array.from(document.querySelectorAll(".step-item"));
@@ -671,30 +658,48 @@
 })();
 
 (() => {
-  const creepyBtns = Array.from(
-    document.querySelectorAll(".service-hero .creepy-btn, .electro-final-cta .creepy-btn, .about-final-cta .creepy-btn")
-  );
+  const creepyBtns = Array.from(document.querySelectorAll(".creepy-btn"));
   if (creepyBtns.length === 0) return;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const rand = (min, max) => min + Math.random() * (max - min);
   const nextIdleDelay = () => Math.round(rand(12000, 26000));
   const followUpDelay = () => Math.round(rand(180, 420));
   const shouldDoublePeek = () => Math.random() < 0.28;
-  const isAutoPeekAllowed = () =>
-    !reducedMotion.matches &&
-    document.visibilityState === "visible";
+  const baseAutoPeekAllowed = () => !reducedMotion.matches && document.visibilityState === "visible";
+  const visibilityListeners = new Set();
+  const reducedMotionListeners = new Set();
+
+  document.addEventListener("visibilitychange", () => {
+    visibilityListeners.forEach((listener) => listener());
+  });
+
+  if (typeof reducedMotion.addEventListener === "function") {
+    reducedMotion.addEventListener("change", () => {
+      reducedMotionListeners.forEach((listener) => listener());
+    });
+  }
 
   creepyBtns.forEach((creepyBtn) => {
     const eyes = creepyBtn.querySelector(".creepy-btn__eyes");
     const pupils = Array.from(creepyBtn.querySelectorAll(".creepy-btn__pupil"));
     if (!eyes || pupils.length === 0) return;
+
+    const allowIdlePeek = creepyBtn.matches(
+      ".service-hero .creepy-btn, .electro-final-cta .creepy-btn, .about-final-cta .creepy-btn"
+    );
+
     let pointerInside = false;
     let hasFocus = false;
+    let touchActive = false;
     let peekTimer = null;
     let peekCleanupTimer = null;
     let peekSequence = 0;
     let destroyed = false;
+
+    const setEngaged = (engaged) => {
+      creepyBtn.classList.toggle("is-engaged", engaged);
+    };
 
     const updateEyes = (clientX, clientY) => {
       const eyesRect = eyes.getBoundingClientRect();
@@ -721,6 +726,13 @@
       });
     };
 
+    const resetEyes = () => {
+      pupils.forEach((pupil) => {
+        pupil.style.setProperty("--cb-eye-x", "0px");
+        pupil.style.setProperty("--cb-eye-y", "0px");
+      });
+    };
+
     const clearPeekTimers = () => {
       if (peekTimer) {
         window.clearTimeout(peekTimer);
@@ -736,6 +748,8 @@
       creepyBtn.classList.remove("is-peeking");
       clearPeekTimers();
     };
+
+    const isAutoPeekAllowed = () => allowIdlePeek && baseAutoPeekAllowed();
 
     const scheduleNextPeek = (delay = nextIdleDelay()) => {
       clearPeekTimers();
@@ -796,11 +810,16 @@
 
     const pauseAutoPeek = () => {
       pointerInside = true;
+      setEngaged(true);
       resetPeekState();
     };
 
     const resumeAutoPeek = () => {
       pointerInside = false;
+      if (!hasFocus && !touchActive) {
+        setEngaged(false);
+        resetEyes();
+      }
       scheduleNextPeek();
     };
 
@@ -812,24 +831,53 @@
     creepyBtn.addEventListener("mouseleave", resumeAutoPeek);
     creepyBtn.addEventListener("focusin", () => {
       hasFocus = true;
+      setEngaged(true);
       resetPeekState();
     });
     creepyBtn.addEventListener("focusout", () => {
       hasFocus = false;
+      if (!pointerInside && !touchActive) {
+        setEngaged(false);
+        resetEyes();
+      }
       scheduleNextPeek();
     });
-    creepyBtn.addEventListener("touchstart", () => {
-      pointerInside = true;
-      resetPeekState();
-    }, { passive: true });
-    creepyBtn.addEventListener("touchend", () => {
-      pointerInside = false;
-      scheduleNextPeek(nextIdleDelay());
-    }, { passive: true });
-    creepyBtn.addEventListener("touchcancel", () => {
-      pointerInside = false;
-      scheduleNextPeek(nextIdleDelay());
-    }, { passive: true });
+    creepyBtn.addEventListener(
+      "touchstart",
+      () => {
+        touchActive = true;
+        pointerInside = true;
+        setEngaged(true);
+        resetPeekState();
+      },
+      { passive: true }
+    );
+    creepyBtn.addEventListener(
+      "touchend",
+      () => {
+        touchActive = false;
+        pointerInside = false;
+        if (!hasFocus) {
+          setEngaged(false);
+          resetEyes();
+        }
+        scheduleNextPeek(nextIdleDelay());
+      },
+      { passive: true }
+    );
+    creepyBtn.addEventListener(
+      "touchcancel",
+      () => {
+        touchActive = false;
+        pointerInside = false;
+        if (!hasFocus) {
+          setEngaged(false);
+          resetEyes();
+        }
+        scheduleNextPeek(nextIdleDelay());
+      },
+      { passive: true }
+    );
 
     creepyBtn.addEventListener(
       "touchmove",
@@ -841,26 +889,32 @@
       { passive: true }
     );
 
-    document.addEventListener("visibilitychange", () => {
+    const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
         scheduleNextPeek(nextIdleDelay());
         return;
       }
 
       resetPeekState();
-    });
+      if (!pointerInside && !hasFocus && !touchActive) {
+        setEngaged(false);
+        resetEyes();
+      }
+    };
+    visibilityListeners.add(onVisibilityChange);
 
     if (typeof reducedMotion.addEventListener === "function") {
-      reducedMotion.addEventListener("change", () => {
+      const onReducedMotionChange = () => {
         if (reducedMotion.matches) {
           resetPeekState();
           return;
         }
 
         scheduleNextPeek(nextIdleDelay());
-      });
+      };
+      reducedMotionListeners.add(onReducedMotionChange);
     }
 
-    scheduleNextPeek(Math.round(rand(1200, 4200)));
+    scheduleNextPeek(allowIdlePeek ? Math.round(rand(1200, 4200)) : nextIdleDelay());
   });
 })();
