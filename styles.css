@@ -1816,6 +1816,11 @@ body.menu-open .site-footer {
     display: none !important;
   }
 
+  body.menu-open main,
+  body.menu-open .site-footer {
+    filter: none;
+  }
+
   .nav-link::before {
     display: none;
   }

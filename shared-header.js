@@ -2,14 +2,14 @@
   const mount = document.querySelector("[data-shared-header]");
   if (!mount) return;
 
-  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const currentPath = window.location.pathname.split("/").pop() || "";
   const isHome = currentPath === "index.html" || currentPath === "";
   const isAbout = currentPath === "about.html";
   const isContact = currentPath === "contacts.html" || currentPath === "poptavka.html";
   const isServicePage = /^sluzby-/.test(currentPath);
 
-  const homeHref = isHome ? "#hero" : "index.html#hero";
-  const servicesHref = isHome ? "#services" : "index.html#services";
+  const homeHref = "/";
+  const servicesHref = isHome ? "#services" : "/#services";
   const contactHref = "poptavka.html";
 
   const isCurrentService = (fileName) => (currentPath === fileName ? ' aria-current="page"' : "");

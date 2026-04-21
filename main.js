@@ -23,7 +23,7 @@
   };
 
   const bindHomeLinks = () => {
-    const homeLinks = document.querySelectorAll('a[href="#hero"], a[href="index.html#hero"]');
+    const homeLinks = document.querySelectorAll('a[href="#hero"], a[href="/"]');
     homeLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
