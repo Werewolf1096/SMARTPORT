@@ -8,8 +8,8 @@
   const isContact = currentPath === "contacts.html" || currentPath === "poptavka.html";
   const isServicePage = /^sluzby-/.test(currentPath);
 
-  const homeHref = "/";
-  const servicesHref = isHome ? "#services" : "/#services";
+  const homeHref = "index.html";
+  const servicesHref = isHome ? "#services" : "index.html#services";
   const contactHref = "poptavka.html";
 
   const isCurrentService = (fileName) => (currentPath === fileName ? ' aria-current="page"' : "");

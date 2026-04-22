@@ -1,6 +1,7 @@
-﻿.service-page {
+.service-page {
   background: var(--bg);
 }
+
 .service-main {
   padding-bottom: 0;
 }
@@ -21,13 +22,7 @@
   padding: 56px 52px 56px calc((100vw - min(90%, var(--content-width))) / 2);
   max-width: 52%;
 }
-.service-eyebrow {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--graphite);
-  font-weight: 600;
-}
+/* .service-eyebrow typography → master rule in styles.css */
 .service-hero h1 {
   margin-top: 10px;
   font-size: var(--title-xl-size);
@@ -384,10 +379,7 @@
   margin: 104px auto 0;
 }
 .service-why-head .service-eyebrow {
-  color: var(--graphite);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  /* typography → master rule in styles.css */
 }
 .service-why-head h2 {
   margin-top: 12px;
@@ -1032,19 +1024,13 @@
 }
 .service-hero--electro .service-eyebrow {
   display: inline-block;
-  margin: 0 0 14px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.54);
+  margin-bottom: 16px;
 }
 .service-hero--electro h1.hero-gradient-title {
   gap: 0.05em;
   margin: 0;
   font-size: clamp(56px, 6.4vw, 92px);
-  line-height: 0.92;
+  line-height: 1;
   letter-spacing: -0.06em;
   max-width: 100%;
   min-width: 0;
@@ -1191,12 +1177,11 @@
     padding: 20px 0 8px;
   }
   .service-hero--electro .service-eyebrow {
-    margin-bottom: 12px;
-    font-size: 12px;
+    margin-bottom: 16px;
   }
   .service-hero--electro h1.hero-gradient-title {
     font-size: clamp(38px, 10.4vw, 52px);
-    line-height: 0.94;
+    line-height: 1;
   }
   .service-hero--electro .hero-gradient-line.hero-gradient-line--accent {
     white-space: normal;
@@ -1384,19 +1369,13 @@
 }
 
 .climate-scenarios__intro h2,
-.climate-scenarios__intro p {
+.climate-scenarios__intro p:not([class*="eyebrow"]) {
   margin-left: auto;
   margin-right: auto;
 }
 
-.climate-scenarios__eyebrow {
-  margin: 0 0 16px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+.climate-scenarios__intro > [class*="eyebrow"] {
+  margin-bottom: 16px;
 }
 
 .climate-scenarios__intro h2 {
@@ -1410,7 +1389,7 @@
   color: var(--ink);
 }
 
-.climate-scenarios__intro p {
+.climate-scenarios__intro p:not([class*="eyebrow"]) {
   margin-top: 16px;
   max-width: 38ch;
   color: var(--muted);
@@ -1463,13 +1442,7 @@
   text-align: center;
 }
 .electro-process__eyebrow {
-  margin: 0 0 12px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+  margin-bottom: 16px;
 }
 .electro-process__intro h2 {
   position: relative;
@@ -1479,7 +1452,7 @@
   letter-spacing: -0.04em;
   color: var(--ink);
 }
-.electro-process__intro p {
+.electro-process__intro p:not([class*="eyebrow"]) {
   margin: 18px auto 0;
   max-width: 700px;
   color: var(--muted);
@@ -1621,26 +1594,20 @@
   text-align: center;
 }
 .electro-standard__eyebrow {
-  margin: 0 0 12px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+  margin-bottom: 16px;
 }
 .electro-standard__intro h2 {
   position: relative;
   margin: 0;
   font-size: clamp(38px, 5vw, 68px);
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: -0.05em;
   color: var(--ink);
 }
 .electro-standard__accent {
   color: var(--accent);
 }
-.electro-standard__intro p {
+.electro-standard__intro p:not([class*="eyebrow"]) {
   margin: 20px auto 0;
   max-width: 720px;
   color: var(--muted);
@@ -1744,13 +1711,7 @@
   text-align: center;
 }
 .electro-benefits__eyebrow {
-  margin: 0 0 12px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+  margin-bottom: 16px;
 }
 .electro-benefits__intro h2 {
   position: relative;
@@ -1760,7 +1721,7 @@
   letter-spacing: -0.05em;
   color: var(--ink);
 }
-.electro-benefits__intro p {
+.electro-benefits__intro p:not([class*="eyebrow"]) {
   margin: 20px auto 0;
   max-width: 760px;
   color: var(--muted);
@@ -1854,13 +1815,7 @@
   text-align: center;
 }
 .electro-final-cta__eyebrow {
-  margin: 20px auto 0;
-  font-size: clamp(18px, 1.7vw, 22px);
-  font-weight: 600;
-  line-height: 1.58;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+  margin-top: 20px;
 }
 .electro-final-cta__text {
   margin: 20px auto 0;
@@ -2296,7 +2251,7 @@
     width: min(340px, 68vw);
     height: 96px;
   }
-  .electro-benefits__intro p {
+  .electro-benefits__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -2326,7 +2281,7 @@
     width: min(320px, 64vw);
     height: 92px;
   }
-  .electro-standard__intro p {
+  .electro-standard__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -2347,7 +2302,7 @@
   .electro-process__intro {
     text-align: left;
   }
-  .electro-process__intro p {
+  .electro-process__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -2426,7 +2381,7 @@
     text-align: left;
   }
   .climate-scenarios__intro h2,
-  .climate-scenarios__intro p {
+  .climate-scenarios__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -2435,7 +2390,7 @@
     line-height: 1.08;
     max-width: none;
   }
-  .climate-scenarios__intro p {
+  .climate-scenarios__intro p:not([class*="eyebrow"]) {
     margin-top: 16px;
     max-width: 100%;
     font-size: 16px;
@@ -2538,10 +2493,10 @@
   font-weight: 600;
 }
 
-.service-page--security .electro-scope-intro p,
-.service-page--security .electro-process__intro p,
-.service-page--security .electro-standard__intro p,
-.service-page--security .electro-benefits__intro p {
+.service-page--security .electro-scope-intro p:not([class*="eyebrow"]),
+.service-page--security .electro-process__intro p:not([class*="eyebrow"]),
+.service-page--security .electro-standard__intro p:not([class*="eyebrow"]),
+.service-page--security .electro-benefits__intro p:not([class*="eyebrow"]) {
   font-size: clamp(20px, 1.55vw, 24px);
   line-height: 1.42;
   letter-spacing: -0.01em;
@@ -2565,12 +2520,7 @@
   gap: 16px;
 }
 
-.service-page--security .electro-process__eyebrow,
-.service-page .electro-standard__eyebrow,
-.service-page--security .electro-benefits__eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.14em;
-}
+/* service-page eyebrow overrides removed — handled by master rule in styles.css */
 
 .service-page--security .electro-process__card h3,
 .service-page .electro-standard__card h3,
@@ -2643,10 +2593,7 @@
   padding: clamp(92px, 8.8vw, 124px) 0;
 }
 
-.service-page--security .electro-final-cta__eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.14em;
-}
+/* service-page--security final-cta eyebrow override removed — master rule applies */
 
 .service-page--security .electro-final-cta__text {
   font-size: clamp(28px, 2.5vw, 38px);
@@ -2660,10 +2607,10 @@
   }
 
   .service-page--security .service-hero--electro .service-hero-lead,
-  .service-page--security .electro-scope-intro p,
-  .service-page--security .electro-process__intro p,
-  .service-page--security .electro-standard__intro p,
-  .service-page--security .electro-benefits__intro p {
+  .service-page--security .electro-scope-intro p:not([class*="eyebrow"]),
+  .service-page--security .electro-process__intro p:not([class*="eyebrow"]),
+  .service-page--security .electro-standard__intro p:not([class*="eyebrow"]),
+  .service-page--security .electro-benefits__intro p:not([class*="eyebrow"]) {
     font-size: 18px;
     line-height: 1.48;
   }
@@ -2684,10 +2631,10 @@
   }
 
   .service-page--security .service-hero--electro .service-hero-lead,
-  .service-page--security .electro-scope-intro p,
-  .service-page--security .electro-process__intro p,
-  .service-page--security .electro-standard__intro p,
-  .service-page--security .electro-benefits__intro p {
+  .service-page--security .electro-scope-intro p:not([class*="eyebrow"]),
+  .service-page--security .electro-process__intro p:not([class*="eyebrow"]),
+  .service-page--security .electro-standard__intro p:not([class*="eyebrow"]),
+  .service-page--security .electro-benefits__intro p:not([class*="eyebrow"]) {
     font-size: 17px;
     line-height: 1.52;
   }
@@ -2743,19 +2690,7 @@
 }
 
 /* Unified Apple-style typography rhythm for service pages */
-.service-eyebrow,
-.service-hero--electro .service-eyebrow,
-.electro-process__eyebrow,
-.electro-standard__eyebrow,
-.electro-benefits__eyebrow,
-.climate-scenarios__eyebrow,
-.electro-final-cta__eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
+/* Unified eyebrow block removed — all eyebrow typography in styles.css master rule */
 
 .service-hero h1,
 .service-hero--electro h1.hero-gradient-title,
@@ -2770,13 +2705,13 @@
   font-weight: 600;
 }
 
-.service-hero p,
+.service-hero p:not([class*="eyebrow"]),
 .service-hero--electro .service-hero-lead,
-.electro-scope-intro p,
-.electro-process__intro p,
-.electro-standard__intro p,
-.electro-benefits__intro p,
-.climate-scenarios__intro p {
+.electro-scope-intro p:not([class*="eyebrow"]),
+.electro-process__intro p:not([class*="eyebrow"]),
+.electro-standard__intro p:not([class*="eyebrow"]),
+.electro-benefits__intro p:not([class*="eyebrow"]),
+.climate-scenarios__intro p:not([class*="eyebrow"]) {
   font-size: clamp(20px, 1.55vw, 24px);
   line-height: 1.5;
   letter-spacing: -0.01em;
@@ -2823,15 +2758,7 @@
 }
 
 @media (max-width: 1100px) {
-  .service-eyebrow,
-  .service-hero--electro .service-eyebrow,
-  .electro-process__eyebrow,
-  .electro-standard__eyebrow,
-  .electro-benefits__eyebrow,
-  .climate-scenarios__eyebrow,
-  .electro-final-cta__eyebrow {
-    font-size: 11px;
-  }
+  /* eyebrow font-size → handled by :root master rule + var(--eyebrow-size) in styles.css */
 
   .service-hero h1,
   .service-hero--electro h1.hero-gradient-title,
@@ -2844,13 +2771,13 @@
     line-height: 1.02;
   }
 
-  .service-hero p,
+  .service-hero p:not([class*="eyebrow"]),
   .service-hero--electro .service-hero-lead,
-  .electro-scope-intro p,
-  .electro-process__intro p,
-  .electro-standard__intro p,
-  .electro-benefits__intro p,
-  .climate-scenarios__intro p {
+  .electro-scope-intro p:not([class*="eyebrow"]),
+  .electro-process__intro p:not([class*="eyebrow"]),
+  .electro-standard__intro p:not([class*="eyebrow"]),
+  .electro-benefits__intro p:not([class*="eyebrow"]),
+  .climate-scenarios__intro p:not([class*="eyebrow"]) {
     font-size: 18px;
     line-height: 1.5;
   }
@@ -2876,15 +2803,7 @@
 }
 
 @media (max-width: 700px) {
-  .service-eyebrow,
-  .service-hero--electro .service-eyebrow,
-  .electro-process__eyebrow,
-  .electro-standard__eyebrow,
-  .electro-benefits__eyebrow,
-  .climate-scenarios__eyebrow,
-  .electro-final-cta__eyebrow {
-    font-size: 10px;
-  }
+  /* eyebrow font-size → handled by :root master rule + var(--eyebrow-size) in styles.css */
 
   .service-hero h1,
   .service-hero--electro h1.hero-gradient-title,
@@ -2897,13 +2816,13 @@
     line-height: 1.06;
   }
 
-  .service-hero p,
+  .service-hero p:not([class*="eyebrow"]),
   .service-hero--electro .service-hero-lead,
-  .electro-scope-intro p,
-  .electro-process__intro p,
-  .electro-standard__intro p,
-  .electro-benefits__intro p,
-  .climate-scenarios__intro p {
+  .electro-scope-intro p:not([class*="eyebrow"]),
+  .electro-process__intro p:not([class*="eyebrow"]),
+  .electro-standard__intro p:not([class*="eyebrow"]),
+  .electro-benefits__intro p:not([class*="eyebrow"]),
+  .climate-scenarios__intro p:not([class*="eyebrow"]) {
     font-size: 17px;
     line-height: 1.58;
   }
@@ -2953,19 +2872,13 @@
 }
 
 .service-editorial-scenarios__intro h2,
-.service-editorial-scenarios__intro p {
+.service-editorial-scenarios__intro p:not([class*="eyebrow"]) {
   margin-left: auto;
   margin-right: auto;
 }
 
 .service-editorial-scenarios__eyebrow {
-  margin: 0 0 16px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+  margin-bottom: 16px;
 }
 
 .service-editorial-scenarios__intro h2 {
@@ -2978,7 +2891,7 @@
   color: var(--ink);
 }
 
-.service-editorial-scenarios__intro p {
+.service-editorial-scenarios__intro p:not([class*="eyebrow"]) {
   margin-top: 16px;
   max-width: 42ch;
   font-size: clamp(20px, 1.55vw, 24px);
@@ -3067,7 +2980,7 @@
     line-height: 1.02;
   }
 
-  .service-editorial-scenarios__intro p {
+  .service-editorial-scenarios__intro p:not([class*="eyebrow"]) {
     font-size: 18px;
   }
 
@@ -3094,7 +3007,7 @@
   }
 
   .service-editorial-scenarios__intro h2,
-  .service-editorial-scenarios__intro p {
+  .service-editorial-scenarios__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
     max-width: none;
@@ -3105,7 +3018,7 @@
     line-height: 1.06;
   }
 
-  .service-editorial-scenarios__intro p {
+  .service-editorial-scenarios__intro p:not([class*="eyebrow"]) {
     font-size: 17px;
     line-height: 1.58;
   }
@@ -3174,24 +3087,18 @@
 }
 
 .service-logic-grid__intro h2,
-.service-logic-grid__intro p {
+.service-logic-grid__intro p:not([class*="eyebrow"]) {
   margin-left: auto;
   margin-right: auto;
 }
 
 .service-logic-grid__eyebrow {
-  margin: 0 0 16px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.64);
+  margin-bottom: 16px;
 }
 
 .service-logic-grid__intro h2 {
   margin: 0;
-  max-width: 17ch;
+  max-width: 24ch;
   font-size: clamp(46px, 4.9vw, 66px);
   line-height: 1.02;
   letter-spacing: -0.04em;
@@ -3199,7 +3106,7 @@
   color: var(--ink);
 }
 
-.service-logic-grid__intro p {
+.service-logic-grid__intro p:not([class*="eyebrow"]) {
   margin-top: 16px;
   max-width: 43ch;
   font-size: clamp(18px, 1.34vw, 21px);
@@ -3273,7 +3180,7 @@
   }
 
   .service-logic-grid__intro h2,
-  .service-logic-grid__intro p {
+  .service-logic-grid__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
     max-width: none;
@@ -3284,7 +3191,7 @@
     line-height: 1.06;
   }
 
-  .service-logic-grid__intro p {
+  .service-logic-grid__intro p:not([class*="eyebrow"]) {
     font-size: 17px;
     line-height: 1.58;
   }

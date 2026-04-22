@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="cs">
   <head>
     <meta charset="utf-8" />
@@ -441,9 +441,9 @@
         --lighting-radius-lg: 24px;
         --lighting-radius-md: 18px;
         --lighting-shadow: none;
-        --lighting-eyebrow-size-desktop: 12px;
-        --lighting-eyebrow-size-tablet: 11px;
-        --lighting-eyebrow-size-mobile: 10px;
+        --lighting-eyebrow-size-desktop: var(--eyebrow-size);
+        --lighting-eyebrow-size-tablet: var(--eyebrow-size);
+        --lighting-eyebrow-size-mobile: var(--eyebrow-size);
         --lighting-display-size-desktop: clamp(52px, 5.4vw, 72px);
         --lighting-display-size-tablet: clamp(40px, 4.8vw, 56px);
         --lighting-display-size-mobile: clamp(30px, 8.4vw, 40px);
@@ -468,7 +468,7 @@
         --lighting-display-tracking: -0.042em;
         --lighting-title-tracking: -0.028em;
         --lighting-body-tracking: -0.01em;
-        --lighting-eyebrow-tracking: 0.14em;
+        --lighting-eyebrow-tracking: var(--eyebrow-tracking);
         --lighting-meta-tracking: 0.08em;
         --lighting-display-line-desktop: 1;
         --lighting-display-line-tablet: 1.02;
@@ -503,12 +503,7 @@
       .lighting-page .lighting-eyebrow {
         display: inline-block;
         margin: 0 0 16px;
-        color: rgba(255, 255, 255, 0.72);
-        font-size: var(--lighting-eyebrow-size-desktop);
-        font-weight: 600;
-        line-height: 1.2;
-        letter-spacing: var(--lighting-eyebrow-tracking);
-        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.72); /* белый цвет: единственное исключение, тёмный фон страницы */
       }
       .lighting-page .lighting-title,
       .lighting-page .lighting-display {

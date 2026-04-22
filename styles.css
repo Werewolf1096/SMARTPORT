@@ -1,4 +1,4 @@
-﻿html {
+html {
   overflow-x: hidden;
 }
 
@@ -30,8 +30,8 @@
   --title-card-size-mobile: 19px;
   --lead-size: clamp(20px, 1.55vw, 24px);
   --body-size: 16px;
-  --eyebrow-size: 12px;
-  --eyebrow-tracking: 0.14em;
+  --eyebrow-size: 15px;
+  --eyebrow-tracking: 0.16em;
   font-family: "Albert Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -707,14 +707,7 @@ body.menu-open .site-footer {
   }
 }
 
-.service-eyebrow {
-  font-size: var(--eyebrow-size);
-  line-height: 1;
-  letter-spacing: var(--eyebrow-tracking);
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.52);
-  font-weight: 600;
-}
+/* .service-eyebrow typography → see master eyebrow rule below */
 
 .service-card h3 {
   font-size: var(--title-card-size);
@@ -873,14 +866,41 @@ body.menu-open .site-footer {
   text-align: center;
 }
 
-.eyebrow {
+/* ═══════════════════════════════════════════════════════════
+   EYEBROW — единый источник правды для всего сайта
+   Специфичность: :root + class = 0-2-0 = 20
+   Побеждает любой .intro p { font-size } с 0-1-1 = 11
+   Desktop 12px · Tablet 11px · Mobile 10px
+   ═══════════════════════════════════════════════════════════ */
+:root .eyebrow,
+:root .service-eyebrow,
+:root .trust-eyebrow,
+:root .trust-metric-label,
+:root .apple-eyebrow,
+:root .about-final-cta__eyebrow,
+:root .privacy-page-eyebrow,
+:root .contact-page-hero__eyebrow,
+:root .contact-page-section-label,
+:root .contact-page-detail__label,
+:root .lead-page-hero__eyebrow,
+:root .lead-page-form__eyebrow,
+:root .lead-page-intro__eyebrow,
+:root .climate-scenarios__eyebrow,
+:root .electro-process__eyebrow,
+:root .electro-standard__eyebrow,
+:root .electro-benefits__eyebrow,
+:root .electro-final-cta__eyebrow,
+:root .service-logic-grid__eyebrow,
+:root .service-editorial-scenarios__eyebrow,
+:root .lighting-eyebrow {
   font-size: var(--eyebrow-size);
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
   color: var(--graphite);
-  font-weight: 600;
-  line-height: 1;
 }
+
 
 .section-head h2 {
   font-size: var(--title-xl-size);
@@ -1088,12 +1108,6 @@ body.menu-open .site-footer {
 }
 
 .trust-eyebrow {
-  color: var(--graphite);
-  font-weight: 600;
-  letter-spacing: var(--eyebrow-tracking);
-  text-transform: uppercase;
-  font-size: var(--eyebrow-size);
-  line-height: 1;
   margin-bottom: 16px;
 }
 
@@ -1132,13 +1146,7 @@ body.menu-open .site-footer {
   gap: 10px;
 }
 
-.trust-metric-label {
-  font-size: var(--eyebrow-size);
-  letter-spacing: var(--eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--graphite);
-  font-weight: 600;
-}
+/* .trust-metric-label typography → master eyebrow rule */
 
 .trust-metric-value {
   font-size: clamp(20px, 2.1vw, 28px);
@@ -1718,7 +1726,7 @@ body.menu-open .site-footer {
     --title-card-size: var(--title-card-size-tablet);
     --lead-size: 18px;
     --body-size: 15px;
-    --eyebrow-size: 11px;
+    --eyebrow-size: 14px;
   }
 
   .brand-logo {
@@ -1960,10 +1968,10 @@ body.menu-open .site-footer {
 }
 
   .cta-eyes {
-    display: flex;
-    top: -24px;
-    gap: 6px;
-  }
+      display: none;
+      top: -24px;
+      gap: 6px;
+    }
 
   .cta-eyes .eye {
     width: 18px;
@@ -2086,7 +2094,7 @@ body.menu-open .site-footer {
     --title-xl-size: clamp(30px, 8.4vw, 40px);
     --title-card-size: var(--title-card-size-mobile);
     --lead-size: 17px;
-    --eyebrow-size: 10px;
+    --eyebrow-size: 13px;
   }
 
   .header-inner {
@@ -2119,13 +2127,7 @@ body.menu-open .site-footer {
 
 .contact-page-hero__eyebrow,
 .contact-page-section-label {
-  margin: 0 0 18px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.58);
+  margin-bottom: 16px;
 }
 
 .contact-page-hero h1 {
@@ -2181,13 +2183,7 @@ body.menu-open .site-footer {
 }
 
 .contact-page-detail__label {
-  margin: 0 0 10px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.48);
+  margin-bottom: 16px;
 }
 
 .contact-page-detail a,
@@ -2324,13 +2320,7 @@ body.lead-page .bg-shell {
 .lead-page-hero__eyebrow,
 .lead-page-form__eyebrow,
 .lead-page-intro__eyebrow {
-  margin: 0 0 18px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.52);
+  margin-bottom: 16px;
 }
 
 .lead-page-hero h1 {
