@@ -1,0 +1,38 @@
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Изображения (кэшируем на 1 год)
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  TargetFile: "\.htaccess"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Медиа
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # CSS и JavaScript (кэшируем на 1 месяц)
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # Шрифты (кэшируем на 1 год)
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Добавляем Cache-Control заголовки для уверенности (1 год = 31536000 секунд)
+  <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|mp4|woff2?)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+</IfModule>

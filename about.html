@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="cs">
   <head>
     <meta charset="utf-8" />
@@ -18,9 +18,42 @@
     <meta name="twitter:description" content="Poznejte SMARTPORT: tým pro elektroinstalace, automatizaci budov a integraci technologií do přehledných a stabilních řešení pro domy i firmy po celé ČR." />
     <meta name="twitter:image" content="https://smartport.cz/smart-home-loxone-rodinny-dum-interier-vecer.webp" />
     <meta name="theme-color" content="#f3f6fb" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "O nás – SMARTPORT",
+        "description": "Poznejte SMARTPORT: tým pro elektroinstalace, automatizaci budov a integraci technologií do přehledných a stabilních řešení pro domy i firmy po celé ČR.",
+        "url": "https://smartport.cz/about.html",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "SMARTPORT s.r.o.",
+          "url": "https://smartport.cz",
+          "logo": "https://smartport.cz/LOGO_header.gif",
+          "description": "Elektroinstalace, automatizace budov a integrace technologií s důrazem na chytré domy LOXONE po celé České republice.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Trnová 88",
+            "addressLocality": "Trnová",
+            "postalCode": "252 10",
+            "addressCountry": "CZ"
+          },
+          "telephone": "+420775563355",
+          "email": "info@smartport.cz",
+          "areaServed": {
+            "@type": "Country",
+            "name": "Czech Republic"
+          }
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
+    </noscript>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.jpg" type="image/jpeg" />
     <style>
@@ -370,11 +403,11 @@
 
       .about-final-cta__title {
         margin: 20px auto 0;
-        max-width: 17ch;
-        font-size: clamp(40px, 4.6vw, 58px);
+        max-width: 700px;
+        font-size: clamp(32px, 2.8vw, 40px);
         font-weight: 600;
-        letter-spacing: -0.042em;
-        line-height: 1.04;
+        letter-spacing: -0.03em;
+        line-height: 1.14;
         color: #1d1d1f;
         text-wrap: balance;
       }
@@ -671,15 +704,15 @@
         
         <div class="apple-metrics apple-animate delay-1">
           <div class="apple-metric">
-            <div class="apple-metric-val">15+</div>
+            <div class="apple-metric-val" style="color: var(--accent);">15+</div>
             <div class="apple-metric-label">Let zkušeností v elektro</div>
           </div>
           <div class="apple-metric">
-            <div class="apple-metric-val">LOXONE</div>
+            <div class="apple-metric-val" style="color: #69C350;">LOXONE</div>
             <div class="apple-metric-label">Certifikováno a ověřeno</div>
           </div>
           <div class="apple-metric">
-            <div class="apple-metric-val">Celá ČR</div>
+            <div class="apple-metric-val" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53, #FFC857, #2BC0E4, #6366F1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Celá ČR</div>
             <div class="apple-metric-label">Oblast působnosti</div>
           </div>
         </div>
@@ -750,33 +783,11 @@
         </div>
       </section>
 
-      <!-- TYM -->
-      <section class="bento-section">
-        <div class="bento-head apple-animate">
-          <h2>Kdo za SMARTPORT stojí</h2>
-        </div>
-        <div class="team-grid">
-          <div class="team-card apple-animate delay-1">
-            <div class="team-avatar">TN</div>
-            <h3 class="team-name">Jméno a příjmení</h3>
-            <p class="team-role">Technický návrh</p>
-            <p>Zaměření na technické řešení projektu, koordinaci realizace a návaznost jednotlivých částí.</p>
-          </div>
-          <div class="team-card apple-animate delay-2">
-            <div class="team-avatar">AI</div>
-            <h3 class="team-name">Jméno a příjmení</h3>
-            <p class="team-role">Automatizace a integrace</p>
-            <p>Návrh systémové logiky LOXONE, integrace technologií a technické nastavení funkčních celků.</p>
-          </div>
-        </div>
-      </section>
-
       <!-- CTA -->
       <section class="about-final-cta apple-animate" aria-labelledby="about-final-cta-title">
         <div class="about-final-cta__inner">
           <p class="about-final-cta__eyebrow">REALIZACE DOMU NA BÁZI LOXONE</p>
-          <h2 class="about-final-cta__title about-final-cta__title--short">Navrhneme a zrealizujeme špičkový dům na bázi LOXONE, za kterým stojí sehraný tým odborníků od projektu po finální spuštění.</h2>
-          <h2 id="about-final-cta-title" class="about-final-cta__title">Navrhneme elektroinstalaci, automatizaci i integraci technologií s čistou logikou a přehledným ovládáním pro každodenní provoz.</h2>
+          <h2 id="about-final-cta-title" class="about-final-cta__title about-final-cta__title--short">Navrhneme a zrealizujeme špičkový dům na bázi LOXONE, za kterým stojí sehraný tým odborníků od projektu po finální spuštění.</h2>
           <a class="btn primary contact-cta-btn creepy-btn" href="poptavka.html" aria-label="Nezávazně poptat">
             <span class="creepy-btn__eyes" aria-hidden="true">
               <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
@@ -784,12 +795,6 @@
             </span>
             <span class="creepy-btn__cover">Nezávazně poptat</span>
           </a>
-          <h2>Řešíte projekt?</h2>
-          <p>Ozvěte se nám. Navrhneme řešení Loxone podle typu objektu, technických možností a vašeho očekávání.</p>
-          <div>
-            <a class="btn primary" href="poptavka.html">Nezávazně poptat</a>
-            <a class="btn secondary" href="/#services">Zobrazit služby</a>
-          </div>
         </div>
       </section>
 
@@ -875,6 +880,7 @@
     <script src="main.js"></script>
   </body>
 </html>
+
 
 
 

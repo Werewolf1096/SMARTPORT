@@ -69,12 +69,33 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext"
-      rel="stylesheet"
-    />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
+    </noscript>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="favicon.jpg" type="image/jpeg" />
+    <link id="site-favicon" rel="icon" href="favicon-light.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var favicon = document.getElementById("site-favicon");
+        if (!favicon || !window.matchMedia) return;
+
+        var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+        function updateFavicon(event) {
+          favicon.href = event.matches ? "favicon-dark.svg" : "favicon-light.svg";
+        }
+
+        updateFavicon(darkQuery);
+
+        if (typeof darkQuery.addEventListener === "function") {
+          darkQuery.addEventListener("change", updateFavicon);
+        } else if (typeof darkQuery.addListener === "function") {
+          darkQuery.addListener(updateFavicon);
+        }
+      })();
+    </script>
     <style>
       /* CSS pro burger menu - vloženo pro zajištění funkčnosti */
       .burger-btn {
@@ -140,7 +161,7 @@
 	  <body class="home-page">
     <div class="bg-shell" aria-hidden="true"></div>
     <div data-shared-header></div>
-    <script src="shared-header.js"></script>
+    <script defer src="shared-header.js"></script>
 
 	    <main class="home-page-main">
       <section id="hero" class="hero">
@@ -161,9 +182,7 @@
             </a>
           </div>
           <div class="hero-visual">
-            <img loading="lazy"
-              class="device-mock"
-              src="Interface LOXONE Iphone.png"
+            <img class="device-mock" src="Interface LOXONE Iphone.png"
               alt="Ukázka rozhraní Smartport"
             />
           </div>
@@ -316,7 +335,7 @@
               </details>
             </div>
             <div class="steps-visual">
-              <img loading="lazy" src="smartport-brief-diagnostika-elektroinstalace-chytra-domacnost.gif" alt="Brief a diagnostika elektroinstalace a chytré domácnosti – SMARTPORT" />
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
             </div>
           </div>
         </div>
@@ -637,9 +656,12 @@
       </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
   </body>
 </html>
+
+
+
 
 
 

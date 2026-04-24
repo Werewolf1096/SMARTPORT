@@ -271,8 +271,9 @@
 
     window.setTimeout(() => {
       if (token !== mediaSlideToken) return;
-      const staleFrames = mediaWrap.querySelectorAll(".electro-media-frame.is-exiting-up");
-      staleFrames.forEach((frame) => frame.remove());
+      if (active && active.parentNode === mediaWrap) {
+        active.remove();
+      }
     }, mediaSlideDurationMs + 80);
   };
 

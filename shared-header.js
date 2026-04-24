@@ -10,7 +10,7 @@
 
   const homeHref = "index.html";
   const servicesHref = isHome ? "#services" : "index.html#services";
-  const contactHref = "poptavka.html";
+  const contactHref = "contacts.html";
 
   const isCurrentService = (fileName) => (currentPath === fileName ? ' aria-current="page"' : "");
   const homeState = isHome ? ' class="is-active" aria-current="page"' : "";

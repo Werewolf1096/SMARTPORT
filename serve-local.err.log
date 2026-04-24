@@ -1,0 +1,7 @@
+Исключение при вызове ".ctor" с "0" аргументами: "Операция не поддерживается этой платформой."
+C:\Users\svbig\Desktop\SMARTPORT\serve-local.ps1:6 знак:1
++ $listener = [System.Net.HttpListener]::new()
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : PlatformNotSupportedException
+ 
