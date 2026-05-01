@@ -82,6 +82,12 @@ if (!$sent) {
     exit;
 }
 
+$acceptHeader = $_SERVER['HTTP_ACCEPT'] ?? '';
+if (strpos($acceptHeader, 'application/json') === false) {
+    header('Location: poptavka-odeslana.html', true, 303);
+    exit;
+}
+
 echo json_encode([
     'ok' => true,
     'message' => 'Poptávka byla odeslána.'

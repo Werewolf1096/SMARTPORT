@@ -5,7 +5,7 @@
   const currentPath = window.location.pathname.split("/").pop() || "";
   const isHome = currentPath === "index.html" || currentPath === "";
   const isAbout = currentPath === "about.html";
-  const isContact = currentPath === "contacts.html" || currentPath === "poptavka.html";
+  const isContact = currentPath === "contacts.html" || currentPath === "poptavka.html" || currentPath === "poptavka-odeslana.html";
   const isServicePage = /^sluzby-/.test(currentPath);
 
   const homeHref = "index.html";
@@ -27,7 +27,7 @@
         <a class="brand" href="${homeHref}" aria-label="Smartport">
           <img src="${brandLogoSrc}" alt="${brandLogoAlt}" class="brand-logo" />
         </a>
-        <button class="burger-btn" aria-controls="main-nav" aria-expanded="false" aria-label="Menu">
+        <button class="burger-btn" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu">
           <span class="burger-icon"></span>
         </button>
         <nav id="main-nav" class="main-nav" aria-label="Hlavn\u00ed navigace">

@@ -1,6 +1,15 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="cs">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18130609491"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18130609491');
+</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
@@ -277,7 +286,7 @@
         <div class="footer-block">
           <h4>Ozvěte se nám</h4>
           <ul>
-            <li>+420 775 563 355</li>
+            <li><a href="tel:+420775563355">+420 775 563 355</a></li>
             <li>info@smartport.cz</li>
             <li>Po-Pá 9:00-16:00</li>
             <li>Trnová 88, 252 10 Trnová</li>
@@ -336,14 +345,23 @@
             body: new URLSearchParams(formData)
           });
 
-          const result = await response.json();
+          if (response.redirected) {
+            window.location.assign(response.url);
+            return;
+          }
+
+          const contentType = response.headers.get("content-type") || "";
+          const result = contentType.includes("application/json")
+            ? await response.json()
+            : { ok: response.ok, message: await response.text() };
 
           if (!response.ok || !result.ok) {
             throw new Error(result.message || "Odeslání se nepodařilo.");
           }
 
           form.reset();
-          status.textContent = "Poptávka byla odeslána. Ozveme se vám co nejdříve.";
+          window.location.assign(new URL("poptavka-odeslana.html", window.location.href).href);
+          return;
         } catch (error) {
           status.textContent = error.message || "Odeslání se nepodařilo. Zkuste to prosím znovu.";
         } finally {

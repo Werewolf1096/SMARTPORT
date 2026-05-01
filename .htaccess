@@ -1,3 +1,5 @@
+AddType image/svg+xml .svg .svgz
+
 <IfModule mod_expires.c>
   ExpiresActive On
 
