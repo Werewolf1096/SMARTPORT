@@ -759,6 +759,7 @@
     let pointerInside = false;
     let hasFocus = false;
     let touchActive = false;
+    let isInViewport = true;
     let peekTimer = null;
     let peekCleanupTimer = null;
     let peekSequence = 0;
@@ -816,7 +817,7 @@
       clearPeekTimers();
     };
 
-    const isAutoPeekAllowed = () => allowIdlePeek && baseAutoPeekAllowed();
+    const isAutoPeekAllowed = () => allowIdlePeek && isInViewport && baseAutoPeekAllowed();
 
     const scheduleNextPeek = (delay = nextIdleDelay()) => {
       clearPeekTimers();
@@ -982,6 +983,28 @@
       reducedMotionListeners.add(onReducedMotionChange);
     }
 
-    scheduleNextPeek(allowIdlePeek ? Math.round(rand(1200, 4200)) : nextIdleDelay());
+    if (allowIdlePeek && "IntersectionObserver" in window) {
+      isInViewport = false;
+      const viewportObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          isInViewport = entry.isIntersecting;
+
+          if (entry.isIntersecting) {
+            scheduleNextPeek(Math.round(rand(700, 1600)));
+            return;
+          }
+
+          resetPeekState();
+          if (!pointerInside && !hasFocus && !touchActive) {
+            setEngaged(false);
+            resetEyes();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      viewportObserver.observe(creepyBtn);
+    } else {
+      scheduleNextPeek(allowIdlePeek ? Math.round(rand(1200, 4200)) : nextIdleDelay());
+    }
   });
 })();

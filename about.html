@@ -769,6 +769,20 @@
         animation-play-state: running;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        .about-new-cta .creepy-btn.is-peeking .creepy-btn__cover {
+          transform: none;
+        }
+
+        .about-new-cta .creepy-btn.is-peeking .creepy-btn__eyes {
+          opacity: 0;
+        }
+
+        .about-new-cta .creepy-btn.is-peeking .creepy-btn__eye {
+          animation-play-state: paused;
+        }
+      }
+
       .about-new-secondary {
         color: #0071e3;
         font-size: 17px;
@@ -1024,21 +1038,21 @@
           <div class="about-new-section-head about-new-reveal">
             <h2 id="about-new-people-title" class="about-new-section-title">Kdo stojí za<br />SMARTPORT</h2>
             <p class="about-new-section-text">Každý projekt má jasné technické vedení, odpovědnou komunikaci a kontrolu detailů od návrhu až po předání.</p>
-            <p class="about-new-section-text">Za návrhem, komunikací i realizací stojí <span class="about-new-accent">konkrétní lidé</span>, kteří znají projekt do hloubky a odpovídají za výsledek.</p>
+            <p class="about-new-section-text">Za návrhem, komunikací i realizací stojí <span class="about-new-accent">konkrétní lidé</span>, kteří projekt vedou od prvního návrhu až po finální výsledek a nesou za něj odpovědnost.</p>
           </div>
           <div class="about-new-people">
             <article class="about-new-person about-new-reveal">
               <div class="about-new-avatar" aria-hidden="true">SV</div>
               <div>
                 <h3>Sergei Volkov</h3>
-                <p>Technická logika, elektroinstalace, automatizace a kontrola na místě.</p>
+                <p>Vede technický návrh, elektroinstalace, automatizaci a kontrolu detailů přímo na místě.</p>
               </div>
             </article>
             <article class="about-new-person about-new-person--photo about-new-reveal">
               <img class="about-new-person__photo" loading="lazy" src="ignatkin-ilja-smartport-o-nas.webp" alt="Ignatkin Ilja, člen týmu SMARTPORT pro chytré domácnosti a elektroinstalace" />
               <div class="about-new-person__content">
-                <h3>Ilya</h3>
-                <p>Realizace, montážní detail, technické provedení a komunikace se zákazníkem.</p>
+                <h3>Ilya Ignatkin</h3>
+                <p>Zajišťuje realizaci na stavbě, montážní detail, technické provedení a průběžnou komunikaci se zákazníkem.</p>
               </div>
             </article>
           </div>
