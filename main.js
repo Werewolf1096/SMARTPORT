@@ -753,7 +753,7 @@
     if (!eyes || pupils.length === 0) return;
 
     const allowIdlePeek = creepyBtn.matches(
-      ".service-hero .creepy-btn, .electro-final-cta .creepy-btn, .about-final-cta .creepy-btn"
+      ".service-hero .creepy-btn, .electro-final-cta .creepy-btn, .about-final-cta .creepy-btn, .about-new-cta .creepy-btn"
     );
 
     let pointerInside = false;

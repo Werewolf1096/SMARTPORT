@@ -57,8 +57,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
     </noscript>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="favicon.jpg" type="image/jpeg" />
-    <style>
+    <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="favicon.ico" sizes="any" />    <style>
       body.about-new-page {
         background: #ffffff;
         color: #1d1d1f;
@@ -613,11 +614,11 @@
 
       .about-new-cta__panel {
         position: relative;
-        overflow: hidden;
-        border-radius: 38px;
-        padding: clamp(42px, 7vw, 84px);
+        overflow: visible;
+        border-radius: 0;
+        padding: 0;
         text-align: center;
-        background: rgba(255, 255, 255, 0.72);
+        background: transparent;
       }
 
       .about-new-cta__panel::after {
@@ -628,6 +629,7 @@
         max-width: 780px;
         margin: 0 auto;
         font-size: clamp(36px, 4.8vw, 68px);
+        color: #1d1d1f;
       }
 
       .about-new-cta p {
@@ -649,6 +651,123 @@
         flex-wrap: wrap;
       }
 
+      .about-new-cta .creepy-btn {
+        --cb-black: #000;
+        --cb-white: #f5f5f7;
+        --cb-primary: var(--accent);
+        --cb-w: 169px;
+        --cb-h: 47px;
+        position: relative;
+        display: inline-block;
+        width: var(--cb-w);
+        height: var(--cb-h);
+        border-radius: 999px;
+        padding: 0;
+        background: transparent;
+        color: var(--cb-white);
+        overflow: visible;
+        outline: 0.1875em solid transparent;
+        transition: outline 0.1s linear;
+      }
+
+      .about-new-cta .creepy-btn::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        z-index: 0;
+        border-radius: inherit;
+        background: var(--cb-black);
+      }
+
+      .about-new-cta .creepy-btn__cover {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border-radius: inherit;
+        background: var(--cb-primary);
+        color: #fff;
+        transform-origin: 1.25em 50%;
+        transition:
+          background-color 0.32s ease,
+          transform 0.42s cubic-bezier(0.65, 0, 0.35, 1),
+          box-shadow 0.32s ease;
+      }
+
+      .about-new-cta .creepy-btn:focus-visible {
+        outline-color: color-mix(in srgb, var(--accent) 45%, transparent);
+      }
+
+      .about-new-cta .creepy-btn:focus-visible .creepy-btn__cover,
+      .about-new-cta .creepy-btn:hover .creepy-btn__cover,
+      .about-new-cta .creepy-btn.is-engaged .creepy-btn__cover,
+      .about-new-cta .creepy-btn.is-peeking .creepy-btn__cover {
+        transform: rotate(-12deg);
+        transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1.65);
+      }
+
+      .about-new-cta .creepy-btn:active .creepy-btn__cover {
+        transform: rotate(0);
+        transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+      }
+
+      .about-new-cta .creepy-btn__eyes {
+        position: absolute;
+        right: 24px;
+        bottom: 5px;
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        height: 18px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.14s ease;
+      }
+
+      .about-new-cta .creepy-btn__eye {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        overflow: hidden;
+        border-radius: 50%;
+        background: var(--cb-white);
+        animation: contactEyeBlink 3s infinite;
+        animation-play-state: paused;
+      }
+
+      .about-new-cta .creepy-btn__pupil {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+        margin-left: -4px;
+        border-radius: 50%;
+        background: var(--cb-black);
+        transform: translate(var(--cb-eye-x, 0px), var(--cb-eye-y, 0px));
+      }
+
+      .about-new-cta .creepy-btn:hover .creepy-btn__eyes,
+      .about-new-cta .creepy-btn:focus-visible .creepy-btn__eyes,
+      .about-new-cta .creepy-btn.is-engaged .creepy-btn__eyes,
+      .about-new-cta .creepy-btn.is-peeking .creepy-btn__eyes {
+        opacity: 1;
+      }
+
+      .about-new-cta .creepy-btn:hover .creepy-btn__eye,
+      .about-new-cta .creepy-btn:focus-visible .creepy-btn__eye,
+      .about-new-cta .creepy-btn.is-engaged .creepy-btn__eye,
+      .about-new-cta .creepy-btn.is-peeking .creepy-btn__eye {
+        animation-play-state: running;
+      }
+
       .about-new-secondary {
         color: #0071e3;
         font-size: 17px;
@@ -663,7 +782,10 @@
       .about-new-reveal {
         opacity: 0;
         transform: translateY(24px);
-        transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        transition:
+          opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1) var(--about-reveal-delay, 0ms),
+          transform 0.78s cubic-bezier(0.22, 1, 0.36, 1) var(--about-reveal-delay, 0ms);
+        will-change: opacity, transform;
       }
 
       .about-new-reveal.is-visible {
@@ -737,9 +859,10 @@
         }
 
         .about-new-step::before {
-          top: 2px;
+          top: 50%;
           left: 0;
           margin-left: 0;
+          transform: translateY(-50%);
         }
 
         .about-new-step:last-child {
@@ -753,7 +876,8 @@
         }
 
         .about-new-hero {
-          padding: 56px 0 64px;
+          min-height: 540px;
+          padding: 0;
         }
 
         .about-new-hero h1,
@@ -813,33 +937,48 @@
         }
 
         .about-new-values-dark .about-new-section-head {
-          text-align: left;
+          text-align: center;
         }
 
         .about-new-values-dark .about-new-section-title {
-          max-width: 100%;
-          margin-left: 0;
-          margin-right: 0;
+          max-width: 11ch;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .about-new-values-eyebrow {
-          margin-left: 0;
+          margin-left: auto;
         }
 
         .about-new-values-dark .about-new-principles {
           grid-template-columns: 1fr;
           row-gap: 0;
+          overflow: visible;
+          border-radius: 0;
         }
 
         .about-new-values-dark .about-new-principle,
         .about-new-values-dark .about-new-principle:nth-child(even),
         .about-new-values-dark .about-new-principle:nth-child(odd) {
+          position: relative;
+          background: transparent;
+          border: 0;
           border-left: 0;
-          padding: 24px 0;
+          padding: 34px 0;
         }
 
         .about-new-values-dark .about-new-principle + .about-new-principle {
-          border-top: 1px solid rgba(15, 17, 21, 0.12);
+          border-top: 0;
+        }
+
+        .about-new-values-dark .about-new-principle + .about-new-principle::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, rgba(15, 17, 21, 0), rgba(15, 17, 21, 0.16), rgba(15, 17, 21, 0));
         }
 
         .about-new-values-dark .about-new-principle:first-child {
@@ -882,7 +1021,7 @@
       <section class="about-new-section about-new-section--white" aria-labelledby="about-new-people-title">
         <div class="about-new-container">
           <div class="about-new-section-head about-new-reveal">
-            <h2 id="about-new-people-title" class="about-new-section-title">Kdo stojí za SMARTPORT</h2>
+            <h2 id="about-new-people-title" class="about-new-section-title">Kdo stojí za<br />SMARTPORT</h2>
             <p class="about-new-section-text">Každý projekt má jasné technické vedení, odpovědnou komunikaci a kontrolu detailů od návrhu až po předání.</p>
             <p class="about-new-section-text">Za návrhem, komunikací i realizací stojí <span class="about-new-accent">konkrétní lidé</span>, kteří znají projekt do hloubky a odpovídají za výsledek.</p>
           </div>
@@ -1010,9 +1149,8 @@
                   <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
                   <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
                 </span>
-                <span class="creepy-btn__cover">Nezávazně konzultovat projekt</span>
+                <span class="creepy-btn__cover">Nezávazně poptat</span>
               </a>
-              <a class="about-new-secondary" href="index.html#services">Zobrazit služby</a>
             </div>
           </div>
         </div>
@@ -1053,23 +1191,42 @@
 
     <script>
       (() => {
-        const items = document.querySelectorAll(".about-new-reveal");
-        if (!items.length) return;
+        let observer;
 
-        if (!("IntersectionObserver" in window)) {
-          items.forEach((item) => item.classList.add("is-visible"));
-          return;
+        const initAboutReveal = () => {
+          const items = Array.from(document.querySelectorAll(".about-new-reveal"));
+          if (!items.length) return;
+
+          if (observer) observer.disconnect();
+
+          if (!("IntersectionObserver" in window)) {
+            items.forEach((item) => item.classList.add("is-visible"));
+            return;
+          }
+
+          observer = new IntersectionObserver((entries, obs) => {
+            entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+              .forEach((entry, index) => {
+                entry.target.style.setProperty("--about-reveal-delay", `${Math.min(index * 90, 270)}ms`);
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+              });
+          }, { threshold: 0.08, rootMargin: "0px 0px -8% 0px" });
+
+          items.forEach((item) => {
+            if (!item.classList.contains("is-visible")) observer.observe(item);
+          });
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initAboutReveal, { once: true });
+        } else {
+          initAboutReveal();
         }
 
-        const observer = new IntersectionObserver((entries, obs) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            obs.unobserve(entry.target);
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-
-        items.forEach((item) => observer.observe(item));
+        window.addEventListener("pageshow", initAboutReveal);
       })();
     </script>
     <script src="main.js"></script>

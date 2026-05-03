@@ -84,28 +84,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
     </noscript>
     <link rel="stylesheet" href="styles.css" />
-    <link id="site-favicon" rel="icon" href="favicon-light.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var favicon = document.getElementById("site-favicon");
-        if (!favicon || !window.matchMedia) return;
-
-        var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-        function updateFavicon(event) {
-          favicon.href = event.matches ? "favicon-dark.svg" : "favicon-light.svg";
-        }
-
-        updateFavicon(darkQuery);
-
-        if (typeof darkQuery.addEventListener === "function") {
-          darkQuery.addEventListener("change", updateFavicon);
-        } else if (typeof darkQuery.addListener === "function") {
-          darkQuery.addListener(updateFavicon);
-        }
-      })();
-    </script>
-    <style>
+    <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="favicon.ico" sizes="any" />    <style>
       /* CSS pro burger menu - vloženo pro zajištění funkčnosti */
       .burger-btn {
         display: none;
