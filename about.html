@@ -61,6 +61,7 @@
     <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
     <link rel="icon" href="favicon.ico" sizes="any" />    <style>
       body.about-new-page {
+        --about-lead-width: 700px;
         background: #ffffff;
         color: #1d1d1f;
       }
@@ -81,7 +82,7 @@
         display: grid;
         align-items: center;
         padding: 0;
-        background: linear-gradient(180deg, #c9edf8 0%, #eaf7fb 72%, #f7fcfe 100%);
+        background: linear-gradient(180deg, #c9edf8 0%, #eaf7fb 58%, #ffffff 100%);
         isolation: isolate;
       }
 
@@ -134,7 +135,7 @@
       }
 
       .about-new-hero__lead {
-        max-width: 850px;
+        max-width: var(--about-lead-width);
         margin: 30px auto 0;
         color: #5c6170;
         font-size: clamp(20px, 1.7vw, 25px);
@@ -211,7 +212,7 @@
       }
 
       .about-new-section-text {
-        max-width: 690px;
+        max-width: var(--about-lead-width);
         margin: 18px auto 0;
         color: #626773;
         font-size: clamp(18px, 1.35vw, 21px);
@@ -330,7 +331,7 @@
       }
 
       .about-new-system-copy p {
-        max-width: 690px;
+        max-width: var(--about-lead-width);
         margin: 18px auto 0;
         color: #626773;
         font-size: clamp(18px, 1.35vw, 21px);
@@ -633,7 +634,7 @@
       }
 
       .about-new-cta p {
-        max-width: 700px;
+        max-width: var(--about-lead-width);
         margin: 22px auto 0;
         color: #626773;
         font-size: clamp(18px, 1.35vw, 21px);
