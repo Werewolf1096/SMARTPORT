@@ -504,7 +504,10 @@ body.menu-open .site-footer {
 .hero-title {
   font-size: var(--title-xl-size);
   letter-spacing: var(--title-xl-tracking);
-  color: var(--title-xl-color);
+  color: transparent;
+  background: linear-gradient(110deg, #007aff 0%, #5e5ce6 34%, #bf5af2 62%, #ff9f0a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   font-weight: var(--title-xl-weight);
   line-height: 1.02;
   max-width: 9ch;
@@ -1033,22 +1036,22 @@ body.menu-open .site-footer {
   justify-content: space-between;
   gap: 12px;
   cursor: pointer;
-  font-size: var(--title-card-size);
-  font-weight: 600;
-  line-height: 1.14;
-  letter-spacing: -0.028em;
+  font-size: clamp(18px, 1.35vw, 22px);
+  font-weight: 560;
+  line-height: 1.22;
+  letter-spacing: -0.014em;
 }
 
 .step-heading {
   display: inline-flex;
   align-items: baseline;
-  gap: 12px;
+  gap: 13px;
   min-width: 0;
 }
 
 .step-index {
   color: var(--accent);
-  font-size: 1em;
+  font-size: 0.92em;
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: 0;
@@ -1057,6 +1060,7 @@ body.menu-open .site-footer {
 
 .step-title {
   min-width: 0;
+  text-wrap: balance;
 }
 
 .step-item summary::-webkit-details-marker {
@@ -1923,7 +1927,7 @@ body.menu-open .site-footer {
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 28px;
     transform: translateX(0);
     transition: transform 0.3s ease;
     z-index: 1999;
@@ -1940,6 +1944,7 @@ body.menu-open .site-footer {
     justify-content: center;
     width: auto;
     font-size: 1.5rem;
+    line-height: 1.25;
     color: #000;
     text-decoration: none;
   }
@@ -1975,6 +1980,26 @@ body.menu-open .site-footer {
     width: 100%;
   }
 
+  .step-item {
+    padding: 13px 0;
+  }
+
+  .step-item summary {
+    font-size: 18px;
+    font-weight: 560;
+    line-height: 1.24;
+    letter-spacing: -0.006em;
+  }
+
+  .step-heading {
+    gap: 12px;
+  }
+
+  .step-index {
+    font-size: 0.95em;
+    font-weight: 500;
+  }
+
   .steps-visual {
     display: none;
   }
@@ -1999,14 +2024,49 @@ body.menu-open .site-footer {
 @media (max-width: 900px) {
   .main-nav.is-active {
     overflow-y: auto;
-    padding: 96px 24px 48px;
+    padding: 104px 24px 56px;
     justify-content: flex-start;
+  }
+
+  .main-nav.is-active > a,
+  .main-nav.is-active > .nav-dropdown {
+    position: relative;
+    width: min(100%, 430px);
+    padding-bottom: 26px;
+  }
+
+  .main-nav.is-active > a {
+    text-align: center;
+    font-size: 1.5rem !important;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+  }
+
+  .main-nav.is-active > .nav-dropdown > .nav-link {
+    font-size: 1.5rem !important;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+  }
+
+  .main-nav.is-active > a:not(:last-child)::after,
+  .main-nav.is-active > .nav-dropdown:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    top: auto;
+    width: min(100%, 360px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(15, 17, 21, 0.12) 18%, rgba(15, 17, 21, 0.12) 82%, transparent 100%);
+    transform: translateX(-50%);
+    transform-origin: center;
   }
 
   .main-nav.is-active .nav-dropdown {
     display: grid;
     justify-items: center;
-    gap: 14px;
+    gap: 18px;
   }
 
   .main-nav.is-active .nav-link::before {
@@ -2021,7 +2081,7 @@ body.menu-open .site-footer {
   .main-nav.is-active .nav-dropdown-panel {
     position: static;
     display: grid !important;
-    width: min(100%, 360px);
+    width: min(100%, 390px);
     max-height: 0;
     padding: 0;
     background: transparent;
@@ -2055,7 +2115,8 @@ body.menu-open .site-footer {
   }
 
   .main-nav.is-active .nav-dropdown-list {
-    gap: 14px;
+    gap: 6px;
+    width: 100%;
     justify-items: center;
   }
 
@@ -2065,9 +2126,12 @@ body.menu-open .site-footer {
   }
 
   .main-nav.is-active .nav-dropdown-list a {
-    font-size: 17px !important;
-    line-height: 1.35;
-    font-weight: 500;
+    display: block;
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 22px !important;
+    line-height: 1.28;
+    font-weight: 600;
     text-align: center;
     color: #4f545d !important;
     text-transform: none;
@@ -2118,7 +2182,7 @@ body.menu-open .site-footer {
     font-size: var(--title-xl-size);
     letter-spacing: var(--title-xl-tracking);
     font-weight: var(--title-xl-weight);
-    color: var(--title-xl-color);
+    color: transparent;
     line-height: 1.06;
     max-width: 8ch;
     text-align: center;

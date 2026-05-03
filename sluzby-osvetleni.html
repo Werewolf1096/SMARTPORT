@@ -127,6 +127,30 @@
       .service-page--lighting .nav-dropdown-col-title {
         color: rgba(255, 255, 255, 0.52);
       }
+      @media (max-width:900px) {
+        .service-page--lighting .main-nav.is-active {
+          background-color: #fff;
+        }
+        .service-page--lighting .main-nav.is-active > a,
+        .service-page--lighting .main-nav.is-active > .nav-dropdown > .nav-link {
+          color: #000;
+        }
+        .service-page--lighting .main-nav.is-active .nav-dropdown-panel,
+        .service-page--lighting .main-nav.is-active .nav-dropdown-panel-inner {
+          background: transparent;
+        }
+        .service-page--lighting .main-nav.is-active .nav-dropdown-list a {
+          color: #4f545d;
+        }
+        .service-page--lighting .main-nav.is-active .nav-dropdown-list a:hover,
+        .service-page--lighting .main-nav.is-active .nav-dropdown-list a:focus-visible {
+          color: #1d1d1f;
+        }
+        .service-page--lighting .burger-btn.is-active .burger-icon::before,
+        .service-page--lighting .burger-btn.is-active .burger-icon::after {
+          background-color: #000;
+        }
+      }
       .service-page--lighting .service-main {
         background: #000000;
       }
@@ -2057,11 +2081,16 @@
         }
         .service-page--lighting .service-hero-lead {
           font-size: 17px;
-          max-width: 26ch;
+          width: min(calc(100vw - 56px), 34ch);
+          max-width: none;
           margin-top: 0;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: left;
         }
         .service-page--lighting .service-hero-actions {
           margin-top: 24px;
+          justify-self: center;
         }
         .service-page--lighting .electro-showcase,
         .service-page--lighting .electro-process__shell,
@@ -2190,7 +2219,8 @@
           padding: 24px 22px 22px;
         }
         .lighting-intro-slide-copy .lighting-card-title {
-          font-size: clamp(24px, 7vw, 34px);
+          font-size: clamp(20px, 5.6vw, 26px);
+          line-height: 1.18;
         }
         .lighting-page .lighting-intro-slide-meta,
         .lighting-page .lighting-intro-slide-meta.lighting-meta {
