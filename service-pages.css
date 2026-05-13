@@ -982,6 +982,10 @@
   background: #f3f4f6;
   overflow: hidden;
 }
+
+.service-page--energy .service-hero--electro {
+  background: linear-gradient(180deg, #eaf7ff 0%, #f5fbff 58%, #fbfdff 100%);
+}
 .service-hero--electro .service-hero-shell {
   position: relative;
   display: grid;
@@ -1237,6 +1241,22 @@
   margin-right: auto;
 }
 
+.service-page--energy .electro-scope-intro p {
+  max-width: 34.5em;
+}
+
+.service-page--energy .electro-scope {
+  background: linear-gradient(180deg, #fbfdff 0%, #ffffff 72%);
+}
+
+.service-page--energy .service-overview-card {
+  background: rgba(240, 244, 249, 0.86);
+  border-color: transparent;
+  box-shadow:
+    0 18px 46px rgba(15, 23, 42, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
 .service-overview-card {
   margin-top: 34px;
   padding: clamp(32px, 3vw, 40px);
@@ -1356,6 +1376,29 @@
 .service-page--energy .service-overview-media {
   background: transparent;
   box-shadow: none;
+}
+
+.service-page--energy .service-overview-icon {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.service-page--energy .service-overview-icon::before {
+  width: 11px;
+  height: 6px;
+  border-left-width: 1.8px;
+  border-bottom-width: 1.8px;
+}
+
+.service-page--energy .service-overview-text {
+  font-weight: 550;
+  letter-spacing: -0.024em;
+}
+
+.service-page--energy .service-overview-note {
+  padding-left: 40px;
 }
 
 .climate-scenarios {
@@ -1828,6 +1871,21 @@
 .electro-final-cta .creepy-btn {
   margin-top: 32px;
 }
+
+.service-page--energy .electro-final-cta {
+  background: linear-gradient(180deg, #eaf7ff 0%, #e6f5ff 52%, #dff1fb 100%);
+}
+
+.service-page--energy .electro-final-cta__text {
+  color: transparent;
+  background: linear-gradient(100deg, #172033 0%, #0a66ff 38%, #5151f6 68%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.service-page--energy .electro-final-cta::before {
+  display: none;
+}
 .reveal-benefit {
   opacity: 0;
   transform: translateY(20px);
@@ -2296,6 +2354,9 @@
   .electro-standard__intro {
     text-align: left;
   }
+  .service-page--energy .electro-standard__intro {
+    text-align: center;
+  }
   .electro-standard__intro h2::before {
     left: 22%;
     width: min(320px, 64vw);
@@ -2304,6 +2365,10 @@
   .electro-standard__intro p:not([class*="eyebrow"]) {
     margin-left: 0;
     margin-right: 0;
+  }
+  .service-page--energy .electro-standard__intro p:not([class*="eyebrow"]) {
+    margin-left: auto;
+    margin-right: auto;
   }
   .electro-standard__grid {
     margin-top: 30px;
@@ -2383,12 +2448,19 @@
     font-size: 18px;
     line-height: 1.2;
   }
+  .service-page--energy .service-overview-text {
+    font-weight: 500;
+    letter-spacing: -0.018em;
+  }
   .service-overview-note {
     max-width: none;
     margin-top: 2px;
     padding: 0;
     font-size: 15px;
     line-height: 1.6;
+  }
+  .service-page--energy .service-overview-note {
+    padding-left: 34px;
   }
   .service-overview-media {
     min-height: 240px;
@@ -3101,6 +3173,233 @@
     #ffffff;
 }
 
+.service-page--energy .service-logic-grid {
+  background: #f3f4f6;
+}
+
+.smart-energy-standard {
+  position: relative;
+  padding: clamp(90px, 8vw, 128px) 20px clamp(82px, 8vw, 118px);
+  background: linear-gradient(180deg, #ffffff 0%, #f5fbff 58%, #eaf7ff 100%);
+  overflow: hidden;
+}
+
+.smart-energy-standard__container {
+  width: min(100%, 1210px);
+  margin: 0 auto;
+}
+
+.smart-energy-standard__header {
+  max-width: 760px;
+  margin: 0 auto clamp(40px, 4vw, 54px);
+  text-align: center;
+}
+
+.smart-energy-standard__eyebrow {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4d5667;
+}
+
+.smart-energy-standard__title {
+  margin: 0;
+  font-size: clamp(42px, 4.7vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  color: #111318;
+}
+
+.smart-energy-standard__title span {
+  color: #3b78ea;
+}
+
+.smart-energy-standard__lead {
+  max-width: 610px;
+  margin: 20px auto 0;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.55;
+  color: #5d6678;
+}
+
+.smart-energy-standard__hero-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(clamp(38px, 4.5vw, 62px) + 220px) minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(34px, 3.4vw, 52px);
+  box-sizing: border-box;
+  height: 250px;
+  min-height: 0;
+  padding: 22px clamp(38px, 4.5vw, 62px) 22px 0;
+  border-radius: 24px;
+  background: #f3f4f6;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.smart-energy-standard__hero-card::after {
+  content: "";
+  position: absolute;
+  left: calc(clamp(38px, 4.5vw, 62px) + 220px);
+  top: 40px;
+  bottom: 40px;
+  width: 1px;
+  pointer-events: none;
+  background: rgba(90, 106, 130, 0.18);
+}
+
+.smart-energy-standard__hero-visual {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 206px;
+  width: 100%;
+  min-width: 0;
+}
+
+.smart-energy-standard__hero-visual img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center center;
+  transform: translateY(-6px);
+}
+
+.smart-energy-standard__hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.smart-energy-standard__hero-copy h3 {
+  margin: 0 0 16px;
+  font-size: clamp(30px, 2.8vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  color: #111318;
+}
+
+.smart-energy-standard__hero-copy p {
+  max-width: 570px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.78;
+  color: #535d70;
+}
+
+.smart-energy-standard__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.smart-energy-standard__card {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  min-height: 156px;
+  padding: 32px 34px;
+  border-radius: 18px;
+  background: #f3f4f6;
+  box-shadow: none;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease;
+}
+
+.smart-energy-standard__card:hover {
+  transform: translateY(-3px);
+  background: #eef1f5;
+}
+
+.smart-energy-standard__card-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  color: #3b78ea;
+  background: transparent;
+  box-shadow: none;
+}
+
+.smart-energy-standard__card-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.smart-energy-standard__card-copy h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: #111318;
+}
+
+.smart-energy-standard__card-copy p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: #5f697a;
+}
+
+.smart-energy-standard__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 900px;
+  margin: 38px auto 0;
+  color: #536074;
+  text-align: center;
+}
+
+.smart-energy-standard__note span {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  border-radius: 50%;
+  color: #3b78ea;
+  background: transparent;
+}
+
+.smart-energy-standard__note svg {
+  width: 16px;
+  height: 16px;
+}
+
+.smart-energy-standard__note p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.service-page--energy .service-logic-grid__media {
+  width: min(calc(100% - 32px), 1560px);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.service-page--energy .service-logic-grid__media img {
+  width: 100%;
+}
+
 .service-logic-grid__intro {
   max-width: 880px;
   text-align: center;
@@ -3143,6 +3442,18 @@
   margin-top: 56px;
 }
 
+.service-logic-grid__media {
+  margin-top: clamp(18px, 2.4vw, 34px);
+  display: flex;
+  justify-content: center;
+}
+
+.service-logic-grid__media img {
+  display: block;
+  width: min(100%, 980px);
+  height: auto;
+}
+
 .service-logic-grid__cell {
   min-width: 0;
   height: 100%;
@@ -3171,6 +3482,26 @@
 }
 
 @media (max-width: 1100px) {
+  .smart-energy-standard__hero-card {
+    grid-template-columns: 216px minmax(0, 1fr);
+    height: 230px;
+    padding: 20px 36px 20px 0;
+  }
+
+  .smart-energy-standard__hero-card::after {
+    left: 216px;
+    top: 34px;
+    bottom: 34px;
+  }
+
+  .smart-energy-standard__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .smart-energy-standard__hero-visual {
+    height: 190px;
+  }
+
   .service-logic-grid__intro h2 {
     font-size: clamp(40px, 5vw, 56px);
   }
@@ -3190,13 +3521,115 @@
 }
 
 @media (max-width: 700px) {
+  .smart-energy-standard {
+    padding: 74px 16px 86px;
+  }
+
+  .smart-energy-standard__header {
+    margin-bottom: 34px;
+  }
+
+  .smart-energy-standard__lead {
+    margin-top: 16px;
+  }
+
+  .smart-energy-standard__hero-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    padding: 24px 22px 28px;
+    border-radius: 22px;
+  }
+
+  .smart-energy-standard__hero-card::after {
+    display: none;
+  }
+
+  .smart-energy-standard__hero-visual {
+    height: 118px;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .smart-energy-standard__hero-visual img {
+    width: auto;
+    height: 100%;
+    transform: none;
+  }
+
+  .smart-energy-standard__hero-copy h3 {
+    margin-top: 10px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .smart-energy-standard__hero-copy p {
+    font-size: 15px;
+    line-height: 1.68;
+    text-align: center;
+  }
+
+  .smart-energy-standard__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .smart-energy-standard__card {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 16px;
+    min-height: auto;
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .smart-energy-standard__card-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .smart-energy-standard__card-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .smart-energy-standard__card-copy h3 {
+    font-size: 19px;
+  }
+
+  .smart-energy-standard__card-copy p {
+    font-size: 14px;
+  }
+
+  .smart-energy-standard__note {
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 28px;
+  }
+
+  .service-page--energy .electro-final-cta__text {
+    max-width: 360px;
+    font-size: clamp(25px, 6.3vw, 29px);
+    line-height: 1.16;
+  }
+
   .service-logic-grid {
     padding: 76px 0;
     background: #ffffff;
   }
 
+  .service-page--energy .service-logic-grid {
+    background: #f3f4f6;
+  }
+
   .service-logic-grid__intro {
     text-align: left;
+  }
+
+  .service-page--energy .service-logic-grid__intro {
+    text-align: center;
   }
 
   .service-logic-grid__intro h2,
@@ -3204,6 +3637,12 @@
     margin-left: 0;
     margin-right: 0;
     max-width: none;
+  }
+
+  .service-page--energy .service-logic-grid__intro h2,
+  .service-page--energy .service-logic-grid__intro p:not([class*="eyebrow"]) {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .service-logic-grid__intro h2 {
@@ -3221,6 +3660,16 @@
     grid-template-columns: 1fr;
     margin-top: 34px;
     gap: 14px;
+  }
+
+  .service-logic-grid__media {
+    margin-top: 18px;
+  }
+
+  .service-page--energy .service-logic-grid__media {
+    width: min(calc(100% - 28px), var(--content-width));
+    padding: 0;
+    border-radius: 0;
   }
 
   .service-logic-grid__cell {

@@ -58,9 +58,12 @@
     </noscript>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="service-pages.css" />
-  <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
-  <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
-  <link rel="icon" href="favicon.ico" sizes="any" />  <style>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
     .burger-btn { display:none; background:transparent; border:none; cursor:pointer; padding:10px; z-index:2000; position:relative; width:44px; height:44px; }
     .burger-icon { display:block; width:24px; height:2px; background-color:#000; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:background-color .3s; }
     .burger-icon::before, .burger-icon::after { content:''; position:absolute; left:0; width:100%; height:100%; background-color:#000; transition:transform .3s, top .3s; }
@@ -133,8 +136,9 @@
       <div class="container electro-scope-intro reveal-scope">
         <h2 id="energy-scope-title">Co zahrnuje správa energie</h2>
         <p>
-          Správa energie není jen monitoring. Řešíme návaznost na vytápění, chlazení, wallbox,
-          baterie i chování dalších technologií v objektu.
+          Správa energie není jen o sledování čísel v aplikaci. Propojujeme výrobu, spotřebu
+          a jednotlivé technologie tak, aby dům uměl energii využívat chytře — podle aktuálního
+          výkonu, režimu domácnosti a skutečných priorit.
         </p>
       </div>
 
@@ -144,34 +148,34 @@
             <ul class="service-overview-list" aria-label="Klíčové oblasti správy energie">
               <li class="service-overview-item">
                 <span class="service-overview-icon" aria-hidden="true"></span>
-                <span class="service-overview-text">Měření výroby a spotřeby v přehledné podobě</span>
+                <span class="service-overview-text">Přehledné měření výroby a spotřeby</span>
               </li>
               <li class="service-overview-item">
                 <span class="service-overview-icon" aria-hidden="true"></span>
-                <span class="service-overview-text">Prioritizace zátěží podle výkonu a režimu domu</span>
+                <span class="service-overview-text">Řízení priorit podle dostupného výkonu domu</span>
               </li>
               <li class="service-overview-item">
                 <span class="service-overview-icon" aria-hidden="true"></span>
-                <span class="service-overview-text">Napojení na klima, wallbox i ohřev vody</span>
+                <span class="service-overview-text">Napojení na vytápění, chlazení, wallbox i ohřev vody</span>
               </li>
               <li class="service-overview-item">
                 <span class="service-overview-icon" aria-hidden="true"></span>
-                <span class="service-overview-text">Jasná pravidla pro reakce systému a limity</span>
+                <span class="service-overview-text">Jasně nastavené limity a reakce systému</span>
               </li>
               <li class="service-overview-item">
                 <span class="service-overview-icon" aria-hidden="true"></span>
-                <span class="service-overview-text">Stabilní provoz připravený na další rozvoj</span>
+                <span class="service-overview-text">Stabilní řešení připravené na další rozšíření</span>
               </li>
             </ul>
           </div>
 
           <div class="service-overview-media">
-            <img loading="lazy" src="smart-home-energy-management-hero-smartport.webp" alt="Energetický management SMARTPORT pro přehlednou kontrolu spotřeby" />
+            <img loading="lazy" src="energeticky-management-domu-fotovoltaika-baterie-spotreba.webp" alt="Přehledný graf energetického managementu chytrého domu s výrobou z fotovoltaiky, bateriovým úložištěm, spotřebou domácnosti a tokem energie do sítě" />
           </div>
 
           <div class="service-overview-note">
-            Energetický management má dávat rychlý přehled a současně řídit technologie tak, aby
-            spolupracovaly bez provozního chaosu.
+            Cílem není jen vidět, kolik energie dům spotřebuje. Důležité je, aby technologie
+            spolupracovaly automaticky, předvídatelně a bez zbytečných zásahů.
           </div>
         </div>
       </div>
@@ -179,117 +183,124 @@
 
     <section id="energy-logic" class="service-logic-grid reveal" aria-labelledby="energy-logic-title">
       <div class="container service-logic-grid__intro">
-        <p class="service-logic-grid__eyebrow">Typické provozní situace</p>
-        <h2 id="energy-logic-title">Jak správa energie reaguje v běžném provozu</h2>
+        <h2 id="energy-logic-title">Chytré řízení energie v domě</h2>
         <p>
-          Dobře navržená správa energie neslouží jen k monitoringu. Pomáhá řídit priority, využití
-          energie a návaznost technologií podle reálného provozu objektu.
+          Propojujeme výrobu, spotřebu a technologie tak, aby dům
+          využíval energii chytře, efektivně a podle skutečných priorit.
         </p>
       </div>
 
-      <div class="container service-logic-grid__matrix" aria-label="Typické provozní situace správy energie">
-        <article class="service-logic-grid__cell reveal-standard">
-          <h3>Běžný den v objektu</h3>
-          <p>
-            Systém sleduje výrobu, spotřebu a chování hlavních technologií v přehledné logice.
-          </p>
-        </article>
-
-        <article class="service-logic-grid__cell reveal-standard">
-          <h3>Výroba z FVE</h3>
-          <p>
-            Přebytky lze využít tam, kde dávají v danou chvíli největší smysl.
-          </p>
-        </article>
-
-        <article class="service-logic-grid__cell reveal-standard">
-          <h3>Vyšší okamžitá spotřeba</h3>
-          <p>
-            Pravidla hlídají priority jednotlivých technologií a pomáhají omezit provozní chaos.
-          </p>
-        </article>
-
-        <article class="service-logic-grid__cell reveal-standard">
-          <h3>Ohřev vody a komfort</h3>
-          <p>
-            Systém rozhoduje podle dostupné energie, nastavených priorit a aktuálního provozu objektu.
-          </p>
-        </article>
-
-        <article class="service-logic-grid__cell reveal-standard">
-          <h3>Nabíjení a další zátěže</h3>
-          <p>
-            Wallbox nebo další výkony lze řídit tak, aby nenarušovaly zbytek provozu domu.
-          </p>
-        </article>
-
-        <article class="service-logic-grid__cell reveal-standard">
-          <h3>Budoucí rozšíření</h3>
-          <p>
-            Logika zůstává připravená na doplnění dalších technologií bez rozpadu celého systému.
-          </p>
-        </article>
+      <div class="container service-logic-grid__media">
+        <img loading="lazy" src="smartport-energy-management-flow.webp" alt="Chytré řízení energie v domě s fotovoltaikou, bateriovým úložištěm, tepelným čerpadlem a wallboxem" />
       </div>
     </section>
 
-    <section class="electro-standard reveal" aria-labelledby="energy-standard-title">
-      <div class="container electro-standard__intro reveal-standard">
-        <p class="electro-standard__eyebrow">Provozní standard</p>
-        <h2 id="energy-standard-title">Energetický management podle <span class="electro-standard__accent">SMARTPORT</span></h2>
-        <p>
-          Dobrá správa energie musí být přehledná, technicky obhajitelná a dobře návazná na ostatní
-          technologie v objektu.
-        </p>
-      </div>
+    <section class="smart-energy-standard" aria-labelledby="smart-energy-standard-title">
+      <div class="smart-energy-standard__container">
+        <header class="smart-energy-standard__header">
+          <p class="smart-energy-standard__eyebrow">PROVOZNÍ STANDARD</p>
+          <h2 id="smart-energy-standard-title" class="smart-energy-standard__title">
+            Energetický management<br>
+            podle <span>SMARTPORT</span>
+          </h2>
+          <p class="smart-energy-standard__lead">
+            Dobrá správa energie musí být přehledná, technicky obhajitelná
+            a dobře návazná na ostatní technologie v objektu.
+          </p>
+        </header>
 
-      <div class="container electro-standard__grid" aria-label="Standard správy energie">
-        <article class="electro-standard__card reveal-standard">
-          <span class="electro-standard__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 19V9"></path><path d="M12 19V5"></path><path d="M19 19v-7"></path></svg>
-          </span>
-          <h3>Jasná data</h3>
-          <p>Měření a přehled mají být srozumitelné, ne zahlcené zbytečnými informacemi.</p>
+        <article class="smart-energy-standard__hero-card">
+          <div class="smart-energy-standard__hero-visual">
+            <img
+              loading="lazy"
+              src="energeticky-management-chytre-priority-rizeni-spotreby.webp"
+              alt="Chytré priority energetického managementu pro řízení spotřeby, fotovoltaiky, baterie a technologií v domě"
+            />
+          </div>
+
+          <div class="smart-energy-standard__hero-copy">
+            <h3>Chytré priority</h3>
+            <p>
+              Systém rozhoduje, kdy využít energii pro dům, kdy ji uložit do baterie
+              a kdy dát přednost vybraným technologiím. Vždy s ohledem na komfort,
+              bezpečnost a náklady.
+            </p>
+          </div>
         </article>
 
-        <article class="electro-standard__card reveal-standard">
-          <span class="electro-standard__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h5"></path><path d="M15 12h5"></path><path d="M12 4v5"></path><path d="M12 15v5"></path><circle cx="12" cy="12" r="2.5"></circle></svg>
-          </span>
-          <h3>Napojení technologií</h3>
-          <p>Řízení energie propojujeme s klimatem, wallboxem i dalšími zátěžemi v objektu.</p>
-        </article>
+        <div class="smart-energy-standard__grid">
+          <article class="smart-energy-standard__card">
+            <div class="smart-energy-standard__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56" fill="none"><path d="M13 40V28" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M24 40V18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M35 40V24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 40V12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M10 44H48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="smart-energy-standard__card-copy">
+              <h3>Jasná data</h3>
+              <p>Měření a přehled mají být srozumitelné, ne zahlcené zbytečnými informacemi.</p>
+            </div>
+          </article>
 
-        <article class="electro-standard__card reveal-standard">
-          <span class="electro-standard__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8"></circle><path d="M12 9v3l2 2"></path></svg>
-          </span>
-          <h3>Rychlé reakce</h3>
-          <p>Systém se umí přizpůsobit změně výroby, tarifu nebo momentální spotřeby.</p>
-        </article>
+          <article class="smart-energy-standard__card">
+            <div class="smart-energy-standard__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56" fill="none"><circle cx="16" cy="28" r="6" stroke="currentColor" stroke-width="3"/><circle cx="40" cy="16" r="6" stroke="currentColor" stroke-width="3"/><circle cx="40" cy="40" r="6" stroke="currentColor" stroke-width="3"/><path d="M21.5 25.5L34.5 18.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M21.5 30.5L34.5 37.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="smart-energy-standard__card-copy">
+              <h3>Napojení technologií</h3>
+              <p>Řízení energie propojujeme s vytápěním, chlazením, wallboxem i dalšími zařízeními v objektu.</p>
+            </div>
+          </article>
 
-        <article class="electro-standard__card reveal-standard">
-          <span class="electro-standard__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M6 7h12"></path><path d="M6 12h12"></path><path d="M6 17h8"></path></svg>
-          </span>
-          <h3>Přehledná pravidla</h3>
-          <p>Priorita zátěží a chování systému musí být snadno dohledatelné a servisovatelné.</p>
-        </article>
+          <article class="smart-energy-standard__card">
+            <div class="smart-energy-standard__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56" fill="none"><path d="M31 6L14 32H27L24 50L42 22H29L31 6Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="smart-energy-standard__card-copy">
+              <h3>Rychlé reakce</h3>
+              <p>Systém se umí přizpůsobit změně výroby, tarifu nebo momentální spotřeby.</p>
+            </div>
+          </article>
 
-        <article class="electro-standard__card reveal-standard">
-          <span class="electro-standard__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 18h14"></path><path d="M8 14l4-8 4 8"></path></svg>
-          </span>
-          <h3>Možnost rozšíření</h3>
-          <p>Další technologie lze doplňovat bez rozpadu původní logiky energetického řízení.</p>
-        </article>
+          <article class="smart-energy-standard__card">
+            <div class="smart-energy-standard__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56" fill="none"><path d="M15 18L20 23L29 13" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 31L20 36L29 26" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 19H43" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M34 32H43" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 44H43" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="smart-energy-standard__card-copy">
+              <h3>Přehledná pravidla</h3>
+              <p>Pravidla pro řízení a chování systému jsou snadno dohledatelná a srozumitelná.</p>
+            </div>
+          </article>
 
-        <article class="electro-standard__card reveal-standard">
-          <span class="electro-standard__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10"></path></svg>
+          <article class="smart-energy-standard__card">
+            <div class="smart-energy-standard__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="17" stroke="currentColor" stroke-width="3"/><path d="M28 18V38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M18 28H38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M42 14L48 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M48 8H40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M48 8V16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="smart-energy-standard__card-copy">
+              <h3>Možnost rozšíření</h3>
+              <p>Další technologie lze doplňovat bez rozpadu původní logiky energetického řízení.</p>
+            </div>
+          </article>
+
+          <article class="smart-energy-standard__card">
+            <div class="smart-energy-standard__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56" fill="none"><path d="M28 7L43 14V26C43 36 36 44 28 49C20 44 13 36 13 26V14L28 7Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M21 28L26 33L36 22" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="smart-energy-standard__card-copy">
+              <h3>Dlouhodobá stabilita</h3>
+              <p>Řešení funguje spolehlivě i po čase a je připravené na změny v provozu.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="smart-energy-standard__note">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 12.5L10.2 15.7L17.5 8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
-          <h3>Dlouhodobá stabilita</h3>
-          <p>Řešení musí fungovat spolehlivě i po čase a být připravené na změny v provozu.</p>
-        </article>
+          <p>
+            Připravíme inteligentní správu energie s jasnými pravidly, přehledným ovládáním
+            a návazností na celý provoz objektu.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -349,8 +360,3 @@
   <script src="service-detail.js"></script>
 </body>
 </html>
-
-
-
-
-

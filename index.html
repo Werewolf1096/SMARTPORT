@@ -84,9 +84,12 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
     </noscript>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" href="favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
-    <link rel="icon" href="favicon.ico" sizes="any" />    <style>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
       /* CSS pro burger menu - vloženo pro zajištění funkčnosti */
       .burger-btn {
         display: none;
@@ -301,14 +304,14 @@
           </div>
           <div class="steps-panel">
             <div class="steps-accordion">
-              <details class="step-item" open data-image="smartport-brief-diagnostika-elektroinstalace-chytra-domacnost.gif" data-alt="Brief a diagnostika elektroinstalace a chytré domácnosti – SMARTPORT">
+              <details class="step-item" open data-image="smartport-brief-diagnostika-elektroinstalace-chytra-domacnost.webp" data-alt="Brief a diagnostika elektroinstalace a chytré domácnosti – SMARTPORT">
                 <summary>
                   <span class="step-heading"><span class="step-index">1.</span><span class="step-title">Brief a diagnostika</span></span>
                 </summary>
                 <div class="step-body">
                   <p>Poznáváme váš dům, vaše zvyklosti a způsob, jakým skutečně žijete. Analyzujeme architekturu, technické možnosti objektu a vaše priority. Cílem je nastavit reálné hranice projektu a zároveň najít maximální potenciál domu ještě před začátkem návrhu řešení.</p>
                   <div class="step-media">
-                    <img loading="lazy" src="smartport-brief-diagnostika-elektroinstalace-chytra-domacnost.gif" alt="Brief a diagnostika elektroinstalace a chytré domácnosti – SMARTPORT" />
+                    <img loading="lazy" src="smartport-brief-diagnostika-elektroinstalace-chytra-domacnost.webp" alt="Brief a diagnostika elektroinstalace a chytré domácnosti – SMARTPORT" />
                   </div>
                 </div>
               </details>
@@ -345,14 +348,14 @@
                   </div>
                 </div>
               </details>
-              <details class="step-item" data-image="testovani-a-spusteni-smartport.gif" data-alt="Testování a spuštění elektroinstalace a chytré domácnosti – SMARTPORT">
+              <details class="step-item" data-image="testovani-a-spusteni-smartport.webp" data-alt="Testování a spuštění elektroinstalace a chytré domácnosti – SMARTPORT">
                 <summary>
                   <span class="step-heading"><span class="step-index">5.</span><span class="step-title">Testování a spuštění</span></span>
                 </summary>
                 <div class="step-body">
                   <p>Každou část systému důkladně testujeme, ladíme automatizace a ověřujeme správnou funkčnost všech scénářů. Teprve po kompletní kontrole a doladění předáváme dům do ostrého provozu.</p>
                   <div class="step-media">
-                    <img loading="lazy" src="testovani-a-spusteni-smartport.gif" alt="Testování a spuštění elektroinstalace a chytré domácnosti – SMARTPORT" />
+                    <img loading="lazy" src="testovani-a-spusteni-smartport.webp" alt="Testování a spuštění elektroinstalace a chytré domácnosti – SMARTPORT" />
                   </div>
                 </div>
               </details>
@@ -377,49 +380,61 @@
       
       <section id="solutions" class="services solutions">
         <style>
+          #solutions {
+            --service-card-size: 358px;
+          }
           .solutions-carousel.services-carousel {
-            width: calc(100% + (50vw - 50%));
+            width: calc(100% + (100vw - min(90%, var(--content-width))) / 2);
             margin-left: 0;
-            margin-right: calc(50% - 50vw);
             padding-left: 0;
             padding-right: 0;
           }
           .solutions-carousel .services-track {
-            grid-auto-columns: calc((100% - (50vw - 50%)) * 0.72) !important;
-            gap: 29px !important;
-            padding-bottom: 24px;
-            scroll-padding-right: calc((50vw - 50%) + ((100% - (50vw - 50%)) * 0.28)) !important;
+            grid-auto-columns: minmax(var(--service-card-size), 1fr) !important;
+            gap: 24px !important;
+            padding-right: calc(var(--service-card-size) * 0.5);
+            scroll-padding-right: calc(var(--service-card-size) * 0.5) !important;
           }
           @media (max-width: 1100px) {
+            #solutions {
+              --service-card-size: 320px;
+            }
             .solutions-carousel .services-track {
-              grid-auto-columns: calc((100% - (50vw - 50%)) * 0.72) !important;
+              grid-auto-columns: minmax(var(--service-card-size), 1fr) !important;
             }
           }
-          @media (max-width: 980px) {
-            .solutions-carousel .services-track {
-              grid-auto-columns: 100% !important;
-              scroll-padding-right: 0 !important;
+          @media (max-width: 768px) {
+            #solutions {
+              --service-card-size: 308px;
             }
           }
           
           .solutions-carousel .solution-card {
             background-image: none !important;
-            background: transparent !important;
-            min-height: 0 !important;
-            height: auto !important;
+            background: rgba(255, 255, 255, 0.86) !important;
+            min-height: 484px !important;
+            height: 484px !important;
             padding: 0 !important;
-            aspect-ratio: 1.5 / 1;
-            border-radius: 32px;
+            aspect-ratio: 3 / 4;
+            border-radius: 26px;
             box-shadow: none !important;
             border: none !important;
             justify-content: flex-end;
             position: relative;
             overflow: hidden;
             display: block;
+            cursor: pointer;
+          }
+          @media (max-width: 1100px) {
+            .solutions-carousel .solution-card {
+              min-height: 480px !important;
+              height: 480px !important;
+            }
           }
           @media (max-width: 600px) {
             .solutions-carousel .solution-card {
-              aspect-ratio: 4/5;
+              min-height: 420px !important;
+              height: 420px !important;
             }
           }
           .wide-solution-img {
@@ -436,136 +451,318 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.85) 100%);
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(15,17,21,0.08) 100%);
             pointer-events: none;
+          }
+          .solution-open-btn {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            z-index: 3;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: transform 0.24s ease, background 0.24s ease;
+          }
+          .solution-open-btn::before,
+          .solution-open-btn::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            border-radius: 999px;
+            background: currentColor;
+          }
+          .solution-open-btn::after {
+            transform: rotate(90deg);
+          }
+          .solution-card:hover .solution-open-btn,
+          .solution-card:focus-within .solution-open-btn {
+            transform: scale(1.08);
+            background: #0071e3;
+          }
+          .solution-card:focus-visible {
+            outline: 3px solid rgba(0, 113, 227, 0.38);
+            outline-offset: 4px;
+          }
+          .solutions-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: grid;
+            place-items: center;
+            padding: 34px;
+            background: rgba(15, 17, 21, 0.46);
+            backdrop-filter: blur(22px) saturate(120%);
+            -webkit-backdrop-filter: blur(22px) saturate(120%);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+          }
+          .solutions-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+          }
+          .solutions-modal__card {
+            position: relative;
+            width: min(720px, 100%);
+            min-height: min(760px, calc(100vh - 68px));
+            max-height: calc(100vh - 68px);
+            overflow-y: auto;
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 34px 90px rgba(0, 0, 0, 0.24);
+            transform: translateY(16px) scale(0.98);
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          .solutions-modal.is-open .solutions-modal__card {
+            transform: translateY(0) scale(1);
+          }
+          .solutions-modal__close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: #e8e8ed;
+            color: #5f6368;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+          }
+          .solutions-modal__close::before,
+          .solutions-modal__close::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            border-radius: 999px;
+            background: currentColor;
+          }
+          .solutions-modal__close::before {
+            transform: rotate(45deg);
+          }
+          .solutions-modal__close::after {
+            transform: rotate(-45deg);
+          }
+          .solutions-modal__body {
+            min-height: inherit;
+          }
+          body.solutions-modal-open {
+            overflow: hidden;
+          }
+          @media (max-width: 768px) {
+            .solutions-modal {
+              padding: 18px;
+            }
+            .solutions-modal__card {
+              min-height: min(640px, calc(100vh - 36px));
+              max-height: calc(100vh - 36px);
+              border-radius: 22px;
+            }
           }
           .wide-solution-content {
             position: absolute;
             inset: 0;
             z-index: 2;
-            padding: 32px 40px;
+            padding: 28px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
             height: 100%;
-            text-align: center;
+            text-align: left;
           }
           @media (max-width: 980px) {
-            .wide-solution-content { padding: 28px 32px; }
-          }
-          .wide-solution-badge {
-            align-self: center;
-            display: inline-flex;
-            align-items: center;
-            width: fit-content;
-            color: #ffffff;
-            font-size: clamp(21px, 1.45vw, 24px);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            background: none;
-            border: none;
-            padding: 0;
-            backdrop-filter: none;
-            margin-bottom: auto;
+            .wide-solution-content { padding: 26px; }
           }
           .solution-card .wide-solution-title {
-            font-size: clamp(24px, 2.8vw, 36px);
+            font-size: var(--title-card-size);
             font-weight: 600;
-            line-height: 1.1;
-            color: #ffffff !important;
+            line-height: 1.14;
+            color: #111 !important;
             margin: 0 0 12px 0;
-            text-align: center;
+            text-align: left;
             min-height: unset;
           }
+          .solution-card--light-title .wide-solution-title {
+            color: #fff !important;
+          }
           .wide-solution-text {
-            font-size: calc(16px + 2px);
-            line-height: 1.5;
-            color: rgba(255,255,255,0.8);
+            display: none;
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--muted);
             margin: 0;
-            max-width: 36ch;
-            text-align: center;
+            max-width: 28ch;
+            text-align: left;
           }
-          .solutions-carousel .services-dots button {
-            transition: background 0.3s, transform 0.3s;
+          .solution-expanded {
+            display: none;
           }
-          .solutions-carousel .services-dots button.is-active {
-            background: var(--accent) !important;
-            transform: scale(1.2);
+          .solutions-modal__body {
+            display: grid;
+            align-content: start;
+            gap: 22px;
+            padding: 72px 68px 58px;
+          }
+          .solutions-modal__eyebrow {
+            margin: 0;
+            color: #3d3d42;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+          }
+          .solutions-modal__title {
+            margin: 0;
+            color: #111;
+            font-size: clamp(34px, 4vw, 52px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            max-width: 11ch;
+          }
+          .solutions-modal__lead,
+          .solutions-modal__text p {
+            margin: 0;
+            color: #3d3d42;
+            font-size: 17px;
+            line-height: 1.55;
+          }
+          .solutions-modal__lead {
+            max-width: 50ch;
+            font-weight: 600;
+          }
+          .solutions-modal__text {
+            display: grid;
+            gap: 16px;
+            max-width: 58ch;
+          }
+          @media (max-width: 768px) {
+            .solutions-modal__body {
+              padding: 62px 28px 34px;
+            }
+            .solutions-modal__title {
+              font-size: clamp(30px, 9vw, 42px);
+              max-width: 12ch;
+            }
+            .solutions-modal__lead,
+            .solutions-modal__text p {
+              font-size: 16px;
+            }
           }
         </style>
         <div class="container">
           <div class="services-head">
-            <h2>Řešení pro každý typ prostoru.</h2>
+            <h2>Kdy má chytrý dům opravdu smysl</h2>
           </div>
           <div class="services-carousel solutions-carousel">
             <div class="services-track" role="list">
-              <article class="service-card solution-card" role="listitem">
-                <img loading="lazy" class="wide-solution-img" src="smart-home-loxone-rodinny-dum-interier-vecer.webp" alt="Moderní rodinný dům s inteligentním řízením Loxone, večerní atmosféra, automatické osvětlení a žaluzie v otevřeném obývacím prostoru" />
+              <article class="service-card solution-card" role="listitem" tabindex="0" aria-label="Stavíte nový dům a řešíte elektroinstalaci">
+                <img loading="lazy" class="wide-solution-img" src="chytra-elektroinstalace-novostavba-rodinny-dum-smartport.webp" alt="Chytrá elektroinstalace v novostavbě rodinného domu – návrh osvětlení, stínění, vytápění a budoucí automatizace SMARTPORT" />
                 <div class="wide-solution-overlay"></div>
                 <div class="wide-solution-content">
-                  <div class="wide-solution-badge">Rodinný dům</div>
                   <div>
-                    <h3 class="wide-solution-title">Komfortní domov bez kompromisů.</h3>
-                    <p class="wide-solution-text">Osvětlení, klima a zabezpečení řídíte z jedné aplikace.</p>
+                    <h3 class="wide-solution-title">Stavíte nový dům a řešíte elektroinstalaci</h3>
+                    <p class="wide-solution-text">Nejlepší chvíle pro chytrou domácnost je už při návrhu elektroinstalace v novostavbě.</p>
                   </div>
                 </div>
+                <div class="solution-expanded">
+                  <p>U novostavby se dá celý systém navrhnout čistě, logicky a bez zbytečných kompromisů. Už při přípravě elektroinstalace se řeší kabeláž, rozvaděč, ovládací prvky, světelné okruhy, stínění, vytápění, zabezpečení i budoucí rozšíření domu.</p>
+                  <p>Díky tomu nemusíte později řešit dodatečné sekání, provizorní bezdrátová řešení nebo technologie, které spolu neumí dobře komunikovat. Chytrý dům se připraví jako jeden celek — od osvětlení a žaluzií až po energie, přístup a bezpečnost.</p>
+                  <p>Dobře navržený systém zároveň neznamená, že musíte všechno instalovat hned. Některé části lze připravit v kabeláži a rozvaděči, ale aktivovat až později, až na ně přijde čas nebo rozpočet.</p>
+                </div>
+                <button class="solution-open-btn" type="button" aria-label="Otevřít detail"></button>
               </article>
-              <article class="service-card solution-card" role="listitem">
-                <img loading="lazy" class="wide-solution-img" src="smart-restaurant-loxone-osvetleni-automatizace.webp" alt="Moderní restaurace s inteligentním řízením osvětlení Loxone, vyvážené světelné scény a příjemná večerní atmosféra v interiéru" />
+              <article class="service-card solution-card" role="listitem" tabindex="0" aria-label="Rekonstruujete dům nebo byt">
+                <img loading="lazy" class="wide-solution-img" src="rekonstrukce-domu-elektroinstalace-chytra-domacnost-smartport.webp" alt="Rekonstrukce domu nebo bytu – příprava nové elektroinstalace, kabeláže a chytré domácnosti SMARTPORT" />
                 <div class="wide-solution-overlay"></div>
                 <div class="wide-solution-content">
-                  <div class="wide-solution-badge">Restaurace</div>
                   <div>
-                    <h3 class="wide-solution-title">Atmosféra, která dělá rozdíl.</h3>
-                    <p class="wide-solution-text">Scény světel a hudby pro různé denní doby.</p>
+                    <h3 class="wide-solution-title">Rekonstruujete dům nebo byt</h3>
+                    <p class="wide-solution-text">Při rekonstrukci je ideální čas připravit elektroinstalaci pro chytrý dům i budoucí rozšíření.</p>
                   </div>
                 </div>
+                <div class="solution-expanded">
+                  <p>Rekonstrukce je dobrá příležitost upravit elektroinstalaci tak, aby odpovídala dnešnímu způsobu bydlení. Nejde jen o nové kabely, zásuvky a vypínače. Dává smysl rovnou promyslet osvětlení, ovládání žaluzií, vytápění, datové rozvody, senzory, kamery, přístupový systém nebo přípravu pro fotovoltaiku.</p>
+                  <p>U starších domů a bytů často vzniká problém tím, že se technologie řešily postupně a bez jednotného plánu. Každý systém má vlastní ovládání, některé části nejsou připravené vůbec a pozdější úpravy jsou zbytečně složité nebo drahé.</p>
+                  <p>Proto při rekonstrukci pomáháme rozhodnout, co má smysl udělat hned, co stačí připravit do budoucna a co je naopak zbytečné. Cílem není dům přeplnit technologiemi, ale připravit ho tak, aby fungoval pohodlně dnes a šel rozumně rozšířit i za několik let.</p>
+                </div>
+                <button class="solution-open-btn" type="button" aria-label="Otevřít detail"></button>
               </article>
-              <article class="service-card solution-card" role="listitem">
-                <img loading="lazy" class="wide-solution-img" src="smart-fitness-loxone-osvetleni-gym.webp" alt="Moderní fitness centrum s inteligentním řízením osvětlení Loxone, dynamické světelné scény v zóně volných vah a tréninku" />
+              <article class="service-card solution-card solution-card--light-title" role="listitem" tabindex="0" aria-label="Nechcete ovládat každou technologii zvlášť">
+                <img loading="lazy" class="wide-solution-img" src="chytra-domacnost-jednotne-ovladani-bez-mnoha-aplikaci-smartport.webp" alt="Jednotné ovládání chytré domácnosti bez mnoha aplikací – osvětlení, topení, klima, žaluzie a zabezpečení v jednom systému SMARTPORT" />
                 <div class="wide-solution-overlay"></div>
                 <div class="wide-solution-content">
-                  <div class="wide-solution-badge">Fitness</div>
                   <div>
-                    <h3 class="wide-solution-title">Energeticky šetrné prostředí.</h3>
-                    <p class="wide-solution-text">Automatizace zón, větrání a optimální teplota.</p>
+                    <h3 class="wide-solution-title">Nechcete ovládat každou technologii zvlášť</h3>
+                    <p class="wide-solution-text">Světla, topení, žaluzie, zabezpečení, přístup i energie mohou fungovat v jednom systému chytré domácnosti.</p>
                   </div>
                 </div>
+                <div class="solution-expanded">
+                  <p>Mnoho domů dnes vzniká tak, že se každá technologie řeší samostatně. Jedna aplikace na světla, druhá na topení, třetí na kamery, další na žaluzie, bránu nebo zabezpečení. Na začátku to může vypadat jednoduše, ale časem z toho vznikne nepřehledný systém, který nikdo nechce používat.</p>
+                  <p>Chytrý dům má dávat smysl jako celek. Když odcházíte z domu, systém může jedním scénářem zhasnout světla, upravit vytápění, aktivovat zabezpečení, zavřít stínění podle situace a zkontrolovat důležité stavy. Nemusíte obcházet místnosti ani přepínat mezi několika aplikacemi.</p>
+                  <p>Jednotný systém je přehlednější pro každodenní používání, stabilnější pro dlouhodobý provoz a jednodušší pro servis. Dům se pak nechová jako sbírka samostatných zařízení, ale jako promyšlený celek.</p>
+                </div>
+                <button class="solution-open-btn" type="button" aria-label="Otevřít detail"></button>
               </article>
-              <article class="service-card solution-card" role="listitem">
-                <img loading="lazy" class="wide-solution-img" src="smart-office-loxone-konferencni-mistnost.webp" alt="Moderní kancelářská zasedací místnost s inteligentním řízením osvětlení Loxone, vyvážené světlo a automatizované pracovní prostředí" />
+              <article class="service-card solution-card" role="listitem" tabindex="0" aria-label="Chcete chytrý dům, který se dá rozšiřovat">
+                <img loading="lazy" class="wide-solution-img" src="loxone-miniserver-rozsiritelny-chytry-dum-smartport.webp" alt="Loxone Miniserver jako základ rozšiřitelného chytrého domu – chytrá elektroinstalace s možností budoucího rozšíření SMARTPORT" />
                 <div class="wide-solution-overlay"></div>
                 <div class="wide-solution-content">
-                  <div class="wide-solution-badge">Kanceláře</div>
                   <div>
-                    <h3 class="wide-solution-title">Produktivita bez rušení.</h3>
-                    <p class="wide-solution-text">Inteligentní světelné scény a chytré zóny.</p>
+                    <h3 class="wide-solution-title">Chcete chytrý dům, který se dá rozšiřovat</h3>
+                    <p class="wide-solution-text">Dobrý návrh chytré elektroinstalace počítá s tím, že potřeby domu se budou časem měnit.</p>
                   </div>
                 </div>
+                <div class="solution-expanded">
+                  <p>Chytrý dům nemusí vzniknout celý najednou. Často dává větší smysl začít tím nejdůležitějším — například osvětlením, stíněním, vytápěním nebo zabezpečením — a další části přidávat postupně podle potřeb domu.</p>
+                  <p>Aby to šlo bez drahých zásahů, musí se s tím počítat už v návrhu. Důležitá je správná kabeláž, rozvaděč s rezervou, promyšlené okruhy, místo pro budoucí moduly a jasná logika celého systému.</p>
+                  <p>Dnes můžete řešit základní komfort a bezpečnost. Později se může přidat pokročilejší řízení energií, multiroom audio, přístupový systém, nabíjení elektromobilu nebo další automatizace. Když je základ navržený správně, dům se dá rozšiřovat bez toho, aby se pokaždé předělával od začátku.</p>
+                </div>
+                <button class="solution-open-btn" type="button" aria-label="Otevřít detail"></button>
               </article>
-              <article class="service-card solution-card" role="listitem">
-                <img loading="lazy" class="wide-solution-img" src="smart-clinic-reception-loxone.webp" alt="Moderní recepce polikliniky s inteligentním řízením osvětlení Loxone, čistý a přehledný prostor pro pacienty" />
+              <article class="service-card solution-card solution-card--light-title" role="listitem" tabindex="0" aria-label="Chcete připravit dům na FVE, baterii a nabíjení auta">
+                <img loading="lazy" class="wide-solution-img" src="fotovoltaika-priprava-domu-fve-energie-smartport.webp" alt="Fotovoltaika na střeše rodinného domu – příprava elektroinstalace pro FVE, řízení energie a budoucí rozšíření SMARTPORT" />
                 <div class="wide-solution-overlay"></div>
                 <div class="wide-solution-content">
-                  <div class="wide-solution-badge">Nemocnice</div>
                   <div>
-                    <h3 class="wide-solution-title">Bezpečí a kontrola provozu.</h3>
-                    <p class="wide-solution-text">Monitoring, řízení přístupu a tiché chodby.</p>
+                    <h3 class="wide-solution-title">Chcete připravit dům na FVE, baterii a nabíjení auta</h3>
+                    <p class="wide-solution-text">Fotovoltaika, bateriové úložiště, nabíjení elektromobilu a řízení spotřeby dávají větší smysl, když se s nimi počítá předem.</p>
                   </div>
                 </div>
+                <div class="solution-expanded">
+                  <p>Moderní elektroinstalace už dnes není jen o světlech, zásuvkách a vypínačích. Stále častěji se do domu přidává fotovoltaika, baterie, nabíjení elektromobilu, řízení velkých odběrů, klimatizace, rekuperace nebo další technologie, které ovlivňují provoz celého domu.</p>
+                  <p>Když se s těmito věcmi počítá už při návrhu, dá se připravit kabeláž, prostor v rozvaděči, datové propojení i logika řízení spotřeby. Nemusíte instalovat všechno hned, ale dům bude připravený na rozumné rozšíření bez zbytečného bourání a improvizací.</p>
+                  <p>Cílem je, aby technologie časem nepřibývaly chaoticky. Dům má mít jasný základ, do kterého lze nové části zapojit tak, aby spolupracovaly se zbytkem systému — ne aby vznikla další samostatná aplikace, další krabička a další kompromis.</p>
+                </div>
+                <button class="solution-open-btn" type="button" aria-label="Otevřít detail"></button>
               </article>
-              <article class="service-card solution-card" role="listitem">
-                <img loading="lazy" class="wide-solution-img" src="moderni-loznice-s-vecernim-osvetlenim.webp" alt="Moderní hotelový pokoj s nepřímým osvětlením a automatizovanou atmosférou pro chytré hotelové řešení SMARTPORT" />
+              <article class="service-card solution-card" role="listitem" tabindex="0" aria-label="Chcete komfortní chytrou domácnost, ne technickou hračku">
+                <img loading="lazy" class="wide-solution-img" src="komfortni-chytra-domacnost-jednoduche-ovladani-smartport.webp" alt="Komfortní chytrá domácnost s jednoduchým ovládáním – pohodlí bez zbytečné složitosti SMARTPORT" />
                 <div class="wide-solution-overlay"></div>
                 <div class="wide-solution-content">
-                  <div class="wide-solution-badge">Hotely</div>
                   <div>
-                    <h3 class="wide-solution-title">Hosté se cítí jako doma.</h3>
-                    <p class="wide-solution-text">Personalizované scény a intuitivní ovládání.</p>
+                    <h3 class="wide-solution-title">Chcete komfortní chytrou domácnost, ne technickou hračku</h3>
+                    <p class="wide-solution-text">Cílem chytrého domu není složitá aplikace, ale pohodlné ovládání světel, topení, stínění a bezpečnosti v každodenním provozu.</p>
                   </div>
                 </div>
+                <div class="solution-expanded">
+                  <p>Skutečně chytrý dům není o tom, že návštěvě ukazujete aplikaci v telefonu. Dobrý systém většinu času pracuje tiše na pozadí. Ráno připraví příjemné světlo a teplotu, přes den reaguje na slunce a přehřívání, večer ztlumí osvětlení a v noci rozsvítí jen tolik, kolik je potřeba.</p>
+                  <p>Komfort znamená, že nemusíte pořád myslet na vypínače, termostaty, žaluzie nebo zabezpečení. Dům se přizpůsobuje běžnému provozu, ale pořád zůstává jednoduše ovladatelný. Když chcete něco změnit ručně, musí to být rychlé a pochopitelné.</p>
+                  <p>Proto navrhujeme chytrou domácnost tak, aby technologie neobtěžovala. Nejde o efekt na první týden. Jde o systém, který budete používat každý den a který má být příjemný i pro člověka, který technice vůbec nerozumí.</p>
+                </div>
+                <button class="solution-open-btn" type="button" aria-label="Otevřít detail"></button>
               </article>
             </div>
             <div class="services-arrows" aria-label="Listování služeb">
@@ -580,17 +777,15 @@
                 </svg>
               </button>
             </div>
-            <div class="services-dots" aria-label="Indikace bloku">
-              <button class="is-active" type="button" aria-label="Blok 1"></button>
-              <button type="button" aria-label="Blok 2"></button>
-              <button type="button" aria-label="Blok 3"></button>
-              <button type="button" aria-label="Blok 4"></button>
-              <button type="button" aria-label="Blok 5"></button>
-              <button type="button" aria-label="Blok 6"></button>
-            </div>
+          </div>
+	        </div>
+        <div class="solutions-modal" aria-hidden="true">
+          <div class="solutions-modal__card" role="dialog" aria-modal="true" aria-label="Detail" tabindex="-1">
+            <button class="solutions-modal__close" type="button" aria-label="Zavřít detail"></button>
+            <div class="solutions-modal__body"></div>
           </div>
         </div>
-      </section>
+	      </section>
       <section id="trust" class="trust trust-apple">
         <div class="container">
           <div class="trust-head">
@@ -693,18 +888,3 @@
     <script defer src="main.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

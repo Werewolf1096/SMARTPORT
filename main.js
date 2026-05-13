@@ -1,4 +1,41 @@
 (() => {
+  if (window.__smartportPhoneConversionTrackingBound) return;
+  window.__smartportPhoneConversionTrackingBound = true;
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!target || typeof target.closest !== "function") return;
+
+    const phoneLink = target.closest('a[href^="tel:"]');
+    if (!phoneLink) return;
+
+    const href = phoneLink.getAttribute("href") || "";
+    if (!href.includes("+420775563355")) return;
+
+    if (typeof window.gtag !== "function") return;
+
+    event.preventDefault();
+
+    let opened = false;
+    const openPhoneLink = () => {
+      if (opened) return;
+      opened = true;
+      window.location.href = href;
+    };
+
+    window.gtag("event", "conversion", {
+      send_to: "AW-18130609491/7R2bCOW0s6ccENPKrMVD",
+      value: 1.0,
+      currency: "CZK",
+      event_callback: openPhoneLink,
+      event_timeout: 1000,
+    });
+
+    setTimeout(openPhoneLink, 1200);
+  });
+})();
+
+(() => {
   const homeHero = document.getElementById("hero");
   if (!homeHero) return;
 
@@ -163,6 +200,90 @@
 
     track.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+  });
+})();
+
+(() => {
+  const section = document.getElementById("solutions");
+  if (!section) return;
+
+  const cards = Array.from(section.querySelectorAll(".solution-card"));
+  const modal = section.querySelector(".solutions-modal");
+  const dialog = section.querySelector(".solutions-modal__card");
+  const modalBody = section.querySelector(".solutions-modal__body");
+  const closeButton = section.querySelector(".solutions-modal__close");
+  if (!cards.length || !modal || !dialog || !modalBody || !closeButton) return;
+
+  document.body.appendChild(modal);
+
+  let activeCard = null;
+
+  function appendTextElement(parent, tagName, className, text) {
+    if (!text) return null;
+    const element = document.createElement(tagName);
+    element.className = className;
+    element.textContent = text;
+    parent.appendChild(element);
+    return element;
+  }
+
+  function renderModal(card) {
+    const title = card.querySelector(".wide-solution-title")?.textContent?.trim() || "";
+    const lead = card.querySelector(".wide-solution-text")?.textContent?.trim() || "";
+    const paragraphs = Array.from(card.querySelectorAll(".solution-expanded p"))
+      .map((paragraph) => paragraph.textContent.trim())
+      .filter(Boolean);
+
+    modalBody.replaceChildren();
+    appendTextElement(modalBody, "p", "solutions-modal__eyebrow", "Kdy má chytrý dům smysl");
+    appendTextElement(modalBody, "h3", "solutions-modal__title", title);
+    appendTextElement(modalBody, "p", "solutions-modal__lead", lead);
+
+    const textWrap = document.createElement("div");
+    textWrap.className = "solutions-modal__text";
+    paragraphs.forEach((text) => appendTextElement(textWrap, "p", "", text));
+    modalBody.appendChild(textWrap);
+    dialog.setAttribute("aria-label", title || "Detail");
+  }
+
+  function openModal(card) {
+    activeCard = card;
+    renderModal(card);
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("solutions-modal-open");
+    dialog.focus({ preventScroll: true });
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("solutions-modal-open");
+    if (activeCard) {
+      activeCard.focus({ preventScroll: true });
+      activeCard = null;
+    }
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => openModal(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openModal(card);
+    });
+  });
+
+  closeButton.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
   });
 })();
 
