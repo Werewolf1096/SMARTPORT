@@ -125,12 +125,6 @@
               <p>Stačí několik základních informací. Nemusíte znát přesnou technologii — od toho jsme tady my.</p>
             </div>
 
-            <div class="lead-page-form__meta" aria-label="Důležité informace">
-              <span>Rodinné domy, byty, rekonstrukce i novostavby</span>
-              <span>Praha, Středočeský kraj i další realizace v ČR</span>
-              <span>Chytrý dům, elektroinstalace, osvětlení, stínění, klima i zabezpečení</span>
-            </div>
-
             <div class="lead-page-form__grid">
               <div class="lead-page-form__field">
                 <label for="lead-name">Jméno a příjmení</label>
@@ -165,14 +159,6 @@
                   <span>Byt</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="radio" name="object_type" value="Rekonstrukce" />
-                  <span>Rekonstrukce</span>
-                </label>
-                <label class="lead-page-choice-pill">
-                  <input type="radio" name="object_type" value="Novostavba" />
-                  <span>Novostavba</span>
-                </label>
-                <label class="lead-page-choice-pill">
                   <input type="radio" name="object_type" value="Komerční prostor" />
                   <span>Komerční prostor</span>
                 </label>
@@ -184,27 +170,23 @@
             </fieldset>
 
             <fieldset class="lead-page-choice-group">
-              <legend>Fáze projektu</legend>
-              <div class="lead-page-choice-pills" role="radiogroup" aria-label="Fáze projektu">
+              <legend>Typ projektu</legend>
+              <div class="lead-page-choice-pills" role="radiogroup" aria-label="Typ projektu">
                 <label class="lead-page-choice-pill">
-                  <input type="radio" name="project_stage" value="Zatím zvažuji možnosti" required />
-                  <span>Zatím zvažuji možnosti</span>
+                  <input type="radio" name="project_type" value="Novostavba" required />
+                  <span>Novostavba</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="radio" name="project_stage" value="Mám projektovou dokumentaci" />
-                  <span>Mám projektovou dokumentaci</span>
+                  <input type="radio" name="project_type" value="Rekonstrukce" />
+                  <span>Rekonstrukce</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="radio" name="project_stage" value="Stavba / rekonstrukce probíhá" />
-                  <span>Stavba / rekonstrukce probíhá</span>
+                  <input type="radio" name="project_type" value="Modernizace stávajícího systému" />
+                  <span>Modernizace stávajícího systému</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="radio" name="project_stage" value="Potřebuji upravit stávající řešení" />
-                  <span>Potřebuji upravit stávající řešení</span>
-                </label>
-                <label class="lead-page-choice-pill">
-                  <input type="radio" name="project_stage" value="Potřebuji konzultaci" />
-                  <span>Potřebuji konzultaci</span>
+                  <input type="radio" name="project_type" value="Konzultace / návrh" />
+                  <span>Konzultace / návrh</span>
                 </label>
               </div>
             </fieldset>
@@ -213,36 +195,32 @@
               <legend>Co chcete řešit</legend>
               <div class="lead-page-choice-pills lead-page-choice-pills--multi" aria-label="Co chcete řešit">
                 <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Chytrá domácnost" />
-                  <span>Chytrá domácnost</span>
+                  <input type="checkbox" name="solutions[]" value="Inteligentní řízení domu" />
+                  <span>Inteligentní řízení domu</span>
                 </label>
                 <label class="lead-page-choice-pill">
                   <input type="checkbox" name="solutions[]" value="Elektroinstalace" />
                   <span>Elektroinstalace</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Rozvaděč" />
-                  <span>Rozvaděč</span>
+                  <input type="checkbox" name="solutions[]" value="Chytré osvětlení" />
+                  <span>Chytré osvětlení</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Osvětlení" />
-                  <span>Osvětlení</span>
+                  <input type="checkbox" name="solutions[]" value="Automatické stínění" />
+                  <span>Automatické stínění</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Stínění" />
-                  <span>Stínění</span>
+                  <input type="checkbox" name="solutions[]" value="Řízení teploty a klimatu" />
+                  <span>Řízení teploty a klimatu</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Vytápění a klima" />
-                  <span>Vytápění a klima</span>
+                  <input type="checkbox" name="solutions[]" value="Zabezpečení a přístup" />
+                  <span>Zabezpečení a přístup</span>
                 </label>
                 <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Zabezpečení" />
-                  <span>Zabezpečení</span>
-                </label>
-                <label class="lead-page-choice-pill">
-                  <input type="checkbox" name="solutions[]" value="Přístup / interkom" />
-                  <span>Přístup / interkom</span>
+                  <input type="checkbox" name="solutions[]" value="Energie a FVE" />
+                  <span>Energie a FVE</span>
                 </label>
                 <label class="lead-page-choice-pill">
                   <input type="checkbox" name="solutions[]" value="Jiné" />
@@ -251,13 +229,58 @@
               </div>
             </fieldset>
 
+            <fieldset class="lead-page-choice-group lead-page-date-group">
+              <legend>Přibližný termín realizace</legend>
+              <div class="lead-page-date-selects">
+                <label class="lead-page-date-select">
+                  <span>Měsíc</span>
+                  <select id="lead-realization-month" name="realization_month" required>
+                    <option value="" disabled selected>Vyberte měsíc</option>
+                    <option value="Leden">Leden</option>
+                    <option value="Únor">Únor</option>
+                    <option value="Březen">Březen</option>
+                    <option value="Duben">Duben</option>
+                    <option value="Květen">Květen</option>
+                    <option value="Červen">Červen</option>
+                    <option value="Červenec">Červenec</option>
+                    <option value="Srpen">Srpen</option>
+                    <option value="Září">Září</option>
+                    <option value="Říjen">Říjen</option>
+                    <option value="Listopad">Listopad</option>
+                    <option value="Prosinec">Prosinec</option>
+                    <option value="Ještě nevím">Ještě nevím</option>
+                  </select>
+                </label>
+                <label class="lead-page-date-select">
+                  <span>Rok</span>
+                  <select id="lead-realization-year" name="realization_year" required>
+                    <option value="" disabled selected>Vyberte rok</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="Ještě nevím">Ještě nevím</option>
+                  </select>
+                </label>
+                <input type="hidden" id="lead-realization-date" name="realization_date" value="" />
+              </div>
+              <p class="lead-page-form__hint">Vyberte orientační měsíc a rok. Na mobilu a tabletu se otevře systémová rolovací nabídka.</p>
+            </fieldset>
+
             <div class="lead-page-form__field lead-page-form__field--full">
               <label for="lead-message">Zpráva a zadání projektu</label>
               <p class="lead-page-form__hint">Stručně napište, co řešíte, v jaké fázi je projekt a co od systému očekáváte.</p>
               <textarea id="lead-message" name="message" placeholder="Např. novostavba rodinného domu, chceme připravit elektroinstalaci pro chytrou domácnost, řízení světel, stínění a vytápění…" required></textarea>
             </div>
 
-            <button class="lead-page-form__submit" type="submit">Odeslat poptávku</button>
+            <button class="lead-page-form__submit creepy-btn" type="submit" aria-label="Odeslat poptávku">
+              <span class="creepy-btn__eyes" aria-hidden="true">
+                <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+                <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+              </span>
+              <span class="creepy-btn__cover">Odeslat</span>
+            </button>
             <p class="lead-page-form__submit-note">Ozveme se vám obvykle během 1–2 pracovních dnů.</p>
             <p class="lead-page-form__status" id="lead-form-status" aria-live="polite"></p>
           </form>
@@ -318,6 +341,22 @@
       const status = document.getElementById("lead-form-status");
       if (!form || !status) return;
 
+      const realizationMonth = form.elements.namedItem("realization_month");
+      const realizationYear = form.elements.namedItem("realization_year");
+      const realizationDateInput = form.elements.namedItem("realization_date");
+
+      const updateRealizationDate = () => {
+        if (!realizationMonth || !realizationYear || !realizationDateInput) return;
+        const month = realizationMonth.value;
+        const year = realizationYear.value;
+        realizationDateInput.value = month && year
+          ? (month === "Ještě nevím" || year === "Ještě nevím" ? "Ještě nevím" : `${month} ${year}`)
+          : "";
+      };
+
+      realizationMonth?.addEventListener("change", updateRealizationDate);
+      realizationYear?.addEventListener("change", updateRealizationDate);
+
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -326,12 +365,14 @@
         const email = form.elements.namedItem("email").value.trim();
         const location = form.elements.namedItem("location").value.trim();
         const objectType = form.elements.namedItem("object_type")?.value || "";
-        const projectStage = form.elements.namedItem("project_stage")?.value || "";
+        const projectType = form.elements.namedItem("project_type")?.value || "";
+        updateRealizationDate();
+        const realizationDate = form.elements.namedItem("realization_date")?.value || "";
         const message = form.elements.namedItem("message").value.trim();
         const selectedSolutions = Array.from(form.querySelectorAll('input[name="solutions[]"]:checked')).map((input) => input.value);
         const submitButton = form.querySelector('button[type="submit"]');
 
-        if (!name || !phone || !email || !location || !objectType || !projectStage || !message || selectedSolutions.length === 0) {
+        if (!name || !phone || !email || !location || !objectType || !projectType || !realizationDate || !message || selectedSolutions.length === 0) {
           status.textContent = "Doplňte prosím všechna povinná pole.";
           return;
         }
@@ -376,8 +417,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-

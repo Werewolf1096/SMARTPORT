@@ -22,14 +22,22 @@ $phone = clean_input($_POST['phone'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $location = clean_input($_POST['location'] ?? '');
 $objectType = clean_input($_POST['object_type'] ?? '');
-$projectStage = clean_input($_POST['project_stage'] ?? '');
+$projectType = clean_input($_POST['project_type'] ?? '');
+$realizationMonth = clean_input($_POST['realization_month'] ?? '');
+$realizationYear = clean_input($_POST['realization_year'] ?? '');
+$realizationDate = clean_input($_POST['realization_date'] ?? '');
+if ($realizationDate === '' && $realizationMonth !== '' && $realizationYear !== '') {
+    $realizationDate = $realizationMonth === 'Ještě nevím' || $realizationYear === 'Ještě nevím'
+        ? 'Ještě nevím'
+        : $realizationMonth . ' ' . $realizationYear;
+}
 $solutions = array_values(array_filter(array_map(
     static fn($value) => clean_input((string) $value),
     is_array($_POST['solutions'] ?? null) ? $_POST['solutions'] : []
 )));
 $message = trim($_POST['message'] ?? '');
 
-if ($name === '' || $phone === '' || $email === '' || $location === '' || $objectType === '' || $projectStage === '' || $message === '' || $solutions === []) {
+if ($name === '' || $phone === '' || $email === '' || $location === '' || $objectType === '' || $projectType === '' || $realizationDate === '' || $message === '' || $solutions === []) {
     http_response_code(422);
     echo json_encode([
         'ok' => false,
@@ -55,7 +63,8 @@ $body = implode("\n", [
     'E-mail: ' . $email,
     'Lokalita realizace: ' . $location,
     'Typ objektu: ' . $objectType,
-    'Fáze projektu: ' . $projectStage,
+    'Typ projektu: ' . $projectType,
+    'Přibližný termín realizace: ' . $realizationDate,
     'Co chce klient řešit: ' . implode(', ', $solutions),
     '',
     'Zpráva a zadání projektu:',

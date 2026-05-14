@@ -50,14 +50,14 @@
                 </div>
                 <div class="nav-dropdown-preview" aria-hidden="true">
                   <div class="nav-preview-track">
-                    <img class="nav-preview-image is-active" data-preview-key="electro" src="klasicka-elektroinstalace.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="lighting" src="chytra-zarovka-chytre-osvetleni.png" alt="" />
+                    <img class="nav-preview-image is-active" data-preview-key="electro" src="klasicka-elektroinstalace.webp" alt="" />
+                    <img class="nav-preview-image" data-preview-key="lighting" src="chytra-zarovka-chytre-osvetleni.webp" alt="" />
                     <img class="nav-preview-image" data-preview-key="security" src="chytry-kamerovy-system-zabezpeceni.gif" alt="" />
-                    <img class="nav-preview-image" data-preview-key="climate" src="chytry-termostat-automatizace-klimatu.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="climate" src="chytry-termostat-automatizace-klimatu.webp" alt="" />
                     <img class="nav-preview-image" data-preview-key="intercom" src="interkom-a-pristupove-systemy.png" alt="" />
                     <img class="nav-preview-image" data-preview-key="shading" src="ovladani-zaluzii-a-stineni-design.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="audio" src="multiroom-audio.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="energy" src="energeticky-management.png" alt="" />
+                    <img class="nav-preview-image" data-preview-key="audio" src="multiroom-audio.webp" alt="" />
+                    <img class="nav-preview-image" data-preview-key="energy" src="energeticky-management.webp" alt="" />
                   </div>
                 </div>
               </div>
