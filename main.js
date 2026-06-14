@@ -1,4 +1,76 @@
 (() => {
+  const localHosts = new Set(["", "localhost", "127.0.0.1", "::1"]);
+  const isLocalStatic = window.location.protocol === "file:" || localHosts.has(window.location.hostname);
+  if (!isLocalStatic) return;
+
+  const prettyPathToFile = (rawHref) => {
+    if (!rawHref || !rawHref.startsWith("/")) return null;
+    if (rawHref.startsWith("//")) return null;
+
+    const [pathPart, hashPart = ""] = rawHref.split("#");
+    const [pathOnly, queryPart = ""] = pathPart.split("?");
+    const cleanPath = pathOnly.replace(/^\/+|\/+$/g, "");
+    const targetFile = cleanPath ? `${cleanPath}.html` : "index.html";
+    const query = queryPart ? `?${queryPart}` : "";
+    const hash = hashPart ? `#${hashPart}` : "";
+
+    if (window.location.protocol === "file:") {
+      const filePrefix = document.body.classList.contains("blog-article-page") ? "../" : "";
+      return new URL(`${filePrefix}${targetFile}${query}${hash}`, document.baseURI).href;
+    }
+
+    return new URL(`/${targetFile}${query}${hash}`, window.location.origin).href;
+  };
+
+  window.smartportResolveLocalUrl = (rawHref) => prettyPathToFile(rawHref) || rawHref;
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const target = event.target;
+      if (!target || typeof target.closest !== "function") return;
+
+      const link = target.closest("a[href]");
+      if (!link || link.target) return;
+
+      const rawHref = link.getAttribute("href") || "";
+      const localHref = prettyPathToFile(rawHref);
+      if (!localHref) return;
+
+      event.preventDefault();
+      window.location.href = localHref;
+    },
+    true
+  );
+})();
+
+(() => {
+  const tableOfContents = document.querySelector(".blog-article-aside");
+  if (!tableOfContents) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  tableOfContents.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const targetId = link.getAttribute("href").slice(1);
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({
+      behavior: reducedMotion.matches ? "auto" : "smooth",
+      block: "start",
+    });
+
+    history.replaceState(null, "", `#${targetId}`);
+  });
+})();
+
+(() => {
   if (window.__smartportPhoneConversionTrackingBound) return;
   window.__smartportPhoneConversionTrackingBound = true;
 
@@ -671,7 +743,7 @@
   cards.forEach((card) => {
     const href = card.getAttribute("data-href");
     if (!href) return;
-
+    const targetHref = typeof window.smartportResolveLocalUrl === "function" ? window.smartportResolveLocalUrl(href) : href;
     card.setAttribute("tabindex", "0");
     card.setAttribute("role", "link");
     card.setAttribute("aria-label", `Otevřít službu: ${card.querySelector("h3")?.textContent?.trim() || ""}`);
@@ -681,13 +753,13 @@
       if (target instanceof HTMLElement && target.closest(".service-action")) {
         event.preventDefault();
       }
-      window.location.href = href;
+      window.location.href = targetHref;
     });
 
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        window.location.href = href;
+        window.location.href = targetHref;
       }
     });
   });

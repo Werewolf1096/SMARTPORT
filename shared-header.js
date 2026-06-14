@@ -3,22 +3,34 @@
   if (!mount) return;
 
   const currentPath = window.location.pathname.split("/").pop() || "";
-  const isHome = currentPath === "index.html" || currentPath === "";
-  const isAbout = currentPath === "about.html";
-  const isContact = currentPath === "contacts.html" || currentPath === "poptavka.html" || currentPath === "poptavka-odeslana.html";
-  const isServicePage = /^sluzby-/.test(currentPath);
+  const currentSlug = currentPath.replace(/\.html$/, "");
+  const isHome = window.location.pathname === "/" || currentSlug === "" || currentSlug === "index";
+  const isAbout = currentSlug === "about";
+  const isBlogArticle = currentSlug === "co-je-loxone";
+  const isBlog = currentSlug === "blog" || isBlogArticle || window.location.pathname.startsWith("/blog/");
+  const isContact = currentSlug === "contacts" || currentSlug === "poptavka" || currentSlug === "poptavka-odeslana";
+  const isServicePage = /^sluzby-/.test(currentSlug);
 
-  const homeHref = "index.html";
-  const servicesHref = isHome ? "#services" : "index.html#services";
-  const contactHref = "contacts.html";
+  const pagePrefix = isBlogArticle ? "../" : "";
+  const routeHref = (slug) => (
+    window.location.protocol === "file:"
+      ? `${pagePrefix}${slug ? `${slug}.html` : "index.html"}`
+      : `/${slug}`
+  );
+  const assetHref = (fileName) => `${pagePrefix}${fileName}`;
 
-  const isCurrentService = (fileName) => (currentPath === fileName ? ' aria-current="page"' : "");
+  const homeHref = routeHref("");
+  const servicesHref = isHome ? "#services" : `${homeHref}#services`;
+  const contactHref = routeHref("contacts");
+
+  const isCurrentService = (slug) => (currentSlug === slug ? ' aria-current="page"' : "");
   const homeState = isHome ? ' class="is-active" aria-current="page"' : "";
   const aboutState = isAbout ? ' class="is-active" aria-current="page"' : "";
+  const blogState = isBlog ? ' class="is-active" aria-current="page"' : "";
   const contactState = isContact ? ' class="is-active" aria-current="page"' : "";
   const servicesState = isServicePage ? " is-active" : "";
-  const isLightingPage = currentPath === "sluzby-osvetleni.html";
-  const brandLogoSrc = isLightingPage ? "LOGO-Black.gif" : "LOGO.gif";
+  const isLightingPage = currentSlug === "sluzby-osvetleni";
+  const brandLogoSrc = assetHref(isLightingPage ? "LOGO-Black.gif" : "LOGO.gif");
   const brandLogoAlt = isLightingPage ? "SMARTPORT logo v černé variantě pro stránku chytrého osvětlení" : "Smartport logo";
 
   mount.outerHTML = `
@@ -38,36 +50,55 @@
               <div class="nav-dropdown-panel-inner">
                 <div class="nav-dropdown-col">
                   <ul class="nav-dropdown-list">
-                    <li><a href="sluzby-elektroinstalace.html" data-preview="electro"${isCurrentService("sluzby-elektroinstalace.html")}>Klasick\u00e1 elektroinstalace</a></li>
-                    <li><a href="sluzby-osvetleni.html" data-preview="lighting"${isCurrentService("sluzby-osvetleni.html")}>Chytr\u00e9 osv\u011btlen\u00ed</a></li>
-                    <li><a href="sluzby-zabezpeceni.html" data-preview="security"${isCurrentService("sluzby-zabezpeceni.html")}>Zabezpe\u010den\u00ed a kamerov\u00e9 syst\u00e9my</a></li>
-                    <li><a href="sluzby-klima.html" data-preview="climate"${isCurrentService("sluzby-klima.html")}>\u0158\u00edzen\u00ed klimatu</a></li>
-                    <li><a href="sluzby-interkom.html" data-preview="intercom"${isCurrentService("sluzby-interkom.html")}>Interkom a p\u0159\u00edstupov\u00fd syst\u00e9m</a></li>
-                    <li><a href="sluzby-stineni.html" data-preview="shading"${isCurrentService("sluzby-stineni.html")}>Ovl\u00e1d\u00e1n\u00ed \u017ealuzi\u00ed a st\u00edn\u011bn\u00ed</a></li>
-                    <li><a href="sluzby-audio.html" data-preview="audio"${isCurrentService("sluzby-audio.html")}>Multiz\u00f3nov\u00fd audio syst\u00e9m</a></li>
-                    <li><a href="sluzby-energie.html" data-preview="energy"${isCurrentService("sluzby-energie.html")}>Inteligentn\u00ed spr\u00e1va energie</a></li>
+                    <li><a href="${routeHref("sluzby-elektroinstalace")}" data-preview="electro"${isCurrentService("sluzby-elektroinstalace")}>Klasick\u00e1 elektroinstalace</a></li>
+                    <li><a href="${routeHref("sluzby-osvetleni")}" data-preview="lighting"${isCurrentService("sluzby-osvetleni")}>Chytr\u00e9 osv\u011btlen\u00ed</a></li>
+                    <li><a href="${routeHref("sluzby-zabezpeceni")}" data-preview="security"${isCurrentService("sluzby-zabezpeceni")}>Zabezpe\u010den\u00ed a kamerov\u00e9 syst\u00e9my</a></li>
+                    <li><a href="${routeHref("sluzby-klima")}" data-preview="climate"${isCurrentService("sluzby-klima")}>\u0158\u00edzen\u00ed klimatu</a></li>
+                    <li><a href="${routeHref("sluzby-interkom")}" data-preview="intercom"${isCurrentService("sluzby-interkom")}>Interkom a p\u0159\u00edstupov\u00fd syst\u00e9m</a></li>
+                    <li><a href="${routeHref("sluzby-stineni")}" data-preview="shading"${isCurrentService("sluzby-stineni")}>Ovl\u00e1d\u00e1n\u00ed \u017ealuzi\u00ed a st\u00edn\u011bn\u00ed</a></li>
+                    <li><a href="${routeHref("sluzby-audio")}" data-preview="audio"${isCurrentService("sluzby-audio")}>Multiz\u00f3nov\u00fd audio syst\u00e9m</a></li>
+                    <li><a href="${routeHref("sluzby-energie")}" data-preview="energy"${isCurrentService("sluzby-energie")}>Inteligentn\u00ed spr\u00e1va energie</a></li>
                   </ul>
                 </div>
                 <div class="nav-dropdown-preview" aria-hidden="true">
                   <div class="nav-preview-track">
-                    <img class="nav-preview-image is-active" data-preview-key="electro" src="klasicka-elektroinstalace.webp" alt="" />
-                    <img class="nav-preview-image" data-preview-key="lighting" src="chytra-zarovka-chytre-osvetleni.webp" alt="" />
-                    <img class="nav-preview-image" data-preview-key="security" src="chytry-kamerovy-system-zabezpeceni.gif" alt="" />
-                    <img class="nav-preview-image" data-preview-key="climate" src="chytry-termostat-automatizace-klimatu.webp" alt="" />
-                    <img class="nav-preview-image" data-preview-key="intercom" src="interkom-a-pristupove-systemy.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="shading" src="ovladani-zaluzii-a-stineni-design.png" alt="" />
-                    <img class="nav-preview-image" data-preview-key="audio" src="multiroom-audio.webp" alt="" />
-                    <img class="nav-preview-image" data-preview-key="energy" src="energeticky-management.webp" alt="" />
+                    <img class="nav-preview-image is-active" data-preview-key="electro" src="${assetHref("klasicka-elektroinstalace.webp")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="lighting" src="${assetHref("chytra-zarovka-chytre-osvetleni.webp")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="security" src="${assetHref("chytry-kamerovy-system-zabezpeceni.gif")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="climate" src="${assetHref("chytry-termostat-automatizace-klimatu.webp")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="intercom" src="${assetHref("interkom-a-pristupove-systemy.png")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="shading" src="${assetHref("ovladani-zaluzii-a-stineni-design.png")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="audio" src="${assetHref("multiroom-audio.webp")}" alt="" />
+                    <img class="nav-preview-image" data-preview-key="energy" src="${assetHref("energeticky-management.webp")}" alt="" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <a${blogState} href="${routeHref("blog")}">Blog</a>
           <a${contactState} href="${contactHref}">Kontakt</a>
-          <a${aboutState} href="about.html">O n\u00e1s</a>
+          <a${aboutState} href="${routeHref("about")}">O n\u00e1s</a>
         </nav>
       </div>
     </header>
     <div class="menu-backdrop" aria-hidden="true"></div>
   `;
+
+  const ensureBlogFooterLink = () => {
+    const footerLinks = document.querySelector(".site-footer .footer-links");
+    if (!footerLinks || footerLinks.querySelector('a[href="/blog"]')) return;
+
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = "/blog";
+    link.textContent = "Blog";
+    item.append(link);
+    footerLinks.prepend(item);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ensureBlogFooterLink, { once: true });
+  } else {
+    ensureBlogFooterLink();
+  }
 })();

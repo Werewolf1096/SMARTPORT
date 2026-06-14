@@ -1,9 +1,76 @@
 AddType image/svg+xml .svg .svgz
+AddType image/webp .webp
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+about\.html[\s?] [NC]
+RewriteRule ^about\.html$ /about [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+contacts\.html[\s?] [NC]
+RewriteRule ^contacts\.html$ /contacts [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+blog\.html[\s?] [NC]
+RewriteRule ^blog\.html$ /blog [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+blog/co-je-loxone\.html[\s?] [NC]
+RewriteRule ^blog/co-je-loxone\.html$ /blog/co-je-loxone [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+poptavka\.html[\s?] [NC]
+RewriteRule ^poptavka\.html$ /poptavka [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+poptavka-odeslana\.html[\s?] [NC]
+RewriteRule ^poptavka-odeslana\.html$ /poptavka-odeslana [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-elektroinstalace\.html[\s?] [NC]
+RewriteRule ^sluzby-elektroinstalace\.html$ /sluzby-elektroinstalace [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-osvetleni\.html[\s?] [NC]
+RewriteRule ^sluzby-osvetleni\.html$ /sluzby-osvetleni [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-zabezpeceni\.html[\s?] [NC]
+RewriteRule ^sluzby-zabezpeceni\.html$ /sluzby-zabezpeceni [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-klima\.html[\s?] [NC]
+RewriteRule ^sluzby-klima\.html$ /sluzby-klima [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-interkom\.html[\s?] [NC]
+RewriteRule ^sluzby-interkom\.html$ /sluzby-interkom [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-stineni\.html[\s?] [NC]
+RewriteRule ^sluzby-stineni\.html$ /sluzby-stineni [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-audio\.html[\s?] [NC]
+RewriteRule ^sluzby-audio\.html$ /sluzby-audio [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sluzby-energie\.html[\s?] [NC]
+RewriteRule ^sluzby-energie\.html$ /sluzby-energie [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+ochrana-osobnich-udaju\.html[\s?] [NC]
+RewriteRule ^ochrana-osobnich-udaju\.html$ /ochrana-osobnich-udaju [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+zasady-pouzivani-souboru-cookies\.html[\s?] [NC]
+RewriteRule ^zasady-pouzivani-souboru-cookies\.html$ /zasady-pouzivani-souboru-cookies [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+vseobecne-obchodni-podminky\.html[\s?] [NC]
+RewriteRule ^vseobecne-obchodni-podminky\.html$ /vseobecne-obchodni-podminky [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+RewriteRule ^about$ about.html [L]
+RewriteRule ^contacts$ contacts.html [L]
+RewriteRule ^blog$ blog.html [L]
+RewriteRule ^blog/co-je-loxone$ blog/co-je-loxone.html [L]
+RewriteRule ^blog/(kolik-stoji-loxone|loxone-a-fotovoltaika|zabezpeceni-s-loxone)$ /blog [R=302,L]
+RewriteRule ^poptavka$ poptavka.html [L]
+RewriteRule ^poptavka-odeslana$ poptavka-odeslana.html [L]
+RewriteRule ^sluzby-elektroinstalace$ sluzby-elektroinstalace.html [L]
+RewriteRule ^sluzby-osvetleni$ sluzby-osvetleni.html [L]
+RewriteRule ^sluzby-zabezpeceni$ sluzby-zabezpeceni.html [L]
+RewriteRule ^sluzby-klima$ sluzby-klima.html [L]
+RewriteRule ^sluzby-interkom$ sluzby-interkom.html [L]
+RewriteRule ^sluzby-stineni$ sluzby-stineni.html [L]
+RewriteRule ^sluzby-audio$ sluzby-audio.html [L]
+RewriteRule ^sluzby-energie$ sluzby-energie.html [L]
+RewriteRule ^ochrana-osobnich-udaju$ ochrana-osobnich-udaju.html [L]
+RewriteRule ^zasady-pouzivani-souboru-cookies$ zasady-pouzivani-souboru-cookies.html [L]
+RewriteRule ^vseobecne-obchodni-podminky$ vseobecne-obchodni-podminky.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
 
 <IfModule mod_expires.c>
   ExpiresActive On
 
-  # Изображения (кэшируем на 1 год)
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
@@ -11,16 +78,13 @@ AddType image/svg+xml .svg .svgz
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
 
-  # Медиа
   ExpiresByType video/mp4 "access plus 1 year"
   ExpiresByType video/mpeg "access plus 1 year"
 
-  # CSS и JavaScript (кэшируем на 1 месяц)
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType text/javascript "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
 
-  # Шрифты (кэшируем на 1 год)
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType application/font-woff2 "access plus 1 year"
   ExpiresByType font/woff "access plus 1 year"
@@ -28,7 +92,6 @@ AddType image/svg+xml .svg .svgz
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Добавляем Cache-Control заголовки для уверенности (1 год = 31536000 секунд)
   <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|mp4|woff2?)$">
     Header set Cache-Control "max-age=31536000, public"
   </FilesMatch>

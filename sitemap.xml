@@ -1,63 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://smartport.cz/index.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/about.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/about</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/contacts.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/contacts</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/poptavka.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/blog</loc>
+    <lastmod>2026-06-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-elektroinstalace.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/blog/co-je-loxone</loc>
+    <lastmod>2026-06-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-osvetleni.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/poptavka</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-zabezpeceni.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-elektroinstalace</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-klima.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-osvetleni</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-interkom.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-zabezpeceni</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-stineni.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-klima</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-audio.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-interkom</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/sluzby-energie.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-stineni</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/ochrana-osobnich-udaju.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-audio</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/zasady-pouzivani-souboru-cookies.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/sluzby-energie</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
-    <loc>https://smartport.cz/vseobecne-obchodni-podminky.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <loc>https://smartport.cz/ochrana-osobnich-udaju</loc>
+    <lastmod>2026-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://smartport.cz/zasady-pouzivani-souboru-cookies</loc>
+    <lastmod>2026-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://smartport.cz/vseobecne-obchodni-podminky</loc>
+    <lastmod>2026-05-14</lastmod>
   </url>
 </urlset>

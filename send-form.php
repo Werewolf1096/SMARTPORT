@@ -93,7 +93,7 @@ if (!$sent) {
 
 $acceptHeader = $_SERVER['HTTP_ACCEPT'] ?? '';
 if (strpos($acceptHeader, 'application/json') === false) {
-    header('Location: poptavka-odeslana.html', true, 303);
+    header('Location: /poptavka-odeslana', true, 303);
     exit;
 }
 

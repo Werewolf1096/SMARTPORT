@@ -17,11 +17,11 @@
     content="Poptávka SMARTPORT pro chytrý dům, elektroinstalaci, osvětlení, stínění, zabezpečení, klima a řízení technologií. Pošlete kontakt a stručné zadání projektu."
   />
   <title>Poptávka chytrého domu a elektroinstalace | SMARTPORT</title>
-  <link rel="canonical" href="https://smartport.cz/poptavka.html" />
+  <link rel="canonical" href="https://smartport.cz/poptavka" />
   <meta property="og:title" content="Poptávka chytrého domu a elektroinstalace | SMARTPORT" />
   <meta property="og:description" content="Poptávka SMARTPORT pro chytrý dům, elektroinstalaci, osvětlení, stínění, zabezpečení, klima a řízení technologií. Pošlete kontakt a stručné zadání projektu." />
   <meta property="og:image" content="https://smartport.cz/smart-home-loxone-rodinny-dum-interier-vecer.webp" />
-  <meta property="og:url" content="https://smartport.cz/poptavka.html" />
+  <meta property="og:url" content="https://smartport.cz/poptavka" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="cs_CZ" />
   <meta property="og:site_name" content="SMARTPORT" />
@@ -36,10 +36,10 @@
       "@type": "WebPage",
       "name": "Poptávka chytrého domu a elektroinstalace | SMARTPORT",
       "description": "Poptávka SMARTPORT pro chytrý dům, elektroinstalaci, osvětlení, stínění, zabezpečení, klima a řízení technologií. Pošlete kontakt a stručné zadání projektu.",
-      "url": "https://smartport.cz/poptavka.html",
+      "url": "https://smartport.cz/poptavka",
       "potentialAction": {
         "@type": "CommunicateAction",
-        "target": "https://smartport.cz/poptavka.html",
+        "target": "https://smartport.cz/poptavka",
         "name": "Pošlete poptávku"
       },
       "provider": {
@@ -322,11 +322,12 @@
         <div class="footer-block">
           <h4>Rychlé odkazy</h4>
           <ul class="footer-links">
-            <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
-            <li><a href="zasady-pouzivani-souboru-cookies.html">Zásady používání souborů cookies</a></li>
-            <li><a href="vseobecne-obchodni-podminky.html">Všeobecné obchodní podmínky</a></li>
-            <li><a href="about.html">O nás</a></li>
-            <li><a href="contacts.html">Kontakt</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a></li>
+            <li><a href="/zasady-pouzivani-souboru-cookies">Zásady používání souborů cookies</a></li>
+            <li><a href="/vseobecne-obchodni-podminky">Všeobecné obchodní podmínky</a></li>
+            <li><a href="/about">O nás</a></li>
+            <li><a href="/contacts">Kontakt</a></li>
           </ul>
         </div>
       </div>
@@ -405,7 +406,7 @@
           }
 
           form.reset();
-          window.location.assign(new URL("poptavka-odeslana.html", window.location.href).href);
+          window.location.assign(new URL("/poptavka-odeslana", window.location.href).href);
           return;
         } catch (error) {
           status.textContent = error.message || "Odeslání se nepodařilo. Zkuste to prosím znovu.";
