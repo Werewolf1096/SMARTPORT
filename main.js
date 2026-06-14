@@ -1,7 +1,17 @@
 (() => {
   const localHosts = new Set(["", "localhost", "127.0.0.1", "::1"]);
-  const isLocalStatic = window.location.protocol === "file:" || localHosts.has(window.location.hostname);
+  const isGithubPages = window.location.hostname.endsWith(".github.io");
+  const isLocalStatic = window.location.protocol === "file:" || localHosts.has(window.location.hostname) || isGithubPages;
   if (!isLocalStatic) return;
+
+  const githubBasePath = isGithubPages
+    ? `/${window.location.pathname.split("/").filter(Boolean)[0] || "SMARTPORT"}`
+    : "";
+  const futureBlogArticles = new Set([
+    "blog/kolik-stoji-loxone",
+    "blog/loxone-a-fotovoltaika",
+    "blog/zabezpeceni-s-loxone",
+  ]);
 
   const prettyPathToFile = (rawHref) => {
     if (!rawHref || !rawHref.startsWith("/")) return null;
@@ -9,8 +19,11 @@
 
     const [pathPart, hashPart = ""] = rawHref.split("#");
     const [pathOnly, queryPart = ""] = pathPart.split("?");
+    if (isGithubPages && pathOnly.startsWith(`${githubBasePath}/`) && /\.html$/i.test(pathOnly)) return null;
+
     const cleanPath = pathOnly.replace(/^\/+|\/+$/g, "");
-    const targetFile = cleanPath ? `${cleanPath}.html` : "index.html";
+    const routePath = isGithubPages && futureBlogArticles.has(cleanPath) ? "blog" : cleanPath;
+    const targetFile = routePath ? `${routePath}.html` : "index.html";
     const query = queryPart ? `?${queryPart}` : "";
     const hash = hashPart ? `#${hashPart}` : "";
 
@@ -19,7 +32,8 @@
       return new URL(`${filePrefix}${targetFile}${query}${hash}`, document.baseURI).href;
     }
 
-    return new URL(`/${targetFile}${query}${hash}`, window.location.origin).href;
+    const basePath = isGithubPages ? githubBasePath : "";
+    return new URL(`${basePath}/${targetFile}${query}${hash}`, window.location.origin).href;
   };
 
   window.smartportResolveLocalUrl = (rawHref) => prettyPathToFile(rawHref) || rawHref;

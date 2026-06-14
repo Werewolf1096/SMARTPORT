@@ -12,7 +12,15 @@
   const isServicePage = /^sluzby-/.test(currentSlug);
 
   const pagePrefix = isBlogArticle ? "../" : "";
-  const routeHref = (slug) => `/${slug}`;
+  const isGithubPages = window.location.hostname.endsWith(".github.io");
+  const githubBasePath = isGithubPages
+    ? `/${window.location.pathname.split("/").filter(Boolean)[0] || "SMARTPORT"}`
+    : "";
+  const routeHref = (slug) => (
+    isGithubPages
+      ? `${githubBasePath}/${slug ? `${slug}.html` : "index.html"}`
+      : `/${slug}`
+  );
   const assetHref = (fileName) => `${pagePrefix}${fileName}`;
 
   const homeHref = routeHref("");
