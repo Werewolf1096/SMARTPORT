@@ -12,11 +12,7 @@
   const isServicePage = /^sluzby-/.test(currentSlug);
 
   const pagePrefix = isBlogArticle ? "../" : "";
-  const routeHref = (slug) => (
-    window.location.protocol === "file:"
-      ? `${pagePrefix}${slug ? `${slug}.html` : "index.html"}`
-      : `/${slug}`
-  );
+  const routeHref = (slug) => `/${slug}`;
   const assetHref = (fileName) => `${pagePrefix}${fileName}`;
 
   const homeHref = routeHref("");
