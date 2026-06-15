@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18130609491"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18130609491');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loxone a fotovoltaika: chytré řízení FVE a přebytků</title>
+    <meta name="description" content="Jak Loxone využívá přebytky z fotovoltaiky pro ohřev vody, nabíjení auta, baterii, klimatizaci a další technologie v domě." />
+    <link rel="canonical" href="https://smartport.cz/blog/loxone-fotovoltaika" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:title" content="Loxone a fotovoltaika: jak využít přebytky FVE chytřeji" />
+    <meta property="og:description" content="Jak Loxone využívá přebytky z fotovoltaiky pro ohřev vody, nabíjení auta, baterii, klimatizaci a další technologie v domě." />
+    <meta property="og:image" content="https://smartport.cz/fotovoltaika-priprava-domu-fve-energie-smartport.webp" />
+    <meta property="og:image:alt" content="Fotovoltaické panely pro chytré řízení energie v domě" />
+    <meta property="og:url" content="https://smartport.cz/blog/loxone-fotovoltaika" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="SMARTPORT" />
+    <meta property="article:published_time" content="2026-06-12" />
+    <meta property="article:modified_time" content="2026-06-12" />
+    <meta property="article:section" content="Energie / Fotovoltaika / Loxone" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Loxone a fotovoltaika: chytré řízení FVE a přebytků" />
+    <meta name="twitter:description" content="Jak Loxone využívá přebytky z fotovoltaiky pro ohřev vody, nabíjení auta, baterii, klimatizaci a další technologie v domě." />
+    <meta name="twitter:image" content="https://smartport.cz/fotovoltaika-priprava-domu-fve-energie-smartport.webp" />
+    <meta name="theme-color" content="#f3f6fb" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "@id": "https://smartport.cz/blog/loxone-fotovoltaika#article",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://smartport.cz/blog/loxone-fotovoltaika"
+            },
+            "headline": "Loxone a fotovoltaika: jak využít přebytky FVE chytřeji",
+            "description": "Jak Loxone využívá přebytky z fotovoltaiky pro ohřev vody, nabíjení auta, baterii, klimatizaci a další technologie v domě.",
+            "image": "https://smartport.cz/fotovoltaika-priprava-domu-fve-energie-smartport.webp",
+            "datePublished": "2026-06-12",
+            "dateModified": "2026-06-12",
+            "articleSection": "Energie / Fotovoltaika / Loxone",
+            "inLanguage": "cs-CZ",
+            "author": {
+              "@type": "Organization",
+              "@id": "https://smartport.cz/#organization",
+              "name": "SMARTPORT"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://smartport.cz/#organization",
+              "name": "SMARTPORT",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://smartport.cz/LOGO.gif"
+              }
+            },
+            "keywords": [
+              "Loxone fotovoltaika",
+              "řízení přebytků FVE",
+              "energetický management",
+              "chytré řízení fotovoltaiky",
+              "Loxone energie"
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://smartport.cz/blog/loxone-fotovoltaika#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Domů",
+                "item": "https://smartport.cz/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://smartport.cz/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Loxone a fotovoltaika",
+                "item": "https://smartport.cz/blog/loxone-fotovoltaika"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap&subset=latin-ext" />
+    </noscript>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="../favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+  </head>
+  <body class="blog-article-page">
+    <div class="bg-shell" aria-hidden="true"></div>
+    <div data-shared-header></div>
+    <script src="../shared-header.js"></script>
+
+    <main class="blog-article-main">
+      <article>
+        <header class="blog-article-hero">
+          <div class="container blog-article-hero__inner">
+            <nav class="blog-breadcrumbs" aria-label="Drobečková navigace">
+              <a href="../blog">Blog</a>
+              <span aria-hidden="true">/</span>
+              <span>Loxone a fotovoltaika</span>
+            </nav>
+            <p class="blog-eyebrow">Energie · Fotovoltaika · Loxone</p>
+            <h1>Loxone a fotovoltaika: jak využít přebytky FVE chytřeji</h1>
+            <p class="blog-article-intro">
+              Fotovoltaika sama o sobě vyrábí elektřinu. Skutečná otázka ale je, kdy a kde se tato elektřina
+              v domě spotřebuje. Loxone pomáhá řídit dostupné přebytky podle aktuální výroby, spotřeby a
+              priorit jednotlivých technologií.
+            </p>
+            <div class="blog-article-meta">
+              <time datetime="2026-06-12">12. června 2026</time>
+              <span>14 minut čtení</span>
+            </div>
+          </div>
+        </header>
+
+        <figure class="container blog-article-cover">
+          <img src="../fotovoltaika-priprava-domu-fve-energie-smartport.webp" alt="Fotovoltaické panely pro chytré řízení energie v domě" width="1200" height="1600" />
+        </figure>
+
+        <div class="container blog-article-layout">
+          <aside class="blog-article-aside" aria-label="Obsah článku">
+            <p class="blog-eyebrow">Obsah článku</p>
+            <ol>
+              <li><a href="#proc-ridit-fve">Proč řídit přebytky</a></li>
+              <li><a href="#jak-funguje">Jak řízení funguje</a></li>
+              <li><a href="#pred-navrhem">Co řešit před návrhem</a></li>
+              <li><a href="#slunecny-den">Příklad slunečného dne</a></li>
+              <li><a href="#co-lze-ridit">Co lze řídit</a></li>
+              <li><a href="#limity">Co Loxone neudělá</a></li>
+              <li><a href="#integrace">Možnosti integrace</a></li>
+              <li><a href="#realna-uspora">Reálný přínos</a></li>
+              <li><a href="#predpoved">Předpověď a priority</a></li>
+              <li><a href="#smartport">Přístup SmartPortu</a></li>
+            </ol>
+          </aside>
+
+          <div class="blog-article-content">
+            <section id="proc-ridit-fve">
+              <h2>Proč FVE bez chytrého řízení nevyužije celý potenciál</h2>
+              <p>
+                Bez chytrého řízení se často stává, že panely přes den vyrábějí nejvíce energie právě ve chvíli,
+                kdy je spotřeba domu nízká. Lidé jsou v práci, pračka neběží, auto se nenabíjí a teplá voda už je
+                dohřátá nebo se dohřívá až večer. Přebytek pak odchází do sítě, zatímco večer dům znovu nakupuje
+                elektřinu ze sítě.
+              </p>
+              <p>
+                Běžná fotovoltaická instalace funguje jednoduše. Panely vyrábějí elektřinu, dům ji okamžitě
+                spotřebovává a přebytek odchází do distribuční sítě. Problém je v načasování: fotovoltaika vyrábí
+                nejvíce přes den, mnoho domácností má ale největší spotřebu ráno a večer.
+              </p>
+              <p>
+                S Loxone lze část spotřeby přesunout do chvíle, kdy energie skutečně vzniká. Některé spotřebiče
+                se spustí později, voda se dohřeje v době přebytků, klimatizace může dům přes den předchladit a
+                wallbox může upravovat nabíjecí výkon podle aktuální výroby.
+              </p>
+              <p>
+                Cílem není spotřebovat vlastní energii za každou cenu. Smyslem je využít ji přímo v domě tam,
+                kde je to technicky možné, ekonomicky rozumné a slučitelné s běžným komfortem.
+              </p>
+            </section>
+
+            <section id="jak-funguje">
+              <h2>Jak Loxone energetický management funguje</h2>
+              <p>
+                Loxone může sledovat aktuální výrobu fotovoltaiky, spotřebu domu, přebytek nebo odběr ze sítě,
+                stav baterie, teplotu vody, stav nabíjení elektromobilu, počasí i priority jednotlivých technologií.
+                Základní princip systému podrobněji vysvětluje článek
+                <a href="../blog/co-je-loxone">Co je Loxone?</a>
+              </p>
+              <p>Podle dostupných informací technik nastaví logiku řízení. Ta může pracovat například s těmito hodnotami:</p>
+              <ul>
+                <li>aktuální výroba fotovoltaiky a spotřeba domu,</li>
+                <li>přebytek nebo odběr ze sítě,</li>
+                <li>stav baterie a požadovaná rezerva,</li>
+                <li>požadovaná teplota vody,</li>
+                <li>stav a požadavky nabíjení elektromobilu,</li>
+                <li>počasí, venkovní teplota a provozní priority.</li>
+              </ul>
+              <p>
+                Pokud FVE vyrábí více energie, než dům právě spotřebuje, systém může nejdříve dohřát vodu.
+                Po dosažení požadované teploty lze přebytek využít pro nabíjení auta, baterii nebo klimatizaci.
+                Pořadí se vždy nastavuje podle konkrétního domu a potřeb majitele.
+              </p>
+            </section>
+
+            <section id="pred-navrhem">
+              <h2>Co je dobré vědět ještě před návrhem FVE</h2>
+              <p>
+                Nejlepší výsledek vzniká tehdy, když se fotovoltaika, elektroinstalace a chytrá domácnost řeší
+                společně. Pokud se nejdříve nainstaluje FVE a až potom automatizace, může se ukázat, že některé
+                funkce lze doplnit jen omezeně.
+              </p>
+              <p>
+                Typickým příkladem je střídač. Některé modely předají do Loxone dostatek údajů přes Modbus nebo
+                API, jiné poskytují jen základní hodnoty. Podobné je to u wallboxu, baterie nebo tepelného
+                čerpadla. V praxi rozhoduje konkrétní model, firmware, dokumentace a způsob zapojení.
+              </p>
+              <p>
+                Proto má smysl řešit už při návrhu nejen výkon panelů a kapacitu baterie, ale také otázku:
+                co přesně má dům s přebytky dělat? Stejný princip platí pro novostavbu i rekonstrukci, jen
+                dostupné možnosti kabeláže a komunikace bývají odlišné.
+              </p>
+              <!-- TODO: Doplnit odkaz na článek „Loxone při rekonstrukci vs. novostavbě“, až bude publikován. -->
+            </section>
+
+            <section id="slunecny-den">
+              <h2>Příklad slunečného dne v chytrém domě</h2>
+              <p>
+                Ráno začnou panely vyrábět první energii. Spotřeba domu je ještě nízká, proto může Loxone využít
+                přebytek na dohřev teplé vody.
+              </p>
+              <p>
+                Dopoledne výroba roste. Pokud je dostatek přebytků, systém může spustit připravenou pračku nebo
+                myčku. Spotřebič nemusí běžet hned po zapnutí, ale může čekat na vhodný okamžik.
+              </p>
+              <p>
+                Kolem poledne bývá výroba nejvyšší. Řízení může zvýšit nabíjecí výkon wallboxu, pokračovat v
+                ohřevu vody, dobíjet baterii nebo předchladit dům klimatizací. Odpoledne s poklesem výroby omezí
+                méně důležité spotřebiče nebo sníží nabíjení auta.
+              </p>
+              <p>
+                Večer už fotovoltaika nevyrábí. Dům může část spotřeby pokrýt z baterie a zbytek ze sítě.
+                Majitel přitom nemusí každý den sledovat grafy výroby. Pokud jsou priority nastavené dobře,
+                systém si většinu běžných situací pohlídá sám.
+              </p>
+            </section>
+
+            <section id="co-lze-ridit">
+              <h2>Co může Loxone s přebytky z FVE řídit</h2>
+
+              <h3>Ohřev teplé vody</h3>
+              <p>
+                Ohřev vody je jeden z nejpraktičtějších způsobů využití přebytků. Bojler nebo zásobník funguje
+                jako tepelná baterie: energie se uloží do teplé vody a využije se později. Loxone může ohřev
+                spustit při dostatku vlastní elektřiny a při poklesu výroby jej omezit podle nastavených priorit.
+              </p>
+
+              <h3>Nabíjení elektromobilu</h3>
+              <p>
+                U domu s wallboxem lze nabíjecí výkon upravovat podle toho, kolik energie panely právě vyrábějí.
+                Největší přínos má takové řízení tam, kde auto přes den často stojí doma. Pokud se vrací až
+                večer, musí návrh pracovat s jiným provozním scénářem.
+              </p>
+
+              <h3>Bateriové úložiště</h3>
+              <p>
+                Baterie přesouvá část vyrobené energie z denních hodin do večera nebo noci. Nejde ale jen o její
+                nabití. Důležité je rozhodnout, kdy má dům energii spotřebovat hned, kdy ji uložit a jakou rezervu
+                ponechat pro pozdější využití. Možnosti závisejí na střídači, baterii a komunikačním rozhraní.
+              </p>
+
+              <h3>Pračka, myčka a další odložitelné spotřebiče</h3>
+              <p>
+                Některé spotřebiče mohou být připravené ke spuštění a čekat na dostatek energie z fotovoltaiky.
+                Je ale nutné počítat s vlastnostmi konkrétního modelu. Ne každá pračka podporuje vzdálené spuštění
+                a některá elektronika po přerušení napájení program zruší nebo vyžaduje ruční potvrzení.
+              </p>
+              <p>
+                Ovládání může využít relé, řízenou zásuvku nebo podporované komunikační rozhraní. Vhodný způsob
+                se volí podle spotřebiče, jeho bezpečnostních podmínek a elektroinstalace.
+              </p>
+
+              <h3>Klimatizace a tepelné čerpadlo</h3>
+              <p>
+                V létě lze dům přes den mírně předchladit, aby klimatizace večer nemusela tolik pracovat ze sítě.
+                V přechodném období může řízení upravit provoz tepelného čerpadla podle dostupné výroby. Nejde o
+                agresivní změny teploty, ale o jemnou práci s komfortem a akumulační schopností domu.
+              </p>
+            </section>
+
+            <section id="limity">
+              <h2>Co Loxone neudělá za vás</h2>
+              <p>
+                Loxone není zařízení, které samo opraví špatně navrženou fotovoltaiku. Pokud má dům malou
+                spotřebu přes den, nevhodně zvolený střídač, chybějící měření nebo technologie bez možnosti
+                řízení, prostor pro optimalizaci bude omezený.
+              </p>
+              <p>
+                Chytré řízení funguje nejlépe tam, kde má systém s čím pracovat: s bojlerem, baterií, wallboxem,
+                tepelným čerpadlem, klimatizací nebo dalšími spotřebiči, které lze bezpečně ovládat podle výroby.
+              </p>
+              <p>
+                Realistické očekávání je stejně důležité jako technika. Cílem není spotřebovat doma veškerou
+                výrobu za každou cenu, ale využít vlastní energii tam, kde to dává smysl.
+              </p>
+            </section>
+
+            <section id="integrace">
+              <h2>Integrace s fotovoltaikou a dalšími technologiemi</h2>
+              <p>
+                Loxone lze propojit s různými komponenty fotovoltaického systému. Nejčastěji se používá
+                komunikace přes Modbus TCP, HTTP API, digitální vstupy a výstupy nebo připravené šablony v
+                Loxone Config.
+              </p>
+              <p>
+                Ne každý výrobek poskytuje stejné údaje a ne každý umožňuje stejně přesné řízení. Proto je dobré
+                řešit propojení už ve fázi návrhu. Správný výběr střídače, wallboxu a dalších zařízení může
+                později omezit množství kompromisů.
+              </p>
+              <p>
+                Pokud fotovoltaiku už máte, stále je často možné Loxone doplnit. Prvním krokem je zjistit, jaké
+                rozhraní nabízí střídač, které hodnoty lze číst a jaké povely systém bezpečně přijímá. Širší
+                souvislosti popisuje také stránka
+                <a href="../sluzby-energie">Loxone a řízení energií</a>.
+              </p>
+            </section>
+
+            <section id="realna-uspora">
+              <h2>Reálný přínos závisí na konkrétním domě</h2>
+              <p>
+                Přesnou úsporu ani návratnost nejde férově určit bez znalosti spotřeby, tarifu, výkonu FVE,
+                baterie, způsobu používání domu a cenových podmínek dodavatele. Stejná technologie může mít ve
+                dvou domech odlišný přínos, protože se liší denní režim i dostupné spotřebiče.
+              </p>
+              <p>
+                Pro návrh je důležité zjistit, kolik energie dům vyrábí, kdy ji spotřebovává a kam lze přebytky
+                smysluplně poslat. U domu s autem v garáži přes den bude pořadí priorit jiné než u domácnosti,
+                kde většina spotřeby vzniká večer.
+              </p>
+              <p>
+                Dobře nastavený energetický management může zvýšit přímé využití vlastní výroby, výsledek ale
+                nelze poctivě slíbit jedním univerzálním procentem. Návrh musí vycházet z naměřených nebo
+                realisticky odhadnutých dat konkrétního objektu.
+              </p>
+            </section>
+
+            <section id="predpoved">
+              <h2>Předpověď počasí a chytré priority</h2>
+              <p>
+                Loxone může do řízení zapojit informace o počasí. Pokud se očekává slunečný den, systém může
+                počítat s vyšší výrobou. Před několika zataženými dny se naopak může změnit strategie baterie,
+                ohřevu vody, klimatizace nebo tepelného čerpadla.
+              </p>
+              <p>
+                Dům tak nemusí reagovat až ve chvíli, kdy se podmínky změní. Může se připravit dopředu. Tato
+                logika je užitečná hlavně u objektů, kde se kombinuje fotovoltaika, baterie, tepelné čerpadlo,
+                klimatizace a nabíjení elektromobilu.
+              </p>
+            </section>
+
+            <section id="smartport">
+              <h2>Jak k tomu přistupujeme ve SmartPortu</h2>
+              <p>
+                U fotovoltaiky nezačínáme otázkou, kolik zařízení lze připojit k Loxone. Začínáme tím, jak dům
+                reálně funguje: kdy má největší spotřebu, jestli se přes den nabíjí auto, jak se ohřívá voda a
+                zda je v domě klimatizace, tepelné čerpadlo nebo baterie.
+              </p>
+              <p>
+                Jiný systém potřebuje rodina, která je přes den mimo dům. Jiný dům s elektromobilem, který stojí
+                většinu dne v garáži. Teprve podle provozu dává smysl navrhnout priority a rozhodnout, které
+                technologie má systém skutečně řídit.
+              </p>
+              <p>
+                Pokud FVE teprve plánujete, je vhodné řešit ji společně s chytrou domácností od začátku. Pokud ji
+                už máte, nejdříve ověříme střídač, komunikaci a dostupné možnosti řízení. Dobrá koncepce je
+                důležitější než dlouhý seznam zařízení.
+              </p>
+            </section>
+          </div>
+        </div>
+
+        <section class="blog-cta blog-article-cta" aria-labelledby="article-cta-title">
+          <div class="container blog-cta__card">
+            <div>
+              <p class="blog-eyebrow">Konzultace energetického managementu</p>
+              <h2 id="article-cta-title">Chcete propojit fotovoltaiku s Loxone?</h2>
+              <p>Podíváme se na vaši stávající nebo plánovanou FVE, možnosti komunikace, spotřebu domu a technologie, které dává smysl řídit. Navrhneme řešení, které zvýší využití vlastní energie bez zbytečných slibů a přehnaných očekávání.</p>
+            </div>
+            <a class="btn primary contact-cta-btn creepy-btn" href="../poptavka" aria-label="Poptat realizaci">
+              <span class="creepy-btn__eyes" aria-hidden="true">
+                <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+                <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+              </span>
+              <span class="creepy-btn__cover">Poptat realizaci</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="blog-related" aria-labelledby="related-title">
+          <div class="container">
+            <header class="blog-related__head">
+              <p class="blog-eyebrow">Související témata</p>
+              <h2 id="related-title">Další čtení</h2>
+            </header>
+            <!-- Zobrazovat pouze publikované stránky s funkčním odkazem. -->
+            <div class="blog-related__grid blog-related__grid--one">
+              <a class="blog-related__card" href="../blog/co-je-loxone">
+                <div class="blog-related__media">
+                  <img loading="lazy" src="../loxone-miniserver-chytra-domacnost-automatizace-domu.webp" alt="Loxone Miniserver pro chytrou domácnost" width="1200" height="800" />
+                </div>
+                <div class="blog-related__body">
+                  <span class="blog-related__category">Loxone</span>
+                  <h3>Co je Loxone a jak funguje chytrá domácnost?</h3>
+                  <p>Miniserver, lokální provoz a propojení technologií do jednoho řízeného systému.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img loading="lazy" src="../LOGO_footer.gif" alt="Smartport logo" />
+          </div>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-block">
+            <h4>Ozvěte se nám</h4>
+            <ul>
+              <li><a href="tel:+420775563355">+420 775 563 355</a></li>
+              <li><a href="mailto:info@smartport.cz">info@smartport.cz</a></li>
+              <li>Po-Pá 9:00-16:00</li>
+              <li>Trnová 88, 252 10 Trnová</li>
+            </ul>
+          </div>
+          <div class="footer-block">
+            <h4>Rychlé odkazy</h4>
+            <ul class="footer-links">
+              <li><a href="../blog">Blog</a></li>
+              <li><a href="../ochrana-osobnich-udaju">Ochrana osobních údajů</a></li>
+              <li><a href="../zasady-pouzivani-souboru-cookies">Zásady používání souborů cookies</a></li>
+              <li><a href="../vseobecne-obchodni-podminky">Všeobecné obchodní podmínky</a></li>
+              <li><a href="../about">O nás</a></li>
+              <li><a href="../contacts">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-note">Smartport 2026. Design by Smartport.</p>
+      </div>
+    </footer>
+
+    <script src="../main.js"></script>
+  </body>
+</html>

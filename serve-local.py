@@ -7,8 +7,6 @@ import os
 
 ROOT = Path(__file__).resolve().parent
 FUTURE_BLOG_ARTICLES = {
-    "/blog/kolik-stoji-loxone",
-    "/blog/loxone-a-fotovoltaika",
     "/blog/zabezpeceni-s-loxone",
 }
 

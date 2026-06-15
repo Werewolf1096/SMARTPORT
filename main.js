@@ -8,20 +8,23 @@
     ? `/${window.location.pathname.split("/").filter(Boolean)[0] || "SMARTPORT"}`
     : "";
   const futureBlogArticles = new Set([
-    "blog/kolik-stoji-loxone",
-    "blog/loxone-a-fotovoltaika",
     "blog/zabezpeceni-s-loxone",
   ]);
 
   const prettyPathToFile = (rawHref) => {
-    if (!rawHref || !rawHref.startsWith("/")) return null;
-    if (rawHref.startsWith("//")) return null;
+    if (!rawHref || rawHref.startsWith("#") || rawHref.startsWith("?") || rawHref.startsWith("//")) return null;
+    if (/^[a-z][a-z\d+.-]*:/i.test(rawHref)) return null;
 
     const [pathPart, hashPart = ""] = rawHref.split("#");
     const [pathOnly, queryPart = ""] = pathPart.split("?");
     if (isGithubPages && pathOnly.startsWith(`${githubBasePath}/`) && /\.html$/i.test(pathOnly)) return null;
 
-    const cleanPath = pathOnly.replace(/^\/+|\/+$/g, "");
+    const cleanPath = pathOnly
+      .replace(/\\/g, "/")
+      .replace(/^(\.\.\/|\.\/|\/)+/, "")
+      .replace(/\/+$/g, "");
+    if (cleanPath && /(?:^|\/)[^/]+\.[^/]+$/.test(cleanPath)) return null;
+
     const routePath = isGithubPages && futureBlogArticles.has(cleanPath) ? "blog" : cleanPath;
     const targetFile = routePath ? `${routePath}.html` : "index.html";
     const query = queryPart ? `?${queryPart}` : "";
@@ -65,6 +68,55 @@
   if (!tableOfContents) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const links = Array.from(tableOfContents.querySelectorAll('a[href^="#"]'));
+  const sections = links
+    .map((link) => {
+      const targetId = link.getAttribute("href").slice(1);
+      const section = document.getElementById(targetId);
+      return section ? { link, section } : null;
+    })
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  let activeLink = null;
+  let scrollFrame = null;
+
+  const setActiveLink = (link) => {
+    if (link === activeLink) return;
+
+    sections.forEach((item) => {
+      const isActive = item.link === link;
+      item.link.classList.toggle("is-active", isActive);
+
+      if (isActive) {
+        item.link.setAttribute("aria-current", "location");
+      } else {
+        item.link.removeAttribute("aria-current");
+      }
+    });
+
+    activeLink = link;
+  };
+
+  const updateActiveLink = () => {
+    scrollFrame = null;
+    const activationLine = Math.min(140, window.innerHeight * 0.28);
+    let current = sections[0];
+
+    sections.forEach((item) => {
+      if (item.section.getBoundingClientRect().top <= activationLine) {
+        current = item;
+      }
+    });
+
+    setActiveLink(current.link);
+  };
+
+  const scheduleActiveLinkUpdate = () => {
+    if (scrollFrame !== null) return;
+    scrollFrame = window.requestAnimationFrame(updateActiveLink);
+  };
 
   tableOfContents.addEventListener("click", (event) => {
     const link = event.target.closest('a[href^="#"]');
@@ -75,6 +127,7 @@
     if (!target) return;
 
     event.preventDefault();
+    setActiveLink(link);
     target.scrollIntoView({
       behavior: reducedMotion.matches ? "auto" : "smooth",
       block: "start",
@@ -82,6 +135,11 @@
 
     history.replaceState(null, "", `#${targetId}`);
   });
+
+  window.addEventListener("scroll", scheduleActiveLinkUpdate, { passive: true });
+  window.addEventListener("resize", scheduleActiveLinkUpdate);
+  window.addEventListener("load", scheduleActiveLinkUpdate);
+  updateActiveLink();
 })();
 
 (() => {
@@ -960,7 +1018,7 @@
     if (!eyes || pupils.length === 0) return;
 
     const allowIdlePeek = creepyBtn.matches(
-      ".service-hero .creepy-btn, .electro-final-cta .creepy-btn, .about-final-cta .creepy-btn, .about-new-cta .creepy-btn, .lead-page-form .creepy-btn"
+      ".service-hero .creepy-btn, .electro-final-cta .creepy-btn, .about-final-cta .creepy-btn, .about-new-cta .creepy-btn, .blog-article-cta .creepy-btn, .lead-page-form .creepy-btn"
     );
 
     let pointerInside = false;

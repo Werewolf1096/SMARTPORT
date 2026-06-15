@@ -6,21 +6,13 @@
   const currentSlug = currentPath.replace(/\.html$/, "");
   const isHome = window.location.pathname === "/" || currentSlug === "" || currentSlug === "index";
   const isAbout = currentSlug === "about";
-  const isBlogArticle = currentSlug === "co-je-loxone";
+  const isBlogArticle = document.body.classList.contains("blog-article-page");
   const isBlog = currentSlug === "blog" || isBlogArticle || window.location.pathname.startsWith("/blog/");
   const isContact = currentSlug === "contacts" || currentSlug === "poptavka" || currentSlug === "poptavka-odeslana";
   const isServicePage = /^sluzby-/.test(currentSlug);
 
   const pagePrefix = isBlogArticle ? "../" : "";
-  const isGithubPages = window.location.hostname.endsWith(".github.io");
-  const githubBasePath = isGithubPages
-    ? `/${window.location.pathname.split("/").filter(Boolean)[0] || "SMARTPORT"}`
-    : "";
-  const routeHref = (slug) => (
-    isGithubPages
-      ? `${githubBasePath}/${slug ? `${slug}.html` : "index.html"}`
-      : `/${slug}`
-  );
+  const routeHref = (slug) => slug ? `${pagePrefix}${slug}` : (pagePrefix || "./");
   const assetHref = (fileName) => `${pagePrefix}${fileName}`;
 
   const homeHref = routeHref("");
@@ -90,11 +82,11 @@
 
   const ensureBlogFooterLink = () => {
     const footerLinks = document.querySelector(".site-footer .footer-links");
-    if (!footerLinks || footerLinks.querySelector('a[href="/blog"]')) return;
+    if (!footerLinks || footerLinks.querySelector('a[href$="blog"]')) return;
 
     const item = document.createElement("li");
     const link = document.createElement("a");
-    link.href = "/blog";
+    link.href = routeHref("blog");
     link.textContent = "Blog";
     item.append(link);
     footerLinks.prepend(item);
