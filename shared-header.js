@@ -11,9 +11,18 @@
   const isContact = currentSlug === "contacts" || currentSlug === "poptavka" || currentSlug === "poptavka-odeslana";
   const isServicePage = /^sluzby-/.test(currentSlug);
 
-  const pagePrefix = isBlogArticle ? "../" : "";
-  const routeHref = (slug) => slug ? `${pagePrefix}${slug}` : (pagePrefix || "./");
-  const assetHref = (fileName) => `${pagePrefix}${fileName}`;
+  const localHosts = new Set(["", "localhost", "127.0.0.1", "::1"]);
+  const isGithubPages = window.location.hostname.endsWith(".github.io");
+  const isLocalStatic = window.location.protocol === "file:" || localHosts.has(window.location.hostname) || isGithubPages;
+
+  const pagePrefix = isLocalStatic ? (isBlogArticle ? "../" : "") : "/";
+  const routeHref = (slug) => {
+    if (isLocalStatic) {
+      return slug ? `${pagePrefix}${slug}` : (pagePrefix || "./");
+    }
+    return slug ? `${pagePrefix}${slug}` : "/";
+  };
+  const assetHref = (fileName) => `${isLocalStatic ? pagePrefix : "/"}${fileName}`;
 
   const homeHref = routeHref("");
   const servicesHref = isHome ? "#services" : `${homeHref}#services`;
